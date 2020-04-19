@@ -1,15 +1,39 @@
-
-.images{
+.images {
   background-image: url("/assets/images/back1.jpg");
+  /* Mumkiin tbddl back1 w tddir back2 wlla back3 w chuuf lli 3jbattk  */
   position: relative;
-
-
 }
-input{
-  width: 250px;
-  margin-left: 140px;
+
+.bouton {
+  border-radius: 10px;
+  background-color: rgb(53, 53, 53);
+  color:white ;
+  border: 2px solid white;
 }
-label{
-  margin-left: 140px;
+.hh{
+  display: none;
+}
+.bouton:hover {
+  color: black;
+  background-color: rgb(199, 199, 199);
+  border: 2px solid black;
+}
+.lien:hover{
+  color: black;
+}
+@media (max-width: 768px) {
+  .cc{
+    margin-top: 1px;
+  }
+  .hh{
+    display: block;
+  }
+  .fs {
+    display: none;
+  }
+
+  .fs{
+    margin-top: 5px;
+  }
 
 }
