@@ -1,0 +1,15 @@
+
+.images{
+  background-image: url("/assets/images/back1.jpg");
+  position: relative;
+
+
+}
+input{
+  width: 250px;
+  margin-left: 140px;
+}
+label{
+  margin-left: 140px;
+
+}
