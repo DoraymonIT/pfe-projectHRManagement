@@ -18,6 +18,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -67,7 +68,7 @@ import { DocumentAdministrativeComponent } from './hr-responsable-side/document-
     MatListModule,
     MatTabsModule
 , MatDividerModule
-
+,MatTooltipModule
 
   ],
   providers: [],
