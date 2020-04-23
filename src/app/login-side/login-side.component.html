@@ -25,18 +25,18 @@
             <div class="form-group">
               <label for="exampleInputEmail"><i class="	fas fa-user-tie"></i> Email</label>
               <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email@email.com"
-                [(ngModel)]="nom" [ngModelOptions]="{standalone: true}">
+                [(ngModel)]="this.employe.email" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1"><i class="fa fa-lock"></i> Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+                [(ngModel)]="this.employe.password" [ngModelOptions]="{standalone: true}">
             </div>
 
           </form>
         </div>
         <div class="card-footer">
-          <button type="submit" class="btn btn-outline btn-block  bouton" (click)="login(nom,password)" [disabled]="!nom || !password">Submit</button>
+          <button type="submit" class="btn btn-outline btn-block  bouton" (click)="Login()" >Submit</button>
           <hr>
           <a [routerLink]="['/forgetPassword']" routerLinkActive="active"  class="lien" style="color: white;"><span style="text-align: center;display:block"><i
                 class="	fas fa-key"></i> I Forget my password ?</span></a>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
+import {LogInService} from '../controller/service/log-in.service';
+import {Employe} from '../controller/model/employe.model';
 /**
  * @title Input with error messages
  */
@@ -13,17 +15,15 @@ export class LoginSideComponent implements OnInit {
   nom: string;
   password: string;
   showErrors;
-  constructor() { }
+  constructor(private login: LogInService) { }
 
   ngOnInit(): void {
   }
-  login(nom: string, password: string) {
-    this.showErrors =false;
-    if (this.nom === 'mail@gmail.com' && this.password === '1234') {
-      window.alert("It is correct");
-    } else {
-      this.password = "";
-      this.showErrors=true;
-    }
+  get employe(): Employe {
+    return this.login.employe;
   }
+  public Login() {
+    this.login.login();
+  }
+
 }

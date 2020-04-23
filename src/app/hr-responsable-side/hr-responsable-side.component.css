@@ -1,22 +1,26 @@
 .side-barr{
-  height: 700px;
+  height: 90px;
 }
 .icons{
-
   margin: 10px;
 }
 .example-tree-progress-bar {
   margin-left: 30px;
 }
 .list1:hover{
-cursor: pointer;
-background-color: rgb(131, 131, 131);
-color: white;
-border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(131, 131, 131);
+  color: white;
+  border-radius: 5px;
 }
 .box-shadow{
   top: 0;
   z-index: 5;
   /* height: 60px; */
   box-shadow: 0px 2px 2px 1.5px #1f2225;
+}
+.navbar{
+  display: inline-flex;
+  width: 1770px;
+padding-bottom: 70px;
 }

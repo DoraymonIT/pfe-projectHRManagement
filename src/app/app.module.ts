@@ -20,7 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 
 
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSideComponent } from './login-side/login-side.component';
@@ -28,6 +28,9 @@ import { FooterDeLoginComponent } from './footer-de-login/footer-de-login.compon
 import { HRResponsableSideComponent } from './hr-responsable-side/hr-responsable-side.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { OverreviewComponent } from './hr-responsable-side/overreview/overreview.component';
+import { AbsenceEtCongeComponent } from './hr-responsable-side/absence-et-conge/absence-et-conge.component';
+import { DocumentAdministrativeComponent } from './hr-responsable-side/document-administrative/document-administrative.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     FooterDeLoginComponent,
     HRResponsableSideComponent,
     TopBarComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    OverreviewComponent,
+    AbsenceEtCongeComponent,
+    DocumentAdministrativeComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatProgressBarModule,
     MatListModule,
     MatTabsModule
-,MatDividerModule
+, MatDividerModule
 
 
   ],
