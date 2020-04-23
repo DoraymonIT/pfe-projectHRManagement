@@ -13,17 +13,17 @@ private _employe: Employe;
 
 
 public login() {
-  // this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByEmail/email/' + this._employe.email).subscribe(
-  //   data => {
-  //     if (data != null) {
-        // if(data.password === this._employe.password) {
-          this.router.navigate(['RhResponsable']).then();
-        // }
-  //     }
-  //   }, eror => {
-  //     console.log('eroro');
-  //   }
-  // );
+ // this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByEmail/email/' + this._employe.email).subscribe(
+   // data => {
+     // if (data != null) {
+       // if(data.password === this._employe.password) {
+          this.router.navigate(['/RhResponsable']).then();
+      //  }
+   //   }
+    //}, eror => {
+    //:console.log('eroro');
+    //}
+  //);
 }
 
   get employe(): Employe {
