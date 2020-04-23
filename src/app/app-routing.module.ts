@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AbsenceEtCongeComponent } from './hr-responsable-side/absence-et-conge/absence-et-conge.component';
 import { DocumentAdministrativeComponent } from './hr-responsable-side/document-administrative/document-administrative.component';
 import { OverreviewComponent } from './hr-responsable-side/overreview/overreview.component';
+import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personnel/gestion-personnel.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       },{
         path: 'documents',
         component : DocumentAdministrativeComponent,
+        outlet:'un'
+      },{
+        path: 'personnel',
+        component : GestionPersonnelComponent,
         outlet:'un'
       }
     ]

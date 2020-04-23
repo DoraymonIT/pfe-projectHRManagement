@@ -19,6 +19,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -32,6 +33,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { OverreviewComponent } from './hr-responsable-side/overreview/overreview.component';
 import { AbsenceEtCongeComponent } from './hr-responsable-side/absence-et-conge/absence-et-conge.component';
 import { DocumentAdministrativeComponent } from './hr-responsable-side/document-administrative/document-administrative.component';
+import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personnel/gestion-personnel.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { DocumentAdministrativeComponent } from './hr-responsable-side/document-
     ForgotPasswordComponent,
     OverreviewComponent,
     AbsenceEtCongeComponent,
-    DocumentAdministrativeComponent
+    DocumentAdministrativeComponent,
+    GestionPersonnelComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { DocumentAdministrativeComponent } from './hr-responsable-side/document-
     MatListModule,
     MatTabsModule
 , MatDividerModule
-,MatTooltipModule
+,MatTooltipModule,
+MatExpansionModule
 
   ],
   providers: [],
