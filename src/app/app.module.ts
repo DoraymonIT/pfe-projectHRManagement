@@ -20,6 +20,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -72,7 +74,9 @@ import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personn
     MatTabsModule
 , MatDividerModule
 ,MatTooltipModule,
-MatExpansionModule
+MatExpansionModule,
+MatTableModule,
+MatPaginatorModule
 
   ],
   providers: [],

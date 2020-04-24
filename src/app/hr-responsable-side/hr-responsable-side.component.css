@@ -12,6 +12,7 @@
   background-color: rgb(131, 131, 131);
   color: white;
   border-radius: 5px;
+  padding-left: 2px;
 }
 .box-shadow{
   top: 0;
