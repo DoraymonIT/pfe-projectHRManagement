@@ -7,6 +7,7 @@ import { AbsenceEtCongeComponent } from './hr-responsable-side/absence-et-conge/
 import { DocumentAdministrativeComponent } from './hr-responsable-side/document-administrative/document-administrative.component';
 import { OverreviewComponent } from './hr-responsable-side/overreview/overreview.component';
 import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personnel/gestion-personnel.component';
+import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       },{
         path: 'personnel',
         component : GestionPersonnelComponent,
+        outlet:'un'
+      },{
+        path: 'permanence',
+        component : PermanenceComponent,
         outlet:'un'
       }
     ]

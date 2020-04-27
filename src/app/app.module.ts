@@ -17,11 +17,12 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -36,6 +37,13 @@ import { OverreviewComponent } from './hr-responsable-side/overreview/overreview
 import { AbsenceEtCongeComponent } from './hr-responsable-side/absence-et-conge/absence-et-conge.component';
 import { DocumentAdministrativeComponent } from './hr-responsable-side/document-administrative/document-administrative.component';
 import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personnel/gestion-personnel.component';
+import { ListeEmployesComponent } from './hr-responsable-side/gestion-personnel/liste-employes/liste-employes.component';
+import { AjouterEmployeComponent } from './hr-responsable-side/gestion-personnel/ajouter-employe/ajouter-employe.component';
+import { EditerEmployeComponent } from './hr-responsable-side/gestion-personnel/editer-employe/editer-employe.component';
+import { AutresComponent } from './hr-responsable-side/gestion-personnel/autres/autres.component';
+import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+
 
 
 @NgModule({
@@ -49,7 +57,12 @@ import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personn
     OverreviewComponent,
     AbsenceEtCongeComponent,
     DocumentAdministrativeComponent,
-    GestionPersonnelComponent
+    GestionPersonnelComponent,
+    ListeEmployesComponent,
+    AjouterEmployeComponent,
+    EditerEmployeComponent,
+    AutresComponent,
+    PermanenceComponent
   ],
   imports: [
     BrowserModule,
@@ -72,11 +85,12 @@ import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personn
     MatProgressBarModule,
     MatListModule,
     MatTabsModule
-, MatDividerModule
-,MatTooltipModule,
-MatExpansionModule,
-MatTableModule,
-MatPaginatorModule
+    , MatDividerModule
+    , MatTooltipModule,
+    MatExpansionModule,
+    MatTableModule,
+    MatPaginatorModule,
+    FullCalendarModule
 
   ],
   providers: [],
