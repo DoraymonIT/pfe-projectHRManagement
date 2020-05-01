@@ -3,7 +3,7 @@ import {
 
   OnInit
 } from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
+
 
 @Component({
   selector: 'app-absence-et-conge',
@@ -13,7 +13,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 
 })
 export class AbsenceEtCongeComponent implements OnInit {
-  calendarPlugins = [dayGridPlugin]; // important!
+
 
   constructor() { }
   ngOnInit(): void {

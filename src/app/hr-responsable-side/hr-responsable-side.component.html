@@ -1,59 +1,44 @@
 <mat-sidenav-container class="example-container" class="side-barr">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="width: 265px;padding:10px; ">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:10px;width: 273px;">
     <mat-list role="list">
 
-      <h6 style="color: red;padding-top: 10px;padding-bottom: 40px;padding-left: 17px;">Logo + Societe Name </h6>
-      <mat-accordion>
-
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <h6><i class="fas fa-user-circle"></i> Administration du personnel</h6>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <a href="#">ajouter</a><br>
-          <a href="#">Modifier</a>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['personnel'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-user-circle"></i> Administration du personnel</h6>
-      </mat-list-item>
+      <h6 style="color: red;padding-top: 10px;padding-bottom: 40px;padding-left: 17px;">FSTG MARRAKECH</h6>
       <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
-
+      <mat-list-item [routerLink]="[{ outlets: { un: ['personnel'] } }]" class="list1" role="listitem">
+        <h6><i class="fas fa-user-circle"></i> Administration du personnel</h6>
+      </mat-list-item>
       <mat-list-item [routerLink]="[{ outlets: { un: ['abscence'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-bed"></i> Abscences et Conges</h6>
+        <h6><i class="fas fa-bed"></i> Conges Exceptionnels</h6>
       </mat-list-item>
       <!-- <mat-divider></mat-divider> -->
       <mat-list-item [routerLink]="[{ outlets: { un: ['documents'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-database"></i> Demandes des documents</h6>
+        <h6><i class="fas fa-file"></i> Demandes des documents</h6>
       </mat-list-item>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['sanction'] } }]" class="list1" role="listitem"> Sanctions et
-        Litiges</mat-list-item>
+
       <mat-list-item [routerLink]="[{ outlets: { un: ['certiicatsMedicales'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-hospital"></i> Certificats Medicales</h6>
       </mat-list-item>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['recrutement'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-briefcase"></i> Recrutement</h6>
+
+      <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
+        <h6><i class="fas fa-forward"></i> Avancement</h6>
       </mat-list-item>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuAnnee'] } }]" class="list1" role="listitem">
-        <h6><i class=""></i> Avancement</h6>
-      </mat-list-item>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuAnnee'] } }]" class="list1" role="listitem">
-        <h6><i class=""></i> Evaluation Et Notation</h6>
+      <mat-list-item [routerLink]="[{ outlets: { un: ['evaluation'] } }]" class="list1" role="listitem">
+        <h6><i class="fas fa-sticky-note"></i> Evaluation Et Notation</h6>
       </mat-list-item>
       <mat-list-item [routerLink]="[{ outlets: { un: ['permanence'] } }]" class="list1" role="listitem">
-        <h6><i class=""></i> Permanence Administrative</h6>
+        <h6><i class="fas fa-tasks"></i> Permanence Administrative</h6>
       </mat-list-item>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuMois'] } }]" class="list1" role="listitem">
+      <!-- <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuMois'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-chart-bar"></i> Statistic du mois</h6>
       </mat-list-item>
       <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuAnnee'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-chart-line"></i> Statistic de l annee</h6>
-      </mat-list-item>
+        <h6><i class="fas fa-chart-line"></i> Statistic de l annee</h6> -->
+      <!-- </mat-list-item> -->
+      <br>
       <!-- <br><br><br><br><br> -->
-      <mat-list-item class="list1" role="listitem" [routerLink]="['']" routerLinkActive="active" >
+      <mat-list-item class="list1" role="listitem" [routerLink]="['']" routerLinkActive="active">
         <h6><i class="fas fa-sign-out-alt"></i> Se Deconnecter</h6>
       </mat-list-item>
     </mat-list>
@@ -62,13 +47,23 @@
     <nav class="navbar navbar-light box-shadow">
       <button mat-mini-fab (click)="sidenav.toggle()"><i class="fas fa-bars" style="font-size:25px;"></i></button>
       <form class="form-inline my-lg-0">
-        <mat-icon class="icons" matBadge="1" matBadgeColor="warn" style="cursor: pointer;" matTooltip="Notifications">
-          <i class="fas fa-bell" style="color: rgb(128, 128, 128);"></i>
-        </mat-icon>
-        <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
-          Profile</button>
-        <button class="icons" mat-raised-button><i class="fas fa-cog"></i> Settings</button>
-
+        <button mat-icon-button [matMenuTriggerFor]="menu" (click)="badge()">
+          <mat-icon class="icons" [matBadge]="ex" matBadgePosition="above before" matBadgeSize="small" [matBadgeHidden]="hideMatBadge" matBadgeColor="warn" style="cursor: pointer;" matTooltip="Notifications">
+            notifications
+          </mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <a href="#" mat-menu-item>Lien 1</a>
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+        <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
+          Profile</button> -->
+        <button class="icons" mat-raised-button [matMenuTriggerFor]="menu2"><i class="fas fa-cog"></i> Settings</button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item [routerLink]="['']" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Se Deconnecter</button>
+          <button mat-menu-item>Autres</button>
+        </mat-menu>
       </form>
     </nav>
 

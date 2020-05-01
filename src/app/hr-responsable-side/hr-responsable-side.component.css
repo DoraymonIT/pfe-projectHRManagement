@@ -1,5 +1,8 @@
 .side-barr{
-  height: 880px;
+  height: 1000px;
+}
+mat-sidenav{
+  box-shadow: 2px 0px 10px 2px black;
 }
 .icons{
   margin: 10px;
@@ -12,7 +15,7 @@
   background-color: rgb(131, 131, 131);
   color: white;
   border-radius: 5px;
-  padding-left: 2px;
+  padding-left: 1px;
 }
 .box-shadow{
   top: 0;

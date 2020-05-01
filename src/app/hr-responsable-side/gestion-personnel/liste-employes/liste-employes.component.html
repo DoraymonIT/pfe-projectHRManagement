@@ -1,37 +1,44 @@
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="EX. : Moulay Smail">
-</mat-form-field>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-hover table-dark table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">NumDoti</th>
+            <th scope="col">CNE</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Grade</th>
+            <th scope="col">fonction</th>
+            <th scope="col">Adresse </th>
+            <th scope="col">Specialite</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Operation1</th>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td><button mat-raised-button> <i class="fas fa-trash-alt"></i></button></td>
+            <!---Si vous voulez editer un profil d un enseignat , veuillez diriger vers l onglet de l edition : chercher l employe a editer puis fait
+votre edition et modification sur le profil -->
+          </tr>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

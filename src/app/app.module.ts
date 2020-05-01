@@ -22,6 +22,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
+import {ChartModule} from 'primeng/chart';
 
 
 
@@ -43,7 +46,12 @@ import { EditerEmployeComponent } from './hr-responsable-side/gestion-personnel/
 import { AutresComponent } from './hr-responsable-side/gestion-personnel/autres/autres.component';
 import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
-
+import {OrganizationChartModule} from 'primeng/organizationchart';
+import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
+import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
+import { CertificatsMedicalesComponent } from './hr-responsable-side/certificats-medicales/certificats-medicales.component';
+import { ListeComponent } from './hr-responsable-side/absence-et-conge/liste/liste.component';
+import { EditerComponent } from './hr-responsable-side/absence-et-conge/editer/editer.component';
 
 
 @NgModule({
@@ -62,7 +70,12 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
     AjouterEmployeComponent,
     EditerEmployeComponent,
     AutresComponent,
-    PermanenceComponent
+    PermanenceComponent,
+    AvancementComponent,
+    NotesEvaluationComponent,
+    CertificatsMedicalesComponent,
+    ListeComponent,
+    EditerComponent
   ],
   imports: [
     BrowserModule,
@@ -91,9 +104,10 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
     MatTableModule,
     MatPaginatorModule,
     FullCalendarModule
-
+,MatCardModule,MatChipsModule,ChartModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

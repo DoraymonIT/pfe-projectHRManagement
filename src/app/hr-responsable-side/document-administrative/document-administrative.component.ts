@@ -9,6 +9,7 @@ export interface UserData {
   name: string;
   progress: string;
   color: string;
+  gerer : string;
 }
 
 /** Constants used to fill up our data base. */
@@ -31,7 +32,7 @@ const NAMES: string[] = [
 })
 export class DocumentAdministrativeComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
+  displayedColumns: string[] = ['id', 'name', 'progress', 'color','gerer'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -69,7 +70,8 @@ function createNewUser(id: number): UserData {
     id: id.toString(),
     name: name,
     progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
+    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
+    gerer : 'edit'
   };
 }
 

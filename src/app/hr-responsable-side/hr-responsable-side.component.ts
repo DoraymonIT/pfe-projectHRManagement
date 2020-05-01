@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBadge } from '@angular/material/badge';
 
 @Component({
   selector: 'app-hr-responsable-side',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HRResponsableSideComponent implements OnInit {
   constructor() {
+  this.hideMatBadge = false;
+    this.ex=12;
    }
   opened: boolean;
 
@@ -14,5 +17,9 @@ export class HRResponsableSideComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  hideMatBadge : boolean;
+ex:number;
+badge(){
+ this.hideMatBadge= true;
+}
 }
