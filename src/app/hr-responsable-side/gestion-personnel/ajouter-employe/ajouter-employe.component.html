@@ -1,59 +1,112 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Company )</mat-label>
-    <input matInput  value="Google">
-  </mat-form-field>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> Ajouter Un Employe </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <input matInput placeholder="Full Name *" [(ngModel)]="employe.fullName"
+              [ngModelOptions]="{standalone: true}">
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>First name</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label> Last Name </mat-label>
-          <input matInput>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="CIN *" [(ngModel)]="employe.cin" [ngModelOptions]="{standalone: true}">
 
-  <p>
-    <mat-form-field class="example-full-width">
-      <mat-label>Address</mat-label>
-      <textarea matInput placeholder="Ex. 100 Main St"></textarea>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Address 2</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field>
-  </p>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Gmail" [(ngModel)]="employe.email" [ngModelOptions]="{standalone: true}">
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>City</mat-label>
-          <input matInput placeholder="Ex. San Francisco">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>State</mat-label>
-          <input matInput placeholder="Ex. California">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Postal Code</mat-label>
-          <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" >
-          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table><br>
-  <button mat-raised-button class="btn-block" >Save</button>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Telephone" [(ngModel)]="employe.tel" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Adresse" [(ngModel)]="employe.adresse" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="DoTi" [(ngModel)]="employe.doti" [ngModelOptions]="{standalone: true}">
+
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date De naissance"
+              [(ngModel)]="employe.dateDeNaissance" [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Ville " [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
+
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <mat-label>Grade</mat-label>
+            <mat-select [(ngModel)]="employe.dernierGrade" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr.libelle }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Situation Familiale</mat-label>
+            <mat-select [(ngModel)]="employe.situationFamiliale" [ngModelOptions]="{standalone: true}">
+              <mat-option value="Marie">Marie</mat-option>
+              <mat-option value="Celebataire">Celebataire</mat-option>
+              <mat-option value="Divorce">Divorce</mat-option>
+              <mat-option value="Autre">Autre</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="show()">
+            <input matInput placeholder="Nombre Enfants" [(ngModel)]="employe.enfants"
+              [ngModelOptions]="{standalone: true}">
+
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select [(ngModel)]="employe.dep" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let dep of deps" [value]="dep.id">{{dep.nom}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- <mat-form-field> -->
+          <!-- <mat-label *ngIf="employe.departement" >Superieur : {{employe.departement.chef.fullname}}</mat-label> -->
+          <!-- <mat-select [(ngModel)]="employe.sup" [ngModelOptions]="{standalone: true}">
+              <mat-option>None</mat-option>
+              <mat-option value="ana">Ana</mat-option>
+              <mat-option value="howa">Howa</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker5" placeholder="Date D Emabauche" [(ngModel)]="employe.dateEntree"
+              [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+            <mat-datepicker #picker5></mat-datepicker>
+          </mat-form-field>
+          <div class="add-bottom-padding">
+            <mat-label>Gender : </mat-label>
+            <mat-radio-group [(ngModel)]="employe.gender" [ngModelOptions]="{standalone: true}">
+
+              <mat-radio-button value="Homme">Homme</mat-radio-button>
+              <mat-radio-button value="Femme">Femme</mat-radio-button>
+
+            </mat-radio-group>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
+            <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
+            <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </form>

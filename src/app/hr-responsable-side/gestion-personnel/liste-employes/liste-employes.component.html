@@ -1,44 +1,66 @@
-<div class="container-fluid">
+<div class="container-fluid" style="padding-top: 10px;">
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-hover table-dark table-responsive">
-        <thead>
+      <p-table #dt [columns]="cols" [value]="employes" dataKey="cin" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="caption">
+          Liste of Brands
+          <div style="text-align: right">
+            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter"
+              (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
           <tr>
-            <th scope="col">NumDoti</th>
-            <th scope="col">CNE</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Telephone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Grade</th>
-            <th scope="col">fonction</th>
-            <th scope="col">Adresse </th>
-            <th scope="col">Specialite</th>
-            <th scope="col">Date de naissance</th>
-            <th scope="col">Operation1</th>
-
+            <th style="width: 3em"></th>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+              </p-sortIcon>
+            </th>
           </tr>
-        </thead>
-        <tbody>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><button mat-raised-button> <i class="fas fa-trash-alt"></i></button></td>
-            <!---Si vous voulez editer un profil d un enseignat , veuillez diriger vers l onglet de l edition : chercher l employe a editer puis fait
-votre edition et modification sur le profil -->
+            <td>
+              <a href="#" [pRowToggler]="rowData">
+                <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+              </a>
+            </td>
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
           </tr>
+        </ng-template>
+        <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
+          <tr>
+            <td [attr.colspan]="columns.length + 1">
+              <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
 
-        </tbody>
-      </table>
+                <div class="ui-g-12 ui-md-9" >
+                  <div class="ui-g">
+                    <div class="ui-g-4">
+                      <b>Departement :</b> {{rowData.dep.nom}}
+                    </div>
+
+                    <div class="ui-g-4">
+                      <b>Grade :</b> {{rowData.dernierGrade}}
+                    </div>
+                    <div class="ui-g-4">
+                      <b>Superieur:</b> {{rowData.sup.fullName}}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+
+
     </div>
   </div>
 </div>

@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AjouterEmployeComponent } from '../ajouter-employe/ajouter-employe.component';
+import { PersonnelEmployesService } from 'src/app/controller/service/personnel-employes.service';
+import { Employe } from 'src/app/controller/model/employe.model';
 
 @Component({
   selector: 'app-liste-employes',
@@ -8,11 +13,47 @@ import { Router } from '@angular/router';
 })
 export class ListeEmployesComponent implements OnInit {
 
-constructor(private router : Router){
+  constructor(private dialog :MatDialog, private employeService : PersonnelEmployesService) { }
+  cols: any[];
 
-}
-  ngOnInit() {
+  ngOnInit(): void {
+    this.employeService.findAll();
+    this.cols = [
+      { field: 'cin', header: 'C I N' },
+      { field: 'fullName', header: 'Nom Complet' },
+      { field: 'pays', header: 'Pays' },
+      { field: 'email', header: 'G-mail' },
+      { field: 'doti', header: 'DOTI' },
+      { field: 'dateDeNaissance', header: 'Date De Naissance' },
+      { field: 'dep', header: 'Departement' }
 
+    ];
+
+  }
+
+
+  onCreateNew() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "95%";
+    dialogConfig.height = "100%";
+    this.dialog.open(AjouterEmployeComponent, dialogConfig);
+  }
+  onEdit(emp: Employe) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "95%";
+    dialogConfig.height = "100%";
+    this.dialog.open(AjouterEmployeComponent,
+      dialogConfig);
+  }
+
+
+
+  get employes(): Array<Employe> {
+    return this.employeService.employes;
   }
 
 }

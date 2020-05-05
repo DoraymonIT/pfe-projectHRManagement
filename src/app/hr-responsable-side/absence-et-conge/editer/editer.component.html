@@ -1,1 +1,41 @@
-<p>editer works!</p>
+
+<h3>Row Editing</h3>
+<p-table [value]="sales"  editMode="row">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>Brand</th>
+            <th>Year</th>
+            <th style="width:8em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="rowData">
+          <td>
+            <p-cellEditor>
+                <ng-template pTemplate="input">
+                    <input pInputText type="text" [(ngModel)]="rowData.brand" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                    {{rowData.brand}}
+                </ng-template>
+            </p-cellEditor>
+        </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.lastYearSale" required>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.lastYearSale}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+            <td style="text-align:center">
+              <button *ngIf="!editing" pButton type="button" pInitEditableRow  (click)="onRowEditInit(rowData)"><i class="fas fa-edit"></i></button>
+                <button *ngIf="editing" pButton type="button" pSaveEditableRow style="margin-right: .5em" (click)="onRowEditSave(rowData)"><i class="fas fa-check"></i></button>
+                <button *ngIf="editing" pButton type="button" pCancelEditableRow  (click)="onRowEditCancel(rowData, ri)"><i class="fas fa-window-close"></i></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

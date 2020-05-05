@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AjouterEmployeComponent } from './ajouter-employe.component';
+import { ArchitectureDeFSTGComponent } from './architecture-de-fstg.component';
 
-describe('AjouterEmployeComponent', () => {
-  let component: AjouterEmployeComponent;
-  let fixture: ComponentFixture<AjouterEmployeComponent>;
+describe('ArchitectureDeFSTGComponent', () => {
+  let component: ArchitectureDeFSTGComponent;
+  let fixture: ComponentFixture<ArchitectureDeFSTGComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AjouterEmployeComponent ]
+      declarations: [ ArchitectureDeFSTGComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AjouterEmployeComponent);
+    fixture = TestBed.createComponent(ArchitectureDeFSTGComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

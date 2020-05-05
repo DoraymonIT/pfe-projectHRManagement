@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { PermanenceSchedule } from 'src/app/controller/model/permanence-schedule';
-import { PermanenceScheduleSService } from 'src/app/controller/service/permanence-schedule-s.service';
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventInput } from '@fullcalendar/core';
 
@@ -11,14 +10,14 @@ import { EventInput } from '@fullcalendar/core';
   styleUrls: ['./permanence.component.css']
 })
 export class PermanenceComponent implements OnInit {
-  constructor(private ps: PermanenceScheduleSService) { }
+  constructor() { }
   ngOnInit(): void {
 
   }
   calendarPlugins = [dayGridPlugin,interactionPlugin]; // important!
   calendarEvents: EventInput[]=[{
     title:'babour1',start:'2020-05-01',end:'2020-05-03',editable:true,id:1,durationEditable:true,startEditable:true,
-    textColor:'white',overlap:true,allDay:true
+    textColor:'white',overlap:true,allDay:false
   }]
   public pushing(schedule : PermanenceSchedule) {
 
@@ -26,6 +25,7 @@ export class PermanenceComponent implements OnInit {
 
       title : schedule.title,
       start: schedule.date,
+      allDay: false,
       end: schedule.endDate,
       editable:true
     })
@@ -35,11 +35,6 @@ export class PermanenceComponent implements OnInit {
     schedule.endDate=null;
 
   }
-  public get Ss(): Array<PermanenceSchedule> {
-    return this.ps.Ss;
-  }
-  public get S(): PermanenceSchedule {
-    return this.ps.S;
-  }
+
 }
 

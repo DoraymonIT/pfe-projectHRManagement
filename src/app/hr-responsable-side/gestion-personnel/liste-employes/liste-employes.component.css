@@ -1,3 +1,14 @@
 
+table {
+  width: 100%;
+}
 
 
+.search-form-field{
+  padding-left: 15px;
+  width: 91%;
+}
+th{
+  margin:4px;
+  text-align:center;
+}

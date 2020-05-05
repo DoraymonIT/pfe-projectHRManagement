@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "~9.0.1",
     "@angular/cdk": "^9.2.1",
     "@angular/common": "~9.0.1",
@@ -29,6 +30,7 @@
     "@fullcalendar/interaction": "^4.4.0",
     "@fullcalendar/timegrid": "^4.4.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@types/jquery": "^3.3.36",
     "angular-calendar": "^0.28.11",
     "angularx-flatpickr": "^6.3.1",
     "bootstrap": "^4.4.1",
@@ -37,9 +39,11 @@
     "flatpickr": "^4.6.3",
     "font-awesome": "^4.7.0",
     "fontawesome": "^5.6.3",
+    "ng2-smart-table": "^1.6.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.6",
     "rxjs": "~6.5.4",
+    "rxjs-compat": "^6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

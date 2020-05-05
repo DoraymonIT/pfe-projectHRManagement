@@ -11,7 +11,8 @@ import { PermanenceComponent } from './hr-responsable-side/permanence/permanence
 import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
 import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
 import { CertificatsMedicalesComponent } from './hr-responsable-side/certificats-medicales/certificats-medicales.component';
-import { Title } from '@angular/platform-browser';
+import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
+
 import { HelpDocumentationComponent } from './help-documentation/help-documentation.component';
 
 const routes: Routes = [
@@ -66,6 +67,10 @@ const routes: Routes = [
       , {
         path: 'certiicatsMedicales',
         component: CertificatsMedicalesComponent,
+        outlet: 'un'
+      } , {
+        path: 'architecture',
+        component: ArchitectureDeFSTGComponent,
         outlet: 'un'
       }
     ]
