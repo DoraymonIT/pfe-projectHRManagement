@@ -1,2 +1,80 @@
+<div class="container-fluid" style="padding-top: 10px;">
+  <div class="row">
+    <div class="col-md-2">
+      <h5 style="text-align: center;">Total Employes</h5>
+      <mat-card>
+          <h4 style="text-align: center;">3,890</h4>
+        <div class="row" style="text-align: center;">
+          <div class="col-md-6"> <i class="fas fa-male" style="font-size: 30px;"></i> 390</div>
+          <div class="col-md-6"> <i class="fas fa-female" style="font-size: 30px;"></i> 124</div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-md-3">
+       <h5 style="text-align: center;">Employes By Age</h5>
+      <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
 
-<p>overreview works!</p>
+        <mat-chip *ngFor="let chip of agesCa" selected [color]="chip.color" style="font-size: 21px;">
+      <span style="padding-left: 83px;"> {{chip.range}} :  {{chip.total}} </span>
+        </mat-chip>
+      </mat-chip-list>
+
+
+    </div>
+    <div class="col-md-7">
+      <h3 >Autres</h3>
+
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Number Employes By Departements</h3>
+      <p-chart type="doughnut" [responsive]="true" [data]="data"></p-chart>
+    </div>
+    <div class="col-md-6">
+      <h3>My profile</h3>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 >Documents en lignes par jour</h3>
+
+
+
+    </div>
+    <div class="col-md-4">
+      <h3>Abscences Rating</h3>
+      <p-chart type="bar" [data]="data2"></p-chart>
+
+    </div>
+    <div class="col-md-4">
+      <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+        <h3 style="text-align: center;">Top 4 Employes in the Month</h3>
+        <mat-chip *ngFor="let chip of availableColors" selected [color]="chip.color">
+          {{chip.name}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+
+</div>

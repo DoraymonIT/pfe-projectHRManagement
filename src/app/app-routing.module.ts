@@ -6,39 +6,92 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AbsenceEtCongeComponent } from './hr-responsable-side/absence-et-conge/absence-et-conge.component';
 import { DocumentAdministrativeComponent } from './hr-responsable-side/document-administrative/document-administrative.component';
 import { OverreviewComponent } from './hr-responsable-side/overreview/overreview.component';
+import { GestionPersonnelComponent } from './hr-responsable-side/gestion-personnel/gestion-personnel.component';
+import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
+import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
+import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
+import { CertificatsMedicalesComponent } from './hr-responsable-side/certificats-medicales/certificats-medicales.component';
+import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
+
+import { HelpDocumentationComponent } from './help-documentation/help-documentation.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginSideComponent
   },
+
   {
     path: 'RhResponsable',
     component: HRResponsableSideComponent,
-    children:[
+
+    children: [
       {
-       path : 'overview',
-       component: OverreviewComponent,
-       outlet:'un'
-      },{
+        path: '',
+        component: OverreviewComponent,
+        outlet: 'un',
+
+
+      },
+      {
+        path: 'overview',
+        component: OverreviewComponent,
+        outlet: 'un',
+
+
+      }, {
         path: 'abscence',
-        component : AbsenceEtCongeComponent,
-        outlet:'un'
-      },{
+        component: AbsenceEtCongeComponent,
+        outlet: 'un'
+      }, {
         path: 'documents',
-        component : DocumentAdministrativeComponent,
-        outlet:'un'
+        component: DocumentAdministrativeComponent,
+        outlet: 'un'
+      }, {
+        path: 'personnel',
+        component: GestionPersonnelComponent,
+        outlet: 'un'
+      }, {
+        path: 'permanence',
+        component: PermanenceComponent,
+        outlet: 'un'
+      }, {
+        path: 'avancement',
+        component: AvancementComponent,
+        outlet: 'un'
+      }, {
+        path: 'evaluation',
+        component: NotesEvaluationComponent,
+        outlet: 'un'
+      }
+      , {
+        path: 'certiicatsMedicales',
+        component: CertificatsMedicalesComponent,
+        outlet: 'un'
+      } , {
+        path: 'architecture',
+        component: ArchitectureDeFSTGComponent,
+        outlet: 'un'
       }
     ]
+
   }
-  ,{
+
+  , {
     path: 'logout',
-    component : LoginSideComponent,
+    component: LoginSideComponent,
   },
   {
     path: 'forgetPassword',
     component: ForgotPasswordComponent
   },
+   {
+    path: 'help',
+    component: HelpDocumentationComponent
+  },{
+    path: '**',
+    component: HRResponsableSideComponent,
+  }
 
 ];
 

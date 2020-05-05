@@ -9,10 +9,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Bootstrap.css
 
-## FontAwesome.cs s
+## FontAwesome.css
 
 ## Animate.css
 
+## FullCalendar
+
+## Chart.Js
+---------
 
 ## Development server
 

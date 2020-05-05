@@ -1,1 +1,28 @@
-<p>absence-et-conge works!</p>
+<mat-tab-group mat-stretch-tabs style="width: 100%;">
+  <mat-tab label="Liste des employes avec duree de conges restants" style="width: 50%;">
+    <div class="example-small-box mat-elevation-z4">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+           <!---Liste d emoployes avec duree de conges restants ---->
+           <app-liste></app-liste>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Editer le nombre de conges de l employe" style="width: 50%;">
+    <div class="example-large-box mat-elevation-z4">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <app-editer></app-editer>
+           <!---Affecter a un employe si il prends son conges ou pas  ---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+
+</mat-tab-group>
