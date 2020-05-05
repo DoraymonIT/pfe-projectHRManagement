@@ -18,6 +18,7 @@ export class ListeEmployesComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeService.findAll();
+    this.listeVide();
     this.cols = [
       { field: 'cin', header: 'C I N' },
       { field: 'fullName', header: 'Nom Complet' },
@@ -55,7 +56,10 @@ export class ListeEmployesComponent implements OnInit {
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
-
+public listeVide():boolean{
+    console.log(this.employes.length);
+    return this.employes.length <1 ? true:false;
+}
 }
 
 
