@@ -2,14 +2,10 @@ import { Injectable } from '@angular/core';
 import { Employe } from '../model/employe.model';
 import { HttpClient } from '@angular/common/http';
 import { Departement } from '../model/departement.model';
-<<<<<<< HEAD
-import { GradeEmploye } from '../model/grade-employe.model';
-=======
 import {GradeEmploye} from '../model/grade-employe.model';
 import {Grade} from '../model/grade.model';
 import {DepFonction} from '../model/dep-fonction.model';
 import {Fonction} from '../model/fonction.model';
->>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
 
 
 @Injectable({
@@ -93,20 +89,12 @@ public findAll() {
   get employe(): Employe {
     if (this._employe == null) {
       this._employe = new Employe();
-<<<<<<< HEAD
-      this._employes.forEach(data => {
-        data = new Employe();
-       data.dep = new Departement();
-       data.dernierGrade = new GradeEmploye();
- });
-=======
        this._employe.dernierGrade = new GradeEmploye();
        this._employe.dernierGrade.grade = new Grade();
        this._employe.dep = new Departement();
       this._employe.fonction = new Fonction();
  }
   return this._employe;
->>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
     }
 
   set employe(value: Employe) {
@@ -119,11 +107,8 @@ public findAll() {
            data = new Employe();
           data.dep = new Departement();
           data.dernierGrade = new GradeEmploye();
-<<<<<<< HEAD
-=======
           data.dernierGrade.grade = new Grade();
           data.sup = new Employe();
->>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
     });
   }
     return this._employes;
