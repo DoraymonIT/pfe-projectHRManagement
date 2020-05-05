@@ -48,13 +48,10 @@
         <div class="controles-container">
           <mat-form-field>
             <mat-label>Grade</mat-label>
-<<<<<<< HEAD
-            <mat-select [(ngModel)]="employe.dernierGrade.grade.id" [ngModelOptions]="{standalone: true}">
-              <mat-option *ngFor="let gr of grades" [value]="gr.id">{{gr.libelle }}</mat-option>
-=======
+
             <mat-select [(ngModel)]="employe.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}">
               <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr.libelle }}</mat-option>
->>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
+
             </mat-select>
           </mat-form-field>
           <mat-form-field>
@@ -81,19 +78,16 @@
 
           <mat-form-field>
             <mat-label>Department</mat-label>
-<<<<<<< HEAD
-            <mat-select [(ngModel)]="employe.dep.id" [ngModelOptions]="{standalone: true}">
-              <mat-option *ngFor="let dep of deps" [value]="dep.id">{{dep.nom}}</mat-option>
-=======
+
             <mat-select [(ngModel)]="employe.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.employe.dep.nom)" >
               <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>fonction</mat-label>
+            <mat-label>Fonction</mat-label>
             <mat-select [(ngModel)]="employe.fonction.libelle" [ngModelOptions]="{standalone: true}" >
               <mat-option *ngFor="let gr of depFonctions" [value]="gr.fonction.libelle">{{gr.fonction.libelle }}</mat-option>
->>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
+
             </mat-select>
           </mat-form-field>
           <!-- <mat-form-field> -->
