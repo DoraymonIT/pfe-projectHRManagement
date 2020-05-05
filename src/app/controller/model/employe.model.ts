@@ -1,6 +1,7 @@
 import { GradeEmploye } from './grade-employe.model';
 import { NoteGeneraleDeAnnee } from './note-generale-de-annee.model';
 import { Departement } from './departement.model';
+import {Fonction} from './fonction.model';
 
 export class Employe {
 
@@ -13,7 +14,7 @@ export class Employe {
   email: string;
   // grade: number;
   dateEntree: Date;
-  fonction: string;
+  fonction: Fonction;
   dep: Departement;
   dateDeNaissance: Date;
   lieuDeNaissance: string;

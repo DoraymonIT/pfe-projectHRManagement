@@ -32,8 +32,9 @@ import { Ng2CompleterModule } from '@akveo/ng2-completer';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
-import { MatNativeDateModule } from '@angular/material/core'
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -117,6 +118,7 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
     MatCardModule,
     MatChipsModule,
     ChartModule,
+    ProgressSpinnerModule,
     ReactiveFormsModule,
     MatGridListModule,
     MatRadioModule,

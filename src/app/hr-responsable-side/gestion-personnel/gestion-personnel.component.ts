@@ -12,6 +12,7 @@ export class GestionPersonnelComponent implements OnInit {
   ngOnInit() {
 
   }
+
 }
 
 

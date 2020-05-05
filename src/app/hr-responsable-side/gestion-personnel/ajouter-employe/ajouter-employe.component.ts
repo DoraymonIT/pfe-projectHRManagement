@@ -8,6 +8,7 @@ import { Departement } from 'src/app/controller/model/departement.model';
 import { GradeService } from 'src/app/controller/service/grade.service';
 import { Grade } from 'src/app/controller/model/grade.model';
 import { GradeEmploye } from 'src/app/controller/model/grade-employe.model';
+import {DepFonction} from '../../../controller/model/dep-fonction.model';
 
 
 @Component({
@@ -51,5 +52,13 @@ show() : boolean{
   onNoClick(): void {
     this.dialogRef.close();
   }
+  get depFonctions(): Array<DepFonction> {
+    return this.employeService.depFonctions;
+  }
 
+ public selectDepFonction(value: string) {
+    console.log('ha howa 3yiiit 3lia');
+    this.employeService.findFonctionByDepartement(value);
+
+  }
 }

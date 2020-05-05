@@ -48,11 +48,21 @@
         <div class="controles-container">
           <mat-form-field>
             <mat-label>Grade</mat-label>
-            <mat-select [(ngModel)]="employe.dernierGrade" [ngModelOptions]="{standalone: true}">
+<<<<<<< HEAD
+            <mat-select [(ngModel)]="employe.dernierGrade.grade.id" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let gr of grades" [value]="gr.id">{{gr.libelle }}</mat-option>
+=======
+            <mat-select [(ngModel)]="employe.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}">
               <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr.libelle }}</mat-option>
+>>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
             </mat-select>
           </mat-form-field>
-
+          <mat-form-field>
+            <input matInput [matDatepicker]="pi5" placeholder="Date d'affectation"
+                   [(ngModel)]="employe.dernierGrade.dateDeAffectation" [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
+            <mat-datepicker #pi5></mat-datepicker>
+          </mat-form-field>
           <mat-form-field>
             <mat-label>Situation Familiale</mat-label>
             <mat-select [(ngModel)]="employe.situationFamiliale" [ngModelOptions]="{standalone: true}">
@@ -71,11 +81,21 @@
 
           <mat-form-field>
             <mat-label>Department</mat-label>
-            <mat-select [(ngModel)]="employe.dep" [ngModelOptions]="{standalone: true}">
+<<<<<<< HEAD
+            <mat-select [(ngModel)]="employe.dep.id" [ngModelOptions]="{standalone: true}">
               <mat-option *ngFor="let dep of deps" [value]="dep.id">{{dep.nom}}</mat-option>
+=======
+            <mat-select [(ngModel)]="employe.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.employe.dep.nom)" >
+              <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>
             </mat-select>
           </mat-form-field>
-
+          <mat-form-field>
+            <mat-label>fonction</mat-label>
+            <mat-select [(ngModel)]="employe.fonction.libelle" [ngModelOptions]="{standalone: true}" >
+              <mat-option *ngFor="let gr of depFonctions" [value]="gr.fonction.libelle">{{gr.fonction.libelle }}</mat-option>
+>>>>>>> 67ede82a4704c31e956bcd4da66459e15e0a25e5
+            </mat-select>
+          </mat-form-field>
           <!-- <mat-form-field> -->
           <!-- <mat-label *ngIf="employe.departement" >Superieur : {{employe.departement.chef.fullname}}</mat-label> -->
           <!-- <mat-select [(ngModel)]="employe.sup" [ngModelOptions]="{standalone: true}">
