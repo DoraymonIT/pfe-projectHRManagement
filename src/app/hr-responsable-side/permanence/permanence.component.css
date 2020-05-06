@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+
+.search-form-field{
+  padding-left: 15px;
+  width: 91%;
+}
+th{
+  margin:4px;
+  text-align:center;
+}
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #d62d20;
+  }
+  40% {
+    stroke: #0057e7;
+  }
+  66% {
+    stroke: #008744;
+  }
+  80%,
+  90% {
+    stroke: #ffa700;
+  }
+}

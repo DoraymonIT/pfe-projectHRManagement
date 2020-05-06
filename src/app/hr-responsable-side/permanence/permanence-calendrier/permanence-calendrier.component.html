@@ -1,1 +1,11 @@
-<p>permanence-calendrier works!</p>
+<div class="container-fluid" style="padding-top: 20px;padding-bottom: 10px;color:black">
+  <div class="row">
+    <div class="col-md-12">
+      <!---Le calendrier  de permanence contient le jour et le nom d employe permamnent -->
+
+            <full-calendar [header]="{ left:'title',
+              center :'dayGridMonth,dayGridWeek',right:'today prev,next'
+            }" [events]=calendarEvents [plugins]="calendarPlugins"></full-calendar>
+    </div>
+  </div>
+</div>

@@ -65,6 +65,8 @@ import { PersonnelEmployesService } from './controller/service/personnel-employe
 import {TableModule} from 'primeng/table';
 import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
 import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/permanence-ajouter/permanence-ajouter.component';
+import {PermanenceListeComponent} from './hr-responsable-side/permanence/permanence-liste/permanence-liste.component';
+import {PermanenceCalendrierComponent} from './hr-responsable-side/permanence/permanence-calendrier/permanence-calendrier.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,9 @@ import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/per
     ListeComponent,
     EditerComponent,
     ArchitectureDeFSTGComponent,
-    PermanenceAjouterComponent
+    PermanenceAjouterComponent,
+    PermanenceListeComponent,
+    PermanenceCalendrierComponent
   ],
   imports: [
     BrowserModule,
