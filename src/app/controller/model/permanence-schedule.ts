@@ -1,5 +1,9 @@
+import {Employe} from './employe.model';
+
 export class PermanenceSchedule {
-  title: string;
+  periode: number;
+  recuperation: boolean;
+  periodeDeRecuperation: number;
   date: Date;
-  endDate:Date;
+  employe: Employe;
 }

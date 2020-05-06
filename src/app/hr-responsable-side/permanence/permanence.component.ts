@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
+import {PermanenceAdministrativeService} from '../../controller/service/permanence-administrative.service';
 
 @Component({
   selector: 'app-permanence',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PermanenceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pemanenceAdministrative : PermanenceAdministrativeService) { }
 
   ngOnInit(): void {
   }
