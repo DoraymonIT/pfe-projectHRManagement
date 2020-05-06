@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,6 +33,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ToastrModule} from 'ngx-toastr';
 
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -63,6 +64,7 @@ import { EditerComponent } from './hr-responsable-side/absence-et-conge/editer/e
 import { PersonnelEmployesService } from './controller/service/personnel-employes.service';
 import {TableModule} from 'primeng/table';
 import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
+import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/permanence-ajouter/permanence-ajouter.component';
 
 @NgModule({
   declarations: [
@@ -82,11 +84,16 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
     AutresComponent,
     PermanenceComponent,
     AvancementComponent,
+    EditerEmployeComponent,
+    AutresComponent,
+    AjouterEmployeComponent,
+    ListeEmployesComponent,
     NotesEvaluationComponent,
     CertificatsMedicalesComponent,
     ListeComponent,
     EditerComponent,
-    ArchitectureDeFSTGComponent
+    ArchitectureDeFSTGComponent,
+    PermanenceAjouterComponent
   ],
   imports: [
     BrowserModule,
@@ -103,8 +110,9 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
     MatInputModule,
     MatCheckboxModule,
     MatIconModule,
-    MatBadgeModule
-    , MatButtonModule,
+    ToastrModule.forRoot(),
+    MatBadgeModule,
+    MatButtonModule,
     MatTreeModule,
     MatProgressBarModule,
     MatListModule,

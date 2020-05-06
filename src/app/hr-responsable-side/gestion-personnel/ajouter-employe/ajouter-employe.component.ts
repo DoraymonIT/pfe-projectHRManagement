@@ -1,13 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ListeEmployesComponent } from '../liste-employes/liste-employes.component';
 import { PersonnelEmployesService } from 'src/app/controller/service/personnel-employes.service';
 import { Employe } from 'src/app/controller/model/employe.model';
 import { DepartemntService } from 'src/app/controller/service/departemnt.service';
 import { Departement } from 'src/app/controller/model/departement.model';
 import { GradeService } from 'src/app/controller/service/grade.service';
 import { Grade } from 'src/app/controller/model/grade.model';
-import { GradeEmploye } from 'src/app/controller/model/grade-employe.model';
 import {DepFonction} from '../../../controller/model/dep-fonction.model';
 
 
@@ -23,7 +21,7 @@ export class AjouterEmployeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.employeService.findAlll();
+    // this.employeService.findAll();
     this.departementService.findAll();
     this.gradeService.findAll();
   }

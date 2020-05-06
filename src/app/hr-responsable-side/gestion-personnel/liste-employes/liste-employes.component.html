@@ -19,6 +19,7 @@
                 ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
               </p-sortIcon>
             </th>
+            <th>Action</th>
           </tr>
           <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner>
         </ng-template>
@@ -31,6 +32,9 @@
             </td>
             <td *ngFor="let col of columns">
               {{rowData[col.field]}}
+            </td>
+            <td><button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(rowData)"></button>
+              <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUnEmployer(rowData)"></button>
             </td>
           </tr>
         </ng-template>
