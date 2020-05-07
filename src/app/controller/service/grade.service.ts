@@ -35,6 +35,9 @@ public findAll() {
   get grades(): Array<Grade> {
     if (this._grades == null) {
       this._grades = new Array<Grade>();
+      this._grades.forEach(grade =>{
+        grade = new Grade();
+        });
     }
     return this._grades;
   }

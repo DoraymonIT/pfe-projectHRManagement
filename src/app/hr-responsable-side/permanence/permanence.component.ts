@@ -14,27 +14,27 @@ export class PermanenceComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  calendarPlugins = [dayGridPlugin,interactionPlugin]; // important!
-  calendarEvents: EventInput[]=[{
-    title:'babour1',start:'2020-05-01',end:'2020-05-03',editable:true,id:1,durationEditable:true,startEditable:true,
-    textColor:'white',overlap:true,allDay:false
-  }]
-  public pushing(schedule : PermanenceSchedule) {
+  // calendarPlugins = [dayGridPlugin,interactionPlugin]; // important!
+  // calendarEvents: EventInput[]=[{
+  //   title:'babour1',start:'2020-05-01',end:'2020-05-03',editable:true,id:1,durationEditable:true,startEditable:true,
+  //   textColor:'white',overlap:true,allDay:false
+  // }]
+  // public pushing(schedule : PermanenceSchedule) {
 
-    this.calendarEvents = this.calendarEvents.concat({
+  //   this.calendarEvents = this.calendarEvents.concat({
 
-      title : schedule.title,
-      start: schedule.date,
-      allDay: false,
-      end: schedule.endDate,
-      editable:true
-    })
-    console.log(this.calendarEvents);
-    schedule.title='';
-    schedule.date=null;
-    schedule.endDate=null;
+  //     title : schedule.title,
+  //     start: schedule.date,
+  //     allDay: false,
+  //     end: schedule.endDate,
+  //     editable:true
+  //   })
+  //   console.log(this.calendarEvents);
+  //   schedule.title='';
+  //   schedule.date=null;
+  //   schedule.endDate=null;
 
-  }
+  // }
 
 }
 

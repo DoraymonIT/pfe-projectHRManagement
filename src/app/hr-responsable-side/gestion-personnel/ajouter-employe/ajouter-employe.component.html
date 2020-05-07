@@ -38,7 +38,11 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Ville " [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Lieu de naissance : " [(ngModel)]="employe.lieuDeNaissance" [ngModelOptions]="{standalone: true}">
+
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Ville de Residence" [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
 
           </mat-form-field>
 
@@ -46,6 +50,10 @@
       </div>
       <div class="col-md-6">
         <div class="controles-container">
+          <mat-form-field>
+            <input matInput placeholder="RIB de Bank " [(ngModel)]="employe.compteBancaireRib" [ngModelOptions]="{standalone: true}">
+
+          </mat-form-field>
           <mat-form-field>
             <mat-label>Grade</mat-label>
 

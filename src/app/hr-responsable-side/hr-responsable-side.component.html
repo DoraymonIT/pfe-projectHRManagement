@@ -1,8 +1,6 @@
 <mat-sidenav-container class="example-container" class="side-barr">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:10px;width: 273px;">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:10px;width: 280px;">
     <mat-list role="list">
-
-      <h6 style="color: red;padding-top: 10px;padding-bottom: 40px;padding-left: 17px;">FSTG MARRAKECH</h6>
       <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
@@ -36,7 +34,6 @@
       <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuAnnee'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-chart-line"></i> Statistic de l annee</h6> -->
       <!-- </mat-list-item> -->
-      <br>
       <!-- <br><br><br><br><br> -->
       <mat-list-item [routerLink]="[{ outlets: { un: ['architecture'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-tasks"></i> Architecture Interne</h6>

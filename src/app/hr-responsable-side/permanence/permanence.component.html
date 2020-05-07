@@ -1,46 +1,21 @@
-<div class="container-fluid" style="padding-top: 20px;padding-bottom: 10px;color:black">
-  <div class="row">
-    <div class="col-md-12">
-        <!---Le calendrier  de permanence contient le jour et le nom d employe permamnent -->
-<!--
-      <full-calendar [header]="{ left:'title',
-        center :'dayGridMonth,dayGridWeek',right:'today prev,next'
-      }" [events]=calendarEvents [plugins]="calendarPlugins"></full-calendar> -->
-      <h3>Ajouter un permanence</h3>
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field>
-              <mat-label>Choose a date To Start : </mat-label>
-              <input matInput type="date" >
+<mat-tab-group mat-stretch-tabs style="width: 100%;" >
+  <mat-tab label="Permanence Calendrier" style="width: 25px" tabindex="1">
+    <div class="example-small-box mat-elevation-z4">
+      <app-permanence-calendrier></app-permanence-calendrier>
 
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Periode : </mat-label>
-              <input matInput type="number" >
 
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>NumDoti du personnel :</mat-label>
-              <input matInput >
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">Liste de permanence : ( details )</div>
-  </div>
-</div>
+  </mat-tab>
+  <mat-tab label="Liste des Permanence" style="width: 25%;" >
+    <div class="example-large-box mat-elevation-z4">
+      <app-permanence-liste></app-permanence-liste>
 
+    </div>
+  </mat-tab>
+  <mat-tab label="Ajouter Un Permanence" style="width: 25%;" >
+    <div class="example-large-box mat-elevation-z4">
 
-
-
-
+<app-permanence-ajouter></app-permanence-ajouter>
+    </div>
+  </mat-tab>
+</mat-tab-group>

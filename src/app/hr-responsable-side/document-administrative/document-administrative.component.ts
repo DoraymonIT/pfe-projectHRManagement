@@ -14,8 +14,7 @@ export interface UserData {
 
 /** Constants used to fill up our data base. */
 const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
+  'travail','salaire', 'travail','salaire', 'travail','salaire', 'travail','salaire', 'travail','salaire', 'travail','salaire',
 ];
 const NAMES: string[] = [
   'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
@@ -32,7 +31,7 @@ const NAMES: string[] = [
 })
 export class DocumentAdministrativeComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color','gerer'];
+  displayedColumns: string[] = ['id', 'cin', 'fullName', 'typeDocument','gerer'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

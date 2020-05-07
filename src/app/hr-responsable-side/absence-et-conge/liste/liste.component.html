@@ -5,6 +5,8 @@
 
       <p-table #dt [value]="sales" [globalFilterFields]="['brand']">
         <ng-template pTemplate="caption">
+          Liste of Employes with Abscence days
+
           <div style="text-align: right">
             <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
               <input type="text" pInputText size="50" placeholder="Search By Brand" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
@@ -14,8 +16,8 @@
 
         <ng-template pTemplate="header">
           <tr>
-            <th>Brand</th>
-            <th>Last Year</th>
+            <th>Employe</th>
+            <th>Les jours Restants</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-sale>

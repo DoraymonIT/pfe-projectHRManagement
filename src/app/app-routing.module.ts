@@ -20,6 +20,10 @@ const routes: Routes = [
     path: '',
     component: LoginSideComponent
   },
+  {
+    path: 'Login',
+    component: LoginSideComponent
+  },
 
   {
     path: 'RhResponsable',

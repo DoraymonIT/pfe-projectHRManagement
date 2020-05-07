@@ -26,7 +26,6 @@ export class ListeEmployesComponent implements OnInit {
       { field: 'email', header: 'G-mail' },
       { field: 'doti', header: 'DOTI' },
       { field: 'dateDeNaissance', header: 'Date De Naissance' },
-      { field: 'dep.nom', header: 'Departement' }
 
     ];
 
@@ -60,6 +59,12 @@ public listeVide():boolean{
     console.log(this.employes.length);
     return this.employes.length <1 ? true:false;
 }
+public deleteByReference(employe: Employe) {
+console.log("ha howa:"+ employe.fullName);
+this.employeService.deleteByReference(employe);
 }
-
-
+public editerUnEmployer(employe: Employe){
+console.log(employe);
+this.employeService.editerUnEmployer(employe);
+}
+}

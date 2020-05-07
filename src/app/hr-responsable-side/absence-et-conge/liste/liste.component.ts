@@ -12,12 +12,10 @@ export class ListeComponent implements OnInit {
 
   ngOnInit() {
       this.sales = [
-          { brand: 'Apple', lastYearSale: '51%' },
-          { brand: 'Samsung', lastYearSale: '83%'},
-          { brand: 'Microsoft', lastYearSale: '38%' },
-          { brand: 'Philips', lastYearSale: '49%'},
-          { brand: 'Song', lastYearSale: '17%' },
-          { brand: 'LG', lastYearSale: '52%'},
+          { brand: 'Ahmed', lastYearSale: '5 jours' },
+          { brand: 'Anas', lastYearSale: '8 jours'},
+          { brand: 'Aziz', lastYearSale: '10 jours' },
+
 
       ];
   }

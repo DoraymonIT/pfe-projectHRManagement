@@ -1,3 +1,109 @@
-<label for="">Employe A rechercher</label>
-<input  type="text" name="cne" aria-placeholder="CNE : EE11111" />
-<app-liste-employes></app-liste-employes>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> editer un employer </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="controles-container">
+          <div class="controles-container">
+            <mat-form-field>
+              <mat-label>Trouver l'employer par son doti</mat-label>
+              <mat-select [(ngModel)]="EditEmploye.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.EditEmploye.doti)">
+                <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          <mat-form-field>
+            <label> Full Name:* </label>
+            <input matInput  [(ngModel)]="EditEmploye.fullName"
+                   [ngModelOptions]="{standalone: true}" [value]="EditEmploye.fullName" >
+          </mat-form-field>
+
+          <mat-form-field>
+            <label> Gmail:* </label>
+            <input matInput  [(ngModel)]="EditEmploye.email" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.email">
+
+          </mat-form-field>
+          <mat-form-field>
+            <label> Telephone:* </label>
+            <input matInput  [(ngModel)]="EditEmploye.tel" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.tel">
+          </mat-form-field>
+          <mat-form-field>
+            <label> Adresse:* </label>
+            <input matInput placeholder="Adresse" [(ngModel)]="EditEmploye.adresse" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.adresse">
+          </mat-form-field>
+
+          <mat-form-field>
+            <label> Ville:* </label>
+            <input matInput  [(ngModel)]="EditEmploye.pays" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.pays">
+
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="controles-container">
+          <!-- <mat-form-field>
+            <label>Grade</label>
+            <mat-select [(ngModel)]="EditEmploye.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.dernierGrade?.grade?.libelle">
+              <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr?.libelle }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <label>date d'Affectation</label>
+            <input matInput [matDatepicker]="pi5"
+                   [(ngModel)]="EditEmploye.dernierGrade.dateDeAffectation" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.dernierGrade.dateDeAffectation">
+            <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
+            <mat-datepicker #pi5></mat-datepicker>
+          </mat-form-field> -->
+          <mat-form-field>
+            <label>Situation Familiale</label>
+            <mat-select [(ngModel)]="EditEmploye.situationFamiliale" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.situationFamiliale">
+              <mat-option value="Marie">Marie</mat-option>
+              <mat-option value="Celebataire">Celebataire</mat-option>
+              <mat-option value="Divorce">Divorce</mat-option>
+              <mat-option value="Autre">Autre</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="show()">
+            <input matInput placeholder="Nombre Enfants" [(ngModel)]="EditEmploye.enfants"
+                   [ngModelOptions]="{standalone: true}">
+
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <label>Department</label>
+            <mat-select [(ngModel)]="EditEmploye.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.EditEmploye.dep.nom)" >
+              <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <label>fonction</label>
+            <mat-select [(ngModel)]="EditEmploye.fonction.libelle" [ngModelOptions]="{standalone: true}" >
+              <mat-option *ngFor="let gr of depFonctions" [value]="gr.fonction.libelle">{{gr.fonction.libelle }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <mat-form-field> -->
+          <!-- <mat-label *ngIf="employe.departement" >Superieur : {{employe.departement.chef.fullname}}</mat-label> -->
+          <!-- <mat-select [(ngModel)]="employe.sup" [ngModelOptions]="{standalone: true}">
+              <mat-option>None</mat-option>
+              <mat-option value="ana">Ana</mat-option>
+              <mat-option value="howa">Howa</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="update()">Submit</button>
+            <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
+            <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

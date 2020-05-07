@@ -16,21 +16,21 @@
           </ng-container>
 
           <!-- Progress Column -->
-          <ng-container matColumnDef="progress">
+          <ng-container matColumnDef="cin">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> NumeroDoTi de Demendeur </th>
-            <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+            <td mat-cell *matCellDef="let row"> {{row.progress}} </td>
           </ng-container>
 
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
+          <ng-container matColumnDef="fullName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom De Demandeur </th>
             <td mat-cell *matCellDef="let row"> {{row.name}} </td>
           </ng-container>
 
           <!-- Color Column -->
-          <ng-container matColumnDef="color">
+          <ng-container matColumnDef="typeDocument">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Type de Document </th>
-            <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+            <td mat-cell *matCellDef="let row" > {{row.color}} </td>
           </ng-container>
           <ng-container matColumnDef="gerer">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Gerer le document </th>

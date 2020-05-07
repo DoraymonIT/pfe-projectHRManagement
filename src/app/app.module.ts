@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {InputTextModule} from 'primeng/inputtext';
 
+import {FullCalendarModule} from 'primeng/fullcalendar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
@@ -53,7 +54,7 @@ import { AjouterEmployeComponent } from './hr-responsable-side/gestion-personnel
 import { EditerEmployeComponent } from './hr-responsable-side/gestion-personnel/editer-employe/editer-employe.component';
 import { AutresComponent } from './hr-responsable-side/gestion-personnel/autres/autres.component';
 import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
-import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+// import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
 import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
@@ -63,7 +64,10 @@ import { EditerComponent } from './hr-responsable-side/absence-et-conge/editer/e
 import { PersonnelEmployesService } from './controller/service/personnel-employes.service';
 import {TableModule} from 'primeng/table';
 import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
-
+import {ToastrModule} from 'ngx-toastr';
+import { PermanenceCalendrierComponent } from './hr-responsable-side/permanence/permanence-calendrier/permanence-calendrier.component';
+import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/permanence-ajouter/permanence-ajouter.component';
+import { PermanenceListeComponent } from './hr-responsable-side/permanence/permanence-liste/permanence-liste.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +90,10 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
     CertificatsMedicalesComponent,
     ListeComponent,
     EditerComponent,
-    ArchitectureDeFSTGComponent
+    ArchitectureDeFSTGComponent,
+    PermanenceCalendrierComponent,
+    PermanenceAjouterComponent,
+    PermanenceListeComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +135,8 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
     Ng2SmartTableModule,
     Ng2CompleterModule,
     TableModule,
-    InputTextModule
+    InputTextModule,
+    ToastrModule
   ],
   providers: [
     {
