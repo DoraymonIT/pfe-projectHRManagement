@@ -68,10 +68,7 @@
           <mat-form-field *ngIf="show()">
             <input matInput placeholder="Nombre Enfants" [(ngModel)]="employe.enfants"
               [ngModelOptions]="{standalone: true}">
-
           </mat-form-field>
-
-
           <mat-form-field>
             <mat-label>Department</mat-label>
             <mat-select [(ngModel)]="employe.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.employe.dep.nom)" >

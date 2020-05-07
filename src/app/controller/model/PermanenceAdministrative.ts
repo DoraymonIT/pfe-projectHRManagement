@@ -1,6 +1,7 @@
 import {Employe} from './employe.model';
 
-export class PermanenceSchedule {
+export class PermanenceAdministrative {
+  id: number;
   periode: number;
   recuperation: boolean;
   periodeDeRecuperation: number;

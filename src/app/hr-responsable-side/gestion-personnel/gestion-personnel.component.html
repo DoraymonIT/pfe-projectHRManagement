@@ -53,12 +53,13 @@
                           </div>
 
                           <div class="ui-g-4">
-                            <b>Grade :</b> {{rowData.dernierGrade}}
+                            <b>Grade :</b> {{rowData.dernierGrade.grade.libelle}}
                           </div>
-                          <div class="ui-g-4">
-                            <b>Superieur:</b> {{rowData.sup.fullName}}
-                          </div>
-
+                          <div *ngIf=" rowData.sup.fullName  != null ; then thenBlock">   </div>
+                          <ng-template #thenBlock>
+                            <b>Superieur:</b>
+                              {{rowData.sup.fullName}}
+                            </ng-template>
                         </div>
                       </div>
                     </div>

@@ -64,7 +64,7 @@ export class GestionPersonnelComponent implements OnInit {
   }
   public editerUnEmployer(employe: Employe){
     console.log(employe);
-    this.demo1BtnClick(2);
+    this.demo1BtnClick(1);
     this.employeService.editerUnEmployer(employe);
   }
   public tabindex;
