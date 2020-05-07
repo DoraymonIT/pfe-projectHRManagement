@@ -1,59 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-
-import {PermanenceSchedule} from '../../../controller/model/permanence-schedule';
-import { PermanenceAdministrativeService } from 'src/app/controller/service/permanence-administrative.service';
-import { HttpClient } from '@angular/common/http';
+import {PermanenceAdministrativeService} from '../../../controller/service/permanence-administrative.service';
+import {PermanenceAdministrative} from '../../../controller/model/PermanenceAdministrative';
+import {Employe} from '../../../controller/model/employe.model';
 @Component({
   selector: 'app-permanence-calendrier',
   templateUrl: './permanence-calendrier.component.html',
   styleUrls: ['./permanence-calendrier.component.css']
 })
 export class PermanenceCalendrierComponent implements OnInit {
-  private _permanences: Array<PermanenceSchedule>;
-url1 : string = 'http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findAll';
-
-events: any[];
-
-options: any;
-
-constructor(private eventService: PermanenceAdministrativeService,private http : HttpClient) { }
-
-ngOnInit() {
-
-    this.options = {
-        plugins: [dayGridPlugin],
-        header: {
-            left: 'prev,next',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        }
-    }
-    this.events = [...this.events, {
-      "title": "Conference",
-      "start": "2020-05-11",
-      "end": "2020-05-13"
-
-  },
-
-];
-}
-
-// receive(eve : PermanenceSchedule){
-//  this.events = [...this.events,{
-//    "title": eve.title,
-//    "start" : eve.date.toString,
-//    "end" : eve.date.getMilliseconds +(eve.periode *),
-//  }
-
-//  ];
-// }
-
-
-  get permanences(): Array<PermanenceSchedule> {
-    return this.eventService.permanences;
+  constructor(private pemanenceAdministrative : PermanenceAdministrativeService) {}
+  calendarPlugins = [dayGridPlugin]; // important!
+  calendarEvents = [
+    { title: 'event 1', date: '2020-04-01' }
+  ];
+  ngOnInit(): void {
+    this.findAll();
+    this.loadEvent();
   }
 
+  public loadEvent():void {
+    console.log('hani dkhalt tani');
+    console.log(this.permanences.length);
+    this.permanences.forEach(per => {
+      console.log('ha howa start date:' + per.date.toString());
+      console.log('ha howa start fullname:' + per.employe.fullName);
+      this.calendarEvents.push({
+        date: per.date.toString(),
+        title: per.employe.fullName,
+      });
+    });
+    console.log('ha howa event jdid' + this.calendarEvents.toString());
+  }
+  get permanences(): Array<PermanenceAdministrative> {
+    return this.pemanenceAdministrative.perm;
+  }
+  public findAll(){
+    this.pemanenceAdministrative.findAll();
+    console.log(this.permanences.length);
+    this.loadEvent();
+  }
 //  public  addEvent() {
   //  this.permanences.forEach(permanence =>{
     //  this.calendarEvents = this.calendarEvents.concat({ // creates a new array!
@@ -61,5 +47,4 @@ ngOnInit() {
     //});
     //});
   //}
-
 }

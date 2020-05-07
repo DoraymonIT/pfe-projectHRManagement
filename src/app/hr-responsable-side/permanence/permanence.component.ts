@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import { PermanenceSchedule } from 'src/app/controller/model/permanence-schedule';
-import interactionPlugin from '@fullcalendar/interaction';
-import { EventInput } from '@fullcalendar/core';
+import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
+import {PermanenceAdministrativeService} from '../../controller/service/permanence-administrative.service';
+import {PermanenceAdministrative} from '../../controller/model/PermanenceAdministrative';
 
 @Component({
   selector: 'app-permanence',
@@ -10,31 +9,40 @@ import { EventInput } from '@fullcalendar/core';
   styleUrls: ['./permanence.component.css']
 })
 export class PermanenceComponent implements OnInit {
-  constructor() { }
+
+  constructor(private pemanenceAdministrative : PermanenceAdministrativeService,
+              private employerService: PersonnelEmployesService) { }
+  cols: any[];
+
   ngOnInit(): void {
-
+    this.pemanenceAdministrative.findAll();
+    this.listeVide();
+    this.cols = [
+      { field: 'periode', header: 'Periode' },
+      { field: 'recuperation', header: 'Récuperation' },
+      { field: 'periodeDeRecuperation', header: 'Période de Récuperation' },
+      { field: 'date', header: 'date de permanence Administrative' },
+    ];
   }
-  // calendarPlugins = [dayGridPlugin,interactionPlugin]; // important!
-  // calendarEvents: EventInput[]=[{
-  //   title:'babour1',start:'2020-05-01',end:'2020-05-03',editable:true,id:1,durationEditable:true,startEditable:true,
-  //   textColor:'white',overlap:true,allDay:false
-  // }]
-  // public pushing(schedule : PermanenceSchedule) {
-
-  //   this.calendarEvents = this.calendarEvents.concat({
-
-  //     title : schedule.title,
-  //     start: schedule.date,
-  //     allDay: false,
-  //     end: schedule.endDate,
-  //     editable:true
-  //   })
-  //   console.log(this.calendarEvents);
-  //   schedule.title='';
-  //   schedule.date=null;
-  //   schedule.endDate=null;
-
-  // }
-
+  public listeVide():boolean{
+    console.log(this.permanences.length);
+    return this.permanences.length <1 ? true:false;
+  }
+  get permanences(): Array<PermanenceAdministrative> {
+    return this.pemanenceAdministrative.perm;
+  }
+public deleteByReference(permanenece: PermanenceAdministrative) {
+    console.log("ha howa:"+ permanenece.employe.fullName);
+    this.pemanenceAdministrative.deleteByReference(permanenece);
+  }
+  public editerUnEmployer(permanence: PermanenceAdministrative){
+    console.log(permanence);
+    this.demo1BtnClick(2);
+    this.pemanenceAdministrative.editerUnEmployer(permanence);
+  }
+  public tabindex;
+  public demo1TabIndex = 0;
+  public demo1BtnClick(value:number) {
+    this.demo1TabIndex = value ;
+  }
 }
-

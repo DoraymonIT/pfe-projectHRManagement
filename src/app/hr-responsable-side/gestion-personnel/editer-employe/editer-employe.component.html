@@ -10,7 +10,7 @@
         <div class="controles-container">
           <div class="controles-container">
             <mat-form-field>
-              <mat-label>Trouver l'employer par son doti</mat-label>
+              <mat-label>trouver l'employer par son doti</mat-label>
               <mat-select [(ngModel)]="EditEmploye.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.EditEmploye.doti)">
                 <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
               </mat-select>
@@ -20,7 +20,11 @@
             <input matInput  [(ngModel)]="EditEmploye.fullName"
                    [ngModelOptions]="{standalone: true}" [value]="EditEmploye.fullName" >
           </mat-form-field>
+          <mat-form-field>
+            <label> cin:* </label>
+            <input matInput  [(ngModel)]="EditEmploye.cin" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.cin">
 
+          </mat-form-field>
           <mat-form-field>
             <label> Gmail:* </label>
             <input matInput  [(ngModel)]="EditEmploye.email" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.email">
@@ -34,7 +38,13 @@
             <label> Adresse:* </label>
             <input matInput placeholder="Adresse" [(ngModel)]="EditEmploye.adresse" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.adresse">
           </mat-form-field>
-
+            <mat-form-field>
+              <label>date de naissance</label>
+            <input matInput [matDatepicker]="picker"
+                   [(ngModel)]="EditEmploye.dateDeNaissance" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.dateDeNaissance">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
           <mat-form-field>
             <label> Ville:* </label>
             <input matInput  [(ngModel)]="EditEmploye.pays" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.pays">
@@ -45,10 +55,10 @@
       </div>
       <div class="col-md-6">
         <div class="controles-container">
-          <!-- <mat-form-field>
+          <mat-form-field>
             <label>Grade</label>
-            <mat-select [(ngModel)]="EditEmploye.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.dernierGrade?.grade?.libelle">
-              <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr?.libelle }}</mat-option>
+            <mat-select [(ngModel)]="EditEmploye.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.dernierGrade.grade.libelle">
+              <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr.libelle }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
@@ -57,7 +67,7 @@
                    [(ngModel)]="EditEmploye.dernierGrade.dateDeAffectation" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.dernierGrade.dateDeAffectation">
             <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
             <mat-datepicker #pi5></mat-datepicker>
-          </mat-form-field> -->
+          </mat-form-field>
           <mat-form-field>
             <label>Situation Familiale</label>
             <mat-select [(ngModel)]="EditEmploye.situationFamiliale" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.situationFamiliale">
@@ -94,8 +104,22 @@
               <mat-option value="howa">Howa</mat-option>
             </mat-select>
           </mat-form-field> -->
+          <mat-form-field>
+            <label>date Entrée</label>
+            <input matInput [matDatepicker]="picker5"  [(ngModel)]="EditEmploye.dateEntree"
+                   [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+            <mat-datepicker #picker5></mat-datepicker>
+          </mat-form-field>
+          <div class="add-bottom-padding">
+            <label>Gender : </label>
+            <mat-radio-group [(ngModel)]="EditEmploye.gender" [ngModelOptions]="{standalone: true}">
 
+              <mat-radio-button value="Homme">Homme</mat-radio-button>
+              <mat-radio-button value="Femme">Femme</mat-radio-button>
 
+            </mat-radio-group>
+          </div>
           <div class="button-row">
             <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="update()">Submit</button>
             <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->

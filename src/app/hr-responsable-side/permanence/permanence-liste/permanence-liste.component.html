@@ -1,1 +1,69 @@
-<p>permanence-liste works!</p>
+<div class="container-fluid" style="padding-top: 10px;">
+  <div class="row">
+    <div class="col-md-12">
+      <p-table #dt [columns]="cols" [value]="permanences" dataKey="periode" [paginator]="true" [rows]="4">
+        <ng-template pTemplate="caption">
+          Liste of permanence Administratives
+          <div style="text-align: right">
+            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter"
+                   (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th style="width: 3em"></th>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                          ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+              </p-sortIcon>
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+          <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
+          <tr>
+            <td>
+              <a href="#" [pRowToggler]="rowData">
+                <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+              </a>
+            </td>
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
+            <td><button class="btn btn-info btn-sm fa fa-trash"></button>
+              <button class="btn btn-danger btn-sm fa fa-edit" ></button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
+          <tr>
+            <td [attr.colspan]="columns.length + 1">
+              <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+
+                <div class="ui-g-12 ui-md-9" >
+                  <div class="ui-g">
+                    <div class="ui-g-4">
+                      <b>full name  :</b> {{rowData.employe.fullName}}
+                    </div>
+
+                    <div class="ui-g-4">
+                      <b>cin :</b> {{rowData.employe.cin}}
+                    </div>
+                    <div class="ui-g-4">
+                      <b>doti:</b> {{rowData.employe.doti}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

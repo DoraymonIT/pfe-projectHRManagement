@@ -26,12 +26,8 @@ export class ListeEmployesComponent implements OnInit {
       { field: 'email', header: 'G-mail' },
       { field: 'doti', header: 'DOTI' },
       { field: 'dateDeNaissance', header: 'Date De Naissance' },
-
     ];
-
   }
-
-
   onCreateNew() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -49,9 +45,6 @@ export class ListeEmployesComponent implements OnInit {
     this.dialog.open(AjouterEmployeComponent,
       dialogConfig);
   }
-
-
-
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }

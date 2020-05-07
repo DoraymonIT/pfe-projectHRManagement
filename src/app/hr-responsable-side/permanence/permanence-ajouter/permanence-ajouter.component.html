@@ -1,1 +1,47 @@
-<p>permanence-ajouter works!</p>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> editer/Ajouter un employer </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+        <div class="controles-container">
+          <div class="controles-container">
+            <mat-form-field>
+              <mat-label>trouver l'employer par son doti</mat-label>
+              <mat-select [(ngModel)]="permanenceAdministrative.employe.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.permanenceAdministrative.employe.doti)">
+                <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <label> Periode :* </label>
+              <input matInput  [(ngModel)]="permanenceAdministrative.periode"
+                     [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.periode" type="number" >
+            </mat-form-field>
+            <mat-form-field>
+              <label>Recuperation :*</label>
+              <mat-select [(ngModel)]="permanenceAdministrative.recuperation" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.recuperation">
+                <mat-option value="true">True</mat-option>
+                <mat-option value="false">False</mat-option>
+              </mat-select>
+            </mat-form-field>
+              <mat-form-field>
+            <label>  Periode Recuperation :* </label>
+              <input matInput  [(ngModel)]="permanenceAdministrative.periodeDeRecuperation" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.periodeDeRecuperation" type="number">
+            </mat-form-field>
+            <mat-form-field>
+              <label>date de permanence</label>
+              <input matInput [matDatepicker]="picker"
+                     [(ngModel)]="permanenceAdministrative.date" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
+            <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
+            <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
+          </div>
+        </div>
+      </div>
+</form>

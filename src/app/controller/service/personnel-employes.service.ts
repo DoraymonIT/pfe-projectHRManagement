@@ -6,6 +6,7 @@ import {GradeEmploye} from '../model/grade-employe.model';
 import {Grade} from '../model/grade.model';
 import {DepFonction} from '../model/dep-fonction.model';
 import {Fonction} from '../model/fonction.model';
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -18,20 +19,20 @@ export class PersonnelEmployesService {
   private _depFonctions: Array<DepFonction>;
   private _EditEmploye: Employe;
   private _indice: number;
-
+  // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Employee/';
   constructor(private http: HttpClient,
-              ) { }
+              private toast: ToastrService) { }
   public save() {
     this.http.post<number>(this._url + 'save', this.employe).subscribe(
       data => {
         console.log(data);
-        // this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
-        //   timeOut: 1500,
-        //   progressBar: true,
-        //   progressAnimation: 'increasing',
-        //   positionClass: 'toast-top-right'
-        // });
+        this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
           this.employes.push(this.cloneEmploye(this.employe));
           this.employe = null;
       }, eror => {
@@ -43,12 +44,12 @@ export class PersonnelEmployesService {
     this.http.post<number>(this._url + 'update', this.EditEmploye).subscribe(
       data => {
         console.log(data);
-        // this.toast.info(`${this.employe.fullName} modify employe to the database.`, 'employe Modified', {
-        //   timeOut: 1500,
-        //   progressBar: true,
-        //   progressAnimation: 'increasing',
-        //   positionClass: 'toast-top-right'
-        // });
+        this.toast.info(`${this.employe.fullName} modify employe to the database.`, 'employe Modified', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
         this.findAll();
         this.employe = null;
       }, eror => {

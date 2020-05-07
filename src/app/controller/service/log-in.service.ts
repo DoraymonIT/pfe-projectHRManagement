@@ -2,14 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employe } from '../model/employe.model';
 import { Route, Router } from '@angular/router';
-// import {ToastrService} from 'ngx-toastr';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class LogInService {
-  private _employe: Employe;
   constructor(private http: HttpClient,
+
+
+              private toast: ToastrService,
 
               private router: Router) { }
 
@@ -30,12 +26,12 @@ export class LogInService {
     //   data => {
     //     if (data != null) {
     // if(data.password === this._employe.password) {
-    // this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
-    //   timeOut: 1500,
-    //   progressBar: true,
-    //   progressAnimation: 'increasing',
-    //   positionClass: 'toast-top-right'
-    // });
+    this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
+      timeOut: 1500,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      positionClass: 'toast-top-right'
+    });
     this.router.navigate(['RhResponsable']).then();
     // }
     //     }
