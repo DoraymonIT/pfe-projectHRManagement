@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/controller/model/car.model';
+import {PersonnelEmployesService} from '../../../controller/service/personnel-employes.service';
+import {CongeService} from '../../../controller/service/conge.service';
+import {Employe} from '../../../controller/model/employe.model';
+import {CongeEmploye} from '../../../controller/model/conge-employe.model';
+import {TypeCongee} from '../../../controller/model/type-congee.model';
 
 @Component({
   selector: 'app-editer',
@@ -9,30 +14,22 @@ import { Car } from 'src/app/controller/model/car.model';
 export class EditerComponent implements OnInit {
 
 
-  constructor() { }
-  sales: any[];
-
+  constructor( private employeService: PersonnelEmployesService,
+               private congeservice: CongeService) { }
   ngOnInit() {
-      this.sales = [
-          { brand: 'Apple', lastYearSale: '51%' },
-          { brand: 'Samsung', lastYearSale: '83%'},
-          { brand: 'Microsoft', lastYearSale: '38%' },
-          { brand: 'Philips', lastYearSale: '49%'},
-          { brand: 'Song', lastYearSale: '17%' },
-          { brand: 'LG', lastYearSale: '52%'},
-
-      ];
+    this.employeService.findAll();
+    this.congeservice.findAll();
   }
-  clonedCars: { [s: string]: Car; } = {};
-  onRowEditInit(car: Car) {
-    //
-}
-
-onRowEditSave(car: Car) {
- //
-}
-
-onRowEditCancel(car: Car, index: number) {
-//
-}
+  get employes(): Array<Employe> {
+    return this.employeService.employes;
+  }
+  get congeEmploye(): CongeEmploye {
+    return this.congeservice.congeEmploye;
+  }
+  get typeConge(): Array<TypeCongee> {
+    return this.congeservice.typeConge;
+  }
+  public save(){
+    this.congeservice.save();
+  }
 }

@@ -1,0 +1,26 @@
+.example-full-width{
+  width: 50%;
+}
+
+.controles-container{
+  width: 100%;
+  padding: 5%;
+}
+
+.controles-container > * {
+  width: 100%;
+}
+
+.add-bottom-padding{
+  padding-bottom: 10px;
+}
+mat-radio-group mat-radio-button{
+  margin-left: 5px;
+}
+
+.button-row button{
+  margin: 5px;
+}
+.span {
+  margin: auto;
+}

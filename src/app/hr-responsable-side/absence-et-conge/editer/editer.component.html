@@ -1,41 +1,52 @@
-
-<h3>Row Editing</h3>
-<p-table [value]="sales"  editMode="row">
-    <ng-template pTemplate="header">
-        <tr>
-          <th>Brand</th>
-            <th>Year</th>
-            <th style="width:8em"></th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
-        <tr [pEditableRow]="rowData">
-          <td>
-            <p-cellEditor>
-                <ng-template pTemplate="input">
-                    <input pInputText type="text" [(ngModel)]="rowData.brand" required>
-                </ng-template>
-                <ng-template pTemplate="output">
-                    {{rowData.brand}}
-                </ng-template>
-            </p-cellEditor>
-        </td>
-            <td>
-                <p-cellEditor>
-                    <ng-template pTemplate="input">
-                        <input pInputText type="text" [(ngModel)]="rowData.lastYearSale" required>
-                    </ng-template>
-                    <ng-template pTemplate="output">
-                        {{rowData.lastYearSale}}
-                    </ng-template>
-                </p-cellEditor>
-            </td>
-
-            <td style="text-align:center">
-              <button *ngIf="!editing" pButton type="button" pInitEditableRow  (click)="onRowEditInit(rowData)"><i class="fas fa-edit"></i></button>
-                <button *ngIf="editing" pButton type="button" pSaveEditableRow style="margin-right: .5em" (click)="onRowEditSave(rowData)"><i class="fas fa-check"></i></button>
-                <button *ngIf="editing" pButton type="button" pCancelEditableRow  (click)="onRowEditCancel(rowData, ri)"><i class="fas fa-window-close"></i></button>
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> editer/Ajouter un congée </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="controles-container">
+      <div class="controles-container">
+        <mat-form-field>
+          <mat-label>trouver l'employer par son doti</mat-label>
+          <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.employe.doti">
+            <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Type de Congé</mat-label>
+          <mat-select [(ngModel)]="congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.congee.libelle">
+            <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+          <mat-form-field>
+          <label>Raison :*</label>
+          <mat-select [(ngModel)]="congeEmploye.raison" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.raison">
+            <mat-option value="true">True</mat-option>
+            <mat-option value="false">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <label>  etat :* </label>
+          <input matInput  [(ngModel)]="congeEmploye.etat" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.etat">
+        </mat-form-field>
+        <mat-form-field>
+          <label>date debut</label>
+          <input matInput [matDatepicker]="picker"
+                 [(ngModel)]="congeEmploye.dateDeDebut" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.dateDeDebut">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+          <mat-form-field>
+            <label>  periode :* </label>
+            <input matInput  [(ngModel)]="congeEmploye.periode" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.periode" type="number">
+          </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
+        <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
+        <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
+      </div>
+    </div>
+  </div>
+</form>
