@@ -12,6 +12,7 @@ export class CongeService {
 private _conges: Array<CongeEmploye>;
 private _congeEmploye: CongeEmploye;
 private _typeConge: Array<TypeCongee>;
+private _filterrsult: TypeCongee;
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
               public trouverCongéParSonDoti(value: number) {
@@ -113,5 +114,16 @@ private _typeConge: Array<TypeCongee>;
 
   set typeConge(value: Array<TypeCongee>) {
     this._typeConge = value;
+  }
+
+  get filterrsult(): TypeCongee {
+    if(this.filterrsult == null){
+      this.filterrsult = new TypeCongee();
+    }
+    return this._filterrsult;
+  }
+
+  set filterrsult(value: TypeCongee) {
+    this._filterrsult = value;
   }
 }

@@ -67,6 +67,16 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
 import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/permanence-ajouter/permanence-ajouter.component';
 import {PermanenceListeComponent} from './hr-responsable-side/permanence/permanence-liste/permanence-liste.component';
 import {PermanenceCalendrierComponent} from './hr-responsable-side/permanence/permanence-calendrier/permanence-calendrier.component';
+import { ListeDesJoursFriesComponent } from './hr-responsable-side/absence-et-conge/liste-des-jours-fries/liste-des-jours-fries.component';
+import { DepartementComponent } from './hr-responsable-side/architecture-de-fstg/departement/departement.component';
+import { GradeComponent } from './hr-responsable-side/architecture-de-fstg/grade/grade.component';
+import { DepAjoutComponent } from './hr-responsable-side/architecture-de-fstg/departement/dep-ajout/dep-ajout.component';
+import { GradeListeComponent } from './hr-responsable-side/architecture-de-fstg/grade/grade-liste/grade-liste.component';
+import { GradeAjoutComponent } from './hr-responsable-side/architecture-de-fstg/grade/grade-ajout/grade-ajout.component';
+import { NOteListeComponent } from './hr-responsable-side/notes-evaluation/note-liste/note-liste.component';
+import { ChercherNoteParDateComponent } from './hr-responsable-side/notes-evaluation/chercher-note-par-date/chercher-note-par-date.component';
+import { AjouterUneNoteComponent } from './hr-responsable-side/notes-evaluation/ajouter-une-note/ajouter-une-note.component';
+import { NoteDetailComponent } from './hr-responsable-side/notes-evaluation/note-detail/note-detail.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +107,17 @@ import {PermanenceCalendrierComponent} from './hr-responsable-side/permanence/pe
     ArchitectureDeFSTGComponent,
     PermanenceAjouterComponent,
     PermanenceListeComponent,
-    PermanenceCalendrierComponent
+    PermanenceCalendrierComponent,
+    ListeDesJoursFriesComponent,
+    DepartementComponent,
+    GradeComponent,
+    DepAjoutComponent,
+    GradeListeComponent,
+    GradeAjoutComponent,
+    NOteListeComponent,
+    ChercherNoteParDateComponent,
+    AjouterUneNoteComponent,
+    NoteDetailComponent
   ],
   imports: [
     BrowserModule,

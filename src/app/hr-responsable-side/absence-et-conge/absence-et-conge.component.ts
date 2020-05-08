@@ -3,6 +3,7 @@ import {PersonnelEmployesService} from '../../controller/service/personnel-emplo
 import {Employe} from '../../controller/model/employe.model';
 import {CongeEmploye} from '../../controller/model/conge-employe.model';
 import {CongeService} from '../../controller/service/conge.service';
+import {TypeCongee} from '../../controller/model/type-congee.model';
 
 
 @Component({
@@ -57,5 +58,10 @@ export class AbsenceEtCongeComponent implements OnInit {
   public trouverCongeParSonDoti(employe: Employe){
     this.congeservice.trouverCongéParSonDoti(employe.doti);
   }
-
+  get typeConge(): Array<TypeCongee> {
+    return this.congeservice.typeConge;
+  }
+  get filterrsult(): TypeCongee {
+    return this.congeservice.filterrsult;
+  }
 }

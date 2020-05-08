@@ -1,0 +1,20 @@
+<form class="normal-form">
+  <div class="container-fluid">
+        <h3 style="text-align : center">Ajouter Un Departement</h3>
+        <div class="controles-container">
+
+          <mat-form-field>
+            <input matInput placeholder="Nom de Departement*" [(ngModel)]="departement.nom" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>employe</mat-label>
+            <mat-select [(ngModel)]="departement.chef.doti" [ngModelOptions]="{standalone: true}" >
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
+          </div>
+        </div>
+      </div>

@@ -75,6 +75,10 @@ export class GestionPersonnelComponent implements OnInit {
   get indice(): number {
     return this.employeService.indice;
   }
+  public infoUnEmployer(employe: Employe){
+    this.demo1BtnClick(3);
+    this.employeService.infoUnEmployer(employe);
+  }
   }
 
 
