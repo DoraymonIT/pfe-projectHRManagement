@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import {PermanenceAdministrativeService} from '../../../controller/service/permanence-administrative.service';
 import {PermanenceAdministrative} from '../../../controller/model/PermanenceAdministrative';
-import {Employe} from '../../../controller/model/employe.model';
 @Component({
   selector: 'app-permanence-calendrier',
   templateUrl: './permanence-calendrier.component.html',

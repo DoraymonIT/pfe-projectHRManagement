@@ -7,6 +7,10 @@ import {Grade} from '../model/grade.model';
 import {DepFonction} from '../model/dep-fonction.model';
 import {Fonction} from '../model/fonction.model';
 import {ToastrService} from 'ngx-toastr';
+import {NoteGeneraleDeAnnee} from '../model/note-generale-de-annee.model';
+import {SalaireEmploye} from '../model/salaire-employe.model';
+import {Emoluments} from '../model/emoluments.model';
+import {Revenu} from '../model/revenu.model';
 
 
 
@@ -19,10 +23,29 @@ export class PersonnelEmployesService {
   private _depFonctions: Array<DepFonction>;
   private _EditEmploye: Employe;
   private _indice: number;
+  private _employeInfo: Employe;
+  private _saleireEmolye: SalaireEmploye;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Employee/';
   constructor(private http: HttpClient,
-              private toast: ToastrService) { }
+              private toast: ToastrService,
+              ) { }
+  public infoUnEmployer(employe: Employe){
+    this._employeInfo = employe;
+  }
+
+  public trouverEmployerParNomGrade(value: string) {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/' + value).subscribe(
+      data => {
+        // console.log('ha data' + data);
+        this._employes = data ;
+        //console.log('ha  employe' + this._EditEmploye);
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
+
   public save() {
     this.http.post<number>(this._url + 'save', this.employe).subscribe(
       data => {
@@ -100,6 +123,32 @@ export class PersonnelEmployesService {
         console.log('ha data' + data);
         this._EditEmploye = data ;
         console.log('ha  employe' + this._EditEmploye);
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
+  public trouverEmployerParNomDepartement(value: string) {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
+      data => {
+       // console.log('ha data' + data);
+        this._employes = data ;
+        //console.log('ha  employe' + this._EditEmploye);
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
+  public trouverSalaireParSonDoti(value: number) {
+    this.http.get<SalaireEmploye>('http://localhost:8080/gestionDesEmployee-Api/SalaireEmploye/findByEmployeDoti/doti/' + value).subscribe(
+      data => {
+        //console.log('ha data' + data);
+        this._saleireEmolye = data ;
+  //      console.log(this.saleireEmolye.assuranceMaladieObligatoire.montant)
+    //    console.log(this.saleireEmolye.caisseMarocaineDeretrait.montant)
+      //  console.log(this.saleireEmolye.impotSurLeRevenu.montant)
+        //console.log(this.saleireEmolye.mutuelleCaisseRetraitEtDeces.montant)
+        //console.log('ha  employe' + this._EditEmploye);
       }, eror => {
         console.log('eroro', eror);
       }
@@ -190,5 +239,45 @@ public findAll() {
 
   set indice(value: number) {
     this._indice = value;
+  }
+
+  get employeInfo(): Employe {
+    if(this._employeInfo == null){
+      this._employeInfo = new Employe();
+      this._employeInfo.dernierGrade = new GradeEmploye();
+      this._employeInfo.dernierGrade.grade = new Grade();
+      this._employeInfo.dernierGrade.employe = new Employe();
+      this._employeInfo.dernierNote = new NoteGeneraleDeAnnee();
+      this._employeInfo.dernierNote.employe = new Employe();
+      this._employeInfo.sup = new Employe();
+      this._employeInfo.fonction = new Fonction();
+      this._employeInfo.dep = new Departement();
+      this._employeInfo.dep.chef = new Employe();
+      this._employeInfo.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employeInfo;
+  }
+
+  set employeInfo(value: Employe) {
+    this._employeInfo = value;
+  }
+
+  get saleireEmolye(): SalaireEmploye {
+    if(this._saleireEmolye == null){
+      this._saleireEmolye = new SalaireEmploye();
+      this._saleireEmolye.allocationDeEncadrement = new Emoluments();
+      this._saleireEmolye.allocationDeEnseignement = new Emoluments();
+      this._saleireEmolye.idemDeLaResidence = new Emoluments();
+      this._saleireEmolye.idemFamialieleMarocaine = new Emoluments();
+      this._saleireEmolye.assuranceMaladieObligatoire = new Revenu();
+      this._saleireEmolye.caisseMarocaineDeretrait = new Revenu();
+      this._saleireEmolye.impotSurLeRevenu = new Revenu();
+      this._saleireEmolye.mutuelleCaisseRetraitEtDeces = new Revenu();
+    }
+    return this._saleireEmolye;
+  }
+
+  set saleireEmolye(value: SalaireEmploye) {
+    this._saleireEmolye = value;
   }
 }

@@ -5,74 +5,39 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-                info
+              info
             </mat-panel-title>
             <mat-panel-description>
               info base
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700;">full name:</mat-label>
-            <mat-label>{{employeInfo.fullName}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">cin:</mat-label>
-            <mat-label>{{employeInfo.cin}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">doti:</mat-label>
-            <mat-label>{{employeInfo.doti}}</mat-label>
-          </div>
-          </div>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">situation Familiale:</mat-label>
-            <mat-label>{{employeInfo.situationFamiliale}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">adresse:</mat-label>
-            <mat-label>{{employeInfo.adresse}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">email:</mat-label>
-            <mat-label>{{employeInfo.email}}</mat-label>
-          </div>
-          </div>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">compte bancaire rib:</mat-label>
-            <mat-label>{{employeInfo.compteBancaireRib}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">pays:</mat-label>
-            <mat-label>{{employeInfo.pays}}</mat-label>
-          </div>
-            <div class="col-md-4">
-              <mat-label style="margin-right: 10px; color: #ffa700">enfant:</mat-label>
-              <mat-label>{{employeInfo.enfants}}</mat-label>
+            <div class="col-md-6">
+              <mat-label style="margin-right: 10px; color: #ffa700;">id:</mat-label>
+              <mat-label>{{note.id}}</mat-label>
             </div>
-          </div>
+            <div class="col-md-6">
+              <mat-label style="margin-right: 10px; color: #ffa700">date:</mat-label>
+              <mat-label>{{note.date}}</mat-label>
+            </div>
+            </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-            department
+              department
             </mat-panel-title>
             <mat-panel-description>
-            description
+              description
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">libelle:</mat-label>
-              <mat-label>{{employeInfo.dep.nom}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700"> full name  de chef departement:</mat-label>
-              <div *ngIf="employeInfo.sup == null; then thenBlock else elseBlock"></div>
-              <ng-template #thenBlock>pas de sup</ng-template>
-              <ng-template #elseBlock>{{employeInfo.sup.fullName}.</ng-template>
             </div>
           </div>
         </mat-expansion-panel>
@@ -88,11 +53,11 @@
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">grade libelle:</mat-label>
-              <mat-label>{{employeInfo.dernierGrade.grade.libelle}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">date Affectation:</mat-label>
-              <mat-label>{{employeInfo.dernierGrade.dateDeAffectation}}</mat-label>
+              <mat-label></mat-label>
             </div>
           </div>
         </mat-expansion-panel>
@@ -108,19 +73,19 @@
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">moyen:</mat-label>
-              <mat-label>{{employeInfo.dernierNote.moyenGeneral}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
-              <mat-label>{{employeInfo.dernierNote.mention}}</mat-label>
+              <mat-label></mat-label>
             </div>
           </div>
           <div style="margin-left: 300px">
-              <mat-label style="margin-right: 10px; color: #ffa700;">date dernier Note:</mat-label>
-              <mat-label>{{employeInfo.dernierNote.date}}</mat-label>
+            <mat-label style="margin-right: 10px; color: #ffa700;">date dernier Note:</mat-label>
+            <mat-label></mat-label>
           </div>
         </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" (click)="Trouversalaireemploye(this.employeInfo.doti)">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Salaire
@@ -132,49 +97,49 @@
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">salaire Net:</mat-label>
-              <mat-label>{{saleireEmolye.salaireNet}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">salaire modifie:</mat-label>
-              <mat-label>{{saleireEmolye.monatntModifie}}</mat-label>
+              <mat-label></mat-label>
             </div>
           </div>
           <div style="font-size: x-large;color: #008744; margin-bottom: 10px; margin-top: 10px"> Emoluments: </div>
           <div class="row" style="font-size: medium; margin-bottom: 10px;color: #008744">
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #008744;">allocation d'encadrement:</mat-label>
-              <mat-label>{{saleireEmolye.allocationDeEncadrement.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #008744;">allocation d'enseignement:</mat-label>
-              <mat-label>{{saleireEmolye.allocationDeEnseignement.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #008744;">idem Famialiele Marocaine:</mat-label>
-              <mat-label>{{saleireEmolye.idemFamialieleMarocaine.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #008744;">idem De La Residence:</mat-label>
-              <mat-label>{{saleireEmolye.idemDeLaResidence.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
           </div>
           <div style="font-size: x-large;color: #d62d20; margin-bottom: 10px; margin-top: 10px"> Revenu: </div>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #d62d20;">mutuelle Caisse Retrait Et Deces:</mat-label>
-              <mat-label>{{saleireEmolye.mutuelleCaisseRetraitEtDeces.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #d62d20;">impot Sur Le Revenu:</mat-label>
-              <mat-label>{{saleireEmolye.impotSurLeRevenu.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #d62d20;">caisse Marocaine De retrait:</mat-label>
-              <mat-label>{{saleireEmolye.caisseMarocaineDeretrait.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #d62d20;">assurance Maladie Obligatoire:</mat-label>
-              <mat-label>{{saleireEmolye.assuranceMaladieObligatoire.montant}}</mat-label>
+              <mat-label></mat-label>
             </div>
           </div>
         </mat-expansion-panel>
