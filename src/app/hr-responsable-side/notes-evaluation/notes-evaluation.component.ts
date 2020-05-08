@@ -17,25 +17,7 @@ export class NotesEvaluationComponent implements OnInit {
   constructor(private tservice: LogInService) { }
 
   ngOnInit() {
-    this
-      .tservice
-      .getCharacters()
-      .subscribe((data: Table[]) => {
-        this.characters = data;
-    });
+   
 }
 
-settings = {
-  columns: {
-    id: {
-      title: 'ID'
-    },
-    name: {
-      title: 'Name'
-    },
-    age: {
-      title: 'Age'
-    }
-  }
-};
 }

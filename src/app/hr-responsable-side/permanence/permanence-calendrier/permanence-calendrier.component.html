@@ -3,13 +3,9 @@
     <div class="col-md-12">
       <!---Le calendrier  de permanence contient le jour et le nom d employe permamnent -->
 
-            <full-calendar [header]="{ left:'title',
+      <full-calendar [header]="{ left:'title',
               center :'dayGridMonth,dayGridWeek',right:'today prev,next'
-            }" [events]=calendarEvents [plugins]="calendarPlugins"
-            ></full-calendar>
+            }" [events]="calendarEvents" [plugins]="calendarPlugins"></full-calendar>
     </div>
   </div>
-</div>
-<div *ngFor="let c of permanences">
-
 </div>

@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
+import {AjouterEmployeComponent} from './ajouter-employe/ajouter-employe.component';
+import {Employe} from '../../controller/model/employe.model';
+
+
 @Component({
   selector: 'app-gestion-personnel',
   templateUrl: './gestion-personnel.component.html',
   styleUrls: ['./gestion-personnel.component.css']
+})
 export class GestionPersonnelComponent implements OnInit {
 
   constructor(private dialog :MatDialog, private employeService : PersonnelEmployesService) { }
@@ -69,5 +76,3 @@ export class GestionPersonnelComponent implements OnInit {
     return this.employeService.indice;
   }
   }
-
-

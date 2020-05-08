@@ -23,7 +23,7 @@
                                   ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
                       </p-sortIcon>
                     </th>
-                  <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner>
+                  <!-- <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner> -->
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
                   <tr>
@@ -37,7 +37,7 @@
                     </td>
                   </tr>
                 </ng-template>
-                <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
+                <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns"  >
                   <tr>
                     <td [attr.colspan]="columns.length + 1">
                       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
@@ -50,7 +50,7 @@
                               <th>Action</th>
                               </thead>
                               <tbody>
-                              <tr *ngFor="let c of conges">
+                              <tr *ngFor="let c of conges"  >
                                 <td>{{c.congee.libelle}}</td>
                                 <td>{{c.dateDeDebut.toString()}}</td>
                                 <td>{{c.periode}}</td>
@@ -72,7 +72,7 @@
       </div>
     </div>
   </mat-tab>
-  <mat-tab label="Permanence Liste" style="width: 25%;" tabindex="2">
+  <mat-tab label="Affecter un econge a un employe " style="width: 25%;" tabindex="2">
 <app-editer></app-editer>
   </mat-tab>
 </mat-tab-group>

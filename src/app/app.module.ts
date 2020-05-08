@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 
-import {FullCalendarModule} from 'primeng/fullcalendar';
+// import {FullCalendarModule} from 'primeng/fullcalendar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
@@ -38,7 +38,7 @@ import {ToastrModule} from 'ngx-toastr';
 
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSideComponent } from './login-side/login-side.component';
@@ -55,7 +55,7 @@ import { AjouterEmployeComponent } from './hr-responsable-side/gestion-personnel
 import { EditerEmployeComponent } from './hr-responsable-side/gestion-personnel/editer-employe/editer-employe.component';
 import { AutresComponent } from './hr-responsable-side/gestion-personnel/autres/autres.component';
 import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
-// import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
 import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
@@ -66,7 +66,7 @@ import { PersonnelEmployesService } from './controller/service/personnel-employe
 import {TableModule} from 'primeng/table';
 import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
 
-import {ToastrModule} from 'ngx-toastr';
+
 import { PermanenceCalendrierComponent } from './hr-responsable-side/permanence/permanence-calendrier/permanence-calendrier.component';
 import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/permanence-ajouter/permanence-ajouter.component';
 import { PermanenceListeComponent } from './hr-responsable-side/permanence/permanence-liste/permanence-liste.component';

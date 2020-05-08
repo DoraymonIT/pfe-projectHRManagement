@@ -24,7 +24,7 @@
                   </th>
                   <th>Action</th>
                 </tr>
-                <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner>
+                <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
               </ng-template>
               <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                 <tr>
@@ -51,15 +51,15 @@
                           <div class="ui-g-4">
                             <b>Departement :</b> {{rowData.dep.nom}}
                           </div>
-
+<!--
                           <div class="ui-g-4">
                             <b>Grade :</b> {{rowData.dernierGrade.grade.libelle}}
-                          </div>
-                          <div *ngIf=" rowData.sup.fullName  != null ; then thenBlock">   </div>
+                          </div> -->
+                          <!-- <div *ngIf=" rowData.sup.fullName  != null ; then thenBlock">   </div>
                           <ng-template #thenBlock>
                             <b>Superieur:</b>
                               {{rowData.sup.fullName}}
-                            </ng-template>
+                            </ng-template> -->
                         </div>
                       </div>
                     </div>
