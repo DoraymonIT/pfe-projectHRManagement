@@ -65,12 +65,11 @@ import { EditerComponent } from './hr-responsable-side/absence-et-conge/editer/e
 import { PersonnelEmployesService } from './controller/service/personnel-employes.service';
 import {TableModule} from 'primeng/table';
 import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
-
+import {EditorModule} from 'primeng/editor';
 
 import { PermanenceCalendrierComponent } from './hr-responsable-side/permanence/permanence-calendrier/permanence-calendrier.component';
 import { PermanenceAjouterComponent } from './hr-responsable-side/permanence/permanence-ajouter/permanence-ajouter.component';
 import {PermanenceListeComponent} from './hr-responsable-side/permanence/permanence-liste/permanence-liste.component';
-import {PermanenceCalendrierComponent} from './hr-responsable-side/permanence/permanence-calendrier/permanence-calendrier.component';
 import { ListeDesJoursFriesComponent } from './hr-responsable-side/absence-et-conge/liste-des-jours-fries/liste-des-jours-fries.component';
 import { DepartementComponent } from './hr-responsable-side/architecture-de-fstg/departement/departement.component';
 import { GradeComponent } from './hr-responsable-side/architecture-de-fstg/grade/grade.component';
@@ -113,7 +112,6 @@ import { NoteDetailComponent } from './hr-responsable-side/notes-evaluation/note
     PermanenceCalendrierComponent,
     PermanenceAjouterComponent,
     PermanenceListeComponent,
-    PermanenceCalendrierComponent,
     ListeDesJoursFriesComponent,
     DepartementComponent,
     GradeComponent,
@@ -167,7 +165,8 @@ import { NoteDetailComponent } from './hr-responsable-side/notes-evaluation/note
     Ng2CompleterModule,
     TableModule,
     InputTextModule,
-    ToastrModule
+    ToastrModule,
+    EditorModule
   ],
   providers: [
     {
