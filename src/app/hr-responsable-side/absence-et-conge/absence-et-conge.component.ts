@@ -39,7 +39,7 @@ export class AbsenceEtCongeComponent implements OnInit {
   }
   public editerUnEmployer(conge: CongeEmploye){
     //console.log(employe);
-    this.demo1BtnClick(2);
+    this.demo1BtnClick(1);
     this.congeservice.editerUnEmployer(conge);
   }
   public tabindex;

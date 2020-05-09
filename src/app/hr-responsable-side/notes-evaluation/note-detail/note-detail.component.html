@@ -1,3 +1,20 @@
+<div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+  <div class="card-header">
+    charcher une Date:
+  </div>
+  <div class="card-body">
+    <div style="margin-left: 510px; width: 500px; margin-bottom: 40px">
+      <input class="search" type="date" class="form-control" [(ngModel)]="this.note.date" placeholder="yyyy-MM-dd" style="width: 500px;color: wheat;background-color: #343a40;border-bottom-color: #ffa700; border-left:none;border-right: none;border-top: none;">
+    </div>
+    <mat-form-field style="width: 500px">
+      <mat-label>employe</mat-label>
+  <mat-select [(ngModel)]="this.noteDoti.mention" [ngModelOptions]="{standalone: true}" >
+    <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
+  </mat-select>
+</mat-form-field>
+      <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="chercher()">Chercher</button>
+  </div>
+  </div>
 <div class="container" style="padding-top:20px">
   <div class="row ">
     <div class="col-md-12">
@@ -25,7 +42,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              department
+              note De Rentabilite
             </mat-panel-title>
             <mat-panel-description>
               description
@@ -33,18 +50,19 @@
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">libelle:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">Remarque:</mat-label>
+              <mat-label>{{note.noteDeRentabilite.remarque}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700"> full name  de chef departement:</mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700"> mention:</mat-label>
+              <mat-label>{{note.noteDeRentabilite.mention}}</mat-label>
             </div>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              grade
+              note De Affectation Des Taches Liee Au Travail
             </mat-panel-title>
             <mat-panel-description>
               description
@@ -52,43 +70,19 @@
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">grade libelle:</mat-label>
-              <mat-label></mat-label>
-            </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">date Affectation:</mat-label>
-              <mat-label></mat-label>
-            </div>
-          </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Note
-            </mat-panel-title>
-            <mat-panel-description>
-              description
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">moyen:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">Remarque:</mat-label>
+              <mat-label>{{note.noteDeAffectationDesTachesLieeAuTravail.remarque}}</mat-label>
             </div>
             <div class="col-md-6">
               <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
-              <mat-label></mat-label>
+              <mat-label>{{note.noteDeAffectationDesTachesLieeAuTravail.mention}}</mat-label>
             </div>
-          </div>
-          <div style="margin-left: 300px">
-            <mat-label style="margin-right: 10px; color: #ffa700;">date dernier Note:</mat-label>
-            <mat-label></mat-label>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Salaire
+              note De Capacite De Organisation
             </mat-panel-title>
             <mat-panel-description>
               description
@@ -96,50 +90,72 @@
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">salaire Net:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">Remarque:</mat-label>
+              <mat-label>{{note.noteDeCapaciteDeOrganisation.remarque}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">salaire modifie:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
+              <mat-label>{{note.noteDeCapaciteDeOrganisation.mention}}</mat-label>
             </div>
           </div>
-          <div style="font-size: x-large;color: #008744; margin-bottom: 10px; margin-top: 10px"> Emoluments: </div>
-          <div class="row" style="font-size: medium; margin-bottom: 10px;color: #008744">
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #008744;">allocation d'encadrement:</mat-label>
-              <mat-label></mat-label>
-            </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #008744;">allocation d'enseignement:</mat-label>
-              <mat-label></mat-label>
-            </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #008744;">idem Famialiele Marocaine:</mat-label>
-              <mat-label></mat-label>
-            </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #008744;">idem De La Residence:</mat-label>
-              <mat-label></mat-label>
-            </div>
-          </div>
-          <div style="font-size: x-large;color: #d62d20; margin-bottom: 10px; margin-top: 10px"> Revenu: </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              note De Compotement
+            </mat-panel-title>
+            <mat-panel-description>
+              description
+            </mat-panel-description>
+          </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #d62d20;">mutuelle Caisse Retrait Et Deces:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">Remarque:</mat-label>
+              <mat-label>{{note.noteDeCompotement.remarque}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #d62d20;">impot Sur Le Revenu:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
+              <mat-label>{{note.noteDeCompotement.mention}}</mat-label>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              note De Recherche Et De Innovation
+            </mat-panel-title>
+            <mat-panel-description>
+              description
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row" style="font-size: medium; margin-bottom: 10px">
+            <div class="col-md-6">
+              <mat-label style="margin-right: 10px; color: #ffa700;">Remarque:</mat-label>
+              <mat-label>{{note.noteDeRechercheEtDeInnovation.remarque}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #d62d20;">caisse Marocaine De retrait:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
+              <mat-label>{{note.noteDeRechercheEtDeInnovation.mention}}</mat-label>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              resultat:
+            </mat-panel-title>
+            <mat-panel-description>
+              description
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row" style="font-size: medium; margin-bottom: 10px">
+            <div class="col-md-6">
+              <mat-label style="margin-right: 10px; color: #ffa700;">moyen Generale:</mat-label>
+              <mat-label>{{note.moyenGeneral}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #d62d20;">assurance Maladie Obligatoire:</mat-label>
-              <mat-label></mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
+              <mat-label>{{note.mention}}</mat-label>
             </div>
           </div>
         </mat-expansion-panel>
@@ -147,3 +163,4 @@
     </div>
   </div>
 </div>
+

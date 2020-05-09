@@ -3,9 +3,9 @@ import { Employe } from './employe.model';
 
 export class NoteGeneraleDeAnnee {
   id : number;
-  noteDeAffectationDesTachesLiéeAuTravail : Note;
-  noteDeRentabilité: Note;
-  noteDeCapacitéDeOrganisation:Note ;
+  noteDeAffectationDesTachesLieeAuTravail : Note;
+  noteDeRentabilite: Note;
+  noteDeCapaciteDeOrganisation:Note ;
   noteDeCompotement :Note ;
   noteDeRechercheEtDeInnovation :Note ;
   moyenGeneral : number;
