@@ -16,6 +16,7 @@ import {SalaireEmploye} from '../model/salaire-employe.model';
 export class NoteServiceService {
   private _note: NoteGeneraleDeAnnee;
   private _notes: Array<NoteGeneraleDeAnnee>;
+  private _noteDoti: Note;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/';
   constructor(private http: HttpClient,
@@ -49,6 +50,21 @@ export class NoteServiceService {
       }
     );
   }
+  public trouverNoteParSonDotiEtParDate() {
+    this.http.get<NoteGeneraleDeAnnee>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByDateAndEmployeDoti/date/' + this.note.date + '/doti/' + this.noteDoti.mention).subscribe(
+      data => {
+        //console.log('ha data' + data);
+        this.note = data ;
+       //  console.log(this.saleireEmolye.assuranceMaladieObligatoire.montant)
+        // console.log(this.saleireEmolye.caisseMarocaineDeretrait.montant)
+        //console.log(this.saleireEmolye.impotSurLeRevenu.montant)
+        //console.log(this.saleireEmolye.mutuelleCaisseRetraitEtDeces.montant)
+        //console.log('ha  employe' + this._EditEmploye);
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
   public save() {
     this.http.post<number>(this._url + 'save', this.note).subscribe(
       data => {
@@ -69,11 +85,11 @@ export class NoteServiceService {
   public  cloneNote(noteGeneraleDeAnnee: NoteGeneraleDeAnnee): NoteGeneraleDeAnnee {
     const myClone = new NoteGeneraleDeAnnee() ;
     myClone.employe = noteGeneraleDeAnnee.employe;
-    myClone.noteDeAffectationDesTachesLiéeAuTravail = noteGeneraleDeAnnee.noteDeAffectationDesTachesLiéeAuTravail;
-    myClone.noteDeCapacitéDeOrganisation = noteGeneraleDeAnnee.noteDeCapacitéDeOrganisation;
+    myClone.noteDeAffectationDesTachesLieeAuTravail = noteGeneraleDeAnnee.noteDeAffectationDesTachesLieeAuTravail;
+    myClone.noteDeCapaciteDeOrganisation = noteGeneraleDeAnnee.noteDeCapaciteDeOrganisation;
     myClone.noteDeCompotement = noteGeneraleDeAnnee.noteDeCompotement;
     myClone.noteDeRechercheEtDeInnovation = noteGeneraleDeAnnee.noteDeRechercheEtDeInnovation;
-    myClone.noteDeRentabilité = noteGeneraleDeAnnee.noteDeRentabilité;
+    myClone.noteDeRentabilite = noteGeneraleDeAnnee.noteDeRentabilite;
     return myClone;
   }
 
@@ -82,8 +98,9 @@ export class NoteServiceService {
       this._note = new NoteGeneraleDeAnnee();
       this._note.noteDeRechercheEtDeInnovation = new Note();
       this._note.noteDeCompotement = new Note();
-      this._note.noteDeCapacitéDeOrganisation = new Note();
-      this._note.noteDeAffectationDesTachesLiéeAuTravail = new Note();
+      this._note.noteDeCapaciteDeOrganisation = new Note();
+      this._note.noteDeRentabilite = new Note();
+      this._note.noteDeAffectationDesTachesLieeAuTravail = new Note();
       this._note.employe = new Employe();
       this._note.employe.sup = new Employe();
     }
@@ -101,12 +118,25 @@ export class NoteServiceService {
         note = new NoteGeneraleDeAnnee();
         note.noteDeRechercheEtDeInnovation = new Note();
         note.noteDeCompotement = new Note();
-        note.noteDeCapacitéDeOrganisation = new Note();
-        note.noteDeAffectationDesTachesLiéeAuTravail = new Note();
+        note.noteDeCapaciteDeOrganisation = new Note();
+        note.noteDeAffectationDesTachesLieeAuTravail = new Note();
+        note.noteDeRentabilite = new Note();
         note.employe = new Employe();
       });
     }
     return this._notes;
+  }
+
+
+  get noteDoti(): Note {
+    if(this._noteDoti == null){
+      this._noteDoti = new Note();
+    }
+    return this._noteDoti;
+  }
+
+  set noteDoti(value: Note) {
+    this._noteDoti = value;
   }
 
   set notes(value: Array<NoteGeneraleDeAnnee>) {
