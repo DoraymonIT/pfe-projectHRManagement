@@ -20,11 +20,12 @@ export class GestionPersonnelComponent implements OnInit {
     this.listeVide();
     this.cols = [
       { field: 'cin', header: 'C I N' },
-      { field: 'fullName', header: 'Nom Complet' },
-      { field: 'pays', header: 'Pays' },
-      { field: 'email', header: 'G-mail' },
       { field: 'doti', header: 'DOTI' },
-      { field: 'dateDeNaissance', header: 'Date De Naissance' },
+      { field: 'fullName', header: 'Nom Complet' },
+      { field: 'email', header: 'G-mail' },
+      { field: 'tel', header: 'Phone' },
+      // { field: 'pays', header: 'Pays' },
+      { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
 
     ];
 
@@ -55,15 +56,15 @@ export class GestionPersonnelComponent implements OnInit {
     return this.employeService.employes;
   }
   public listeVide():boolean{
-    console.log(this.employes.length);
+    // console.log(this.employes.length);
     return this.employes.length <1 ? true:false;
   }
   public deleteByReference(employe: Employe) {
-    console.log("ha howa:"+ employe.fullName);
+    // console.log("ha howa:"+ employe.fullName);
     this.employeService.deleteByReference(employe);
   }
   public editerUnEmployer(employe: Employe){
-    console.log(employe);
+    // console.log(employe);
     this.demo1BtnClick(1);
     this.employeService.editerUnEmployer(employe);
   }

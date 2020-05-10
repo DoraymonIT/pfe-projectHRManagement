@@ -81,12 +81,13 @@ import { ChercherNoteParDateComponent } from './hr-responsable-side/notes-evalua
 import { AjouterUneNoteComponent } from './hr-responsable-side/notes-evaluation/ajouter-une-note/ajouter-une-note.component';
 import { NoteDetailComponent } from './hr-responsable-side/notes-evaluation/note-detail/note-detail.component';
 import { ListeDesDocumentComponent } from './hr-responsable-side/document-administrative/documents/liste-des-document/liste-des-document.component';
-import { AjouterUnDocumentComponent } from './hr-responsable-side/document-administrative/documents/ajouter-un-document/ajouter-un-document.component';
 import { DocumentsComponent } from './hr-responsable-side/document-administrative/documents/documents.component';
-import { AjouterUnDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/ajouter-un-documents-employe/ajouter-un-documents-employe.component';
 import { ListeDesDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/liste-des-documents-employe/liste-des-documents-employe.component';
 import { ListeDesDemandesDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/liste-des-demandes-documents-employe/liste-des-demandes-documents-employe.component';
 import { DocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/documents-employe.component';
+import {AjouterUnDocumentComponent} from './hr-responsable-side/document-administrative/documents/ajouter-un-document/ajouter-un-document.component';
+import { AjouterUnDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/ajouter-un-documents-employe/ajouter-un-documents-employe.component';
+
 
 @NgModule({
   declarations: [
@@ -130,12 +131,15 @@ import { DocumentsEmployeComponent } from './hr-responsable-side/document-admini
     AjouterUneNoteComponent,
     NoteDetailComponent,
     ListeDesDocumentComponent,
-    AjouterUnDocumentComponent,
+
     DocumentsComponent,
-    AjouterUnDocumentsEmployeComponent,
+    AjouterUnDocumentComponent,
+
     ListeDesDocumentsEmployeComponent,
     ListeDesDemandesDocumentsEmployeComponent,
-    DocumentsEmployeComponent
+    DocumentsEmployeComponent,
+    AjouterUnDocumentsEmployeComponent,
+
   ],
   imports: [
     BrowserModule,

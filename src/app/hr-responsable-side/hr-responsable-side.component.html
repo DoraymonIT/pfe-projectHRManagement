@@ -1,7 +1,10 @@
 <mat-sidenav-container class="example-container" class="side-barr">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:10px;width: 280px;">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 285px;">
     <mat-list role="list">
-      <mat-divider></mat-divider>
+      <mat-list-item  role="listitem" >
+       <span style="text-align:center" class="span"> <i class="fas fa-school" style="font-size: 45px;text-align: center;padding-bottom: 5px;"></i></span>
+      </mat-list-item>
+
 
       <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
@@ -39,7 +42,7 @@
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['permanence'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-tasks"></i> Permanence Administrative</h6>
+        <h6><i class="fas fa-calendar-times    "></i> Permanence Administrative</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
       <!-- <mat-list-item [routerLink]="[{ outlets: { un: ['statsDuMois'] } }]" class="list1" role="listitem">
@@ -50,7 +53,7 @@
       <!-- </mat-list-item> -->
       <!-- <br><br><br><br><br> -->
       <mat-list-item [routerLink]="[{ outlets: { un: ['architecture'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-tasks"></i> Architecture Interne</h6>
+        <h6>   <i class="fas fa-building" ></i> Architecture Interne</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item class="list1" role="listitem" [routerLink]="['']" routerLinkActive="active">
@@ -67,6 +70,7 @@
           <mat-icon class="icons" [matBadge]="ex" matBadgePosition="above before" matBadgeSize="small"
             [matBadgeHidden]="hideMatBadge" matBadgeColor="warn" style="cursor: pointer;" matTooltip="Notifications">
             notifications
+            <!-- <i class="fas fa-bell"></i> -->
           </mat-icon>
         </button>
         <mat-menu #menu="matMenu">

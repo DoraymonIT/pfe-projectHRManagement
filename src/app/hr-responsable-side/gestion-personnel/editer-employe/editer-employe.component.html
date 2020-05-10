@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> editer un employer </span>
+    <span class="span"> <i class="fas fa-user-edit    "></i> Modifier Les donnes d un employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -10,13 +10,13 @@
         <div class="controles-container">
           <div class="controles-container">
             <mat-form-field>
-              <mat-label>trouver l'employer par son doti</mat-label>
+              <mat-label>Trouver l'employer par en utilisant le doti</mat-label>
               <mat-select [(ngModel)]="EditEmploye.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.EditEmploye.doti)">
                 <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
               </mat-select>
             </mat-form-field>
           <mat-form-field>
-            <label> Full Name:* </label>
+            <label> Full Name :* </label>
             <input matInput  [(ngModel)]="EditEmploye.fullName"
                    [ngModelOptions]="{standalone: true}" [value]="EditEmploye.fullName" >
           </mat-form-field>
@@ -26,16 +26,16 @@
 
           </mat-form-field> -->
           <mat-form-field>
-            <label> Gmail:* </label>
+            <label> Gmail :* </label>
             <input matInput  [(ngModel)]="EditEmploye.email" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.email">
 
           </mat-form-field>
           <mat-form-field>
-            <label> Telephone:* </label>
+            <label> Telephone :* </label>
             <input matInput  [(ngModel)]="EditEmploye.tel" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.tel">
           </mat-form-field>
           <mat-form-field>
-            <label> Adresse:* </label>
+            <label> Adresse :* </label>
             <input matInput placeholder="Adresse" [(ngModel)]="EditEmploye.adresse" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.adresse">
           </mat-form-field>
             <!-- <mat-form-field>
@@ -46,7 +46,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field> -->
           <mat-form-field>
-            <label> Ville:* </label>
+            <label> Ville: * </label>
             <input matInput  [(ngModel)]="EditEmploye.pays" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.pays">
 
           </mat-form-field>
@@ -68,6 +68,7 @@
             <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
             <mat-datepicker #pi5></mat-datepicker>
           </mat-form-field> -->
+          <br><br>
           <mat-form-field>
             <label>Situation Familiale</label>
             <mat-select [(ngModel)]="EditEmploye.situationFamiliale" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.situationFamiliale">
@@ -85,13 +86,13 @@
 
 
           <mat-form-field>
-            <label>Department</label>
+            <label>Departement</label>
             <mat-select [(ngModel)]="EditEmploye.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.EditEmploye.dep.nom)" >
               <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <label>fonction</label>
+            <label>Fonction</label>
             <mat-select [(ngModel)]="EditEmploye.fonction.libelle" [ngModelOptions]="{standalone: true}" >
               <mat-option *ngFor="let gr of depFonctions" [value]="gr.fonction.libelle">{{gr.fonction.libelle }}</mat-option>
             </mat-select>
@@ -105,7 +106,7 @@
             </mat-select>
           </mat-form-field> -->
           <mat-form-field>
-            <label>date Entrée</label>
+            <label>Date d Entree</label>
             <input matInput [matDatepicker]="picker5"  [(ngModel)]="EditEmploye.dateEntree"
                    [ngModelOptions]="{standalone: true}">
             <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
@@ -121,7 +122,7 @@
             </mat-radio-group>
           </div> -->
           <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="update()">Submit</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="update()"> <i class="fa fa-check-square"></i> Confirmer</button>
             <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
             <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
           </div>

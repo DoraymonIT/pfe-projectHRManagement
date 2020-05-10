@@ -14,7 +14,7 @@ export class CertificatsMedicalesComponent implements OnInit {
 
   text2: string;
   ngOnInit(): void {
-this.text2.concat(this.text2);
+
 
   }
 

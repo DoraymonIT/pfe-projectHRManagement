@@ -18,9 +18,9 @@ export class GradeComponent implements OnInit {
 cols: any[];
   ngOnInit(): void {
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'libelle', header: 'nom de grade' },
-      { field: 'nombreDePosteNonOccupé', header: 'nombre De Poste Non Occupé' },
+
+      { field: 'libelle', header: 'Grade' },
+      { field: 'nombreDePosteNonOccupé', header: 'Nombre De Poste Non Occupé' },
     ];
     this.gradeservice.findAll();
   }

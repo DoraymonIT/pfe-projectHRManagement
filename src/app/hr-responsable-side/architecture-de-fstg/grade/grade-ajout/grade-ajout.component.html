@@ -1,6 +1,11 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Formulaire pour Ajouter Un Grade</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 <form class="normal-form">
   <div class="container-fluid">
-    <h3 style="text-align : center">Ajouter Un Departement</h3>
+    <!-- <h3 style="text-align : center"></h3> -->
     <div class="controles-container">
 
       <mat-form-field>
@@ -10,7 +15,7 @@
         <input matInput placeholder="nombreDePosteNonOccupe*" [(ngModel)]="grade.nombreDePosteNonOccupe" [ngModelOptions]="{standalone: true}" type="number">
       </mat-form-field>
       <div class="button-row">
-        <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
+        <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Confirmer</button>
       </div>
     </div>
   </div>

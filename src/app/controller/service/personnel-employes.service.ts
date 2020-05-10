@@ -34,6 +34,7 @@ export class PersonnelEmployesService {
     this._employeInfo = employe;
   }
 
+
   public trouverEmployerParNomGrade(value: string) {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/' + value).subscribe(
       data => {
@@ -49,7 +50,7 @@ export class PersonnelEmployesService {
   public save() {
     this.http.post<number>(this._url + 'save', this.employe).subscribe(
       data => {
-        console.log(data);
+        console.log('hadi hya data li inseriina new'+data);
         this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
           timeOut: 1500,
           progressBar: true,
@@ -66,15 +67,15 @@ export class PersonnelEmployesService {
   public update() {
     this.http.post<number>(this._url + 'update', this.EditEmploye).subscribe(
       data => {
-        console.log(data);
-        this.toast.info(`${this.employe.fullName} modify employe to the database.`, 'employe Modified', {
+        console.log('this employe hya lli drna lih update'+data);
+        this.toast.info(`${this.EditEmploye.fullName} modify employe to the database.`, 'employe Modified', {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
         this.findAll();
-        this.employe = null;
+        this.EditEmploye = null;
       }, eror => {
         console.log('eroro',eror);
       }
@@ -109,7 +110,7 @@ export class PersonnelEmployesService {
   public findFonctionByDepartement(value: string) {
     this.http.get<Array<DepFonction>>('http://localhost:8080/gestionDesEmployee-Api/DepFonction/findByDepartemantNom/nomDepartemant/'+ value).subscribe(
       data => {
-        console.log('ha data' + data);
+        console.log('ha data dyal fonctions trouver a partir de dep' + data);
         this._depFonctions = data ;
         console.log('ha dep fonction'+this.depFonctions);
         }, eror => {
@@ -120,7 +121,7 @@ export class PersonnelEmployesService {
   public trouverEmployerParSonDoti(value: number) {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
-        console.log('ha data' + data);
+        console.log('ha data dyal find employe by son doti' + data);
         this._EditEmploye = data ;
         console.log('ha  employe' + this._EditEmploye);
       }, eror => {
@@ -131,7 +132,7 @@ export class PersonnelEmployesService {
   public trouverEmployerParNomDepartement(value: string) {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
       data => {
-       // console.log('ha data' + data);
+       console.log('ha data dyal employes dans un dep' + data);
         this._employes = data ;
         //console.log('ha  employe' + this._EditEmploye);
       }, eror => {
@@ -142,7 +143,7 @@ export class PersonnelEmployesService {
   public trouverSalaireParSonDoti(value: number) {
     this.http.get<SalaireEmploye>('http://localhost:8080/gestionDesEmployee-Api/SalaireEmploye/findByEmployeDoti/doti/' + value).subscribe(
       data => {
-        //console.log('ha data' + data);
+        console.log('ha data dyal salaires' + data);
         this._saleireEmolye = data ;
   //      console.log(this.saleireEmolye.assuranceMaladieObligatoire.montant)
     //    console.log(this.saleireEmolye.caisseMarocaineDeretrait.montant)
@@ -168,7 +169,7 @@ export class PersonnelEmployesService {
 public findAll() {
   this.http.get<Array<Employe>>(this._url + 'findAll').subscribe(
     data => {
-      console.log('ha data' + data);
+      console.log('ha data dyal all employes' + data);
       this._employes = data ;
     }, eror => {
       console.log('eroro',eror);

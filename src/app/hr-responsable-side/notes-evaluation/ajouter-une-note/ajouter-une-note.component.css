@@ -29,3 +29,6 @@ mat-radio-group mat-radio-button{
 #div3{ display: none;}
 #div4{ display: none;}
 #div5{ display: none;}
+a{
+  cursor: pointer;
+}

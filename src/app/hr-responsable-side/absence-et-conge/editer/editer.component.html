@@ -1,52 +1,56 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> editer/Ajouter un congée </span>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Editer / Ajouter un congée </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
   <div class="container-fluid">
+
     <div class="controles-container">
-      <div class="controles-container">
-        <mat-form-field>
-          <mat-label>trouver l'employer par son doti</mat-label>
-          <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.employe.doti">
-            <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Type de Congé</mat-label>
-          <mat-select [(ngModel)]="congeEmploye.congee.id" [ngModelOptions]="{standalone: true}" >
-            <mat-option *ngFor="let gr of typeConge" [value]="gr.id">{{gr.libelle }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-          <mat-form-field>
-          <label>Raison :*</label>
-          <mat-select [(ngModel)]="congeEmploye.raison" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.raison">
-            <mat-option value="true">True</mat-option>
-            <mat-option value="false">False</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <label>  etat :* </label>
-          <input matInput  [(ngModel)]="congeEmploye.etat" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.etat">
-        </mat-form-field>
-        <mat-form-field>
-          <label>date debut</label>
-          <input matInput [matDatepicker]="picker"
-                 [(ngModel)]="congeEmploye.dateDeDebut" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.dateDeDebut">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-          <mat-form-field>
-            <label>  periode :* </label>
-            <input matInput  [(ngModel)]="congeEmploye.periode" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.periode" type="number">
-          </mat-form-field>
-      </div>
-      <div class="button-row">
-        <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
-        <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
-        <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
-      </div>
+      <mat-form-field>
+        <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+        <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}"
+          [value]="congeEmploye.employe.doti">
+          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Type de Congé</mat-label>
+        <mat-select [(ngModel)]="congeEmploye.congee.id" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let gr of typeConge" [value]="gr.id">{{gr.libelle }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <label>Raison :*</label>
+        <mat-select [(ngModel)]="congeEmploye.raison" [ngModelOptions]="{standalone: true}"
+          [value]="congeEmploye.raison">
+          <mat-option value="true">True</mat-option>
+          <mat-option value="false">False</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <label> Etat :* </label>
+        <input matInput [(ngModel)]="congeEmploye.etat" [ngModelOptions]="{standalone: true}"
+          [value]="congeEmploye.etat">
+      </mat-form-field>
+      <mat-form-field>
+        <label>Date de debut de conge</label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="congeEmploye.dateDeDebut"
+          [ngModelOptions]="{standalone: true}" [value]="congeEmploye.dateDeDebut">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <label> Periode :* </label>
+        <input matInput [(ngModel)]="congeEmploye.periode" [ngModelOptions]="{standalone: true}"
+          [value]="congeEmploye.periode" type="number">
+      </mat-form-field>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Ajouter</button>
+      <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
+      <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
     </div>
   </div>
+
 </form>

@@ -1,132 +1,198 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailles sur un Employe </span>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class="container" style="padding-top:20px">
   <div class="row ">
     <div class="col-md-12">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>
-                info
+            <mat-panel-title> <span>
+                <i class="fas fa-user-circle    " ></i> Informations personnels</span>
             </mat-panel-title>
             <mat-panel-description>
-              info base
+              Cette partie contient les informations personneles de cet employe.
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700;">full name:</mat-label>
-            <mat-label>{{employeInfo.fullName}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">cin:</mat-label>
-            <mat-label>{{employeInfo.cin}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">doti:</mat-label>
-            <mat-label>{{employeInfo.doti}}</mat-label>
-          </div>
-          </div>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">situation Familiale:</mat-label>
-            <mat-label>{{employeInfo.situationFamiliale}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">adresse:</mat-label>
-            <mat-label>{{employeInfo.adresse}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">email:</mat-label>
-            <mat-label>{{employeInfo.email}}</mat-label>
-          </div>
-          </div>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">compte bancaire rib:</mat-label>
-            <mat-label>{{employeInfo.compteBancaireRib}}</mat-label>
-          </div>
-          <div class="col-md-4">
-            <mat-label style="margin-right: 10px; color: #ffa700">pays:</mat-label>
-            <mat-label>{{employeInfo.pays}}</mat-label>
-          </div>
-            <div class="col-md-4">
-              <mat-label style="margin-right: 10px; color: #ffa700">enfant:</mat-label>
-              <mat-label>{{employeInfo.enfants}}</mat-label>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+
+                <span>
+                  <h6>Nom Complet : {{employeInfo.fullName}} </h6>
+                </span>
+
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <h6>Carte National d identite : {{employeInfo.cin}}</h6>
+                </span>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <span>
+                  <h6>Numero d emploi ( DOTI) : {{employeInfo.doti}}</h6>
+                </span>
+
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <h6>Situation Familiale : {{employeInfo.situationFamiliale}}</h6>
+                </span>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <span>
+                  <h6>Enfants: {{employeInfo.enfants}}</h6>
+                </span>
+
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <h6>Email : {{employeInfo.email}}</h6>
+                </span>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <span>
+                  <h6>RIB de Bank : {{employeInfo.compteBancaireRib}}</h6>
+                </span>
+
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <h6>Pays : {{employeInfo.pays}}</h6>
+                </span>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <span>
+                  <h6>Adresse : {{employeInfo.adresse}}</h6>
+                </span>
+              </div>
+              <div class="col-md-6">
+
+              </div>
             </div>
           </div>
+
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-            department
+         <span> <i class="fas fa-building    "></i> Info sur son / sa departement</span>
             </mat-panel-title>
             <mat-panel-description>
-            description
+              Cette partie contient les informations sur le departement de cet employe.
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">libelle:</mat-label>
-              <mat-label>{{employeInfo.dep.nom}}</mat-label>
-            </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700"> full name  de chef departement:</mat-label>
-              <div *ngIf="employeInfo.sup == null; then thenBlock else elseBlock"></div>
-              <ng-template #thenBlock>pas de sup</ng-template>
-              <ng-template #elseBlock>{{employeInfo.sup.fullName}.</ng-template>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+
+                <span>
+                  <h6>Departement : {{employeInfo.dep.nom}}</h6>
+                </span>
+
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <h6>Nom de Chef de departement:
+                    <div *ngIf="employeInfo.sup == null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>pas de sup</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.sup.fullName}} </ng-template>
+                  </h6>
+                </span>
+
+              </div>
             </div>
           </div>
+
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              grade
+            <span> <i class="fas fa-level-up-alt    "></i> Grade</span>
             </mat-panel-title>
             <mat-panel-description>
-              description
+              Cette partie contient les informations sur le grade de cet employe.
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">grade libelle:</mat-label>
-              <mat-label>{{employeInfo.dernierGrade.grade.libelle}}</mat-label>
-            </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">date Affectation:</mat-label>
-              <mat-label>{{employeInfo.dernierGrade.dateDeAffectation}}</mat-label>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+
+                <span>
+                  <h6>Grade : {{employeInfo.dernierGrade.grade.libelle}} </h6>
+                </span>
+
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <h6>Date d affectation de ce grade: {{employeInfo.dernierGrade.dateDeAffectation}}</h6>
+                </span>
+
+              </div>
             </div>
           </div>
+
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Note
+             <span><i class="fas fa-sticky-note   "></i> Informations sur son / sa Note</span>
             </mat-panel-title>
             <mat-panel-description>
-              description
+              Cette partie contient les informations sur les notes d evaluation de cet employe.
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div class="row" style="font-size: medium; margin-bottom: 10px">
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">moyen:</mat-label>
-              <mat-label>{{employeInfo.dernierNote.moyenGeneral}}</mat-label>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <span>
+                  <h6>Moyen :
+                    <!-- {{employeInfo.dernierNote.moyenGeneral}} -->
+                  </h6>
+                </span>
+              </div>
+              <div class="col-md-6">
+                <span>
+                  <!-- <h6>Mention : {{employeInfo.dernierNote.mention}}</h6> -->
+                </span>
+              </div>
             </div>
-            <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #ffa700;">mention:</mat-label>
-              <mat-label>{{employeInfo.dernierNote.mention}}</mat-label>
+            <div class="row">
+              <div class="col-md-6">
+                <span>
+                  <h6>Date de dernier Note Saisie :
+                    <!-- {{employeInfo.dernierNote.date}} -->
+                  </h6>
+                </span>
+              </div>
+              <div class="col-md-6">
+              </div>
             </div>
           </div>
-          <div style="margin-left: 300px">
-              <mat-label style="margin-right: 10px; color: #ffa700;">date dernier Note:</mat-label>
-              <mat-label>{{employeInfo.dernierNote.date}}</mat-label>
-          </div>
+
         </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" (click)="Trouversalaireemploye(this.employeInfo.doti)">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+          (click)="Trouversalaireemploye(this.employeInfo.doti)">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Salaire
+            <span> <i class="fas fa-money-bill-wave    "></i> Informations sur le Salaire</span>
             </mat-panel-title>
             <mat-panel-description>
-              description
+              Cette partie contient les informations sur le salaire de cet employe en detailles.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">

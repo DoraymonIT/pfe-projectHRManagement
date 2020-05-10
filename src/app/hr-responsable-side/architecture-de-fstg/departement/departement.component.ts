@@ -17,8 +17,11 @@ export class DepartementComponent implements OnInit {
     this.departementservice.findAll();
     this.listeVide();
     this.cols = [
-      { field: 'id', header: 'id' },
+      // { field: 'id', header: 'id' },
+      // { field: 'chef.fullName', header: 'Chef de departement' },
+      // { field: '', header: '' },
       { field: 'nom', header: 'Nom Departement' },
+
     ];
   }
 //a faire delete departement edit departement

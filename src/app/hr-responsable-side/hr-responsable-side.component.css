@@ -1,5 +1,5 @@
 .side-barr{
-  height: 1000px;
+  height: 900px;
 }
 mat-sidenav{
   box-shadow: 2px 0px 10px 2px black;
@@ -14,7 +14,7 @@ mat-sidenav{
   cursor: pointer;
   background-color: rgb(131, 131, 131);
   color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   padding-left: 1px;
 }
 .box-shadow{
@@ -26,4 +26,7 @@ mat-sidenav{
 .mat-expansion-panel:not([class*=mat-elevation-z]){
   box-shadow:
 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12)
+}
+.span {
+  margin: auto;
 }

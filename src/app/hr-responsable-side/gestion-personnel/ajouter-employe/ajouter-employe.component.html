@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> Ajouter Un Employe </span>
+    <span class="span"> <i class="fas fa-user-plus    "></i> Formulaire pour ajouter un employe au FSTG </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -25,10 +25,11 @@
           <mat-form-field>
             <input matInput placeholder="Adresse" [(ngModel)]="employe.adresse" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
-          <mat-form-field>
+          <!-- Doti = "FSTG+CIN" -->
+          <!-- <mat-form-field>
             <input matInput placeholder="DoTi" [(ngModel)]="employe.doti" [ngModelOptions]="{standalone: true}">
 
-          </mat-form-field>
+          </mat-form-field> -->
           <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="Date De naissance"
               [(ngModel)]="employe.dateDeNaissance" [ngModelOptions]="{standalone: true}">
@@ -117,9 +118,9 @@
             </mat-radio-group>
           </div>
           <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Submit</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i class="fas fa-check-circle    "></i> Ajouter</button>
             <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
-            <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
+            <!-- <button mat-raised-button color="warn" type="cancel">Clear</button> -->
           </div>
         </div>
 
