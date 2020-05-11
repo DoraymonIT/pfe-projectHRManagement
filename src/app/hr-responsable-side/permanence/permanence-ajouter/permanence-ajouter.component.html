@@ -8,7 +8,7 @@
 
           <div class="controles-container">
             <mat-form-field>
-              <mat-label>Trouver l'employer par son doti</mat-label>
+              <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
               <mat-select [(ngModel)]="permanenceAdministrative.employe.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.permanenceAdministrative.employe.doti)">
                 <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
               </mat-select>
@@ -38,7 +38,7 @@
             </mat-form-field>
           </div>
           <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">Ajouter</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">  <i class="fas fa-check-circle    "></i> Ajouter</button>
             <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
             <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
           </div>

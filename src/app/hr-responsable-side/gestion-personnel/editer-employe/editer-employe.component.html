@@ -10,7 +10,7 @@
         <div class="controles-container">
           <div class="controles-container">
             <mat-form-field>
-              <mat-label>Trouver l'employer par en utilisant le doti</mat-label>
+              <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par en utilisant le doti</mat-label>
               <mat-select [(ngModel)]="EditEmploye.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.EditEmploye.doti)">
                 <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
               </mat-select>

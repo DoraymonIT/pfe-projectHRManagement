@@ -6,7 +6,7 @@
 <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
   <div class="card-body">
     <mat-form-field  style="width: 500px">
-      <input matInput [matDatepicker]="picker5" placeholder="Choisir une Date : yyyy-MM-dd" [(ngModel)]="this.note.date"
+      <input matInput [matDatepicker]="picker5" placeholder="Choisir une Date :" [(ngModel)]="this.note.date"
         [ngModelOptions]="{standalone: true}">
       <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
       <mat-datepicker #picker5></mat-datepicker>
@@ -18,7 +18,7 @@
         <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
       </mat-select>
     </mat-form-field><br>
-    <button mat-raised-button color="primary" type="submit" style="width: 500px;"  (click)="chercher()">Chercher</button>
+    <button mat-raised-button color="primary" type="submit" style="width: 500px;"  (click)="chercher()"> <i class="fas fa-search    "></i>  Chercher</button>
   </div>
 </div>
 <mat-toolbar>

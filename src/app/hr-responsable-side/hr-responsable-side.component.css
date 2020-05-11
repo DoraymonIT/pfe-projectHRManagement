@@ -14,7 +14,7 @@ mat-sidenav{
   cursor: pointer;
   background-color: rgb(131, 131, 131);
   color: white;
-  border-radius: 2px;
+  border-radius: 1px;
   padding-left: 1px;
 }
 .box-shadow{
