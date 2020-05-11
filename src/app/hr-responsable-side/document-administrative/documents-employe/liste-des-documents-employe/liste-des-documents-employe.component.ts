@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DemaneDeDocument} from '../../../../controller/model/demane-de-document.model';
+import {DocumentServiceService} from '../../../../controller/service/document-service.service';
 
 @Component({
   selector: 'app-liste-des-documents-employe',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-des-documents-employe.component.css']
 })
 export class ListeDesDocumentsEmployeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private documentService: DocumentServiceService) {
   }
 
+  ngOnInit() {
+    this.documentService.findAllDemandeNonTraite();
+  }
+  get documents(): Array<DemaneDeDocument> {
+    return this.documentService.documents;
+  }
+public  deleteByReference(demande: DemaneDeDocument){
+    this.documentService.deleteByReference(demande);
+  }
 }
