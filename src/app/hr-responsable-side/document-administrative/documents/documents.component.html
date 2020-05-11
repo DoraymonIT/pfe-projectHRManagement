@@ -1,6 +1,25 @@
-<mat-tab-group  style="width: 100%;">
+<mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="liste des documents" style="width: 25px" tabindex="1">
-    <app-liste-des-document></app-liste-des-document>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+      <div class="card-header"><h1 style="text-align: center"> liste des document géree par application </h1></div>
+      <table class="table table-hover table-striped" style="color: wheat">
+        <thead>
+        <th>id</th>
+        <th>libelle</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of typeDocuments">
+          <td>{{c.id}}</td>
+          <td>{{c.libelle}}</td>
+          <td>
+            <button class="btn btn-danger btn-sm fa  fa-check-square" (click)="editUnTypeDeDocument(c)"></button>
+            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </mat-tab>
   <mat-tab label="Ajouter Un Document" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">

@@ -12,7 +12,6 @@ export class Employe {
   fullName: string;
   cin: string;
   email: string;
-  // grade: number;
   dateEntree: Date;
   fonction: Fonction;
   dep: Departement;

@@ -245,7 +245,6 @@ public findAll() {
       this._employeInfo = new Employe();
       this._employeInfo.dernierGrade = new GradeEmploye();
       this._employeInfo.dernierGrade.grade = new Grade();
-      this._employeInfo.dernierGrade.employe = new Employe();
       this._employeInfo.dernierNote = new NoteGeneraleDeAnnee();
       this._employeInfo.dernierNote.employe = new Employe();
       this._employeInfo.sup = new Employe();

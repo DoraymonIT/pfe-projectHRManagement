@@ -84,6 +84,7 @@ import { AjouterUnDocumentsEmployeComponent } from './hr-responsable-side/docume
 import { ListeDesDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/liste-des-documents-employe/liste-des-documents-employe.component';
 import { ListeDesDemandesDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/liste-des-demandes-documents-employe/liste-des-demandes-documents-employe.component';
 import { DocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/documents-employe.component';
+import { ListeAvancementNonTraiteComponent } from './hr-responsable-side/avancement/liste-avancement-non-traite/liste-avancement-non-traite.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { DocumentsEmployeComponent } from './hr-responsable-side/document-admini
     AjouterUnDocumentsEmployeComponent,
     ListeDesDocumentsEmployeComponent,
     ListeDesDemandesDocumentsEmployeComponent,
-    DocumentsEmployeComponent
+    DocumentsEmployeComponent,
+    ListeAvancementNonTraiteComponent
   ],
   imports: [
     BrowserModule,
