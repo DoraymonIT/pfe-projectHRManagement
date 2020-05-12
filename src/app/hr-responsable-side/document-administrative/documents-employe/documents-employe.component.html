@@ -1,13 +1,13 @@
 <mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="liste des demandes des documents" style="width: 25px" tabindex="1">
+  <mat-tab label="LISTE DE DEMANDES DE DOCUMENTS" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-      <div class="card-header"><h1 style="text-align: center"> liste des demandes non tarité </h1></div>
+      <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des demandes non tarité </h1></div>
       <table class="table table-hover table-striped" style="color: wheat">
         <thead>
-        <th>employe</th>
-        <th>type de document</th>
-        <th>date de demande</th>
-        <th>maniere de retrait</th>
+        <th>Employe</th>
+        <th>Type de document</th>
+        <th>Date de demande</th>
+        <th>Maniere de retrait</th>
         <th style="padding-left: 40px">Action</th>
         </thead>
         <tbody>
@@ -25,12 +25,12 @@
         </tbody>
       </table>
     </div>  </mat-tab>
-  <mat-tab label="liste des demandes de document d'un employe" style="width: 25%;" tabindex="2">
+  <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">
       <app-liste-des-demandes-documents-employe></app-liste-des-demandes-documents-employe>
     </div>
   </mat-tab>
-  <mat-tab label="ajouter un demandes a un employe" style="width: 25%;" tabindex="3">
+  <mat-tab label="AFFECTER UNE DEMANDE A UN EMPLOYE" style="width: 25%;" tabindex="3">
     <div class="example-large-box mat-elevation-z4">
       <app-ajouter-un-documents-employe></app-ajouter-un-documents-employe>
     </div>

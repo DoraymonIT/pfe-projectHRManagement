@@ -89,6 +89,12 @@ import {AjouterUnDocumentComponent} from './hr-responsable-side/document-adminis
 import { AjouterUnDocumentsEmployeComponent } from './hr-responsable-side/document-administrative/documents-employe/ajouter-un-documents-employe/ajouter-un-documents-employe.component';
 
 import { ListeAvancementNonTraiteComponent } from './hr-responsable-side/avancement/liste-avancement-non-traite/liste-avancement-non-traite.component';
+import { PrixComponent } from './hr-responsable-side/certificats-medicales/prix/prix.component';
+import { FormationComponent } from './hr-responsable-side/certificats-medicales/formation/formation.component';
+import { PunitionComponent } from './hr-responsable-side/certificats-medicales/punition/punition.component';
+import { AjouterPrixComponent } from './hr-responsable-side/certificats-medicales/prix/ajouter-prix/ajouter-prix.component';
+import { AjouterPunitionComponent } from './hr-responsable-side/certificats-medicales/punition/ajouter-punition/ajouter-punition.component';
+import { AjouterFormationComponent } from './hr-responsable-side/certificats-medicales/formation/ajouter-formation/ajouter-formation.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +147,19 @@ import { ListeAvancementNonTraiteComponent } from './hr-responsable-side/avancem
     DocumentsEmployeComponent,
     AjouterUnDocumentsEmployeComponent,
 
-    ListeAvancementNonTraiteComponent
+    ListeAvancementNonTraiteComponent,
+
+    PrixComponent,
+
+    FormationComponent,
+
+    PunitionComponent,
+
+    AjouterPrixComponent,
+
+    AjouterFormationComponent,
+
+    AjouterPunitionComponent
   ],
   imports: [
     BrowserModule,

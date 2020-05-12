@@ -20,7 +20,7 @@ cols: any[];
     this.cols = [
 
       { field: 'libelle', header: 'Grade' },
-      { field: 'nombreDePosteNonOccupé', header: 'Nombre De Poste Non Occupé' },
+      { field: 'nombreDePosteNonOccupe', header: 'Nombre De Poste Non Occupé' },
     ];
     this.gradeservice.findAll();
   }

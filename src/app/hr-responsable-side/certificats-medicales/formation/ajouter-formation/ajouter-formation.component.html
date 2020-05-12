@@ -1,0 +1,60 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Formulaire pour affecter une formation a un employe
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-select [(ngModel)]="formationEmploye.employe.doti" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Attestation</mat-label>
+            <mat-select [(ngModel)]="formationEmploye.attestation" [ngModelOptions]="{standalone: true}">
+              <mat-option value="coaching">Formation en coaching</mat-option>
+              <mat-option value="developpement">Formation en developpement</mat-option>
+              <mat-option value="Autres">Autres</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Etablissement" [(ngModel)]="formationEmploye.etablissement"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Ville" [(ngModel)]="formationEmploye.ville"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <input matInput placeholder="Domaine" [(ngModel)]="formationEmploye.domaine"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Mention" [(ngModel)]="formationEmploye.mention"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [matDatepicker]="pi5" placeholder="Date de Formation" [(ngModel)]="formationEmploye.annee"
+              [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
+            <mat-datepicker #pi5></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i
+              class="fas fa-check-circle    "></i> Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

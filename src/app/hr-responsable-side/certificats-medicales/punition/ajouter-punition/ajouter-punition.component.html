@@ -1,0 +1,54 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Formulaire pour affecter une punition a un employe
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-select [(ngModel)]="punitionEmploye.employe.doti" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label> <i class="fas fa-user-tie    "></i> Violation </mat-label>
+            <mat-select [(ngModel)]="punitionEmploye.punition.libelle" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let p of punitions" [value]="p.libelle">{{p.libelle }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <mat-form-field>
+            <input matInput placeholder="Violation ">
+          </mat-form-field> -->
+          <mat-form-field>
+            <input matInput [matDatepicker]="pi5" placeholder="Date de Punition"
+            [(ngModel)]="punitionEmploye.dateObtenation" [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
+            <mat-datepicker #pi5></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="controles-container">
+          <!--
+          <mat-form-field>
+            <input matInput placeholder="Periode de punition " type="number"  >
+          </mat-form-field> -->
+          <mat-label></mat-label>
+          <mat-form-field>
+            <mat-label>Remarques , Commentaires ou Description</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+          </mat-form-field>
+        </div>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i
+              class="fas fa-check-circle    "></i> Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

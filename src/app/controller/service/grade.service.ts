@@ -10,7 +10,8 @@ import {Employe} from '../model/employe.model';
   providedIn: 'root'
 })
 export class GradeService {
-
+  constructor(private http: HttpClient,
+    private toast: ToastrService) { }
 
   get gradesEployess(): Array<GradeEmploye> {
     if(this._gradesEployess == null){
@@ -33,8 +34,7 @@ export class GradeService {
   private _gradesEployess: Array<GradeEmploye>;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Grade/';
-  constructor(private http: HttpClient,
-              private toast: ToastrService) { }
+
 
 public findAll() {
   this.http.get<Array<Grade>>(this._url + 'findAll').subscribe(

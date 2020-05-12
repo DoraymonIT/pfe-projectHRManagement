@@ -1,17 +1,17 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
-  <mat-tab label="liste Des Grade Non Traite" style="width: 25px" tabindex="1">
+  <mat-tab label="LISTE DE GRADE NON TRAITES" style="width: 25px" tabindex="1">
     <div class="example-large-box mat-elevation-z4">
       <div class="example-small-box mat-elevation-z4">
         <div class="example-large-box mat-elevation-z4">
           <div class="container-fluid" style="padding-top: 10px;">
             <div class="row">
               <div class="col-md-12">
-                <p-table #dt [columns]="cols" [value]="gradeNonTraite" dataKey="id" [paginator]="true" [rows]="5">
+                <p-table #dt [columns]="cols" [value]="gradeNonTraite" dataKey="id" [paginator]="true" [rows]="15">
                   <ng-template pTemplate="caption">
-                    liste des congé
+                  Donnees a propos de Avancement des employes
                     <div style="text-align: right">
                       <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                      <input type="text" pInputText size="50" placeholder="Global Filter"
+                      <input type="text" pInputText size="50" placeholder="Ex : Ayoub sa3sa3 , Hamza Zooz,..."
                              (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                     </div>
                   </ng-template>
@@ -25,7 +25,7 @@
                         </p-sortIcon>
                       </th>
                     </tr>
-                    <p-progressSpinner *ngIf="listeVide()"  style="margin-left:780px ;"></p-progressSpinner>
+                    <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                   </ng-template>
                   <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
                     <tr>
@@ -51,18 +51,18 @@
                               <div class="col-md-12">
                                 <mat-accordion>
                                   <mat-expansion-panel>
-                                    <h1> rapport de grade</h1>
+                                    <h1> Rapport de grade</h1>
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        employe information
+                                        Employe information
                                       </mat-panel-title>
                                       <mat-panel-description>
-                                        info base
+                                        Info de base
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
                                     <div class="row" style="font-size: medium; margin-bottom: 10px">
                                       <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700;">fullName:</mat-label>
+                                        <mat-label style="margin-right: 10px; color: #ffa700;">FullName:</mat-label>
                                         <mat-label>{{rapportEvaluation.employe.fullName}}</mat-label>
                                       </div>
                                       <div class="col-md-4">
@@ -92,10 +92,10 @@
                                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        grade
+                                        Grade
                                       </mat-panel-title>
                                       <mat-panel-description>
-                                        description
+                                        Description
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
                                     <div class="row" style="font-size: medium; margin-bottom: 10px">
@@ -112,13 +112,13 @@
                                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        note Generale
+                                        Note Generale
                                       </mat-panel-title>
                                       <mat-panel-description>
                                         description
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des document géree par application </h1></div>
+                                    <div class="card-header"><h1 style="text-align: center"> liste des notes en details de cet employe</h1></div>
                                     <table class="table table-hover table-striped" style="color: wheat">
                                       <thead>
                                       <th>id</th>
@@ -139,13 +139,13 @@
                                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        formation
+                                        Formation
                                       </mat-panel-title>
                                       <mat-panel-description>
                                         description
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des document géree par application </h1></div>
+                                    <div class="card-header"><h1 style="text-align: center"> liste des formations de cet employe</h1></div>
                                     <table class="table table-hover table-striped" style="color: wheat">
                                       <thead>
                                       <th>id</th>
@@ -172,13 +172,13 @@
                                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        prix
+                                        Prix
                                       </mat-panel-title>
                                       <mat-panel-description>
                                         description
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des document géree par application </h1></div>
+                                    <div class="card-header"><h1 style="text-align: center"> liste des prix de cet employe </h1></div>
                                     <table class="table table-hover table-striped" style="color: wheat">
                                       <thead>
                                       <th>id</th>
@@ -197,13 +197,13 @@
                                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        punition
+                                        Punition
                                       </mat-panel-title>
                                       <mat-panel-description>
                                         description
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des document géree par application </h1></div>
+                                    <div class="card-header"><h1 style="text-align: center"> liste des punitions de cet employe</h1></div>
                                     <table class="table table-hover table-striped" style="color: wheat">
                                       <thead>
                                       <th>id</th>
@@ -222,13 +222,13 @@
                                   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                       <mat-panel-title>
-                                        note Generale / Remarque
+                                        Note Generale / Remarque
                                       </mat-panel-title>
                                       <mat-panel-description>
                                         description
                                       </mat-panel-description>
                                     </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des document géree par application </h1></div>
+                                    <div class="card-header"><h1 style="text-align: center"> liste des notes de cet employe</h1></div>
                                     <table class="table table-hover table-striped" style="color: wheat">
                                       <thead>
                                       <th>moyen</th>
@@ -261,7 +261,7 @@
     </div>
 
   </mat-tab>
-  <mat-tab label="historique avancement de chaque employe" style="width: 25%;" tabindex="2">
+  <mat-tab label="HISTORIQUE D AVANCEMENT DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">
       <app-liste-avancement-non-traite></app-liste-avancement-non-traite>
     </div>

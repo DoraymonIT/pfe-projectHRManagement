@@ -3,14 +3,21 @@
     <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailles sur un Employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
+
 <div class="container" style="padding-top:20px">
+  <mat-form-field style="padding-bottom:50px;width:100%">
+    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
+    <mat-select >
+      <mat-option ></mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="row ">
     <div class="col-md-12">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title> <span>
-                <i class="fas fa-user-circle    " ></i> Informations personnels</span>
+                <i class="fas fa-user-circle    "></i> Informations personnels</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations personneles de cet employe.
@@ -90,7 +97,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-         <span> <i class="fas fa-building    "></i> Info sur son / sa departement</span>
+              <span> <i class="fas fa-building    "></i> Info sur son / sa departement</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations sur le departement de cet employe.
@@ -122,7 +129,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-            <span> <i class="fas fa-level-up-alt    "></i> Grade</span>
+              <span> <i class="fas fa-level-up-alt    "></i> Grade</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations sur le grade de cet employe.
@@ -150,7 +157,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-             <span><i class="fas fa-sticky-note   "></i> Informations sur son / sa Note</span>
+              <span><i class="fas fa-sticky-note   "></i> Informations sur son / sa Note</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations sur les notes d evaluation de cet employe.
@@ -167,7 +174,9 @@
               </div>
               <div class="col-md-6">
                 <span>
-                  <!-- <h6>Mention : {{employeInfo.dernierNote.mention}}</h6> -->
+                  <h6>Mention :
+                     <!-- {{employeInfo.dernierNote.mention}} -->
+                    </h6>
                 </span>
               </div>
             </div>
@@ -189,7 +198,7 @@
           (click)="Trouversalaireemploye(this.employeInfo.doti)">
           <mat-expansion-panel-header>
             <mat-panel-title>
-            <span> <i class="fas fa-money-bill-wave    "></i> Informations sur le Salaire</span>
+              <span> <i class="fas fa-money-bill-wave    "></i> Informations sur le Salaire</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations sur le salaire de cet employe en detailles.
@@ -243,6 +252,31 @@
               <mat-label>{{saleireEmolye.assuranceMaladieObligatoire.montant}}</mat-label>
             </div>
           </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        (click)="TrouverFPP(this.employeInfo.doti)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span><i class="fas fa-bookmark"></i> Formation, Prix Et Punition</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              Cette partie contient les informations sur les formations,prix et punitions de cet employe.
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6" *ngFor="let f of formations">
+                <h3>Formation</h3>
+                <!---Idem pour punition et prix j pense -->
+{{f.annee}} <br> {{f.attestation}} <br> {{f.etablissement}} <br> {{f.mention}} <br> {{f.ville}}
+              </div>
+              <div class="col-md-6">
+
+              </div>
+            </div>
+
+          </div>
+
         </mat-expansion-panel>
       </mat-accordion>
     </div>

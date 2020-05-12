@@ -69,7 +69,8 @@ const routes: Routes = [
         outlet: 'un'
       }
       , {
-        path: 'certiicatsMedicales',
+        // blasst mandiru certificats ghandiru punition w formation w prix blasstha hh
+        path: 'FPP',
         component: CertificatsMedicalesComponent,
         outlet: 'un'
       } , {

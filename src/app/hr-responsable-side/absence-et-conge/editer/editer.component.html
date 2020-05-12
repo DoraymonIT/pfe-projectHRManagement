@@ -11,13 +11,13 @@
         <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
         <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.employe.doti">
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti }}</mat-option>
+          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Type de Congé</mat-label>
-        <mat-select [(ngModel)]="congeEmploye.congee.id" [ngModelOptions]="{standalone: true}">
-          <mat-option *ngFor="let gr of typeConge" [value]="gr.id">{{gr.libelle }}</mat-option>
+        <mat-select [(ngModel)]="congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}"  [value]="congeEmploye.congee.libelle">
+          <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>

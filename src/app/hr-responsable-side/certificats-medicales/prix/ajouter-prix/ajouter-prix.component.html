@@ -1,0 +1,43 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Formulaire pour ajouter un prix a un employe </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-select [(ngModel)]="prixEmploye.employe.doti" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label> Prix </mat-label>
+            <mat-select [(ngModel)]="prixEmploye.prix.libelle" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let p of ps" [value]="p.libelle">{{p.libelle}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <mat-form-field>
+            <input matInput placeholder="Prix "  >
+          </mat-form-field> -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <input matInput [matDatepicker]="pi5" placeholder="Date d Obtention"
+            [(ngModel)]="prixEmploye.dateDeObtenation" [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
+            <mat-datepicker #pi5></mat-datepicker>
+          </mat-form-field>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" class="btn-block"  (click)="save()" > <i class="fas fa-check-circle "></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>

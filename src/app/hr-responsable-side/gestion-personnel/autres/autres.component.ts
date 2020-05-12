@@ -8,6 +8,8 @@ import {NoteGeneraleDeAnnee} from '../../../controller/model/note-generale-de-an
 import {SalaireEmploye} from '../../../controller/model/salaire-employe.model';
 import {Emoluments} from '../../../controller/model/emoluments.model';
 import {Revenu} from '../../../controller/model/revenu.model';
+import { FormationServiceService } from 'src/app/controller/service/formation-service.service';
+import { Formation } from 'src/app/controller/model/formation.model';
 
 @Component({
   selector: 'app-autres',
@@ -16,7 +18,7 @@ import {Revenu} from '../../../controller/model/revenu.model';
 })
 export class AutresComponent implements OnInit {
 
-  constructor(private employeService: PersonnelEmployesService) { }
+  constructor(private employeService: PersonnelEmployesService,private fs: FormationServiceService) { }
   panelOpenState = false;
   ngOnInit(): void {
   }
@@ -28,5 +30,12 @@ export class AutresComponent implements OnInit {
   }
   public Trouversalaireemploye(value: number){
     this.employeService.trouverSalaireParSonDoti(value);
+  }
+  public TrouverFPP(x : number){
+return this.fs.findFormationByDoti(x);
+  }
+  get formations(): Array<Formation> {
+
+    return this.fs.formations;
   }
 }

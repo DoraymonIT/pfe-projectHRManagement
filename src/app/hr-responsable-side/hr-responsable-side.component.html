@@ -2,11 +2,12 @@
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 289px;">
     <mat-list role="list">
       <mat-list-item  role="listitem" >
-       <span style="text-align:center" class="span"> <i class="fas fa-school" style="font-size: 45px;text-align: center;padding-bottom: 60px;"></i></span>
+       <span style="text-align:center ;color:#b0bec5"  class="span"> <i class="fas fa-school" style="font-size: 45px;text-align: center;"></i>
+      <br> FSTG Marrakech </span>
       </mat-list-item>
 
 
-      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list1" role="listitem">
+      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem" style="margin-top: 35px; margin-bottom:4px;">
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -25,9 +26,9 @@
       </mat-list-item>
       <mat-divider></mat-divider>
 
-
-      <mat-list-item [routerLink]="[{ outlets: { un: ['certiicatsMedicales'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-hospital"></i> Certificats Medicales</h6>
+     <!-- // blasst mandiru certificats ghandiru punition w formation w prix blasstha hh-->
+      <mat-list-item [routerLink]="[{ outlets: { un: ['FPP'] } }]" class="list1" role="listitem">
+        <h6> <i class="fas fa-bookmark" ></i> Formation,Prix et Punition</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
 
@@ -59,7 +60,7 @@
       <mat-list-item class="list1" role="listitem" [routerLink]="['']" routerLinkActive="active">
         <h6><i class="fas fa-sign-out-alt"></i> Se Deconnecter</h6>
       </mat-list-item>
-      <mat-divider></mat-divider>
+      <!-- <mat-divider></mat-divider> -->
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,1 +1,63 @@
-<p>ajouter-un-documents-employe works!</p>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-user-plus    "></i> Formulaire pour ajouter une demande de document d une employe </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form class="normal-form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="controles-container">
+          <mat-form-field>
+            <mat-label> <i class="fas fa-user-tie    "></i> L'employer concerne</mat-label>
+            <mat-select >
+              <mat-option >Ahmed</mat-option>
+              <mat-option >Ahmed</mat-option>
+              <mat-option >Ahmed</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Type de document</mat-label>
+
+            <mat-select >
+              <mat-option >Attestation de salaire</mat-option>
+              <mat-option >Attestation de travail</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="controles-container">
+        <!---Hnaya raah ghandwzzu date de demande - new Date -->
+          <!-- <mat-form-field>
+            <input matInput [matDatepicker]="pi5" placeholder="Date de demande"
+                  >
+            <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
+            <mat-datepicker #pi5></mat-datepicker>
+          </mat-form-field> -->
+          <mat-form-field>
+            <mat-label>Maniere de retrait</mat-label>
+            <mat-select >
+              <mat-option value="1">En papier</mat-option>
+              <mat-option value="2">Par Gmail</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Etat" value="isLoading..." disabled >
+
+          </mat-form-field>
+
+
+
+          </div>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" class="btn-block" > <i class="fas fa-check-circle    "></i> Ajouter</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</form>

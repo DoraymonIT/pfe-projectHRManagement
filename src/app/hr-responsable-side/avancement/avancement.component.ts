@@ -25,10 +25,10 @@ export class AvancementComponent implements OnInit {
   cols: any[];
   ngOnInit(): void {
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'doti', header: 'employe' },
-      { field: 'grade.libelle', header: 'libelle grade' },
-      { field: 'dateDeAffectation', header: 'date Affectation '},
+      // { field: 'id', header: 'id' },
+      { field: 'doti', header: 'Employe' },
+      { field: 'grade.libelle', header: 'libelle du grade' },
+      { field: 'dateDeAffectation', header: 'Date Affectation '},
     ];
     this.gradeService.findAllGradeNonTraite();
   }

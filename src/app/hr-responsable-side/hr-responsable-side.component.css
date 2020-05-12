@@ -17,6 +17,18 @@ mat-sidenav{
   border-radius: 1px;
   padding-left: 1px;
 }
+.list2:hover{
+  cursor: pointer;
+  background-color: rgb(131, 131, 131);
+  color: white;
+  border-radius: 1px;
+  padding-left: 1px;
+}
+.list1{
+  margin-bottom:4px;
+  margin-top:4px;
+
+}
 .box-shadow{
   top: 0;
   z-index: 5;

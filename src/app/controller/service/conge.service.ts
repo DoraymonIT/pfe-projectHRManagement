@@ -29,7 +29,7 @@ private _filterrsult: TypeCongee;
   public findAll() {
     this.http.get<Array<TypeCongee>>('http://localhost:8080/gestionDesEmployee-Api/CongeeService/findAll').subscribe(
       data => {
-        console.log('ha data dyal conges' + data);
+        console.log('ha data dyal types de conges' + data);
         this._typeConge = data;
         //console.log('ha  employe' + this._EditEmploye);
       }, eror => {
@@ -76,6 +76,7 @@ private _filterrsult: TypeCongee;
           positionClass: 'toast-top-right'
         });
         this.conges.push(this.cloneConge(this.congeEmploye));
+        console.log('data lli b7ra d5lty dyal conge hhh'+data);
         this.congeEmploye = null;
       }, eror => {
         console.log('eroro', eror);
