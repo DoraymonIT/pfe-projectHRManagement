@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DemaneDeDocument} from '../../../../controller/model/demane-de-document.model';
-import {DocumentServiceService} from '../../../../controller/service/document-service.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DemaneDeDocument } from '../../../../controller/model/demane-de-document.model';
+import { DocumentServiceService } from '../../../../controller/service/document-service.service';
 
 @Component({
   selector: 'app-liste-des-documents-employe',
@@ -10,14 +10,15 @@ import {DocumentServiceService} from '../../../../controller/service/document-se
 export class ListeDesDocumentsEmployeComponent implements OnInit {
   constructor(private documentService: DocumentServiceService) {
   }
-
   ngOnInit() {
-    this.documentService.findAllDemandeNonTraite();
+
   }
-  get documents(): Array<DemaneDeDocument> {
-    return this.documentService.documents;
+  get documentsByDoti(): Array<DemaneDeDocument> {
+    return this.documentService.documentsByDoti;
   }
-public  deleteByReference(demande: DemaneDeDocument){
-    this.documentService.deleteByReference(demande);
+
+  public listeVide2(): boolean {
+    //    console.log(this.employes.length);
+    return this.documentsByDoti.length < 1 ? true : false;
   }
 }

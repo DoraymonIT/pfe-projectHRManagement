@@ -25,6 +25,8 @@ export class PersonnelEmployesService {
   private _indice: number;
   private _employeInfo: Employe;
   private _saleireEmolye: SalaireEmploye;
+  private _employesByDep : Array<Employe>;
+  private _employesByGrade : Array<Employe>;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Employee/';
   constructor(private http: HttpClient,
@@ -39,7 +41,8 @@ export class PersonnelEmployesService {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/' + value).subscribe(
       data => {
         // console.log('ha data' + data);
-        this._employes = data ;
+        console.log('ha data dyal employes qui ont m grade' + data);
+        this.employesByGrade = data ;
         //console.log('ha  employe' + this._EditEmploye);
       }, eror => {
         console.log('eroro', eror);
@@ -133,8 +136,8 @@ export class PersonnelEmployesService {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
       data => {
        console.log('ha data dyal employes dans un dep' + data);
-        this._employes = data ;
-        //console.log('ha  employe' + this._EditEmploye);
+        this.employesByDep = data ;
+
       }, eror => {
         console.log('eroro', eror);
       }
@@ -189,6 +192,40 @@ public findAll() {
 
   set employe(value: Employe) {
     this._employe = value;
+  }
+  get employesByDep(): Array<Employe> {
+    if (this._employesByDep == null) {
+      this._employesByDep = new Array<Employe>();
+      this._employesByDep.forEach(data => {
+           data = new Employe();
+           data.dep = new Departement();
+           data.dernierGrade = new GradeEmploye();
+           data.dernierGrade.grade = new Grade();
+           data.sup = new Employe();
+    });
+  }
+    return this._employesByDep;
+}
+set employesByDep(value: Array<Employe>) {
+  this._employesByDep = value;
+}
+
+  get employesByGrade(): Array<Employe> {
+    if (this._employesByGrade == null) {
+      this._employesByGrade = new Array<Employe>();
+      this._employesByGrade.forEach(data => {
+           data = new Employe();
+           data.dep = new Departement();
+           data.dernierGrade = new GradeEmploye();
+           data.dernierGrade.grade = new Grade();
+           data.sup = new Employe();
+    });
+  }
+    return this._employesByGrade;
+}
+
+   set employesByGrade(value: Array<Employe>) {
+    this._employesByGrade = value;
   }
   get employes(): Array<Employe> {
     if (this._employes == null) {

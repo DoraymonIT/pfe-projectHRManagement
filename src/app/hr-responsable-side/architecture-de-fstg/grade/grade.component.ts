@@ -5,6 +5,10 @@ import {Employe} from '../../../controller/model/employe.model';
 import {Departement} from '../../../controller/model/departement.model';
 import {GradeEmploye} from '../../../controller/model/grade-employe.model';
 import {PersonnelEmployesService} from '../../../controller/service/personnel-employes.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ListeDesJoursFriesComponent } from '../../absence-et-conge/liste-des-jours-fries/liste-des-jours-fries.component';
+import { GradeListeComponent } from './grade-liste/grade-liste.component';
+
 
 @Component({
   selector: 'app-grade',
@@ -14,7 +18,7 @@ import {PersonnelEmployesService} from '../../../controller/service/personnel-em
 export class GradeComponent implements OnInit {
 
   constructor(private gradeservice: GradeService,
-              private employeService: PersonnelEmployesService) { }
+              private employeService: PersonnelEmployesService,private dialog :MatDialog) { }
 cols: any[];
   ngOnInit(): void {
     this.cols = [
@@ -36,5 +40,15 @@ cols: any[];
   }
   public trouverEmployerParNomGrade(grade: Grade){
     this.employeService.trouverEmployerParNomGrade(grade.libelle);
+  }
+  trouverEmployesParGradeDialog(grade: Grade) {
+    this.employeService.trouverEmployerParNomGrade(grade.libelle);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "95%";
+    dialogConfig.height = "80%";
+    this.dialog.open(GradeListeComponent,
+      dialogConfig);
   }
 }

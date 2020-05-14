@@ -95,6 +95,8 @@ import { PunitionComponent } from './hr-responsable-side/certificats-medicales/p
 import { AjouterPrixComponent } from './hr-responsable-side/certificats-medicales/prix/ajouter-prix/ajouter-prix.component';
 import { AjouterPunitionComponent } from './hr-responsable-side/certificats-medicales/punition/ajouter-punition/ajouter-punition.component';
 import { AjouterFormationComponent } from './hr-responsable-side/certificats-medicales/formation/ajouter-formation/ajouter-formation.component';
+import { DialogDepComponent } from './hr-responsable-side/architecture-de-fstg/departement/dialog-dep/dialog-dep.component';
+
 
 @NgModule({
   declarations: [
@@ -159,7 +161,10 @@ import { AjouterFormationComponent } from './hr-responsable-side/certificats-med
 
     AjouterFormationComponent,
 
-    AjouterPunitionComponent
+    AjouterPunitionComponent,
+
+    DialogDepComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -221,6 +226,6 @@ import { AjouterFormationComponent } from './hr-responsable-side/certificats-med
     PersonnelEmployesService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AjouterEmployeComponent]
+  entryComponents: [ListeDesJoursFriesComponent,GradeListeComponent,DialogDepComponent,ListeDesDocumentsEmployeComponent]
 })
 export class AppModule { }

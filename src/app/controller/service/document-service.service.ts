@@ -10,6 +10,7 @@ import {Employe} from '../model/employe.model';
 })
 export class DocumentServiceService {
 private _documents: Array<DemaneDeDocument>;
+private _documentsByDoti: Array<DemaneDeDocument>;
 private _typeDocuments: Array<TypeDocument>;
 private _document: DemaneDeDocument;
 private _typeDocument: TypeDocument;
@@ -26,6 +27,7 @@ private _typeDocument: TypeDocument;
           positionClass: 'toast-top-right'
         });
         this.documents.push(this.cloneDocumentEmploye(this.document));
+        this.findAll();
         this.document = null;
       }, eror => {
         console.log('eroro',eror);
@@ -36,7 +38,7 @@ private _typeDocument: TypeDocument;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/TypeDocument/save', this.typeDocument).subscribe(
       data => {
         console.log(data);
-        this.toast.success(`${this.typeDocument.libelle} add  document  to the database.`, '  document  Added', {
+        this.toast.success(`${this.typeDocument.libelle} add type  document  to the database.`, '  document  Added', {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -96,13 +98,9 @@ private _typeDocument: TypeDocument;
   public findAllDemandeNonTraite() {
     this.http.get<Array<DemaneDeDocument>>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/findDemandeNonTraite').subscribe(
       data => {
-        //console.log('ha data dial permanence' + data);
+
         this.documents = data ;
-        //console.log('ha data dial permanence2' + this._perm.length);
-        // this._perm.forEach(per => {
-        //   console.log('ha howa start date tani:' + per.date);
-        // console.log('ha howa start fullname tani:' + per.employe.fullName);
-        //});
+
       }, eror => {
         console.log('eroro', eror);
       });
@@ -117,6 +115,19 @@ private _typeDocument: TypeDocument;
   }
   return this._documents;
   }
+  get documentsByDoti(): Array<DemaneDeDocument> {
+    if(this._documentsByDoti == null){
+      this._documentsByDoti = new Array<DemaneDeDocument>();
+      this._documentsByDoti.forEach(document =>{
+        document.employe = new Employe();
+        document.typeDeDocument = new TypeDocument();
+      });
+    }
+    return this._documentsByDoti;
+    }
+    set documentsByDoti(value: Array<DemaneDeDocument>) {
+      this._documentsByDoti = value;
+    }
   public  deleteByReference(demande:DemaneDeDocument){
       this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/deleteById/id/' + demande.id).subscribe(
         data => {
@@ -137,13 +148,8 @@ private _typeDocument: TypeDocument;
   public trouverDemandeParSonDoti(employe: Employe){
     this.http.get<Array<DemaneDeDocument>>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/findByEmployeDoti/doti/' + employe.doti).subscribe(
       data => {
-        //console.log('ha data dial permanence' + data);
-        this.documents = data ;
-        //console.log('ha data dial permanence2' + this._perm.length);
-        // this._perm.forEach(per => {
-        //   console.log('ha howa start date tani:' + per.date);
-        // console.log('ha howa start fullname tani:' + per.employe.fullName);
-        //});
+        console.log('ha data dial doc by doti' + data);
+      this.documentsByDoti= data;
       }, eror => {
         console.log('eroro', eror);
       });

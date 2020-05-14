@@ -32,4 +32,8 @@ export class DocumentsEmployeComponent implements OnInit {
   public demo1BtnClick(value:number) {
     this.demo1TabIndex = value ;
   }
+  public listeVide(): boolean {
+    //    console.log(this.employes.length);
+    return this.documents.length < 1 ? true : false;
+  }
 }

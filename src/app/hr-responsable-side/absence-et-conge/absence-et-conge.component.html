@@ -17,7 +17,7 @@
                 </ng-template>
                 <ng-template pTemplate="header" let-columns>
                   <tr>
-                    <th style="width: 3em"></th>
+                    <!-- <th style="width: 3em"></th> -->
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                       {{col.header}}
                       <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
@@ -25,21 +25,25 @@
                         ariaLabelAsc="Activate to sort in ascending order">
                       </p-sortIcon>
                     </th>
+                    <th >Details</th>
                     <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                   <tr>
-                    <td>
+                    <!-- <td>
                       <a href="#" [pRowToggler]="rowData" (click)="trouverCongeParSonDoti(rowData)">
                         <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
                       </a>
-                    </td>
+                    </td> -->
                     <td *ngFor="let col of columns">
                       {{rowData[col.field]}}
                     </td>
+                    <td >
+                      <button class="btn btn-info btn-sm fa fa-info" (click)="trouverCongeParSonDotiDialog(rowData)"></button>
+                    </td>
                   </tr>
                 </ng-template>
-                <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+                <!-- <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
                   <tr>
                     <td [attr.colspan]="columns.length + 1">
 
@@ -68,7 +72,7 @@
                       </div>
                     </td>
                   </tr>
-                </ng-template>
+                </ng-template> -->
               </p-table>
             </div>
           </div>

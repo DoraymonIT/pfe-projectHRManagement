@@ -1,1 +1,29 @@
-<full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins"></full-calendar>
+<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<h4 style="float:left">Liste de conge en detailes de cet employe </h4>
+
+<table class="table table-hover table-striped table-dark" style="color: wheat">
+  <thead>
+    <th>Nom de l employe</th>
+    <th>Type de conge</th>
+    <th>Date de debut</th>
+    <th>Periode</th>
+    <th>Raison</th>
+    <!-- <th>Action</th> -->
+  </thead>
+  <tbody>
+    <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+    <tr *ngFor="let c of conges">
+      <td>{{c.employe.fullName}}</td>
+      <td>{{c.congee.libelle}}</td>
+      <td>{{c.dateDeDebut.toString()}}</td>
+      <td>{{c.periode}}</td>
+      <td>{{c.raison}}</td>
+      <!-- <td><button class="btn btn-info btn-sm fa fa-trash"
+          (click)="deleteByReference(c)"></button>
+        <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUnEmployer(c)"></button>
+      </td> -->
+
+    </tr>
+  </tbody>
+</table>
+

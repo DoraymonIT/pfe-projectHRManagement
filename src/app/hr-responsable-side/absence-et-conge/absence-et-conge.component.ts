@@ -4,6 +4,8 @@ import {Employe} from '../../controller/model/employe.model';
 import {CongeEmploye} from '../../controller/model/conge-employe.model';
 import {CongeService} from '../../controller/service/conge.service';
 import {TypeCongee} from '../../controller/model/type-congee.model';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { ListeDesJoursFriesComponent } from './liste-des-jours-fries/liste-des-jours-fries.component';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class AbsenceEtCongeComponent implements OnInit {
 
   cols: any[];
   constructor( private employeService: PersonnelEmployesService,
-               private congeservice: CongeService) { }
+               private congeservice: CongeService,private dialog :MatDialog) { }
 
 
   ngOnInit(): void {
@@ -63,5 +65,15 @@ export class AbsenceEtCongeComponent implements OnInit {
   }
   get filterrsult(): TypeCongee {
     return this.congeservice.filterrsult;
+  }
+  trouverCongeParSonDotiDialog(emp: Employe) {
+    this.congeservice.trouverCongéParSonDoti(emp.doti);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "95%";
+    dialogConfig.height = "80%";
+    this.dialog.open(ListeDesJoursFriesComponent,
+      dialogConfig);
   }
 }

@@ -7,6 +7,8 @@ import {GradeEmploye} from '../../../../controller/model/grade-employe.model';
 import {Grade} from '../../../../controller/model/grade.model';
 import {DemaneDeDocument} from '../../../../controller/model/demane-de-document.model';
 import {TypeDocument} from '../../../../controller/model/type-document.model';
+import { ListeDesDocumentsEmployeComponent } from '../liste-des-documents-employe/liste-des-documents-employe.component';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-liste-des-demandes-documents-employe',
@@ -16,7 +18,7 @@ import {TypeDocument} from '../../../../controller/model/type-document.model';
 export class ListeDesDemandesDocumentsEmployeComponent implements OnInit {
 
   constructor(private documentService: DocumentServiceService,
-              private employeService: PersonnelEmployesService) { }
+              private employeService: PersonnelEmployesService,private dialog :MatDialog) { }
 cols: any[];
   ngOnInit(): void {
     this.employeService.findAll();
@@ -44,4 +46,18 @@ cols: any[];
   public getFullName(employe: Employe): string{
     return employe.fullName;
   }
+  trouverHistoriqueDemandeDialog(employe: Employe) {
+    this.documentService.trouverDemandeParSonDoti(employe);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "95%";
+    dialogConfig.height = "80%";
+    this.dialog.open(ListeDesDocumentsEmployeComponent,
+      dialogConfig);
+  }
+  get documentsByDoti(): Array<DemaneDeDocument> {
+    return this.documentService.documentsByDoti;
+  }
+
 }

@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-user-plus    "></i> Formulaire pour ajouter une demande de document d une employe </span>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Formulaire pour ajouter une demande de document d une employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -9,19 +9,15 @@
       <div class="col-md-6">
         <div class="controles-container">
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> L'employer concerne</mat-label>
-            <mat-select >
-              <mat-option >Ahmed</mat-option>
-              <mat-option >Ahmed</mat-option>
-              <mat-option >Ahmed</mat-option>
+            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-select [(ngModel)]="document.employe.doti" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Type de document</mat-label>
-
-            <mat-select >
-              <mat-option >Attestation de salaire</mat-option>
-              <mat-option >Attestation de travail</mat-option>
+            <mat-label> <i class="fas fa-book    "></i> Type de document</mat-label>
+            <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let td of typeDocuments" [value]="td.libelle">{{ td.libelle }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -37,22 +33,22 @@
           </mat-form-field> -->
           <mat-form-field>
             <mat-label>Maniere de retrait</mat-label>
-            <mat-select >
-              <mat-option value="1">En papier</mat-option>
-              <mat-option value="2">Par Gmail</mat-option>
-
+            <mat-select [(ngModel)]="document.maniereDeRetrait" [ngModelOptions]="{standalone: true}" >
+              <mat-option value="papier">En papier</mat-option>
+              <mat-option value="gmail">Par Gmail</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Etat" value="isLoading..." disabled >
+          <!-- <mat-form-field>
+            <input matInput placeholder="Etat" value="non traité" disabled
+             [(ngModel)]="document.etat" [ngModelOptions]="{standalone: true}">
 
-          </mat-form-field>
+          </mat-form-field> -->
 
 
 
           </div>
           <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" > <i class="fas fa-check-circle    "></i> Ajouter</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()" > <i class="fas fa-save    "></i> Ajouter</button>
 
           </div>
         </div>

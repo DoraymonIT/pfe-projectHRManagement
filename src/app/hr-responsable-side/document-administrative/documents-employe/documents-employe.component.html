@@ -1,8 +1,8 @@
 <mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="LISTE DE DEMANDES DE DOCUMENTS" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-      <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des demandes non tarité </h1></div>
-      <table class="table table-hover table-striped" style="color: wheat">
+      <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des demandes Non tarité </h1></div>
+      <table class="table table-hover table-dark table-striped" style="color: wheat">
         <thead>
         <th>Employe</th>
         <th>Type de document</th>
@@ -11,14 +11,16 @@
         <th style="padding-left: 40px">Action</th>
         </thead>
         <tbody>
+          <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
+
         <tr *ngFor="let c of documents">
           <td>{{c.employe.fullName}}</td>
-          <td>{{c.typeDeDocument.libelle}}</td>
+          <td>{{c.typeDeDocument.libelle  || "----"}}</td>
           <td>{{c.dateDemande}}</td>
           <td style="padding-left: 40px">{{c.maniereDeRetrait}}</td>
           <td>
             <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"></button>
-            <button class="btn btn-danger btn-sm fa  fa-check-square"></button>
+            <button class="btn btn-primary btn-sm fa  fa-check-square"></button>
             <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
           </td>
         </tr>

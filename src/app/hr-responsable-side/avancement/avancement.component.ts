@@ -27,7 +27,7 @@ export class AvancementComponent implements OnInit {
     this.cols = [
       // { field: 'id', header: 'id' },
       { field: 'doti', header: 'Employe' },
-      { field: 'grade.libelle', header: 'libelle du grade' },
+      { field: 'grade.libelle', header: 'Libelle du grade' },
       { field: 'dateDeAffectation', header: 'Date Affectation '},
     ];
     this.gradeService.findAllGradeNonTraite();

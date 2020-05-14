@@ -1,14 +1,12 @@
 <mat-tab-group style="width: 100%;">
-  <mat-tab label="AJOUTER UN DEPARTEMENT" style="width: 25px">
-    <app-dep-ajout></app-dep-ajout>
-  </mat-tab>
+
   <mat-tab label="LISTE DES DEPARTEMENTS" style="width: 25%;">
     <div class="example-small-box mat-elevation-z4">
       <div class="example-large-box mat-elevation-z4">
         <div class="container-fluid" style="padding-top: 10px;">
           <div class="row">
             <div class="col-md-12">
-              <p-table #dt [columns]="cols" [value]="deps" dataKey="nom" [paginator]="true" [rows]="5">
+              <p-table #dt [columns]="cols" [value]="deps" dataKey="nom" [paginator]="true" [rows]="15">
                 <ng-template pTemplate="caption">
                <i class="fa fa-building" ></i>  liste des departements
                   <div style="text-align: right">
@@ -27,25 +25,28 @@
                         ariaLabelAsc="Activate to sort in ascending order">
                       </p-sortIcon>
                     </th>
+                    <!-- <th>Chef de departement</th> -->
                     <th>Action</th>
                   </tr>
-                  <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner>
+                  <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                   <tr>
                     <td>
-                      <a href="#" [pRowToggler]="rowData" >
-                        <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
-                      </a> </td>
-
-
+                      <i class="fa fa-building" ></i>  </td>
                     <td *ngFor="let col of columns">
-                      {{rowData[col.field]}}
+                      {{rowData[col.field] }}
                     </td>
-
+                    <!-- <td>
+                      <div *ngIf="rowData.chef.fullName == null; then thenBlock else elseBlock"></div>
+                      <ng-template #thenBlock>---</ng-template>
+                      <ng-template #elseBlock> {{rowData.chef.fullName}} </ng-template>
+          </td> -->
                     <td style="text-align:center">
                       <button class="btn btn-info  btn-sm fa fa-edit" style="margin-right: 10px;"></button>
-                      <button class="btn btn-danger btn-sm fa fa-trash"></button>
+                      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)"
+                      style="margin-right: 10px;"></button>
+                      <button class="btn btn-danger btn-sm fa fa-trash"  ></button>
 
                     </td>
                   </tr>
@@ -81,5 +82,8 @@
         </div>
       </div>
     </div>
+  </mat-tab>
+  <mat-tab label="AJOUTER UN DEPARTEMENT" style="width: 25px">
+    <app-dep-ajout></app-dep-ajout>
   </mat-tab>
 </mat-tab-group>

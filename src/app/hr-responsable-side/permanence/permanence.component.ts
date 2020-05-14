@@ -18,10 +18,11 @@ export class PermanenceComponent implements OnInit {
     this.pemanenceAdministrative.findAll();
     this.listeVide();
     this.cols = [
+      { field: 'id', header: 'Identifiant' },
+      { field: 'date', header: 'Date de permanence Administrative' },
       { field: 'periode', header: 'Periode' },
       { field: 'recuperation', header: 'Récuperation' },
       { field: 'periodeDeRecuperation', header: 'Période de Récuperation' },
-      { field: 'date', header: 'date de permanence Administrative' },
     ];
   }
   public listeVide():boolean{

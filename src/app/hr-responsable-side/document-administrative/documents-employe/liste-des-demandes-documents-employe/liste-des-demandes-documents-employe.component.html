@@ -3,7 +3,7 @@
     <div class="container-fluid" style="padding-top: 10px;">
       <div class="row">
         <div class="col-md-12">
-          <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="5">
+          <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="15">
             <ng-template pTemplate="caption">
               liste des employes ( Documents Administratives )
               <div style="text-align: right">
@@ -21,7 +21,9 @@
                               ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
                   </p-sortIcon>
                 </th>
-                <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner>
+                <th style="width: 3em">
+                </th>
+                <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
               <tr>
@@ -33,6 +35,10 @@
                 <td *ngFor="let col of columns">
                   {{rowData[col.field]}}
                 </td>
+                <td >
+                  <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverHistoriqueDemandeDialog(rowData)"
+                        style="margin-right: 10px;"></button>
+                </td>
               </tr>
             </ng-template>
             <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
@@ -40,7 +46,7 @@
                 <td [attr.colspan]="columns.length + 1">
                   <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
                     <div class="card-header"><h1 style="text-align: center">  Historique des demandes de {{getFullName(rowData)}} </h1></div>
-                    <table class="table table-hover table-striped" style="color: wheat">
+                    <table class="table table-hover table-dark table-striped" style="color: wheat">
                       <thead>
                       <th>Nom Complet</th>
                       <th>Type de document</th>
@@ -48,7 +54,7 @@
                       <th>Maniere de retrait</th>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let c of documents">
+                      <tr *ngFor="let c of documentsByDoti">
                         <td>{{c.employe.fullName}}</td>
                         <td>{{c.typeDeDocument.libelle}}</td>
                         <td>{{c.dateDemande}}</td>

@@ -1,24 +1,19 @@
-<div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-  <div class="card-header"><h1 style="text-align: center"> liste des demandes non tarité </h1></div>
-  <table class="table table-hover table-striped" style="color: wheat">
-    <thead>
-    <th>employe</th>
-    <th>type de document</th>
-    <th>date de demande</th>
-    <th>maniere de retrait</th>
-    <th style="padding-left: 40px">Action</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let c of documents">
-      <td>{{c.employe.fullName}}</td>
-      <td>{{c.typeDeDocument.libelle}}</td>
-      <td>{{c.dateDemande}}</td>
-      <td style="padding-left: 40px">{{c.maniereDeRetrait}}</td>
-      <td>
-        <button class="btn btn-danger btn-sm fa  fa-check-square"></button>
-        <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<h4 style="float:left">Historique de demande de documents de cet employe </h4>
+<table class="table table-hover table-dark table-striped" style="color: wheat">
+  <thead>
+  <th>Nom Complet</th>
+  <th>Type de document</th>
+  <th>Date de demande</th>
+  <th>Maniere de retrait</th>
+  </thead>
+  <tbody>
+    <p-progressSpinner *ngIf="listeVide2()"  ></p-progressSpinner>
+  <tr *ngFor="let c of documentsByDoti">
+    <td>{{c.employe.fullName}}</td>
+    <td>{{c.typeDeDocument.libelle}}</td>
+    <td>{{c.dateDemande}}</td>
+    <td >{{c.maniereDeRetrait}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,34 +1,25 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-user-plus    "></i> Formulaire pour ajouter un document a gerer </span>
+    <span class="span"> <i class="fas fa-plus-circle    "></i> Formulaire pour ajouter un document a gerer </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
   <div class="container-fluid">
     <div class="row">
-
       <div class="col-md-6">
         <div class="controles-container">
           <mat-form-field>
-            <input matInput placeholder="Idetifiant" >
-
+            <input matInput placeholder="Libelle de document"
+            [(ngModel)]="typeDocument.libelle" [ngModelOptions]="{standalone: true}" >
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Libelle de document" >
-
+            <input matInput placeholder="Chemin vers le Modele de ce document en .doc" >
           </mat-form-field>
-
-
-
-
           </div>
           <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" > <i class="fas fa-check-circle    "></i> Ajouter</button>
-
+            <button mat-raised-button color="primary" type="submit" (click)="save()" > <i class="fas fa-save    "></i> Ajouter</button>
           </div>
         </div>
-
       </div>
     </div>
-
 </form>

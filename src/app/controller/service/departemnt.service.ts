@@ -21,7 +21,7 @@ public findAll() {
   this.http.get<Array<Departement>>(this._url+'findAll').subscribe(
     data => {
       console.log('ha data dyal departement' + data);
-      this._deps = data ;
+      this.deps = data ;
     }, eror => {
       console.log('eroro',eror);
     }
@@ -53,6 +53,7 @@ public  cloneDepartement(departement: Departement): Departement {
   get dep(): Departement {
     if (this._dep == null) {
       this._dep = new Departement();
+      this._dep.chef = new Employe();
     }
     return this._dep;
   }

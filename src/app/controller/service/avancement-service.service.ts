@@ -14,6 +14,7 @@ import {Grade} from '../model/grade.model';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class AvancementServiceService {
 private _rapportEvaluation: RapportDeEvaluation;

@@ -1,5 +1,6 @@
-<mat-tab-group mat-stretch-tabs style="width: 100%;"(selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex" >
-  <mat-tab label="CALENDRIERE DES PERMANENNCES"style="width: 25px" tabindex="1">
+<mat-tab-group mat-stretch-tabs style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
+  [(selectedIndex)]="demo1TabIndex">
+  <mat-tab label="CALENDRIERE DES PERMANENNCES" style="width: 25px" tabindex="1">
     <div class="example-small-box mat-elevation-z4">
       <app-permanence-calendrier></app-permanence-calendrier>
 
@@ -12,11 +13,12 @@
           <div class="col-md-12">
             <p-table #dt [columns]="cols" [value]="permanences" dataKey="periode" [paginator]="true" [rows]="10">
               <ng-template pTemplate="caption">
-              <i class="fas fa-tasks    "></i>  Liste des permanence Administratives
+                <i class="fas fa-tasks    "></i> Liste des permanence Administratives
                 <div style="text-align: right">
                   <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                  <input type="text" pInputText size="50" placeholder="Ex: par employe : AHmed , par DOTI : 11111, par date : 2020-12-12"
-                         (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                  <input type="text" pInputText size="50"
+                    placeholder="Ex: par employe : AHmed , par DOTI : 11111, par date : 2020-12-12"
+                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                 </div>
               </ng-template>
               <ng-template pTemplate="header" let-columns>
@@ -25,16 +27,17 @@
                   <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                     {{col.header}}
                     <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                                ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+                      ariaLabelDesc="Activate to sort in descending order"
+                      ariaLabelAsc="Activate to sort in ascending order">
                     </p-sortIcon>
                   </th>
                   <th>
                     Action
                   </th>
                 </tr>
-                <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+                <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
               </ng-template>
-              <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
+              <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                 <tr>
                   <td>
                     <a href="#" [pRowToggler]="rowData">
@@ -45,30 +48,25 @@
                     {{rowData[col.field]}}
                   </td>
                   <td style="text-align:center">
-                    <button class="btn  btn-info btn-sm fa fa-edit" style="margin-right: 10px;" (click)="editerUnEmployer(rowData)"></button>
-                    <button class="btn btn-danger btn-sm fa fa-trash" matTooltip="Cette action peut supprimer cet element d une facon permanent" (click)="deleteByReference(rowData)"></button>
-
+                    <button class="btn  btn-info btn-sm fa fa-edit" style="margin-right: 10px;"
+                      (click)="editerUnEmployer(rowData)"></button>
+                    <button class="btn btn-danger btn-sm fa fa-trash"
+                      matTooltip="Cette action peut supprimer cet element d une facon permanent"
+                      (click)="deleteByReference(rowData)"></button>
                   </td>
                 </tr>
               </ng-template>
-              <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
+              <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
                 <tr>
                   <td [attr.colspan]="columns.length + 1">
-                    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-
-                      <div class="ui-g-12 ui-md-9" >
-                        <div class="ui-g">
-                          <div class="ui-g-4">
-                            <b>full name  :</b> {{rowData.employe.fullName}}
-                          </div>
-
-                          <div class="ui-g-4">
-                            <b>cin :</b> {{rowData.employe.cin}}
-                          </div>
-                          <div class="ui-g-4">
-                            <b>doti:</b> {{rowData.employe.doti}}
-                          </div>
-                        </div>
+                    <div class="container-fluid">
+                      <h3 style="text-align: center;">Personne Permanent</h3>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-3"> <b>Full name :</b> {{rowData.employe.fullName}}</div>
+                        <div class="col-md-3"> <b>Cin :</b> {{rowData.employe.cin}}</div>
+                        <div class="col-md-3"> <b>Doti:</b> {{rowData.employe.doti}}</div>
+                        <div class="col-md-3"> <b>Phone Number:</b> {{rowData.employe.tel}}</div>
                       </div>
                     </div>
                   </td>
@@ -85,7 +83,7 @@
   <mat-tab label="AJOUTER | AFFECTER PERMANENNCE A UN EMPLOYE" style="width: 25%;" tabindex="3">
     <div class="example-large-box mat-elevation-z4">
 
-<app-permanence-ajouter></app-permanence-ajouter>
+      <app-permanence-ajouter></app-permanence-ajouter>
     </div>
 
 

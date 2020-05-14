@@ -1,8 +1,8 @@
 <mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="LISTE DE DOCUMENTS GERER PAR APPLICATION" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-      <div class="card-header"><h1 style="text-align: center"> Liste des document géree par application </h1></div>
-      <table class="table table-hover table-striped" style="color: wheat">
+      <div class="card-header"><h1 style="text-align: center"> Liste des document gérer par application </h1></div>
+      <table class="table table-hover table-dark table-striped" style="color: wheat">
         <thead>
         <!-- <th>id</th> -->
         <th>libelle</th>
@@ -13,7 +13,7 @@
           <!-- <td>{{c.id}}</td> -->
           <td>{{c.libelle}}</td>
           <td>
-            <button class="btn btn-danger btn-sm fa  fa-check-square" (click)="editUnTypeDeDocument(c)"></button>
+            <!-- <button class="btn btn-danger btn-sm fa  fa-check-square" (click)="editUnTypeDeDocument(c)"></button> -->
             <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
           </td>
         </tr>
