@@ -4,8 +4,6 @@ import { Departement } from './departement.model';
 import {Fonction} from './fonction.model';
 
 export class Employe {
-
-
   id: number;
   doti: number;
   enfants: number;

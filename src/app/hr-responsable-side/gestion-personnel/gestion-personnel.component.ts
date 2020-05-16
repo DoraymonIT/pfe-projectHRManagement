@@ -80,6 +80,9 @@ export class GestionPersonnelComponent implements OnInit {
     this.demo1BtnClick(3);
     this.employeService.infoUnEmployer(employe);
   }
+  public imprimerListeEmploye(){
+    this.employeService.imprimerListeEmploye();
+  }
   }
 
 

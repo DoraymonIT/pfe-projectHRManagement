@@ -13,12 +13,17 @@ export class ListeDesDocumentsEmployeComponent implements OnInit {
   ngOnInit() {
 
   }
+  get fullname(): string {
+    return this.documentService.fullname;
+  }
   get documentsByDoti(): Array<DemaneDeDocument> {
     return this.documentService.documentsByDoti;
   }
 
   public listeVide2(): boolean {
-    //    console.log(this.employes.length);
     return this.documentsByDoti.length < 1 ? true : false;
+  }
+  public imprimerListedemande(){
+    this.documentService.imprimerLesListedemande();
   }
 }

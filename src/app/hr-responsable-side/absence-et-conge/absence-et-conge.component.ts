@@ -16,10 +16,25 @@ import { ListeDesJoursFriesComponent } from './liste-des-jours-fries/liste-des-j
 
 })
 export class AbsenceEtCongeComponent implements OnInit {
+  constructor( private employeService: PersonnelEmployesService,
+               private congeservice: CongeService,
+               private dialog: MatDialog) { }
+  get employes(): Array<Employe> {
+    return this.employeService.employes;
+  }
+  get conges(): Array<CongeEmploye> {
+    return this.congeservice.conges;
+  }
+  get typeConge(): Array<TypeCongee> {
+    return this.congeservice.typeConge;
+  }
+  get filterrsult(): TypeCongee {
+    return this.congeservice.filterrsult;
+  }
 
   cols: any[];
-  constructor( private employeService: PersonnelEmployesService,
-               private congeservice: CongeService,private dialog :MatDialog) { }
+  public tabindex;
+  public demo1TabIndex = 0;
 
 
   ngOnInit(): void {
@@ -32,47 +47,27 @@ export class AbsenceEtCongeComponent implements OnInit {
       { field: 'soldeRestantesCongéExceptionnel', header: 'solde Restantes Congé Exceptionnel' },
     ];
   }
-  get employes(): Array<Employe> {
-    return this.employeService.employes;
-  }
   public deleteByReference(conge: CongeEmploye) {
-//    console.log("ha howa:"+ employe.fullName);
     this.congeservice.deleteByReference(conge);
   }
-  public editerUnEmployer(conge: CongeEmploye){
-    //console.log(employe);
+  public editerUnEmployer(conge: CongeEmploye) {
     this.demo1BtnClick(1);
     this.congeservice.editerUnEmployer(conge);
   }
-  public tabindex;
-  public demo1TabIndex = 0;
-  public demo1BtnClick(value:number) {
+  public demo1BtnClick(value: number) {
     this.demo1TabIndex = value ;
   }
 
-  public listeVide():boolean{
-//    console.log(this.employes.length);
-    return this.employes.length <1 ? true:false;
-  }
-  get conges(): Array<CongeEmploye> {
-    return this.congeservice.conges;
-  }
-  public trouverCongeParSonDoti(employe: Employe){
-    this.congeservice.trouverCongéParSonDoti(employe.doti);
-  }
-  get typeConge(): Array<TypeCongee> {
-    return this.congeservice.typeConge;
-  }
-  get filterrsult(): TypeCongee {
-    return this.congeservice.filterrsult;
+  public listeVide(): boolean {
+    return this.employes.length < 1 ? true : false;
   }
   trouverCongeParSonDotiDialog(emp: Employe) {
     this.congeservice.trouverCongéParSonDoti(emp.doti);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "95%";
-    dialogConfig.height = "80%";
+    dialogConfig.width = '95%';
+    dialogConfig.height = '80%';
     this.dialog.open(ListeDesJoursFriesComponent,
       dialogConfig);
   }

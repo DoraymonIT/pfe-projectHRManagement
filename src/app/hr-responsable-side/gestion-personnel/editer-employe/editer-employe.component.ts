@@ -22,9 +22,12 @@ export class EditerEmployeComponent implements OnInit {
               public gradeService: GradeService) { }
 
   ngOnInit(): void {
-    // this.employeService.findAlll();
     this.departementService.findAll();
     this.gradeService.findAll();
+    this.employeService.modifyEmpString();
+  }
+  get modifyEmp(): string {
+    return this.employeService.modifyEmp;
   }
   get deps(): Array<Departement> {
     return this.departementService.deps;

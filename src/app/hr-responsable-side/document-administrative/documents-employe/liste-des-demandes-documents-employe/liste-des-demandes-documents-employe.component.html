@@ -28,8 +28,7 @@
             <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
               <tr>
                 <td>
-                  <a href="#" [pRowToggler]="rowData" (click)="trouverDemandeParSonDoti(rowData)">
-                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"  ></i>
+                  <a href="#" [pRowToggler]="rowData" class="fa fa-address-book">
                   </a>
                 </td>
                 <td *ngFor="let col of columns">

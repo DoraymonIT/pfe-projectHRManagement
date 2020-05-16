@@ -56,7 +56,6 @@ import { EditerEmployeComponent } from './hr-responsable-side/gestion-personnel/
 import { AutresComponent } from './hr-responsable-side/gestion-personnel/autres/autres.component';
 import { PermanenceComponent } from './hr-responsable-side/permanence/permanence.component';
  import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
-import { OrganizationChartModule } from 'primeng/organizationchart';
 import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
 import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
 import { CertificatsMedicalesComponent } from './hr-responsable-side/certificats-medicales/certificats-medicales.component';
@@ -95,7 +94,9 @@ import { PunitionComponent } from './hr-responsable-side/certificats-medicales/p
 import { AjouterPrixComponent } from './hr-responsable-side/certificats-medicales/prix/ajouter-prix/ajouter-prix.component';
 import { AjouterPunitionComponent } from './hr-responsable-side/certificats-medicales/punition/ajouter-punition/ajouter-punition.component';
 import { AjouterFormationComponent } from './hr-responsable-side/certificats-medicales/formation/ajouter-formation/ajouter-formation.component';
+import { ContacterUnEmployeComponent } from './hr-responsable-side/gestion-personnel/contacter-un-employe/contacter-un-employe.component';
 import { DialogDepComponent } from './hr-responsable-side/architecture-de-fstg/departement/dialog-dep/dialog-dep.component';
+import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-info/rapport-info.component';
 
 
 @NgModule({
@@ -163,8 +164,11 @@ import { DialogDepComponent } from './hr-responsable-side/architecture-de-fstg/d
 
     AjouterPunitionComponent,
 
+    ContacterUnEmployeComponent,
+
     DialogDepComponent,
 
+    RapportInfoComponent
   ],
   imports: [
     BrowserModule,

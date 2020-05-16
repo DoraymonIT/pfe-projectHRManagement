@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/controller/model/car.model';
 import {PersonnelEmployesService} from '../../../controller/service/personnel-employes.service';
 import {CongeService} from '../../../controller/service/conge.service';
 import {Employe} from '../../../controller/model/employe.model';
@@ -19,6 +18,7 @@ export class EditerComponent implements OnInit {
   ngOnInit() {
     this.employeService.findAll();
     this.congeservice.findAll();
+    this.congeservice.ajouteCongeEmploye();
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -29,7 +29,14 @@ export class EditerComponent implements OnInit {
   get typeConge(): Array<TypeCongee> {
     return this.congeservice.typeConge;
   }
-  public save(){
-    this.congeservice.save();
+  public save() {
+    if (this.congeEmploye.id === null) {
+      this.congeservice.save();
+    } else {
+    this.congeservice.update();
+  }
+  }
+  get ajouteCongeEmp(): string {
+    return this.congeservice.ajouteCongeEmp;
   }
 }

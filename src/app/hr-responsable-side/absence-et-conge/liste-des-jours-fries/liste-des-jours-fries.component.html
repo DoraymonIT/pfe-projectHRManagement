@@ -1,5 +1,5 @@
 <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<h4 style="float:left">Liste de conge en detailes de cet employe </h4>
+<h4 style="float:left">Liste de conge en detailes de {{employefullname}}  </h4>
 
 <table class="table table-hover table-striped table-dark" style="color: wheat">
   <thead>
@@ -22,8 +22,8 @@
           (click)="deleteByReference(c)"></button>
         <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUnEmployer(c)"></button>
       </td> -->
-
     </tr>
   </tbody>
 </table>
+<button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerLalisteDeConge()"><i class="fa fa-file-pdf" ></i> PDF</button>
 

@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-user-plus    "></i> Formulaire pour ajouter un employe au FSTG </span>
+    <span class="span" id="span"> <i class="fas fa-user-plus    "></i>{{ajouteEmp}} </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -119,8 +119,6 @@
           </div>
           <div class="button-row">
             <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i class="fas fa-check-circle    "></i> Ajouter</button>
-            <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
-            <!-- <button mat-raised-button color="warn" type="cancel">Clear</button> -->
           </div>
         </div>
 

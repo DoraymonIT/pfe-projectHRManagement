@@ -24,22 +24,43 @@ private _rapportEvaluation: RapportDeEvaluation;
               private toast: ToastrService) { }
 
   public findRapportByGradeIdAndEmployeDoti(id: number, doti: number) {
-    console.log('ha ana f service' + id);
-    console.log('ha ana f service' + doti);
     this.http.get<RapportDeEvaluation>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/findByNouveauGradeIdAndEmployeDoti/id/' + id + '/doti/' + doti).subscribe(
       data => {
-        console.log( 'ha data li tat9lab 3liiha' + data);
         this.rapportEvaluation = data ;
-        this.rapportEvaluation.prix.forEach(prixx => {
-          console.log('ha howa' + prixx.prix.libelle);
-        })
-        console.log('ha howa' + this.rapportEvaluation.employe.doti);
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
   }
-
+  public imprimerLeRapport() {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/rapportPdf', this.rapportEvaluation).subscribe(
+      data => {
+        if (data > 0) {
+          this.toast.success(` le rapport est bien imprimer`, 'rapport imprimer', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public accepterRapportAvancement(gradeeemploye: GradeEmploye) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/accepterUnGrade', gradeeemploye).subscribe(
+      data => {
+        if (data > 0) {
+          this.toast.success(` avancement est bie effectué`, 'avancement affectuer', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
   get rapportEvaluation(): RapportDeEvaluation {
     if(this._rapportEvaluation == null){
       this._rapportEvaluation = new RapportDeEvaluation();

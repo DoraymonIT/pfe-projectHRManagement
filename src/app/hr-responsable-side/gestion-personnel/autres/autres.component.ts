@@ -10,6 +10,7 @@ import {Emoluments} from '../../../controller/model/emoluments.model';
 import {Revenu} from '../../../controller/model/revenu.model';
 import { FormationServiceService } from 'src/app/controller/service/formation-service.service';
 import { Formation } from 'src/app/controller/model/formation.model';
+import {Grade} from '../../../controller/model/grade.model';
 
 @Component({
   selector: 'app-autres',
@@ -21,6 +22,13 @@ export class AutresComponent implements OnInit {
   constructor(private employeService: PersonnelEmployesService,private fs: FormationServiceService) { }
   panelOpenState = false;
   ngOnInit(): void {
+    this.employeService.findAll();
+  }
+  public trouverEmployerParSonDoti(value: number){
+    this.employeService.trouverEmployerParSonDoti(value);
+  }
+  get employes(): Array<Employe> {
+    return this.employeService.employes;
   }
   get employeInfo(): Employe {
     return this.employeService.employeInfo;
@@ -37,5 +45,8 @@ return this.fs.findFormationByDoti(x);
   get formations(): Array<Formation> {
 
     return this.fs.formations;
+  }
+  public imprimerInfoEmploye(){
+    this.employeService.imprimerInfoLesEmploye();
   }
 }

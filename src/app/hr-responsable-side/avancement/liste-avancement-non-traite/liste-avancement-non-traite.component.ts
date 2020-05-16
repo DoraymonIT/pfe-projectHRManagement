@@ -7,7 +7,7 @@ import {GradeEmploye} from '../../../controller/model/grade-employe.model';
 import {RapportDeEvaluation} from '../../../controller/model/rapport-de-evaluation.model';
 import {GradeService} from '../../../controller/service/grade.service';
 import {AvancementServiceService} from '../../../controller/service/avancement-service.service';
-import {Grade} from '../../../controller/model/grade.model';
+import {RapportInfoComponent} from '../rapport-info/rapport-info.component';
 
 @Component({
   selector: 'app-liste-avancement-non-traite',
@@ -18,40 +18,19 @@ export class ListeAvancementNonTraiteComponent implements OnInit {
 
   constructor(private employeService : PersonnelEmployesService,
               private gradesEmploye: GradeService,
-              private avancementService: AvancementServiceService) { }
-  cols: any[];
-  cols1: any[];
-  panelOpenState = false;
+              private avancementService: AvancementServiceService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.employeService.findAll();
     this.listeVide();
-    this.cols = [
-      { field: 'cin', header: 'C I N' },
-      { field: 'fullName', header: 'Nom Complet' },
-      { field: 'pays', header: 'Pays' },
-      { field: 'email', header: 'G-mail' },
-      { field: 'doti', header: 'DOTI' },
-      { field: 'dateDeNaissance', header: 'Date De Naissance' },
-    ];
-    this.cols1 = [
-      { field: 'id', header: 'id' },
-      { field: 'doti', header: 'employe' },
-      { field: 'grade.libelle', header: 'libelle grade' },
-      { field: 'dateDeAffectation', header: 'date Affectation '},
-    ];
   }
-  public findAllGradeEmployeByDoti(employe: Employe){
-    this.gradesEmploye.findAllGradeEmployeByDoti(employe.doti);
+  public findAllGradeEmployeByDoti(doti: number){
+    document.getElementById('fourmule').style.display = 'inline-flex'
+    this.gradesEmploye.findAllGradeEmployeByDoti(doti);
   }
   get gradesEployess(): Array<GradeEmploye> {
     return this.gradesEmploye.gradesEployess;
-  }
-  public trouverRapportParEmployeDoti(gradeEmloye: GradeEmploye){
-    this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);
-  }
-  get rapportEvaluation(): RapportDeEvaluation {
-    return this.avancementService.rapportEvaluation;
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -60,5 +39,17 @@ export class ListeAvancementNonTraiteComponent implements OnInit {
     console.log(this.employes.length);
     return this.employes.length <1 ? true:false;
   }
-
+  get employeInfo(): Employe {
+    return this.employeService.employeInfo;
+  }
+  public trouverRapportParEmployeDoti(gradeEmloye: GradeEmploye){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "95%";
+    dialogConfig.height = "80%";
+    this.dialog.open(RapportInfoComponent,
+      dialogConfig);
+    this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);
+  }
 }

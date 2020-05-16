@@ -20,13 +20,14 @@
           <td style="padding-left: 40px">{{c.maniereDeRetrait}}</td>
           <td>
             <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"></button>
-            <button class="btn btn-primary btn-sm fa  fa-check-square"></button>
+            <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="imprimer(c)"></button>
             <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
           </td>
         </tr>
         </tbody>
       </table>
-    </div>  </mat-tab>
+    </div>
+  </mat-tab>
   <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">
       <app-liste-des-demandes-documents-employe></app-liste-des-demandes-documents-employe>

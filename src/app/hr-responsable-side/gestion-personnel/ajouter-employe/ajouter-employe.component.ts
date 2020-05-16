@@ -21,12 +21,15 @@ export class AjouterEmployeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.employeService.findAll();
     this.departementService.findAll();
     this.gradeService.findAll();
+    this.employeService.ajouterEmpString();
+  }
+
+  get ajouteEmp(): string {
+    return this.employeService.ajouteEmp;
   }
   get deps(): Array<Departement> {
-
     return this.departementService.deps;
   }
   get grades(): Array<Grade> {
@@ -39,7 +42,7 @@ export class AjouterEmployeComponent implements OnInit {
   public save() {
     return this.employeService.save();
   }
-show() : boolean{
+public show(): boolean{
   if(this.employe.situationFamiliale =='Marie'){
     return true;
   }
@@ -47,7 +50,7 @@ show() : boolean{
     return false;
   }
 }
-  onNoClick(): void {
+  public onNoClick(): void {
     this.dialogRef.close();
   }
   get depFonctions(): Array<DepFonction> {

@@ -1,265 +1,29 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
   <mat-tab label="LISTE DE GRADE NON TRAITES" style="width: 25px" tabindex="1">
-    <div class="example-large-box mat-elevation-z4">
-      <div class="example-small-box mat-elevation-z4">
-        <div class="example-large-box mat-elevation-z4">
-          <div class="container-fluid" style="padding-top: 10px;">
-            <div class="row">
-              <div class="col-md-12" style="word-break: break-all;">
-                <p-table #dt [columns]="cols" [value]="gradeNonTraite" dataKey="id" [paginator]="true" [rows]="15">
-                  <ng-template pTemplate="caption">
-                    LISTE DE GRADE NON TRAITES
-                    <div style="text-align: right">
-                      <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                      <input type="text" pInputText size="50" placeholder="Ex : Ayoub sa3sa3 , Hamza Zooz,..."
-                             (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-                    </div>
-                  </ng-template>
-                  <ng-template pTemplate="header" let-columns>
-                    <tr>
-                      <th style="width: 3em"></th>
-                      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                        {{col.header}}
-                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                                    ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
-                        </p-sortIcon>
-                      </th>
-                    </tr>
-                    <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
-                    <tr>
-                      <td>
-                        <a href="#" [pRowToggler]="rowData" (click)="trouverRapportParEmployeDoti(rowData)" >
-                          <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"  ></i>
-                        </a>
-                        <button class="btn btn-info btn-sm fa fa-trash" ></button>
-                        <button class="btn btn-danger btn-sm fa fa-edit" ></button>
-                      </td>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+      <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des demandes Non tarité </h1></div>
+      <table class="table table-hover table-dark table-striped" style="color: wheat">
+        <thead>
+        <th>employe</th>
+        <th>grade</th>
+        <th>Date Affectation</th>
+        <th style="padding-left: 40px">Action</th>
+        </thead>
+        <tbody>
+        <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
-                      <td *ngFor="let col of columns">
-                        {{rowData[col.field]}}
-                      </td>
-                    </tr>
-                  </ng-template>
-                  <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
-                    <tr>
-                      <td [attr.colspan]="columns.length + 1">
-                        <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-                          <div class="container" style="padding-top:20px">
-                            <div class="row ">
-                              <div class="col-md-12">
-                                <mat-accordion>
-                                  <mat-expansion-panel>
-                                    <h1> Rapport de grade</h1>
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Employe information
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        Info de base
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="row" style="font-size: medium; margin-bottom: 10px">
-                                      <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700;">FullName:</mat-label>
-                                        <mat-label>{{rapportEvaluation.employe.fullName}}</mat-label>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700">doti:</mat-label>
-                                        <mat-label>{{rapportEvaluation.employe.doti}}</mat-label>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700">email:</mat-label>
-                                        <mat-label>{{rapportEvaluation.employe.email}}</mat-label>
-                                      </div>
-                                    </div>
-                                    <div class="row" style="font-size: medium; margin-bottom: 10px">
-                                      <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700">cin:</mat-label>
-                                        <mat-label>{{rapportEvaluation.employe.cin}}</mat-label>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700">adresse:</mat-label>
-                                        <mat-label>{{rapportEvaluation.employe.adresse}}</mat-label>
-                                      </div>
-                                      <div class="col-md-4">
-                                        <mat-label style="margin-right: 10px; color: #ffa700">situation Familiale:</mat-label>
-                                        <mat-label>{{rapportEvaluation.employe.situationFamiliale}}</mat-label>
-                                      </div>
-                                    </div>
-                                  </mat-expansion-panel>
-                                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Grade
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        Description
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="row" style="font-size: medium; margin-bottom: 10px">
-                                      <div class="col-md-6">
-                                        <mat-label style="margin-right: 10px; color: #ffa700;">libelle:</mat-label>
-                                        <mat-label>{{rapportEvaluation.nouveauGrade.grade.libelle}}</mat-label>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <mat-label style="margin-right: 10px; color: #ffa700;">date Affectation:</mat-label>
-                                        <mat-label>{{rapportEvaluation.nouveauGrade.dateDeAffectation}}</mat-label>
-                                      </div>
-                                    </div>
-                                  </mat-expansion-panel>
-                                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Note Generale
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        description
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des notes en details de cet employe</h1></div>
-                                    <table class="table table-hover table-striped" style="color: wheat">
-                                      <thead>
-                                      <th>id</th>
-                                      <th>moyen Generale</th>
-                                      <th>mention</th>
-                                      <th>date</th>
-                                      </thead>
-                                      <tbody>
-                                      <tr *ngFor="let c of rapportEvaluation.noteGenerale">
-                                        <td>{{c.id}}</td>
-                                        <td>{{c.moyenGeneral}}</td>
-                                        <td>{{c.mention}}</td>
-                                        <td>{{c.date}}</td>
-                                      </tr>
-                                      </tbody>
-                                    </table>
-                                  </mat-expansion-panel>
-                                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Formation
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        description
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des formations de cet employe</h1></div>
-                                    <table class="table table-hover table-striped" style="color: wheat">
-                                      <thead>
-                                      <th>id</th>
-                                      <th>Attestation</th>
-                                      <th>domaine</th>
-                                      <th>etablissement</th>
-                                      <th>ville</th>
-                                      <th>mention</th>
-                                      <th>anne</th>
-                                      </thead>
-                                      <tbody>
-                                      <tr *ngFor="let c of rapportEvaluation.formation">
-                                        <td>{{c.id}}</td>
-                                        <td>{{c.attestation}}</td>
-                                        <td>{{c.domaine}}</td>
-                                        <td>{{c.etablissement}}</td>
-                                        <td>{{c.ville}}</td>
-                                        <td>{{c.mention}}</td>
-                                        <td>{{c.annee}}</td>
-                                      </tr>
-                                      </tbody>
-                                    </table>
-                                  </mat-expansion-panel>
-                                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Prix
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        description
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des prix de cet employe </h1></div>
-                                    <table class="table table-hover table-striped" style="color: wheat">
-                                      <thead>
-                                      <th>id</th>
-                                      <th>libelle</th>
-                                      <th>date De Obtenation</th>
-                                      </thead>
-                                      <tbody>
-                                      <tr *ngFor="let c of rapportEvaluation.prix">
-                                        <td>{{c.id}}</td>
-                                        <td>{{c.prix.libelle}}</td>
-                                        <td>{{c.dateDeObtenation}}</td>
-                                      </tr>
-                                      </tbody>
-                                    </table>
-                                  </mat-expansion-panel>
-                                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Punition
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        description
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des punitions de cet employe</h1></div>
-                                    <table class="table table-hover table-striped" style="color: wheat">
-                                      <thead>
-                                      <th>id</th>
-                                      <th>libelle</th>
-                                      <th>date De Obtenation</th>
-                                      </thead>
-                                      <tbody>
-                                      <tr *ngFor="let c of rapportEvaluation.punition">
-                                        <td>{{c.id}}</td>
-                                        <td>{{c.punition.libelle}}</td>
-                                        <td>{{c.dateObtenation}}</td>
-                                      </tr>
-                                      </tbody>
-                                    </table>
-                                  </mat-expansion-panel>
-                                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Note Generale / Remarque
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        description
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="card-header"><h1 style="text-align: center"> liste des notes de cet employe</h1></div>
-                                    <table class="table table-hover table-striped" style="color: wheat">
-                                      <thead>
-                                      <th>moyen</th>
-                                      <th>mention</th>
-                                      <th>remarque</th>
-                                      </thead>
-                                      <tbody>
-                                      <tr>
-                                        <td>{{rapportEvaluation.moyen}}</td>
-                                        <td>{{rapportEvaluation.mention}}</td>
-                                        <td>{{rapportEvaluation.remarques}}</td>
-                                      </tr>
-                                      </tbody>
-                                    </table>
-                                  </mat-expansion-panel>
-                                </mat-accordion>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </ng-template>
-                </p-table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <tr *ngFor="let c of gradeNonTraite">
+          <td>{{c.doti}}</td>
+          <td>{{c.grade.libelle}}</td>
+          <td>{{c.dateDeAffectation}}</td>
+          <td>
+            <button class="btn btn-light btn-sm fas fa-plus" (click)="accepterUnRapport(c)"></button>
+            <button class="btn btn-info btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-
   </mat-tab>
   <mat-tab label="HISTORIQUE D AVANCEMENT DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">

@@ -12,11 +12,11 @@ import { Employe } from 'src/app/controller/model/employe.model';
 })
 export class AjouterUnDocumentsEmployeComponent implements OnInit {
 
-  constructor(private employeService: PersonnelEmployesService,private tds: DocumentServiceService) { }
+  constructor(private employeService: PersonnelEmployesService, private tds: DocumentServiceService) { }
 
   ngOnInit() {
     this.employeService.findAll();
-
+    this.tds.ajoutedemandeDecumentTitre();
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -29,6 +29,13 @@ export class AjouterUnDocumentsEmployeComponent implements OnInit {
     return this.tds.document;
   }
   public save() {
+    if(this.document.id == null){
     return this.tds.saveDocumentEmloye();
+    } else {
+      return this.tds.updateDocumentEmloye;
+    }
+  }
+   get ajouteDemandeDocument(): string {
+    return this.tds.ajouteDemandeDocument;
   }
 }

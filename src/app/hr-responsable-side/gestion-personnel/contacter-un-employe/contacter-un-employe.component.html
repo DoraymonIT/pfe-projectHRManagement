@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span" style="text-align: center;"> <i class="fas fa-chart-bar    "></i> contacter Un Employe </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container" style="padding-top:20px">
+  <mat-form-field style="padding-bottom:10px;width:100%">
+    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
+    <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.employeInfo.doti)">
+      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="padding-bottom:10px;width:100%">
+    <label> email :* </label>
+    <input matInput  [(ngModel)]="this.email.email"
+           [ngModelOptions]="{standalone: true}" [value]="employeInfo.email" type="email" >
+  </mat-form-field>
+  <mat-form-field style="padding-bottom:10px;width:100%">
+    <label> subject :* </label>
+    <input matInput  [(ngModel)]="this.email.subject"
+           [ngModelOptions]="{standalone: true}" type="email" >
+  </mat-form-field>
+  <p-editor [(ngModel)]="this.email.text" [style]="{'height':'320px'}"></p-editor>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="envoyer()"> <i class="fas fa-check-circle    "></i> Envoyer</button>
+  </div>

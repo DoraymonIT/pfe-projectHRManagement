@@ -13,7 +13,7 @@ import { GradeService } from 'src/app/controller/service/grade.service';
 })
 export class ListeDesJoursFriesComponent implements OnInit {
 
-  constructor(private congeservice: CongeService,private es:PersonnelEmployesService,private gradeservice: GradeService,) { }
+  constructor(private congeservice: CongeService, private es: PersonnelEmployesService, private gradeservice: GradeService) { }
   calendarEvents = [
     { title: 'event 1', date: '2020-04-01' }
   ];
@@ -23,8 +23,12 @@ export class ListeDesJoursFriesComponent implements OnInit {
     return this.congeservice.conges;
   }
   public listeVide(): boolean {
-    //    console.log(this.employes.length);
     return this.conges.length < 1 ? true : false;
   }
-
+  get employefullname(): string {
+    return this.congeservice.employefullname;
+  }
+  public imprimerLalisteDeConge() {
+    this.congeservice.imprimerListeDeCongeDeEmploye();
+  }
 }

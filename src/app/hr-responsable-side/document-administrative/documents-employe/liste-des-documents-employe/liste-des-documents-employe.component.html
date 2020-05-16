@@ -1,5 +1,5 @@
 <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<h4 style="float:left">Historique de demande de documents de cet employe </h4>
+<h4 style="float:left">Historique de demande de documents de {{fullname}} </h4>
 <table class="table table-hover table-dark table-striped" style="color: wheat">
   <thead>
   <th>Nom Complet</th>
@@ -17,3 +17,4 @@
   </tr>
   </tbody>
 </table>
+<button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerListedemande()"><i class="fa fa-file-pdf" ></i> PDF</button>
