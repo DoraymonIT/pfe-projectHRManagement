@@ -1,5 +1,5 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<h1>rapport de {{rapportEvaluation.employe.fullName}} pour avancement de grade {{rapportEvaluation.nouveauGrade.grade.libelle}}</h1>
+<button  mat-raised-button matTooltip="Fermer la fenetre" color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<h1>Rapport de {{rapportEvaluation.employe.fullName}} pour avancement de grade {{rapportEvaluation.nouveauGrade.grade.libelle}}</h1>
 <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
         <div class="container" style="padding-top:20px">
           <div class="row ">
@@ -204,4 +204,6 @@
           </div>
         </div>
       </div>
-<button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerRapport()"><i class="fa fa-file-pdf" ></i> PDF</button>
+<button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerRapport()"
+matTooltip="Ce button permet d imprimer rapport sous format PDF "
+><i class="fa fa-file-pdf" ></i> PDF</button>

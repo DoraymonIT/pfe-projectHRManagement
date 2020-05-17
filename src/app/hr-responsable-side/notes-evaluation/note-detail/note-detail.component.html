@@ -18,7 +18,8 @@
         <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
       </mat-select>
     </mat-form-field><br>
-    <button mat-raised-button color="primary" type="submit" style="width: 500px;"  (click)="chercher()"> <i class="fas fa-search    "></i>  Chercher</button>
+    <button mat-raised-button color="primary" type="submit" style="width: 500px;"  (click)="chercher()"
+    matTooltip="Chercher"> <i class="fas fa-search    "></i>  Chercher</button>
   </div>
 </div>
 <mat-toolbar>

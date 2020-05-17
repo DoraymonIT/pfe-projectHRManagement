@@ -1,11 +1,11 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
   <mat-tab label="LISTE DE GRADE NON TRAITES" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-      <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des demandes Non tarité </h1></div>
+      <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des demandes Non trité </h1></div>
       <table class="table table-hover table-dark table-striped" style="color: wheat">
         <thead>
-        <th>employe</th>
-        <th>grade</th>
+        <th>Employe</th>
+        <th>Grade</th>
         <th>Date Affectation</th>
         <th style="padding-left: 40px">Action</th>
         </thead>
@@ -17,8 +17,12 @@
           <td>{{c.grade.libelle}}</td>
           <td>{{c.dateDeAffectation}}</td>
           <td>
-            <button class="btn btn-light btn-sm fas fa-plus" (click)="accepterUnRapport(c)"></button>
-            <button class="btn btn-info btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"></button>
+            <button class="btn btn-light btn-sm fas fa-plus" (click)="accepterUnRapport(c)"
+
+            ></button>
+            <button class="btn btn-info btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"
+            matTooltip="Ce button permet de donner plus d info sur cet element"
+            ></button>
           </td>
         </tr>
         </tbody>

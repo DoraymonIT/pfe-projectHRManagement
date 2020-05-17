@@ -58,9 +58,13 @@
                               <td>{{c.mention}}</td>
                               <td>{{c.date}}</td>
                               <td style="text-align: center;" >
-                                <button class="btn btn-info btn-sm fa fa-trash" style="margin-right: 5px;" ></button>
-                                <button class="btn btn-danger btn-sm fa fa-edit" style="margin-right: 5px;" ></button>
-                                <button class="btn btn-outline-info btn-sm fa fa-info" (click)="infoUnNote(c)"></button>
+                                <button class="btn btn-info btn-sm fa fa-trash" style="margin-right: 5px;"
+                                matTooltip="Ce button permet de supprimer cet element"></button>
+                                <button class="btn btn-danger btn-sm fa fa-edit" style="margin-right: 5px;"
+                                matTooltip="Ce button permet de modifier cet element"
+                                ></button>
+                                <button class="btn btn-outline-info btn-sm fa fa-info" (click)="infoUnNote(c)"
+                                matTooltip="Ce button permet de donner plus de detailles sur cet element"></button>
 
                               </td>
                             </tr>

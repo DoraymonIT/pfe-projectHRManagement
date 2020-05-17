@@ -14,7 +14,9 @@
           <td>{{c.libelle}}</td>
           <td>
             <!-- <button class="btn btn-danger btn-sm fa  fa-check-square" (click)="editUnTypeDeDocument(c)"></button> -->
-            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
+            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
+            matTooltip="Ce button permet de supprimer cet element"
+            ></button>
           </td>
         </tr>
         </tbody>

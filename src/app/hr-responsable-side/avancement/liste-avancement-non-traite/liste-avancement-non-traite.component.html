@@ -28,7 +28,9 @@
         <td>{{c.grade.libelle}}</td>
         <td>{{c.dateDeAffectation}}</td>
         <td>
-          <button class="btn btn-danger btn-sm fa fa-edit" (click)="trouverRapportParEmployeDoti(c)"></button>
+          <button class="btn btn-danger btn-sm fa fa-edit" (click)="trouverRapportParEmployeDoti(c)"
+          matTooltip="Ce button permet de modifier cet element"
+          ></button>
         </td>
       </tr>
       </tbody>

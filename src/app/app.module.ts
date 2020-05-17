@@ -230,6 +230,14 @@ import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-i
     PersonnelEmployesService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ListeDesJoursFriesComponent,GradeListeComponent,DialogDepComponent,ListeDesDocumentsEmployeComponent]
+  entryComponents: [
+    // Dialog de conge
+    ListeDesJoursFriesComponent,
+     // Dialog de gradeEmployes
+    GradeListeComponent,
+     // Dialog de departementEmployes
+    DialogDepComponent,
+     // Dialog de documentsEmployes
+    ListeDesDocumentsEmployeComponent]
 })
 export class AppModule { }
