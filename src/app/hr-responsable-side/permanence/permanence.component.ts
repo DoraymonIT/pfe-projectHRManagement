@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
 import {PermanenceAdministrativeService} from '../../controller/service/permanence-administrative.service';
 import {PermanenceAdministrative} from '../../controller/model/PermanenceAdministrative';
+import {Employe} from '../../controller/model/employe.model';
 
 @Component({
   selector: 'app-permanence',
@@ -10,34 +11,32 @@ import {PermanenceAdministrative} from '../../controller/model/PermanenceAdminis
 })
 export class PermanenceComponent implements OnInit {
 
-  constructor(private pemanenceAdministrative : PermanenceAdministrativeService,
+  constructor(private pemanenceAdministrative: PermanenceAdministrativeService,
               private employerService: PersonnelEmployesService) { }
   cols: any[];
 
   ngOnInit(): void {
-    this.pemanenceAdministrative.findAll();
-    this.listeVide();
-    this.cols = [
-      { field: 'id', header: 'Identifiant' },
-      { field: 'date', header: 'Date de permanence Administrative' },
-      { field: 'periode', header: 'Periode' },
-      { field: 'recuperation', header: 'Récuperation' },
-      { field: 'periodeDeRecuperation', header: 'Période de Récuperation' },
-    ];
+  }
+  get employes(): Array<Employe> {
+    return this.employerService.employes;
+  }
+  get employe(): Employe {
+    return this.employerService.employe;
   }
   public listeVide():boolean{
-    console.log(this.permanences.length);
     return this.permanences.length <1 ? true:false;
   }
   get permanences(): Array<PermanenceAdministrative> {
     return this.pemanenceAdministrative.perm;
   }
 public deleteByReference(permanenece: PermanenceAdministrative) {
-    console.log("ha howa:"+ permanenece.employe.fullName);
     this.pemanenceAdministrative.deleteByReference(permanenece);
   }
-  public editerUnEmployer(permanence: PermanenceAdministrative){
-    console.log(permanence);
+  public getPermanenceByDoti(){
+    document.getElementById('tablePermanence').style.display = 'inline';
+    this.pemanenceAdministrative.findAllPermanenceByDoti(this.employe.doti);
+  }
+  public editerUnepermanence(permanence: PermanenceAdministrative){
     this.demo1BtnClick(2);
     this.pemanenceAdministrative.editerUnEmployer(permanence);
   }

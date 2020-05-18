@@ -20,7 +20,6 @@ export class AjouterPrixComponent implements OnInit {
   ngOnInit() {
     this.employeService.findAll();
     this.prixSmall.findAll();
-
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -29,7 +28,6 @@ export class AjouterPrixComponent implements OnInit {
     return this.prixService.prixEmploye;
   }
   public save(){
-
     return this.prixService.save();
   }
   get ps(): Array<Prix> {

@@ -12,16 +12,18 @@ export class PermanenceAdministrativeService {
   private _permanenceAdministrative: PermanenceAdministrative;
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
+  public findAllPermanenceByDoti(value: number) {
+    this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByemployeDoti/doti/' + value).subscribe(
+      data => {
+        this._perm = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
   public findAll() {
     this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findAll').subscribe(
       data => {
-        //console.log('ha data dial permanence' + data);
         this._perm = data ;
-        //console.log('ha data dial permanence2' + this._perm.length);
-        this._perm.forEach(per => {
-       //   console.log('ha howa start date tani:' + per.date);
-         // console.log('ha howa start fullname tani:' + per.employe.fullName);
-        });
       }, eror => {
         console.log('eroro', eror);
       });

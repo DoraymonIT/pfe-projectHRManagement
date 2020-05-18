@@ -18,7 +18,9 @@ export class RapportInfoComponent implements OnInit {
   get rapportEvaluation(): RapportDeEvaluation {
     return this.avancementService.rapportEvaluation;
   }
-public imprimerRapport(){
+  public imprimerRapport(){
     this.avancementService.imprimerLeRapport();
 }
+  public editRapport(){
+  }
 }

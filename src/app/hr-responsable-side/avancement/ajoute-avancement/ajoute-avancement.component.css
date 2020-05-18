@@ -24,13 +24,3 @@ mat-radio-group mat-radio-button{
 .span {
   margin: auto;
 }
-#div1{ display: none;}
-#div2{ display: none;}
-#div3{ display: none;}
-#div4{ display: none;}
-#div5{ display: none;}
-#div6{ display: none;}
-
-a{
-  cursor: pointer;
-}

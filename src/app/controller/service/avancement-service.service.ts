@@ -17,13 +17,14 @@ import {Grade} from '../model/grade.model';
 
 })
 export class AvancementServiceService {
+// tslint:disable-next-line:variable-name
 private _rapportEvaluation: RapportDeEvaluation;
-
 
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
 
   public findRapportByGradeIdAndEmployeDoti(id: number, doti: number) {
+    // tslint:disable-next-line:max-line-length
     this.http.get<RapportDeEvaluation>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/findByNouveauGradeIdAndEmployeDoti/id/' + id + '/doti/' + doti).subscribe(
       data => {
         this.rapportEvaluation = data ;

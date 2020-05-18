@@ -3,6 +3,8 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
 import {AjouterEmployeComponent} from './ajouter-employe/ajouter-employe.component';
 import {Employe} from '../../controller/model/employe.model';
+import {ListeDesJoursFriesComponent} from '../absence-et-conge/liste-des-jours-fries/liste-des-jours-fries.component';
+import {AutresComponent} from './autres/autres.component';
 
 
 @Component({
@@ -56,15 +58,12 @@ export class GestionPersonnelComponent implements OnInit {
     return this.employeService.employes;
   }
   public listeVide():boolean{
-    // console.log(this.employes.length);
     return this.employes.length <1 ? true:false;
   }
   public deleteByReference(employe: Employe) {
-    // console.log("ha howa:"+ employe.fullName);
     this.employeService.deleteByReference(employe);
   }
   public editerUnEmployer(employe: Employe){
-    // console.log(employe);
     this.demo1BtnClick(1);
     this.employeService.editerUnEmployer(employe);
   }
@@ -76,12 +75,18 @@ export class GestionPersonnelComponent implements OnInit {
   get indice(): number {
     return this.employeService.indice;
   }
-  public infoUnEmployer(employe: Employe){
-    this.demo1BtnClick(3);
-    this.employeService.infoUnEmployer(employe);
-  }
   public imprimerListeEmploye(){
     this.employeService.imprimerListeEmploye();
+  }
+  infoUnEmployer(emp: Employe) {
+    this.employeService.infoUnEmployer(emp);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '95%';
+    dialogConfig.height = '80%';
+    this.dialog.open(AutresComponent,
+      dialogConfig);
   }
   }
 

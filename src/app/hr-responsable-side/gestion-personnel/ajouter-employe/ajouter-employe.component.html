@@ -55,10 +55,8 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Grade</mat-label>
-
             <mat-select [(ngModel)]="employe.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}">
               <mat-option *ngFor="let gr of grades" [value]="gr.libelle">{{gr.libelle }}</mat-option>
-
             </mat-select>
           </mat-form-field>
           <mat-form-field>
@@ -114,14 +112,12 @@
 
               <mat-radio-button value="Homme">Homme</mat-radio-button>
               <mat-radio-button value="Femme">Femme</mat-radio-button>
-
             </mat-radio-group>
           </div>
           <div class="button-row">
             <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i class="fas fa-check-circle    "></i> Ajouter</button>
           </div>
         </div>
-
       </div>
     </div>
   </div>

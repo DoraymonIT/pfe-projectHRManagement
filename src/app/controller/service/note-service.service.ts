@@ -21,14 +21,38 @@ export class NoteServiceService {
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/';
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
-
+public setNote(notee: NoteGeneraleDeAnnee){
+    this._note = notee;
+}
+public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
+  this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/RapportDesNoteePdf', this.note).subscribe(
+    data => {
+      if (data === 1){
+      this.toast.success(`$rapport est bien preparer`, 'rapport preparer', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+      }
+    }, eror => {
+      console.log('eroro', eror);
+    });
+}
   public findAll() {
     this.http.get<Array<NoteGeneraleDeAnnee>>(this._url + 'findAll').subscribe(
       data => {
-       // console.log('ha data dyal grades' + data);
         this.notes = data ;
       }, eror => {
-        console.log('eroro',eror);
+        console.log('eroro', eror);
+      });
+  }
+  public findAllNoteNonTraite() {
+    this.http.get<Array<NoteGeneraleDeAnnee>>(this._url + 'findNoteNonTraite').subscribe(
+      data => {
+        this.notes = data ;
+      }, eror => {
+        console.log('eroro', eror);
       }
     );
   }
@@ -38,29 +62,16 @@ export class NoteServiceService {
   public trouverNoteParSonDoti(value: number) {
     this.http.get<Array<NoteGeneraleDeAnnee>>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByEmployeDoti/doti/' + value).subscribe(
       data => {
-        //console.log('ha data' + data);
         this.notes = data ;
-     //   console.log(this.saleireEmolye.assuranceMaladieObligatoire.montant)
-       // console.log(this.saleireEmolye.caisseMarocaineDeretrait.montant)
-        //console.log(this.saleireEmolye.impotSurLeRevenu.montant)
-        //console.log(this.saleireEmolye.mutuelleCaisseRetraitEtDeces.montant)
-        //console.log('ha  employe' + this._EditEmploye);
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
   }
   public trouverNoteParSonDotiEtParDate() {
     this.http.get<NoteGeneraleDeAnnee>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByDateAndEmployeDoti/date/' + this.note.date + '/doti/' + this.noteDoti.mention).subscribe(
       data => {
-        //console.log('ha data' + data);
         this.note = data ;
-       //  console.log(this.saleireEmolye.assuranceMaladieObligatoire.montant)
-        // console.log(this.saleireEmolye.caisseMarocaineDeretrait.montant)
-        //console.log(this.saleireEmolye.impotSurLeRevenu.montant)
-        //console.log(this.saleireEmolye.mutuelleCaisseRetraitEtDeces.montant)
-        //console.log('ha  employe' + this._EditEmploye);
-      }, eror => {
+       }, eror => {
         console.log('eroro', eror);
       }
     );
@@ -68,7 +79,6 @@ export class NoteServiceService {
   public save() {
     this.http.post<number>(this._url + 'save', this.note).subscribe(
       data => {
-        //    console.log(data);
         this.toast.success(`${'note'} add note to the database.`, 'note Added', {
           timeOut: 1500,
           progressBar: true,
@@ -79,12 +89,12 @@ export class NoteServiceService {
         this._note = null;
       }, eror => {
         console.log('eroro',eror);
-      }
-    );
+      });
   }
   public  cloneNote(noteGeneraleDeAnnee: NoteGeneraleDeAnnee): NoteGeneraleDeAnnee {
     const myClone = new NoteGeneraleDeAnnee() ;
-    myClone.employe = noteGeneraleDeAnnee.employe;
+    myClone.employeDoti = noteGeneraleDeAnnee.employeDoti;
+    myClone.fuulName = noteGeneraleDeAnnee.fuulName;
     myClone.noteDeAffectationDesTachesLieeAuTravail = noteGeneraleDeAnnee.noteDeAffectationDesTachesLieeAuTravail;
     myClone.noteDeCapaciteDeOrganisation = noteGeneraleDeAnnee.noteDeCapaciteDeOrganisation;
     myClone.noteDeCompotement = noteGeneraleDeAnnee.noteDeCompotement;
@@ -101,8 +111,6 @@ export class NoteServiceService {
       this._note.noteDeCapaciteDeOrganisation = new Note();
       this._note.noteDeRentabilite = new Note();
       this._note.noteDeAffectationDesTachesLieeAuTravail = new Note();
-      this._note.employe = new Employe();
-      this._note.employe.sup = new Employe();
     }
     return this._note;
   }
@@ -110,7 +118,9 @@ export class NoteServiceService {
   set note(value: NoteGeneraleDeAnnee) {
     this._note = value;
   }
-
+public affecteruneNote(note:NoteGeneraleDeAnnee){
+    this._note = note;
+}
   get notes(): Array<NoteGeneraleDeAnnee> {
     if(this._notes == null){
       this._notes = new Array<NoteGeneraleDeAnnee>();
@@ -121,7 +131,6 @@ export class NoteServiceService {
         note.noteDeCapaciteDeOrganisation = new Note();
         note.noteDeAffectationDesTachesLieeAuTravail = new Note();
         note.noteDeRentabilite = new Note();
-        note.employe = new Employe();
       });
     }
     return this._notes;

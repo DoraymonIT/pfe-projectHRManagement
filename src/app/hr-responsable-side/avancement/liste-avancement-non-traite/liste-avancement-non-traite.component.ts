@@ -25,6 +25,9 @@ export class ListeAvancementNonTraiteComponent implements OnInit {
     this.employeService.findAll();
     this.listeVide();
   }
+  public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
+    this.gradesEmploye.imprimerLesGradesDeEmploye(value);
+  }
   public findAllGradeEmployeByDoti(doti: number){
     document.getElementById('fourmule').style.display = 'inline-flex'
     this.gradesEmploye.findAllGradeEmployeByDoti(doti);

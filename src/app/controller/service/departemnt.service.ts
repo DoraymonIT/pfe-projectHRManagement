@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {Employe} from '../model/employe.model';
 import {ToastrService} from 'ngx-toastr';
 import {PersonnelEmployesService} from './personnel-employes.service';
+import {PunitionEmploye} from '../model/punition-employe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,12 @@ export class DepartemntService {
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Departement/';
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
-
+public EditerDepartement(value: Departement) {
+    this._departement = value;
+}
 public findAll() {
-  this.http.get<Array<Departement>>(this._url+'findAll').subscribe(
+  this.http.get<Array<Departement>>(this._url + 'findAll').subscribe(
     data => {
-      console.log('ha data dyal departement' + data);
       this.deps = data ;
     }, eror => {
       console.log('eroro',eror);
@@ -30,13 +32,12 @@ public findAll() {
 public  cloneDepartement(departement: Departement): Departement {
     const myClone = new Departement() ;
     myClone.nom = departement.nom;
-    myClone.chef = departement.chef;
+    myClone.chefdoti = departement.chefdoti;
     return myClone;
   }
   public save() {
     this.http.post<number>(this._url + 'save', this.departement).subscribe(
       data => {
-    //    console.log(data);
         this.toast.success(`${this.departement.nom} add departement to the database.`, 'depatrement Added', {
           timeOut: 1500,
           progressBar: true,
@@ -53,7 +54,6 @@ public  cloneDepartement(departement: Departement): Departement {
   get dep(): Departement {
     if (this._dep == null) {
       this._dep = new Departement();
-      this._dep.chef = new Employe();
     }
     return this._dep;
   }
@@ -65,10 +65,22 @@ public  cloneDepartement(departement: Departement): Departement {
       this._deps = new Array<Departement>();
       this._deps.forEach(department =>{
         department = new Departement();
-        department.chef = new Employe();
       });
     }
     return this._deps;
+  }
+  public imprimerLesdepartements() {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Departement/listedepartementPdf').subscribe(
+      data => {
+        this.toast.success(` document est bien preparer`, ' document preparer', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
   }
   set deps(value: Array<Departement>) {
     this._deps = value;
@@ -77,7 +89,6 @@ public  cloneDepartement(departement: Departement): Departement {
   get departement(): Departement {
     if(this._departement == null){
       this._departement = new  Departement();
-      this._departement.chef = new Employe();
     }
     return this._departement;
   }

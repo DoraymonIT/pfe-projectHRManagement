@@ -20,6 +20,9 @@ export class GradeComponent implements OnInit {
   constructor(private gradeservice: GradeService,
               private employeService: PersonnelEmployesService,private dialog :MatDialog) { }
 cols: any[];
+  public tabindex;
+  public demo1TabIndex = 0;
+
   ngOnInit(): void {
     this.cols = [
 
@@ -27,6 +30,9 @@ cols: any[];
       { field: 'nombreDePosteNonOccupe', header: 'Nombre De Poste Non Occupé' },
     ];
     this.gradeservice.findAll();
+  }
+  public demo1BtnClick(value: number) {
+    this.demo1TabIndex = value ;
   }
   get grades(): Array<Grade> {
     return this.gradeservice.grades;

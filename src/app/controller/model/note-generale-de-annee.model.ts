@@ -10,6 +10,7 @@ export class NoteGeneraleDeAnnee {
   noteDeRechercheEtDeInnovation :Note ;
   moyenGeneral : number;
   mention : string;
-  employe : Employe;
+  employeDoti : number;
+  fuulName : string;
   date : Date;
 }

@@ -7,14 +7,12 @@
   <div class="container-fluid">
     <!-- <h3 style="text-align : center">Ajouter Une note</h3> -->
     <div class="controles-container">
-
       <mat-form-field>
         <mat-label> <i class="fas fa-user-tie    "></i> Selectionnez l employe a noter : </mat-label>
         <mat-select [(ngModel)]="note.moyenGeneral" [ngModelOptions]="{standalone: true}" >
           <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
         </mat-select>
       </mat-form-field>
-
       <mat-form-field>
         <input matInput [matDatepicker]="pi5" placeholder="Date d evaluation "
                [(ngModel)]="note.date" [ngModelOptions]="{standalone: true}">
@@ -70,3 +68,5 @@
         <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i class="fas fa-check-square    "></i> Ajouter</button>
     </div>
   </div>
+  </div>
+</form>

@@ -35,4 +35,7 @@ export class NoteDetailComponent implements OnInit {
   get noteDoti(): Note {
     return this.noteService.noteDoti;
   }
+  public imprimerNoteDeEmploye(value: NoteGeneraleDeAnnee) {
+    this.noteService.imprimerUnRappotDeNoteDeEmploye(value);
+  }
 }
