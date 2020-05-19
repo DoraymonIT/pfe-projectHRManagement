@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" style="text-align: center;"> <i class="fas fa-chart-bar    "></i> historique de grade d'un employe </span>
+    <span class="span" > <i class="fas fa-chart-bar    "></i> historique de grade d'un employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -28,8 +28,8 @@
         <td>{{c.grade.libelle}}</td>
         <td>{{c.dateDeAffectation}}</td>
         <td>
-          <button class="btn btn-danger btn-sm fa fa-edit" (click)="trouverRapportParEmployeDoti(c)"
-          matTooltip="Ce button permet de modifier cet element"
+          <button class="btn btn-info btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"
+          matTooltip="Ce button permet de donner le rapport de en detailles cet element"
           ></button>
         </td>
       </tr>

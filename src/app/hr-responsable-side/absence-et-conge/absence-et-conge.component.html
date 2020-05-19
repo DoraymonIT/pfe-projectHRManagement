@@ -1,6 +1,6 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
   [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="lISTE DES CONGES" style="width: 25px" tabindex="1">
+  <mat-tab label="LISTE DES CONGES" style="width: 25px" tabindex="1">
     <table>
     <div class="example-small-box mat-elevation-z4">
         <div class="container-fluid" style="padding-top: 10px;">
@@ -25,7 +25,7 @@
                         ariaLabelAsc="Activate to sort in ascending order">
                       </p-sortIcon>
                     </th>
-                    <th style="width: 80px" >Details</th>
+                    <th style="width: 3em"></th>
                     <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
@@ -39,7 +39,7 @@
                     <td *ngFor="let col of columns">
                       {{rowData[col.field]}}
                     </td>
-                    <td style="width: 80px">
+                    <td>
                       <button class="btn btn-info btn-sm fa fa-info" (click)="trouverCongeParSonDotiDialog(rowData)"
                       matTooltip="Ce button permet de donner plus d info sur cet element"
                       ></button>

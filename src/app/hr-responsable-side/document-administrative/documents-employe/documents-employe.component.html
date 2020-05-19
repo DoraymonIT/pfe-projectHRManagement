@@ -18,13 +18,13 @@
           <td>{{c.typeDeDocument.libelle  || "----"}}</td>
           <td>{{c.dateDemande}}</td>
           <td style="padding-left: 40px">{{c.maniereDeRetrait}}</td>
-          <td>
+          <td style="text-align: center;">
             <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"
             matTooltip="Ce button permet de modifier cet element"
-            ></button>
+            style="margin-right: 5px;"   ></button>
             <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="imprimer(c)"
-            matTooltip="Ce button permet d imprimer cet element"
-            ></button>
+            matTooltip="Ce button permet de traiter cet element"
+            style="margin-right: 5px;"    ></button>
             <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
             matTooltip="Ce button permet de supprimer cet element"
             ></button>

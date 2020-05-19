@@ -23,6 +23,7 @@
                                     ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
                         </p-sortIcon>
                       </th>
+                      <th style="width: 3em"></th>
                     </tr>
                     <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                   </ng-template>
@@ -36,6 +37,11 @@
 
                       <td *ngFor="let col of columns">
                         {{rowData[col.field]}}
+                      </td>
+                      <td style="text-align: center;" >
+                        <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverNoteParSonDoti(rowData)"
+                        matTooltip="Ce button permet de donner plus de detailles sur cet element"
+                        ></button>
                       </td>
                     </tr>
                   </ng-template>
