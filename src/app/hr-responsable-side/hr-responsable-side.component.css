@@ -10,6 +10,9 @@ mat-sidenav{
 .example-tree-progress-bar {
   margin-left: 30px;
 }
+.mat-menu-content{
+  height: 100px;
+}
 .list1:hover{
   cursor: pointer;
   background-color: rgb(131, 131, 131);

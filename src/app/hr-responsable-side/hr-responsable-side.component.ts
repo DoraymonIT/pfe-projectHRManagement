@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBadge } from '@angular/material/badge';
+import {LogInService} from '../controller/service/log-in.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-hr-responsable-side',
@@ -7,18 +9,29 @@ import { MatBadge } from '@angular/material/badge';
   styleUrls: ['./hr-responsable-side.component.css']
 })
 export class HRResponsableSideComponent implements OnInit {
-  constructor() {
+  constructor(private logInService: LogInService,
+              private router: Router) {
   this.hideMatBadge = false;
-    this.ex=12;
+  this.ex = 12;
    }
+  get conncter(): boolean {
+    return this.logInService.conncter;
+  }
   opened: boolean;
 
   panelOpenState = false;
-
-  ngOnInit(): void {
+  hideMatBadge: boolean;
+  ex: number;
+  public connecter(): boolean {
+    if (this.conncter === false) {
+      this.router.navigate(['']).then();
+      return false;
+    }
+    return true;
   }
-  hideMatBadge : boolean;
-ex:number;
+  ngOnInit(): void {
+    this.connecter();
+  }
 badge(){
  this.hideMatBadge= true;
 }
