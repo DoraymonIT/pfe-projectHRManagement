@@ -1,0 +1,20 @@
+<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span" id="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> liste des fonction </span>
+  </mat-toolbar-row>
+</mat-toolbar><table class="table table-hover table-striped table-dark " style="color: wheat">
+  <thead>
+    <th>fonction</th>
+    <th>nom de departement</th>
+    <th>chef de departement</th>
+  </thead>
+  <tbody>
+    <p-progressSpinner *ngIf="listeVide()"  >Loading...</p-progressSpinner>
+    <tr *ngFor="let c of depFonfonction">
+      <td>{{c.fonction.libelle}}</td>
+      <td>{{c.departemant.nom}}</td>
+      <td>{{c.departemant.chefdoti}}</td>
+    </tr>
+  </tbody>
+</table>

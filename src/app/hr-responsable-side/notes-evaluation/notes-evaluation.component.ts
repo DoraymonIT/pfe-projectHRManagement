@@ -9,6 +9,10 @@ import {GradeEmploye} from '../../controller/model/grade-employe.model';
 import {Grade} from '../../controller/model/grade.model';
 import {NoteGeneraleDeAnnee} from '../../controller/model/note-generale-de-annee.model';
 import {Note} from '../../controller/model/note.model';
+import {Fonction} from '../../controller/model/fonction.model';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AutresComponent} from '../gestion-personnel/autres/autres.component';
+import {NoteDetailComponent} from './note-detail/note-detail.component';
 export interface Table {
   id: Number;
   name: String;
@@ -21,51 +25,24 @@ export interface Table {
 })
 export class NotesEvaluationComponent implements OnInit {
 
-  cols: any[];
-  ngOnInit(): void {
-    this.cols = [
-      { field: 'fullName', header: 'Full Name' },
-      { field: 'doti', header: 'doti' },
-      { field: 'cin', header: 'cin' },
-      { field: 'email', header: 'email' },
-    ];
-    this.employeService.findAll();
-  }
-  constructor(private noteService: NoteServiceService,
-              private employeService: PersonnelEmployesService) { }
-  get employes(): Array<Employe> {
-    return this.employeService.employes;
-  }
-  get notes(): Array<NoteGeneraleDeAnnee> {
-  return this.noteService.notes;
-  }
-  public listeVide():boolean{
-    //  console.log(this.de.length);
-    return this.employes.length <1 ? true:false;
-  }
-  public trouverNoteParSonDoti(value: Employe){
-    this.noteService.trouverNoteParSonDoti(value.doti);
-  }
-  public infoUnNote(value: NoteGeneraleDeAnnee){
-    this.demo1BtnClick(3);
-    console.log(value.date)
-    this.noteService.infoUnNote(value);
-  }
-  public editerUnEmployer(employe: Employe){
-    console.log(employe);
-    this.demo1BtnClick(1);
-    this.employeService.editerUnEmployer(employe);
-  }
+  constructor(private noteService: NoteServiceService) { }
+
   public tabindex;
   public demo1TabIndex = 0;
-  public demo1BtnClick(value:number) {
+  ngOnInit(): void {
+    this.noteService.findAllNoteNonTraite();
+  }
+  get notes(): Array<NoteGeneraleDeAnnee> {
+    return this.noteService.notes;
+  }
+  public listeVide(): boolean {
+    return this.notes.length < 1 ? true : false;
+  }
+  public affecteruneNote(note: NoteGeneraleDeAnnee){
+    this.demo1BtnClick(2);
+    this.noteService.affecteruneNote(note);
+  }
+  public demo1BtnClick(value: number) {
     this.demo1TabIndex = value ;
-  }
-  get indice(): number {
-    return this.employeService.indice;
-  }
-  public infoUnEmployer(employe: Employe){
-    this.demo1BtnClick(3);
-    this.employeService.infoUnEmployer(employe);
   }
 }

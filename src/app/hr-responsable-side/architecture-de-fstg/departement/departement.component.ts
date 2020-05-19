@@ -4,9 +4,10 @@ import {PersonnelEmployesService} from '../../../controller/service/personnel-em
 import {Departement} from '../../../controller/model/departement.model';
 import {Employe} from '../../../controller/model/employe.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ListeDesJoursFriesComponent } from '../../absence-et-conge/liste-des-jours-fries/liste-des-jours-fries.component';
-import { ListeComponent } from './liste/liste.component';
+import {ListeFonctionComponent} from './ListeFonction/liste.component';
 import { DialogDepComponent } from './dialog-dep/dialog-dep.component';
+import {DepFonction} from '../../../controller/model/dep-fonction.model';
+import {DepFonctionService} from '../../../controller/service/dep-fonction.service';
 
 
 @Component({
@@ -17,23 +18,41 @@ import { DialogDepComponent } from './dialog-dep/dialog-dep.component';
 export class DepartementComponent implements OnInit {
   cols: any[];
   constructor(private departementservice: DepartemntService,
-              private employeservice: PersonnelEmployesService,private dialog :MatDialog) { }
+              private employeservice: PersonnelEmployesService,
+              private dialog: MatDialog,
+              private depFonction: DepFonctionService) { }
+  public tabindex;
+  public demo1TabIndex = 0;
   ngOnInit(): void {
     this.departementservice.findAll();
     this.listeVide();
     this.cols = [
-      // { field: 'id', header: 'id' },
-
-      // { field: '', header: '' },
       { field: 'nom', header: 'Nom Departement' },
-      // { field: 'chef.fullName', header: 'Chef de departement' },
-
+      { field: 'chefdoti', header: 'chef' },
     ];
   }
-//a faire delete departement edit departement
-  public listeVide():boolean{
-    //  console.log(this.de.length);
-    return this.deps.length <1 ? true:false;
+// a faire delete departement edit departement
+  public listeVide(): boolean {
+    return this.deps.length < 1 ? true : false;
+  }
+  public demo1BtnClick(value: number) {
+    this.demo1TabIndex = value ;
+  }
+  public imprimerLesdepartement() {
+    this.departementservice.imprimerLesdepartements();
+  }
+  public trouverFonctionParNomDepDialog(value: Departement) {
+    this.depFonction.findDepFonctionByDepartement(value);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '95%';
+    dialogConfig.height = '80%';
+    this.dialog.open(ListeFonctionComponent, dialogConfig);
+  }
+  public modifierDepartement(value: Departement){
+    this.demo1BtnClick(2);
+    this.departementservice.EditerDepartement(value);
   }
   get deps(): Array<Departement> {
     return this.departementservice.deps;
@@ -41,16 +60,13 @@ export class DepartementComponent implements OnInit {
   get employes(): Array<Employe> {
     return this.employeservice.employes;
   }
-  public trouverEmployeParNomDep(value: Departement){
-    this.employeservice.trouverEmployerParNomDepartement(value.nom);
-  }
   trouverEmployesParNomDepDialog(dep: Departement) {
     this.employeservice.trouverEmployerParNomDepartement(dep.nom);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "95%";
-    dialogConfig.height = "80%";
+    dialogConfig.width = '95%';
+    dialogConfig.height = '80%';
     this.dialog.open(DialogDepComponent,
       dialogConfig);
   }

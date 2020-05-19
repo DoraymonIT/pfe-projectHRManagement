@@ -3,83 +3,57 @@
   <mat-tab label="CALENDRIERE DES PERMANENNCES" style="width: 25px" tabindex="1">
     <div class="example-small-box mat-elevation-z4">
       <app-permanence-calendrier></app-permanence-calendrier>
-
     </div>
   </mat-tab>
   <mat-tab label="LISTES DES PERMANENECES" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">
-      <div class="container-fluid" style="padding-top: 10px;">
-        <div class="row">
-          <div class="col-md-12">
-            <p-table #dt [columns]="cols" [value]="permanences" dataKey="periode" [paginator]="true" [rows]="10">
-              <ng-template pTemplate="caption">
-                <i class="fas fa-tasks    "></i> Liste des permanence Administratives
-                <div style="text-align: right">
-                  <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                  <input type="text" pInputText size="50"
-                    placeholder="Ex: par employe : AHmed , par DOTI : 11111, par date : 2020-12-12"
-                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-                </div>
-              </ng-template>
-              <ng-template pTemplate="header" let-columns>
-                <tr>
-                  <th style="width: 3em"></th>
-                  <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                    {{col.header}}
-                    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                      ariaLabelDesc="Activate to sort in descending order"
-                      ariaLabelAsc="Activate to sort in ascending order">
-                    </p-sortIcon>
-                  </th>
-                  <th>
-                    Action
-                  </th>
-                </tr>
-                <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
-              </ng-template>
-              <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
-                <tr>
-                  <td>
-                    <a href="#" [pRowToggler]="rowData">
-                      <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
-                    </a>
-                  </td>
-                  <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
-                  </td>
-                  <td style="text-align:center">
-                    <button class="btn  btn-info btn-sm fa fa-edit" style="margin-right: 10px;"
-                    matTooltip="Ce button permet de modifier cet element"
-                      (click)="editerUnEmployer(rowData)"></button>
-                    <button class="btn btn-danger btn-sm fa fa-trash"
-                      matTooltip="Cette action peut supprimer cet element d une facon permanent"
-                      matTooltip="Ce button permet de supprimer cet element"
-                      (click)="deleteByReference(rowData)"></button>
-                  </td>
-                </tr>
-              </ng-template>
-              <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
-                <tr>
-                  <td [attr.colspan]="columns.length + 1">
-                    <div class="container-fluid">
-                      <h3 style="text-align: center;">Personne Permanent</h3>
-                      <hr>
-                      <div class="row">
-                        <div class="col-md-3"> <b>Full name :</b> {{rowData.employe.fullName}}</div>
-                        <div class="col-md-3"> <b>Cin :</b> {{rowData.employe.cin}}</div>
-                        <div class="col-md-3"> <b>Doti:</b> {{rowData.employe.doti}}</div>
-                        <div class="col-md-3"> <b>Phone Number:</b> {{rowData.employe.tel}}</div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </ng-template>
-            </p-table>
-          </div>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span"> <i class="fas fa-search    "></i> Chercher les prix d'un employe a partir d un doti </span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+        <div class="card-body">
+          <mat-form-field  style="width: 500px">
+            <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
+            <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPermanenceByDoti()">
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
+      <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tablePermanence">
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <span class="span"> <i class="fas fa-search"></i> la listes des permanence  </span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <table class="table table-hover table-dark table-striped" style="color: wheat">
+          <thead>
+          <th>Employe</th>
+          <th>prix</th>
+          <th>date Obtenation</th>
+          <th style="padding-left: 40px">Action</th>
+          </thead>
+          <tbody>
+          <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
+          <tr *ngFor="let c of permanences">
+            <td>{{c.employe.fullName}}</td>
+            <td>{{c.periode}}</td>
+            <td>{{c.recuperation}}</td>
+            <td>{{c.periodeDeRecuperation}}</td>
+            <td>
+              <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUnepermanence(c)"></button>
+              <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+              <button class="btn btn-info btn-sm fa fa-trash"></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
   </mat-tab>
 
   <mat-tab label="AJOUTER | AFFECTER PERMANENNCE A UN EMPLOYE" style="width: 25%;" tabindex="3">

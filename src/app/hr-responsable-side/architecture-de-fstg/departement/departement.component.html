@@ -1,12 +1,12 @@
-<mat-tab-group style="width: 100%;">
-
+<mat-tab-group style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
+               [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="LISTE DES DEPARTEMENTS" style="width: 25%;">
     <div class="example-small-box mat-elevation-z4">
       <div class="example-large-box mat-elevation-z4">
         <div class="container-fluid" style="padding-top: 10px;">
           <div class="row">
             <div class="col-md-12">
-              <p-table #dt [columns]="cols" [value]="deps" dataKey="nom" [paginator]="true" [rows]="15">
+              <p-table #dt [columns]="cols" [value]="deps" dataKey="nom" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="caption">
                <i class="fa fa-building" ></i>  liste des departements
                   <div style="text-align: right">
@@ -43,42 +43,10 @@
                       <ng-template #elseBlock> {{rowData.chef.fullName}} </ng-template>
           </td> -->
                     <td style="text-align:center">
-                      <button class="btn btn-info  btn-sm fa fa-edit" style="margin-right: 10px;"
-                      matTooltip="Ce button permet de modifier cet element"
-                      ></button>
-                      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)"
-                      style="margin-right: 10px;"
-                      matTooltip="Ce button permet de donner plus d info sur cet element"
-                      ></button>
-                      <button class="btn btn-danger btn-sm fa fa-trash"
-                      matTooltip="Ce button permet de supprimer cet element"
-                      ></button>
-
-                    </td>
-                  </tr>
-                </ng-template>
-                <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
-
-                  <tr>
-                    <td [attr.colspan]="columns.length + 1">
-                      <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-                        <table class="table table-hover table-striped" style="color: wheat">
-                          <thead>
-                            <th>full name</th>
-                            <th>doti</th>
-                            <th>cin</th>
-                            <th>email</th>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let c of employes">
-                              <td>{{c.fullName}}</td>
-                              <td>{{c.doti}}</td>
-                              <td>{{c.cin}}</td>
-                              <td>{{c.email}}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                      <button class="btn btn-info  btn-sm fa fa-edit" style="margin-right: 10px;" (click)="modifierDepartement(rowData)"></button>
+                      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)" style="margin-right: 10px;"></button>
+                      <button class="btn btn-outline-info btn-sm fa fa-address-book" (click)="trouverFonctionParNomDepDialog(rowData)" style="margin-right: 10px;"></button>
+                      <button class="btn btn-danger btn-sm fa fa-trash"  ></button>
                     </td>
                   </tr>
                 </ng-template>
@@ -88,8 +56,12 @@
         </div>
       </div>
     </div>
+      <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesdepartement()" ><i class="fa fa-file-pdf"  ></i> PDF</button>
   </mat-tab>
   <mat-tab label="AJOUTER UN DEPARTEMENT" style="width: 25px">
     <app-dep-ajout></app-dep-ajout>
+  </mat-tab>
+  <mat-tab label="Affecter une fonction a un departement" style="width: 25px">
+    <app-ajoute-une-fonction-undeartement></app-ajoute-une-fonction-undeartement>
   </mat-tab>
 </mat-tab-group>

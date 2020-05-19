@@ -13,25 +13,40 @@ export class FormationServiceService {
 
     constructor(private http: HttpClient,
       private toast: ToastrService) { }
-
-    // public findAll() {
-    //   this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/CongeeService/findAll').subscribe(
-    //     data => {
-    //       console.log('ha data dyal types de conges' + data);
-    //       this._formations = data;
-    //       //console.log('ha  employe' + this._EditEmploye);
-    //     }, eror => {
-    //       console.log('eroro', eror);
-    //     }
-    //   );
-    // }
+public setformation(formationn: Formation) {
+      this._formationEmploye = formationn;
+}
+public editercetteFormation(formation: Formation){
+      this._formationEmploye = formation;
+}
+public imprimerLesFormations(value: Array<Formation>) {
+  this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/listeDesFormationsPdf', value).subscribe(
+    data => {
+      this.toast.success(` document est bien preparer`, ' document preparer', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+    }, eror => {
+      console.log('eroro', eror);
+    });
+}
+     public findallFourmationsByDoti(value: number) {
+       this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/Formation/findByemployeDoti/doti/' + value).subscribe(
+         data => {
+           this._formations = data;
+         }, eror => {
+           console.log('eroro', eror);
+         });
+     }
     get formations(): Array<Formation> {
       if (this._formations == null) {
         this._formations = new Array<Formation>();
         this._formations.forEach(formation => {
           formation = new Formation();
-     formation.employe = new Employe();
-        })
+          formation.employe = new Employe();
+        });
       }
       return this._formations;
     }

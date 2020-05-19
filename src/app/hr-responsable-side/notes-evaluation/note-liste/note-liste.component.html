@@ -1,27 +1,64 @@
-<!-- <table class="table table-hover table-striped" style="color: wheat">
-  <thead>
-  <th> id</th>
-  <th>moyen Generale</th>
-  <th>mention</th>
-  <th>date</th>
-  <th>Action</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let c of notes">
-    <td>{{c.id}}</td>
-    <td>{{c.moyenGeneral}}</td>
-    <td>{{c.mention}}</td>
-    <td>{{c.date}}</td>
-    <td style="text-align: center;" >
-      <button class="btn btn-info btn-sm fa fa-trash" style="margin-right: 5px;"
-      matTooltip="Ce button permet de supprimer cet element"></button>
-      <button class="btn btn-danger btn-sm fa fa-edit" style="margin-right: 5px;"
-      matTooltip="Ce button permet de modifier cet element"
-      ></button>
-      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="infoUnNote(c)"
-      matTooltip="Ce button permet de donner plus de detailles sur cet element"></button>
+<div class="example-large-box mat-elevation-z4">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span class="span"> <i class="fas fa-search    "></i> Chercher les notes d un employe a partir d un doti </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+    <div class="card-body">
+      <mat-form-field  style="width: 500px">
+        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
+        <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="trouverNoteParSonDoti(this.employe)">
+          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="container-fluid" style="padding-top: 10px;">
+    <div class="row">
+      <div class="col-md-12">
+        <p-table #dt [columns]="cols" [value]="notes" dataKey="id" [paginator]="true" [rows]="5">
+          <ng-template pTemplate="caption">
+            <i class="fas fa-sticky-note" ></i>  liste des employes avec leurs notes ( Evaluation )
+            <div style="text-align: right">
+              <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+              <input type="text" pInputText size="50" placeholder="Ex : Ahmed Azizi , 123456, ...."
+                     (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+                </p-sortIcon>
+              </th>
+              <th>Action</th>
+            </tr>
+            <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+              <td style="text-align: center;" >
+                <button class="btn btn-info btn-sm fa fa-trash" style="margin-right: 5px;" ></button>
+                <button class="btn btn-danger btn-sm fa fa-edit" style="margin-right: 5px;" ></button>
+                <button class="btn btn-outline-info btn-sm fa fa-info" (click)="infoUnNote(rowData)"></button>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
+            <tr>
+              <td [attr.colspan]="columns.length + 1">
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
 
-    </td>
-  </tr>
-  </tbody>
-</table> -->

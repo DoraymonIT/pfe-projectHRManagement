@@ -58,7 +58,6 @@ public show(): boolean{
   }
 
  public selectDepFonction(value: string) {
-    console.log('ha howa 3yiiit 3lia');
     this.employeService.findFonctionByDepartement(value);
 
   }

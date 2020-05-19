@@ -97,6 +97,11 @@ import { AjouterFormationComponent } from './hr-responsable-side/certificats-med
 import { ContacterUnEmployeComponent } from './hr-responsable-side/gestion-personnel/contacter-un-employe/contacter-un-employe.component';
 import { DialogDepComponent } from './hr-responsable-side/architecture-de-fstg/departement/dialog-dep/dialog-dep.component';
 import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-info/rapport-info.component';
+import { AjouteAvancementComponent } from './hr-responsable-side/avancement/ajoute-avancement/ajoute-avancement.component';
+import { AjouteRapportComponent } from './hr-responsable-side/avancement/ajoute-rapport/ajoute-rapport.component';
+import {ListeFonctionComponent} from './hr-responsable-side/architecture-de-fstg/departement/ListeFonction/liste.component';
+import {AjouteUneFonctionUndeartementComponent} from './hr-responsable-side/architecture-de-fstg/departement/ajoute-une-fonction-undeartement/ajoute-une-fonction-undeartement.component';
+import {CountdownModule} from 'ngx-countdown';
 
 
 @NgModule({
@@ -112,6 +117,7 @@ import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-i
     DocumentAdministrativeComponent,
     GestionPersonnelComponent,
     ListeEmployesComponent,
+    ListeComponent,
     AjouterEmployeComponent,
     EditerEmployeComponent,
     AutresComponent,
@@ -120,13 +126,13 @@ import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-i
     EditerEmployeComponent,
     AutresComponent,
     AjouterEmployeComponent,
+    ListeFonctionComponent,
     ListeEmployesComponent,
     NotesEvaluationComponent,
     CertificatsMedicalesComponent,
     ListeComponent,
     EditerComponent,
     ArchitectureDeFSTGComponent,
-
     PermanenceCalendrierComponent,
     PermanenceAjouterComponent,
     PermanenceListeComponent,
@@ -168,53 +174,59 @@ import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-i
 
     DialogDepComponent,
 
-    RapportInfoComponent
+    RapportInfoComponent,
+
+    AjouteAvancementComponent,
+
+    AjouteRapportComponent,
+
+    AjouteUneFonctionUndeartementComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatSidenavModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatIconModule,
-    ToastrModule.forRoot(),
-    MatBadgeModule,
-    MatButtonModule,
-    MatTreeModule,
-    MatProgressBarModule,
-    MatListModule,
-    MatTabsModule
-    , MatDividerModule
-    , MatTooltipModule,
-    MatExpansionModule,
-    MatTableModule,
-    MatPaginatorModule,
-    FullCalendarModule,
-    MatCardModule,
-    MatChipsModule,
-    ChartModule,
-    ProgressSpinnerModule,
-    ReactiveFormsModule,
-    MatGridListModule,
-    MatRadioModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    Ng2SmartTableModule,
-    Ng2CompleterModule,
-    TableModule,
-    InputTextModule,
-    ToastrModule,
-    EditorModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        MatSidenavModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatIconModule,
+        ToastrModule.forRoot(),
+        MatBadgeModule,
+        MatButtonModule,
+        MatTreeModule,
+        MatProgressBarModule,
+        MatListModule,
+        MatTabsModule
+        , MatDividerModule
+        , MatTooltipModule,
+        MatExpansionModule,
+        MatTableModule,
+        MatPaginatorModule,
+        FullCalendarModule,
+        MatCardModule,
+        MatChipsModule,
+        ChartModule,
+        ProgressSpinnerModule,
+        ReactiveFormsModule,
+        MatGridListModule,
+        MatRadioModule,
+        MatDialogModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        Ng2SmartTableModule,
+        Ng2CompleterModule,
+        TableModule,
+        InputTextModule,
+        ToastrModule,
+        EditorModule, CountdownModule
+    ],
   providers: [
     {
       provide: MatDialogRef,

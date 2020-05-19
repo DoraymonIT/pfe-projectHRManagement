@@ -47,8 +47,7 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Employee/';
   constructor(private http: HttpClient,
-              private toast: ToastrService,
-              ) { }
+              private toast: ToastrService) { }
   public infoUnEmployer(employe: Employe) {
     this._employeInfo = employe;
   }
@@ -64,7 +63,6 @@ public ajouterEmpString() {
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/' + value).subscribe(
       data => {
-        console.log('ha data dyal employes qui ont m grade' + data);
         this.employesByGrade = data ;
       }, eror => {
         console.log('eroro', eror);
@@ -134,8 +132,7 @@ public ajouterEmpString() {
         }
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
     }
   }
   public update() {
@@ -206,7 +203,7 @@ public ajouterEmpString() {
     myClone.gender = employe.gender;
     myClone.situationFamiliale = employe.situationFamiliale;
     myClone.soldeRestantesCongéExceptionnel = employe.soldeRestantesCongéExceptionnel;
-    myClone.sup = employe.dep.chef;
+    myClone.sup = employe.sup;
     myClone.tel = employe.tel;
     myClone.pays = employe.pays;
     return myClone;
@@ -215,11 +212,11 @@ public ajouterEmpString() {
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<DepFonction>>('http://localhost:8080/gestionDesEmployee-Api/DepFonction/findByDepartemantNom/nomDepartemant/' + value).subscribe(
       data => {
-        this._depFonctions = data ;
+        this.depFonctions = data ;
+        console.log('ha dep fonction' + this._depFonctions);
         }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
   }
   public trouverEmployerParSonDoti(value: number) {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
@@ -275,7 +272,7 @@ public ajouterEmpString() {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployePdf').subscribe(
       data => {
         if (data > 0) {
-        this.toast.success(` la liste des employe est bien imprimer`, 'liste imprimer', {
+        this.toast.success(` la liste des employe est bien imprimer`, 'ListeFonction imprimer', {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -365,11 +362,16 @@ set employesByDep(value: Array<Employe>) {
     if (this._depFonctions ==  null) {
       this._depFonctions = new Array<DepFonction>();
       this._depFonctions.forEach( deep => {
-        deep.depatement = new Departement();
+        deep = new DepFonction();
+        deep.departemant = new Departement();
         deep.fonction = new Fonction();
       });
     }
     return this._depFonctions;
+  }
+
+  set depFonctions(value: Array<DepFonction>) {
+    this._depFonctions = value;
   }
 
   get EditEmploye(): Employe {
@@ -402,11 +404,9 @@ set employesByDep(value: Array<Employe>) {
       this._employeInfo.dernierGrade = new GradeEmploye();
       this._employeInfo.dernierGrade.grade = new Grade();
       this._employeInfo.dernierNote = new NoteGeneraleDeAnnee();
-      this._employeInfo.dernierNote.employe = new Employe();
       this._employeInfo.sup = new Employe();
       this._employeInfo.fonction = new Fonction();
       this._employeInfo.dep = new Departement();
-      this._employeInfo.dep.chef = new Employe();
       this._employeInfo.dernierNote = new NoteGeneraleDeAnnee();
     }
     return this._employeInfo;

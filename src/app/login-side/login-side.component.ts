@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {LogInService} from '../controller/service/log-in.service';
 import {Employe} from '../controller/model/employe.model';
+import {User} from '../controller/model/user.model';
 /**
  * @title Input with error messages
  */
@@ -16,14 +17,33 @@ export class LoginSideComponent implements OnInit {
   password: string;
   showErrors;
   constructor(private login: LogInService) { }
-
-  ngOnInit(): void {
+  get show(): boolean {
+    return this.login.show;
   }
-  get employe(): Employe {
-    return this.login.employe;
+  ngOnInit(): void {
+    this.login.ajouteLoginTitre();
+  }
+  get userEmploye(): User {
+    return this.login.userEmploye;
+  }
+  // tslint:disable-next-line:adjacent-overload-signatures
+  public showw(): boolean{
+   return  this.show;
   }
   public Login() {
+    console.log('ha email' + this.userEmploye.login);
+    console.log('ha password' + this.userEmploye.pwd);
     this.login.login();
   }
+  get loginTitre(): string {
+    return this.login.loginTitre;
+  }
 
+  get userLogin(): string {
+    return this.login.userLogin;
+  }
+
+  get userpdw(): string {
+    return this.login.userpdw;
+  }
 }

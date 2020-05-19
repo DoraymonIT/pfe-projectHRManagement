@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Prix } from '../model/prix.model';
 import { Employe } from '../model/employe.model';
+import {Formation} from '../model/formation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +15,34 @@ export class PrixService {
 
     constructor(private http: HttpClient,
       private toast: ToastrService) { }
-
-    // public findAll() {
-    //   this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/CongeeService/findAll').subscribe(
-    //     data => {
-    //       console.log('ha data dyal types de conges' + data);
-    //       this._formations = data;
-    //       //console.log('ha  employe' + this._EditEmploye);
-    //     }, eror => {
-    //       console.log('eroro', eror);
-    //     }
-    //   );
-    // }
+    public setprix(prixx: PrixEmploye){
+      this._prixEmploye = prixx;
+}
+  public imprimerLesPrix(value: Array<PrixEmploye>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/listeDesPrixPdf', value).subscribe(
+      data => {
+        this.toast.success(` document est bien preparer`, ' document preparer', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+public editerCePrixx(prix: PrixEmploye){
+      this._prixEmploye = prix;
+}
+     public findallPrixByDoti(value: number) {
+       // tslint:disable-next-line:max-line-length
+       this.http.get<Array<PrixEmploye>>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/findByEmployeDoti/doti/' + value).subscribe(
+         data => {
+           this._prixs = data;
+         }, eror => {
+           console.log('eroro', eror);
+         });
+     }
     get prixs(): Array<PrixEmploye> {
       if (this._prixs == null) {
         this._prixs = new Array<PrixEmploye>();
@@ -33,7 +50,7 @@ export class PrixService {
           p = new PrixEmploye();
           p.prix = new Prix();
      p.employe = new Employe();
-        })
+        });
       }
       return this._prixs;
     }
