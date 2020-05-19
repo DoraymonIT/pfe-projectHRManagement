@@ -12,7 +12,8 @@
       </span>
       <div class="card bg-secondary text-white" style=" box-shadow: 0px 13px 90px -7px #343a40; border-radius: 10px;">
         <div class="card-header" style="text-align: center;">
-          <h5><i class="fas fa-user-circle" style="font-size: 60px;"></i><br>Authentification</h5>
+          <countdown [config]="{ leftTime: 900, format: 'm:s' }" (event)="showw()" id="count"></countdown>
+          <h5 id="span"><i class="fas fa-user-circle" style="font-size: 60px;"></i><br>{{this.loginTitre}}</h5>
         </div>
         <div class="card-body">
           <div class="alert alert-danger alert-dismissible" *ngIf="showErrors" role="alert">
@@ -24,15 +25,12 @@
           <form>
             <div class="form-group">
               <label for="exampleInputEmail"><i class="	fas fa-user-tie"></i> Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email@email.com"
-       >
+              <input  class="form-control"  id="exampleInputEmail" placeholder="Email@email.com" [(ngModel)]="userEmploye.login" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1"><i class="fa fa-lock"></i> Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                >
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="userEmploye.pwd" [ngModelOptions]="{standalone: true}">
             </div>
-
           </form>
         </div>
         <div class="card-footer">
@@ -42,9 +40,6 @@
                 class="	fas fa-key"></i> I Forget my password ?</span></a>
         </div>
       </div>
-
     </div>
-
   </div>
-
 </div>

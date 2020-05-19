@@ -3,7 +3,9 @@
   /* Mumkiin tbddl back1 w tddir back2 wlla back3 w chuuf lli 3jbattk  */
   position: relative;
 }
-
+#count{
+  display: none;
+}
 .bouton {
   border-radius: 10px;
   background-color: rgb(53, 53, 53);
