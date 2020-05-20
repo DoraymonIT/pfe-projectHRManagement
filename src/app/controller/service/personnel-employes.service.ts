@@ -73,7 +73,7 @@ public ajouterEmpString() {
     // tslint:disable-next-line:max-line-length
       this.http.get<number>('http://localhost:8080//gestionDesEmployee-Api/NotificationEmploye/sendmail/email/' + this._email.email + '/subject/' + this._email.subject + '/content/' + this._email.text).subscribe(
         data => {
-          if (data > 1) {
+          if (data == 1) {
             this.toast.success(`${this._email.email} `, 'email sended', {
               timeOut: 1500,
               progressBar: true,
