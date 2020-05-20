@@ -13,13 +13,16 @@ export class LogInService {
   private _userpdw: string;
   private _loginTitre: string;
   private _show: boolean;
+  // tslint:disable-next-line:variable-name
+  private _conncter = false;
   constructor(private http: HttpClient,
               private toast: ToastrService,
-              private router: Router) { }
+              private router: Router) {}
 
 public ajouteLoginTitre(){
     this._loginTitre = 'Authentification';
 }
+
   public login() {
     this.findUser();
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/User/seConnecter', this.userEmploye).subscribe(
@@ -31,6 +34,7 @@ public ajouteLoginTitre(){
        progressAnimation: 'increasing',
        positionClass: 'toast-top-right'
      });
+     this._conncter = true;
      this.router.navigate(['RhResponsable']).then();
          } else if (data === -1) {
            this.toast.error(`$ login not found`, 'login failed', {
@@ -125,5 +129,13 @@ public  findUser() {
 
   set show(value: boolean) {
     this._show = value;
+  }
+
+  get conncter(): boolean {
+    return this._conncter;
+  }
+
+  set conncter(value: boolean) {
+    this._conncter = value;
   }
 }

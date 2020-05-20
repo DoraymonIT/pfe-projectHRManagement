@@ -13,19 +13,13 @@
     <div class="col-md-3">
        <h5 style="text-align: center;">Employes By Age</h5>
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
-
         <mat-chip *ngFor="let chip of agesCa" selected [color]="chip.color" style="font-size: 21px;">
       <span style="padding-left: 83px;"> {{chip.range}} :  {{chip.total}} </span>
         </mat-chip>
       </mat-chip-list>
-
-
     </div>
     <div class="col-md-7">
       <h3 >Autres</h3>
-
-
-
     </div>
   </div>
   <div class="row">
@@ -58,14 +52,10 @@
   <div class="row">
     <div class="col-md-4">
       <h3 >Documents en lignes par jour</h3>
-
-
-
     </div>
     <div class="col-md-4">
       <h3>Abscences Rating</h3>
       <p-chart type="bar" [data]="data2"></p-chart>
-
     </div>
     <div class="col-md-4">
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">

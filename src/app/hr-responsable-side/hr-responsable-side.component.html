@@ -1,4 +1,4 @@
-<mat-sidenav-container class="example-container" class="side-barr">
+<mat-sidenav-container class="example-container" class="side-barr" *ngIf="conncter">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 289px;">
     <mat-list role="list">
       <mat-list-item  role="listitem" >
@@ -75,9 +75,10 @@
           </mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <a href="#" mat-menu-item>Lien 1</a>
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
+          <a href="#" mat-menu-item >demande document,type document</a>
+          <a mat-menu-item >Liste evaluation Aujourd'hui</a>
+            <a mat-menu-item >Liste Notification Aujourd'hui</a>
+              <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">Liste Avancement Aujourd'hui</a>
         </mat-menu>
         <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
           Profile</button> -->
