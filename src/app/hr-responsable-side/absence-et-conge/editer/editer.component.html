@@ -21,7 +21,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <label>Raison :*</label>
+        <mat-label>Raison :*</mat-label>
         <mat-select [(ngModel)]="congeEmploye.raison" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.raison">
           <mat-option value="true">True</mat-option>
@@ -29,19 +29,19 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <label> Etat :* </label>
+        <mat-label>Etat :*</mat-label>
         <input matInput [(ngModel)]="congeEmploye.etat" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.etat">
       </mat-form-field>
       <mat-form-field>
-        <label>Date de debut de conge</label>
+        <mat-label>Date de debut de conge :*</mat-label>
         <input matInput [matDatepicker]="picker" [(ngModel)]="congeEmploye.dateDeDebut"
           [ngModelOptions]="{standalone: true}" [value]="congeEmploye.dateDeDebut">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <label> Periode :* </label>
+        <mat-label>Periode :*</mat-label>
         <input matInput [(ngModel)]="congeEmploye.periode" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.periode" type="number">
       </mat-form-field>

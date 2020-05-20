@@ -51,8 +51,8 @@ cols: any[];
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "95%";
-    dialogConfig.height = "80%";
+    dialogConfig.width = "90%";
+    dialogConfig.height = "100%";
     this.dialog.open(ListeDesDocumentsEmployeComponent,
       dialogConfig);
   }

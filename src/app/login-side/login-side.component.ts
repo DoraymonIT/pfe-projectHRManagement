@@ -16,7 +16,7 @@ export class LoginSideComponent implements OnInit {
   nom: string;
   password: string;
   showErrors;
-  constructor(private login: LogInService) { }
+  constructor(private login: LogInService,  private router: Router) { }
   get show(): boolean {
     return this.login.show;
   }
@@ -31,9 +31,10 @@ export class LoginSideComponent implements OnInit {
    return  this.show;
   }
   public Login() {
-    console.log('ha email' + this.userEmploye.login);
-    console.log('ha password' + this.userEmploye.pwd);
-    this.login.login();
+    // console.log('ha email' + this.userEmploye.login);
+    // console.log('ha password' + this.userEmploye.pwd);
+    // this.login.login();
+    this.router.navigate(['RhResponsable']).then();
   }
   get loginTitre(): string {
     return this.login.loginTitre;

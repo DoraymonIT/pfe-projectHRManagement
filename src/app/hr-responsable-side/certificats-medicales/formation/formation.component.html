@@ -4,7 +4,7 @@
     <div class="example-large-box mat-elevation-z4">
       <mat-toolbar>
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-search    "></i> Chercher les formation d'un employe a partir d un doti </span>
+          <span class="span"> <i class="fas fa-graduation-cap    "></i> Chercher les formation d'un employe a partir d un doti </span>
         </mat-toolbar-row>
       </mat-toolbar>
       <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
@@ -55,7 +55,7 @@
         </table>
       </div>
     </div>
-    <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesFormations(this.formations)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+    <button *ngIf="formations"  mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerLesFormations(this.formations)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
   </mat-tab>
   <mat-tab label="AFFECTER UNE FORMATION A UN EMPLOYE" tabindex="2">
     <div class="example-large-box mat-elevation-z4">

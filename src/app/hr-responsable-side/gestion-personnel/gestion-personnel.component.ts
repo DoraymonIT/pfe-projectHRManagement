@@ -38,7 +38,7 @@ export class GestionPersonnelComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "95%";
+    dialogConfig.width = "100%";
     dialogConfig.height = "100%";
     this.dialog.open(AjouterEmployeComponent, dialogConfig);
   }
@@ -83,8 +83,8 @@ export class GestionPersonnelComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '95%';
-    dialogConfig.height = '80%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '100%';
     this.dialog.open(AutresComponent,
       dialogConfig);
   }
