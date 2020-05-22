@@ -32,7 +32,7 @@ private _typeDocument: TypeDocument;
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/listeDesDemandePdf', this.documentsByDoti).subscribe(
         data => {
           this.toast.success(` document est bien preparé`, ' document prepared', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -43,9 +43,9 @@ private _typeDocument: TypeDocument;
               }
   public saveDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
-    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null || this.document.dateDemande == null) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null && this.document.dateDemande == null)) {
+    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -56,7 +56,7 @@ private _typeDocument: TypeDocument;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/save', this.document).subscribe(
       data => {
         this.toast.success(`${this.document.id} add demande document employe to the database.`, ' demande document employe Added', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -75,7 +75,7 @@ private _typeDocument: TypeDocument;
     // tslint:disable-next-line:max-line-length
     if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null || this.document.dateDemande == null) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null && this.document.dateDemande == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -86,7 +86,7 @@ private _typeDocument: TypeDocument;
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/update', this.document).subscribe(
         data => {
           this.toast.success(`${this.document.id} update demande document employe to the database.`, ' demande document employe updated', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -104,7 +104,7 @@ private _typeDocument: TypeDocument;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeSalaire', demande).subscribe(
       data => {
         this.toast.success(`$ le document est bien imprimer`, '  document  imprimed', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -117,7 +117,7 @@ private _typeDocument: TypeDocument;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeTravail', demande).subscribe(
       data => {
         this.toast.success(`$ le document est bien imprimer`, '  document  imprimed', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -136,7 +136,7 @@ public ajoutedemandeDecumentTitre() {
     if ((this.typeDocument.titre == null || this.typeDocument.body == null) || (this.typeDocument.titre == null && this.typeDocument.body == null)) {
       // tslint:disable-next-line:max-line-length
         this.toast.error(`remplir toutes les champ`, 'champ vide', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -148,7 +148,7 @@ public ajoutedemandeDecumentTitre() {
       data => {
         if( data === 1){
         this.toast.success(`$ cree document to pdf.`, '  document  crée', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'

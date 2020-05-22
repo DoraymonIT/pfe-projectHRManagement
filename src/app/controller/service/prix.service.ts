@@ -22,7 +22,7 @@ export class PrixService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/listeDesPrixPdf', value).subscribe(
       data => {
         this.toast.success(` document est bien preparer`, ' document preparer', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -76,7 +76,7 @@ public editerCePrixx(prix: PrixEmploye){
         data => {
           // console.log(data);
           this.toast.success(`${this.prixEmploye.employe.fullName} add prix employe to the database.`, 'prix Added', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'

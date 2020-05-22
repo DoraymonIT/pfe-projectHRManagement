@@ -10,11 +10,18 @@
               pResizableColumn="true">
               <ng-template pTemplate="caption">
                 <i class="fas fa-users    "></i> Listes des employes
+
+                <div style="    text-align: left; margin-bottom: 10px;">
+                  <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerListeEmploye()"
+                matTooltip="Ce button permet d imprimer ce table en format PDF"
+                ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+                </div>
                 <div style="text-align: right">
                   <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
                   <input type="text" pInputText size="50" placeholder="Ex : 118899 or Mohamed Azizi..."
                     (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                 </div>
+
               </ng-template>
               <ng-template pTemplate="header" let-columns>
                 <tr>
@@ -85,9 +92,7 @@
                 </tr>
               </ng-template> -->
             </p-table>
-            <button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerListeEmploye()"
-            matTooltip="Ce button permet d imprimer ce table en format PDF"
-            ><i class="fa fa-file-pdf" ></i> PDF</button>
+
           </div>
         </div>
       </div>

@@ -17,9 +17,9 @@
   <div class="container-fluid" style="padding-top: 10px;">
     <div class="row">
       <div class="col-md-12">
-        <p-table #dt [columns]="cols" [value]="notes" dataKey="id" [paginator]="true" [rows]="5">
+        <p-table #dt [columns]="cols" [value]="notesParDoti" dataKey="id" [paginator]="true" [rows]="5">
           <ng-template pTemplate="caption">
-            <i class="fas fa-sticky-note" ></i>  liste des employes avec leurs notes ( Evaluation )
+            <i class="fas fa-sticky-note" ></i>  liste des notes de cet employe ( Evaluation )
             <div style="text-align: right">
               <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
               <input type="text" pInputText size="50" placeholder="Ex : Ahmed Azizi , 123456, ...."

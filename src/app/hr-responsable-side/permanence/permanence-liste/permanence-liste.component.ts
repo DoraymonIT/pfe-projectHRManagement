@@ -16,12 +16,15 @@ export class PermanenceListeComponent implements OnInit {
     this.pemanenceAdministrative.findAll();
     this.listeVide();
     this.cols = [
+
+      { field: 'id', header: 'ID-Permanence' },
       { field: 'periode', header: 'Periode' },
       { field: 'recuperation', header: 'Récuperation' },
       { field: 'periodeDeRecuperation', header: 'Période de Récuperation' },
-      { field: 'date', header: 'date de permanence Administrative' },
+      { field: 'date', header: 'Date de permanence' },
     ];
   }
+
   public listeVide():boolean{
     console.log(this.permanences.length);
     return this.permanences.length <1 ? true:false;

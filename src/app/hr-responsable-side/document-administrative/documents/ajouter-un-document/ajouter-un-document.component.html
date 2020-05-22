@@ -1,7 +1,6 @@
-
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> <i class="fas fa-plus-circle"> {{ajoutedocument}}</i> </span>
+    <span class="span" id="span"> <i class="fas fa-plus-circle"> </i> {{ajoutedocument}} </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -12,8 +11,9 @@
             <input matInput  [(ngModel)]="this.typeDocument.titre" [ngModelOptions]="{standalone: true}" >
           </mat-form-field>
           <p-editor [(ngModel)]="this.typeDocument.body"  [style]="{'height':'320px'}" [ngModelOptions]="{standalone: true}" type="text"></p-editor>
+       <br>
+          <button mat-raised-button color="primary" type="submit"  (click)="save()" > <i class="fas fa-save"></i> Creer</button>
 
-            <button mat-raised-button color="primary" type="submit" style="padding-top: 10px;" (click)="save()" > <i class="fas fa-save"></i> Creer</button>
         </div>
   </div>
 </form>

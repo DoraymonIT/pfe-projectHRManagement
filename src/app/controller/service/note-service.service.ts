@@ -15,7 +15,10 @@ import {SalaireEmploye} from '../model/salaire-employe.model';
 })
 export class NoteServiceService {
   private _note: NoteGeneraleDeAnnee;
-  private _notes: Array<NoteGeneraleDeAnnee>;
+  private _noteSave: NoteGeneraleDeAnnee;
+  private _notesNonTraite: Array<NoteGeneraleDeAnnee>;
+  private _notesAll: Array<NoteGeneraleDeAnnee>;
+  private _notesParDoti: Array<NoteGeneraleDeAnnee>;
   private _noteDoti: Note;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/';
@@ -29,7 +32,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
     data => {
       if (data === 1){
       this.toast.success(`$rapport est bien preparer`, 'rapport preparer', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -42,7 +45,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   public findAll() {
     this.http.get<Array<NoteGeneraleDeAnnee>>(this._url + 'findAll').subscribe(
       data => {
-        this.notes = data ;
+        this.notesAll = data ;
       }, eror => {
         console.log('eroro', eror);
       });
@@ -50,7 +53,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   public findAllNoteNonTraite() {
     this.http.get<Array<NoteGeneraleDeAnnee>>(this._url + 'findNoteNonTraite').subscribe(
       data => {
-        this.notes = data ;
+        this.notesNonTraite = data ;
       }, eror => {
         console.log('eroro', eror);
       }
@@ -62,14 +65,15 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   public trouverNoteParSonDoti(value: number) {
     this.http.get<Array<NoteGeneraleDeAnnee>>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByEmployeDoti/doti/' + value).subscribe(
       data => {
-        this.notes = data ;
+        this.notesParDoti = data ;
       }, eror => {
         console.log('eroro', eror);
       });
   }
   public trouverNoteParSonDotiEtParDate() {
-    this.http.get<NoteGeneraleDeAnnee>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByDateAndEmployeDoti/date/' + this.note.date + '/doti/' + this.noteDoti.mention).subscribe(
+    this.http.get<NoteGeneraleDeAnnee>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByDateAndEmployeDoti/date/' + this.note.date + '/doti/' + this.note.employeDoti).subscribe(
       data => {
+        console.log(data);
         this.note = data ;
        }, eror => {
         console.log('eroro', eror);
@@ -77,16 +81,16 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
     );
   }
   public save() {
-    this.http.post<number>(this._url + 'save', this.note).subscribe(
+    this.http.post<number>(this._url + 'save', this.noteSave).subscribe(
       data => {
         this.toast.success(`${'note'} add note to the database.`, 'note Added', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._notes.push(this.cloneNote(this.note));
-        this._note = null;
+        this.notesAll.push(this.cloneNote(this.noteSave));
+        this._noteSave = null;
       }, eror => {
         console.log('eroro',eror);
       });
@@ -114,17 +118,34 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
     }
     return this._note;
   }
-
   set note(value: NoteGeneraleDeAnnee) {
     this._note = value;
   }
+
+
+  get noteSave(): NoteGeneraleDeAnnee {
+    if(this._noteSave == null){
+      this._noteSave = new NoteGeneraleDeAnnee();
+      this._noteSave.noteDeRechercheEtDeInnovation = new Note();
+      this._noteSave.noteDeCompotement = new Note();
+      this._noteSave.noteDeCapaciteDeOrganisation = new Note();
+      this._noteSave.noteDeRentabilite = new Note();
+      this._noteSave.noteDeAffectationDesTachesLieeAuTravail = new Note();
+    }
+    return this._noteSave;
+  }
+  set noteSave(value: NoteGeneraleDeAnnee) {
+    this._noteSave = value;
+  }
+
+
 public affecteruneNote(note:NoteGeneraleDeAnnee){
     this._note = note;
 }
-  get notes(): Array<NoteGeneraleDeAnnee> {
-    if(this._notes == null){
-      this._notes = new Array<NoteGeneraleDeAnnee>();
-      this._notes.forEach(note =>{
+  get notesAll(): Array<NoteGeneraleDeAnnee> {
+    if(this._notesAll == null){
+      this._notesAll = new Array<NoteGeneraleDeAnnee>();
+      this._notesAll.forEach(note =>{
         note = new NoteGeneraleDeAnnee();
         note.noteDeRechercheEtDeInnovation = new Note();
         note.noteDeCompotement = new Note();
@@ -133,7 +154,47 @@ public affecteruneNote(note:NoteGeneraleDeAnnee){
         note.noteDeRentabilite = new Note();
       });
     }
-    return this._notes;
+    return this._notesAll;
+  }
+
+  set notesAll(value: Array<NoteGeneraleDeAnnee>) {
+    this._notesAll = value;
+  }
+  get notesNonTraite(): Array<NoteGeneraleDeAnnee> {
+    if(this._notesNonTraite == null){
+      this._notesNonTraite = new Array<NoteGeneraleDeAnnee>();
+      this._notesNonTraite.forEach(note =>{
+        note = new NoteGeneraleDeAnnee();
+        note.noteDeRechercheEtDeInnovation = new Note();
+        note.noteDeCompotement = new Note();
+        note.noteDeCapaciteDeOrganisation = new Note();
+        note.noteDeAffectationDesTachesLieeAuTravail = new Note();
+        note.noteDeRentabilite = new Note();
+      });
+    }
+    return this._notesNonTraite;
+  }
+
+  set notesNonTraite(value: Array<NoteGeneraleDeAnnee>) {
+    this._notesNonTraite = value;
+  }
+  get notesParDoti(): Array<NoteGeneraleDeAnnee> {
+    if(this._notesParDoti == null){
+      this._notesParDoti = new Array<NoteGeneraleDeAnnee>();
+      this._notesParDoti.forEach(note =>{
+        note = new NoteGeneraleDeAnnee();
+        note.noteDeRechercheEtDeInnovation = new Note();
+        note.noteDeCompotement = new Note();
+        note.noteDeCapaciteDeOrganisation = new Note();
+        note.noteDeAffectationDesTachesLieeAuTravail = new Note();
+        note.noteDeRentabilite = new Note();
+      });
+    }
+    return this._notesParDoti;
+  }
+
+  set notesParDoti(value: Array<NoteGeneraleDeAnnee>) {
+    this._notesParDoti = value;
   }
 
 
@@ -148,7 +209,4 @@ public affecteruneNote(note:NoteGeneraleDeAnnee){
     this._noteDoti = value;
   }
 
-  set notes(value: Array<NoteGeneraleDeAnnee>) {
-    this._notes = value;
-  }
 }

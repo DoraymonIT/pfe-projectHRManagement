@@ -37,7 +37,7 @@ private _rapportEvaluation: RapportDeEvaluation;
       data => {
         if (data > 0) {
           this.toast.success(` le rapport est bien imprimer`, 'rapport imprimer', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -52,7 +52,7 @@ private _rapportEvaluation: RapportDeEvaluation;
       data => {
         if (data > 0) {
           this.toast.success(` avancement est bie effectué`, 'avancement affectuer', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'

@@ -154,10 +154,10 @@
               <input matInput placeholder="Violation ">
             </mat-form-field> -->
             <mat-form-field>
-              <input matInput [matDatepicker]="pi5" placeholder="Date de Punition"
+              <input matInput [matDatepicker]="pi13" placeholder="Date de Punition"
                      [(ngModel)]="punitionEmploye.dateObtenation" [ngModelOptions]="{standalone: true}" [value]="punitionEmploye.dateObtenation">
-              <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
-              <mat-datepicker #pi5></mat-datepicker>
+              <mat-datepicker-toggle matSuffix [for]="pi13"></mat-datepicker-toggle>
+              <mat-datepicker #pi13></mat-datepicker>
             </mat-form-field>
             <!--
             <mat-form-field>
@@ -193,10 +193,10 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field style="padding-right: 250px;margin-left: 100px">
-          <input matInput [matDatepicker]="pi5" placeholder="Date d evaluation "
+          <input matInput [matDatepicker]="pi12" placeholder="Date d evaluation "
                  [(ngModel)]="note.date" [ngModelOptions]="{standalone: true}" [value]="note.date">
-          <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
-          <mat-datepicker #pi5></mat-datepicker>
+          <mat-datepicker-toggle matSuffix [for]="pi12"></mat-datepicker-toggle>
+          <mat-datepicker #pi12></mat-datepicker>
         </mat-form-field>
         <a (click)="afficher7()">  <div class="card-header"> Ajouter une note De Rentabilite <i class="fas fa-chevron-circle-down    "></i></div></a>
         <div id="div7" class="card-body">

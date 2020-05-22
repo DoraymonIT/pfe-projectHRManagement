@@ -102,7 +102,7 @@ import { AjouteAvancementComponent } from './hr-responsable-side/avancement/ajou
 import {ListeFonctionComponent} from './hr-responsable-side/architecture-de-fstg/departement/ListeFonction/liste.component';
 import {AjouteUneFonctionUndeartementComponent} from './hr-responsable-side/architecture-de-fstg/departement/ajoute-une-fonction-undeartement/ajoute-une-fonction-undeartement.component';
 import {CountdownModule} from 'ngx-countdown';
-
+import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-rapport/ajoute-rapport.component'
 
 @NgModule({
   declarations: [
@@ -178,9 +178,10 @@ import {CountdownModule} from 'ngx-countdown';
 
     AjouteAvancementComponent,
 
-   
+
 
     AjouteUneFonctionUndeartementComponent,
+    AjouteRapportComponent
   ],
     imports: [
         BrowserModule,

@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { Employe } from '../model/employe.model';
 import { HttpClient } from '@angular/common/http';
 import { Departement } from '../model/departement.model';
-import {GradeEmploye} from '../model/grade-employe.model';
-import {Grade} from '../model/grade.model';
-import {DepFonction} from '../model/dep-fonction.model';
-import {Fonction} from '../model/fonction.model';
-import {ToastrService} from 'ngx-toastr';
-import {NoteGeneraleDeAnnee} from '../model/note-generale-de-annee.model';
-import {SalaireEmploye} from '../model/salaire-employe.model';
-import {Emoluments} from '../model/emoluments.model';
-import {Revenu} from '../model/revenu.model';
-import {EmailValidator} from '@angular/forms';
-import {Email} from '../model/email.model';
+import { GradeEmploye } from '../model/grade-employe.model';
+import { Grade } from '../model/grade.model';
+import { DepFonction } from '../model/dep-fonction.model';
+import { Fonction } from '../model/fonction.model';
+import { ToastrService } from 'ngx-toastr';
+import { NoteGeneraleDeAnnee } from '../model/note-generale-de-annee.model';
+import { SalaireEmploye } from '../model/salaire-employe.model';
+import { Emoluments } from '../model/emoluments.model';
+import { Revenu } from '../model/revenu.model';
+import { EmailValidator } from '@angular/forms';
+import { Email } from '../model/email.model';
 
 
 
@@ -38,6 +38,8 @@ export class PersonnelEmployesService {
   private _email: Email;
   // tslint:disable-next-line:variable-name
   private _employesByDep: Array<Employe>;
+  private _employesByNoteGeneraleToday: Array<Employe>;
+
   // tslint:disable-next-line:variable-name
   private _employesByGrade: Array<Employe>;
   // tslint:disable-next-line:variable-name
@@ -47,23 +49,23 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Employee/';
   constructor(private http: HttpClient,
-              private toast: ToastrService) { }
+    private toast: ToastrService) { }
   public infoUnEmployer(employe: Employe) {
     this._employeInfo = employe;
   }
 
-public ajouterEmpString() {
+  public ajouterEmpString() {
     this.ajouteEmp = ' Formulaire pour ajouter un employe au FSTG';
-}
+  }
   public modifyEmpString() {
     this.modifyEmp = ' Modifier Les donnes d un employe ';
   }
-// trouver Employer Par Nom Grade
+  // trouver Employer Par Nom Grade
   public trouverEmployerParNomGrade(value: string) {
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/' + value).subscribe(
       data => {
-        this.employesByGrade = data ;
+        this.employesByGrade = data;
       }, eror => {
         console.log('eroro', eror);
       });
@@ -71,26 +73,27 @@ public ajouterEmpString() {
   // save
   public contacterUnEmploye() {
     // tslint:disable-next-line:max-line-length
-      this.http.get<number>('http://localhost:8080//gestionDesEmployee-Api/NotificationEmploye/sendmail/email/' + this._email.email + '/subject/' + this._email.subject + '/content/' + this._email.text).subscribe(
-        data => {
-          if (data == 1) {
-            this.toast.success(`${this._email.email} `, 'email sended', {
-              timeOut: 1500,
-              progressBar: true,
-              progressAnimation: 'increasing',
-              positionClass: 'toast-top-right'
-            });
-          }}, eror => {
-          console.log('eroro', eror);
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/NotificationEmploye/sendmail/email/' + this._email.email + '/subject/' + this._email.subject + '/content/' + this._email.text).subscribe(
+      data => {
+        if (data == 1) {
+          this.toast.success(`${this._email.email} `, 'email sended', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
         }
-      );
-    }
-// save
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
+  // save
   public save() {
     // tslint:disable-next-line:max-line-length
     if (this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -98,48 +101,48 @@ public ajouterEmpString() {
       this._ajouteEmp = 'champ est vide';
       document.getElementById('span').style.color = 'red';
     } else {
-    this.http.post<number>(this._url + 'save', this.employe).subscribe(
-      data => {
-        if (data === -1) {
-          this.toast.error(`format du nom est incorrect`, 'format error', {
-            timeOut: 1500,
-            progressBar: true,
-            progressAnimation: 'increasing',
-            positionClass: 'toast-top-right'
-          });
-          this._ajouteEmp = 'format du nom est incorrect';
-          document.getElementById('span').style.color = 'red';
-        } else if (data === -2) {
-          this.toast.error(`format du email est incorrect`, 'format error', {
-            timeOut: 1500,
-            progressBar: true,
-            progressAnimation: 'increasing',
-            positionClass: 'toast-top-right'
-          });
-          this._ajouteEmp = 'format du email est incorrect';
-          document.getElementById('span').style.color = 'red';
-        } else {
-        this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
-          timeOut: 1500,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right'
+      this.http.post<number>(this._url + 'save', this.employe).subscribe(
+        data => {
+          if (data === -1) {
+            this.toast.error(`format du nom est incorrect`, 'format error', {
+              timeOut: 2500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this._ajouteEmp = 'format du nom est incorrect';
+            document.getElementById('span').style.color = 'red';
+          } else if (data === -2) {
+            this.toast.error(`format du email est incorrect`, 'format error', {
+              timeOut: 1500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this._ajouteEmp = 'format du email est incorrect';
+            document.getElementById('span').style.color = 'red';
+          } else {
+            this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
+              timeOut: 2500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this._ajouteEmp = 'employe est bien ajouter';
+            document.getElementById('span').style.color = 'green';
+            this.employes.push(this.cloneEmploye(this.employe));
+            this.employe = null;
+          }
+        }, eror => {
+          console.log('eroro', eror);
         });
-        this._ajouteEmp = 'employe est bien ajouter';
-        document.getElementById('span').style.color = 'green';
-        this.employes.push(this.cloneEmploye(this.employe));
-        this.employe = null;
-        }
-      }, eror => {
-        console.log('eroro', eror);
-      });
     }
   }
   public update() {
     // tslint:disable-next-line:max-line-length
     if (this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -148,44 +151,44 @@ public ajouterEmpString() {
       document.getElementById('span').style.color = 'red';
     } else {
       this.http.post<number>(this._url + 'update', this.EditEmploye).subscribe(
-      data => {
-        if (data === -1) {
-          this.toast.error(`format du nom est incorrect`, 'format error', {
-            timeOut: 1500,
-            progressBar: true,
-            progressAnimation: 'increasing',
-            positionClass: 'toast-top-right'
-          });
-          this._ajouteEmp = 'format du nom est incorrect';
-          document.getElementById('span').style.color = 'red';
-        } else if (data === -2) {
-          this.toast.error(`format du email est incorrect`, 'format error', {
-            timeOut: 1500,
-            progressBar: true,
-            progressAnimation: 'increasing',
-            positionClass: 'toast-top-right'
-          });
-          this._ajouteEmp = 'format du email est incorrect';
-          document.getElementById('span').style.color = 'red';
-        } else {
-        this.toast.info(`${this.EditEmploye.fullName} modify employe to the database.`, 'employe Modified', {
-          timeOut: 1500,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right'
+        data => {
+          if (data === -1) {
+            this.toast.error(`format du nom est incorrect`, 'format error', {
+              timeOut: 2500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this._ajouteEmp = 'format du nom est incorrect';
+            document.getElementById('span').style.color = 'red';
+          } else if (data === -2) {
+            this.toast.error(`format du email est incorrect`, 'format error', {
+              timeOut: 2500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this._ajouteEmp = 'format du email est incorrect';
+            document.getElementById('span').style.color = 'red';
+          } else {
+            this.toast.info(`${this.EditEmploye.fullName} modify employe to the database.`, 'employe Modified', {
+              timeOut: 2500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this._modifyEmp = 'employe est bien modifie';
+            document.getElementById('span').style.color = 'green';
+            this.findAll();
+            this.EditEmploye = null;
+          }
+        }, eror => {
+          console.log('eroro', eror);
         });
-        this._modifyEmp = 'employe est bien modifie';
-        document.getElementById('span').style.color = 'green';
-        this.findAll();
-        this.EditEmploye = null;
-        }
-      }, eror => {
-        console.log('eroro', eror);
-      });
     }
   }
   cloneEmploye(employe: Employe): Employe {
-    const myClone = new Employe() ;
+    const myClone = new Employe();
     myClone.adresse = employe.adresse;
     myClone.cin = employe.cin;
     myClone.compteBancaireRib = employe.compteBancaireRib;
@@ -212,27 +215,27 @@ public ajouterEmpString() {
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<DepFonction>>('http://localhost:8080/gestionDesEmployee-Api/DepFonction/findByDepartemantNom/nomDepartemant/' + value).subscribe(
       data => {
-        this.depFonctions = data ;
+        this.depFonctions = data;
         console.log('ha dep fonction' + this._depFonctions);
-        }, eror => {
+      }, eror => {
         console.log('eroro', eror);
       });
   }
   public trouverEmployerParSonDoti(value: number) {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
-        this.EditEmploye = data ;
+        this.EditEmploye = data;
       }, eror => {
         console.log('eroro', eror);
       }
     );
   }
   public imprimerInfoLesEmploye() {
-    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/infoEmployePdf' , this.employeInfo).subscribe(
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/infoEmployePdf', this.employeInfo).subscribe(
       data => {
         if (data === 1) {
           this.toast.success(` document info employe est bien preparé.`, 'document prepared', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -245,26 +248,36 @@ public ajouterEmpString() {
   public trouverEmployerParNomDepartement(value: string) {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
       data => {
-       this.employesByDep = data ;
+        this.employesByDep = data;
       }, eror => {
         console.log('eroro', eror);
       });
   }
+  public trouverEmployerNoteGeneraleToday() {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findLesEmployeAyantLaNoteGeneraleAujourdHui').subscribe(
+      data => {
+        console.log(data);
+        this.employesByNoteGeneraleToday = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   public trouverSalaireParSonDoti(value: number) {
     this.http.get<SalaireEmploye>('http://localhost:8080/gestionDesEmployee-Api/SalaireEmploye/findByEmployeDoti/doti/' + value).subscribe(
       data => {
-        this._saleireEmolye = data ;
+        this._saleireEmolye = data;
       }, eror => {
         console.log('eroro', eror);
       }
     );
   }
   public deleteByReference(employe: Employe) {
-  this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/deleteById/id/' + employe.id).subscribe(
-    data => {
-  this.findAll();
-});
-   }
+    this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/deleteById/id/' + employe.id).subscribe(
+      data => {
+        this.findAll();
+      });
+  }
   public editerUnEmployer(employe: Employe) {
     this.EditEmploye = employe;
   }
@@ -272,26 +285,26 @@ public ajouterEmpString() {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployePdf').subscribe(
       data => {
         if (data > 0) {
-        this.toast.success(` la liste des employe est bien imprimer`, 'ListeFonction imprimer', {
-          timeOut: 1500,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right'
-        });
+          this.toast.success(` la liste des employe est bien imprimer`, 'ListeFonction imprimer', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
         }
       }, eror => {
         console.log('eroro', eror);
       });
   }
-public findAll() {
-  this.http.get<Array<Employe>>(this._url + 'findAll').subscribe(
-    data => {
-      this._employes = data ;
-    }, eror => {
-      console.log('eroro', eror);
-    }
-  );
-}
+  public findAll() {
+    this.http.get<Array<Employe>>(this._url + 'findAll').subscribe(
+      data => {
+        this._employes = data;
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
   get employe(): Employe {
     if (this._employe == null) {
       this._employe = new Employe();
@@ -299,9 +312,9 @@ public findAll() {
       this._employe.dernierGrade.grade = new Grade();
       this._employe.dep = new Departement();
       this._employe.fonction = new Fonction();
- }
-    return this._employe;
     }
+    return this._employe;
+  }
 
   set employe(value: Employe) {
     this._employe = value;
@@ -310,58 +323,75 @@ public findAll() {
     if (this._employesByDep == null) {
       this._employesByDep = new Array<Employe>();
       this._employesByDep.forEach(data => {
-           data = new Employe();
-           data.dep = new Departement();
-           data.dernierGrade = new GradeEmploye();
-           data.dernierGrade.grade = new Grade();
-           data.sup = new Employe();
-    });
-  }
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
     return this._employesByDep;
-}
+  }
 
-set employesByDep(value: Array<Employe>) {
-  this._employesByDep = value;
-}
+  set employesByDep(value: Array<Employe>) {
+    this._employesByDep = value;
+  }
 
   get employesByGrade(): Array<Employe> {
     if (this._employesByGrade == null) {
       this._employesByGrade = new Array<Employe>();
       this._employesByGrade.forEach(data => {
-           data = new Employe();
-           data.dep = new Departement();
-           data.dernierGrade = new GradeEmploye();
-           data.dernierGrade.grade = new Grade();
-           data.sup = new Employe();
-    });
-  }
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
     return this._employesByGrade;
-}
+  }
 
-   set employesByGrade(value: Array<Employe>) {
+  set employesByGrade(value: Array<Employe>) {
     this._employesByGrade = value;
   }
   get employes(): Array<Employe> {
     if (this._employes == null) {
       this._employes = new Array<Employe>();
       this._employes.forEach(data => {
-           data = new Employe();
-           data.dep = new Departement();
-           data.dernierGrade = new GradeEmploye();
-           data.dernierGrade.grade = new Grade();
-           data.sup = new Employe();
-    });
-  }
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
     return this._employes;
-}
+  }
   set employes(value: Array<Employe>) {
     this._employes = value;
   }
+  get employesByNoteGeneraleToday(): Array<Employe> {
+    if (this._employesByNoteGeneraleToday == null) {
+      this._employesByNoteGeneraleToday = new Array<Employe>();
+      this._employesByNoteGeneraleToday.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+    return this._employesByNoteGeneraleToday;
+  }
+  set employesByNoteGeneraleToday(value: Array<Employe>) {
+    this._employesByNoteGeneraleToday = value;
+  }
+
 
   get depFonctions(): Array<DepFonction> {
-    if (this._depFonctions ==  null) {
+    if (this._depFonctions == null) {
       this._depFonctions = new Array<DepFonction>();
-      this._depFonctions.forEach( deep => {
+      this._depFonctions.forEach(deep => {
         deep = new DepFonction();
         deep.departemant = new Departement();
         deep.fonction = new Fonction();
@@ -375,7 +405,7 @@ set employesByDep(value: Array<Employe>) {
   }
 
   get EditEmploye(): Employe {
-    if ( this._EditEmploye == null ) {
+    if (this._EditEmploye == null) {
       this._EditEmploye = new Employe();
       this._EditEmploye.dernierGrade = new GradeEmploye();
       this._EditEmploye.dernierGrade.grade = new Grade();

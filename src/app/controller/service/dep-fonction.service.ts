@@ -22,7 +22,7 @@ public save(){
     data => {
       if (data > 0){
         this.toast.success(` dep fonction est bien ajout&`, ' fonction ajouté', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'

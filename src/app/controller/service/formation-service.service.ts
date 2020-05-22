@@ -23,7 +23,7 @@ public imprimerLesFormations(value: Array<Formation>) {
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/listeDesFormationsPdf', value).subscribe(
     data => {
       this.toast.success(` document est bien preparer`, ' document preparer', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -71,7 +71,7 @@ public imprimerLesFormations(value: Array<Formation>) {
         data => {
           // console.log(data);
           this.toast.success(`${this.formationEmploye.employe.fullName} add formation employe to the database.`, 'conge Added', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'

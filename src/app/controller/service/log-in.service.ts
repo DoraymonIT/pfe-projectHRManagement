@@ -30,7 +30,7 @@ public ajouteLoginTitre(){
     //    data => {
     //      if (data === 1) {
     //  this.toast.success(`$ login est bien faites`, 'login reussit', {
-    //    timeOut: 1500,
+    //    timeOut: 500,
     //    progressBar: true,
     //    progressAnimation: 'increasing',
     //    positionClass: 'toast-top-right'
