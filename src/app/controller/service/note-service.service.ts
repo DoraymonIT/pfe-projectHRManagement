@@ -39,6 +39,9 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
       console.log('eroro', eror);
     });
 }
+public noteNull(){
+    this.note = null;
+}
   public findAll() {
     this.http.get<Array<NoteGeneraleDeAnnee>>(this._url + 'findAll').subscribe(
       data => {
@@ -79,6 +82,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   public save() {
     this.http.post<number>(this._url + 'save', this.note).subscribe(
       data => {
+        if(data === 1) {
         this.toast.success(`${'note'} add note to the database.`, 'note Added', {
           timeOut: 1500,
           progressBar: true,
@@ -87,6 +91,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
         });
         this._notes.push(this.cloneNote(this.note));
         this._note = null;
+        }
       }, eror => {
         console.log('eroro',eror);
       });

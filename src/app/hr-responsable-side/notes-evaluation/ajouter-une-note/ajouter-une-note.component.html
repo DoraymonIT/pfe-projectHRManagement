@@ -9,15 +9,15 @@
     <div class="controles-container">
       <mat-form-field>
         <mat-label> <i class="fas fa-user-tie    "></i> Selectionnez l employe a noter : </mat-label>
-        <mat-select [(ngModel)]="note.moyenGeneral" [ngModelOptions]="{standalone: true}" >
+        <mat-select [(ngModel)]="note.employeDoti" [ngModelOptions]="{standalone: true}" >
           <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="pi5" placeholder="Date d evaluation "
+        <input matInput [matDatepicker]="pi21" placeholder="Date d evaluation "
                [(ngModel)]="note.date" [ngModelOptions]="{standalone: true}">
-        <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
-        <mat-datepicker #pi5></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="pi21"></mat-datepicker-toggle>
+        <mat-datepicker #pi21></mat-datepicker>
       </mat-form-field>
       <a (click)="afficher1()">  <div class="card-header"> Ajouter une note De Rentabilite <i class="fas fa-chevron-circle-down    "></i></div></a>
       <div id="div1" class="card-body">

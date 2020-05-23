@@ -15,6 +15,7 @@ export class AjouterFormationComponent implements OnInit {
 
   ngOnInit() {
     this.employeService.findAll();
+    this.formationService.ajouteFormationTitre();
 
   }
   get employes(): Array<Employe> {
@@ -23,7 +24,14 @@ export class AjouterFormationComponent implements OnInit {
   get formationEmploye(): Formation {
     return this.formationService.formationEmploye;
   }
-  public save(){
+  public save() {
+    if (this.formationEmploye.id == null){
     return this.formationService.save();
+    } else {
+      return this.formationService.update();
+    }
+  }
+  get ajouteFormation(): String {
+    return this.formationService.ajouteFormation;
   }
 }

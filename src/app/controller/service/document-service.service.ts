@@ -43,7 +43,7 @@ private _typeDocument: TypeDocument;
               }
   public saveDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
-    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null || this.document.dateDemande == null) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null && this.document.dateDemande == null)) {
+    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 1500,
         progressBar: true,
@@ -55,7 +55,7 @@ private _typeDocument: TypeDocument;
     } else {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/save', this.document).subscribe(
       data => {
-        this.toast.success(`${this.document.id} add demande document employe to the database.`, ' demande document employe Added', {
+        this.toast.success(`${this.document.employe.doti} add demande document employe to the database.`, ' demande document employe Added', {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -73,7 +73,7 @@ private _typeDocument: TypeDocument;
   }
   public updateDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
-    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null || this.document.dateDemande == null) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null && this.document.dateDemande == null)) {
+    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 1500,
         progressBar: true,

@@ -113,7 +113,7 @@ public findAll() {
   }
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/save', this.gradeEmploye).subscribe(
       data => {
-        if ( data > 1) {
+        if ( data === 1) {
         this.toast.success(`$ add grade employe to the database.`, 'grade Added', {
           timeOut: 1500,
           progressBar: true,

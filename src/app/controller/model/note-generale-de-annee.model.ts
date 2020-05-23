@@ -6,11 +6,11 @@ export class NoteGeneraleDeAnnee {
   noteDeAffectationDesTachesLieeAuTravail : Note;
   noteDeRentabilite: Note;
   noteDeCapaciteDeOrganisation:Note ;
-  noteDeCompotement :Note ;
-  noteDeRechercheEtDeInnovation :Note ;
-  moyenGeneral : number;
-  mention : string;
-  employeDoti : number;
-  fuulName : string;
-  date : Date;
+  noteDeCompotement: Note ;
+  noteDeRechercheEtDeInnovation:Note ;
+  moyenGeneral: number;
+  mention: string;
+  employeDoti: number;
+  fuulName: string;
+  date: Date;
 }

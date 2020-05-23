@@ -23,6 +23,12 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _employe: Employe;
   // tslint:disable-next-line:variable-name
+  private _employeFormation: Employe;
+  // tslint:disable-next-line:variable-name
+  private _employePrix: Employe;
+  // tslint:disable-next-line:variable-name
+  private _employePunition: Employe;
+  // tslint:disable-next-line:variable-name
   private _employes: Array<Employe>;
   // tslint:disable-next-line:variable-name
   private _depFonctions: Array<DepFonction>;
@@ -88,7 +94,7 @@ public ajouterEmpString() {
 // save
   public save() {
     // tslint:disable-next-line:max-line-length
-    if (this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) {
+    if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 1500,
         progressBar: true,
@@ -137,7 +143,7 @@ public ajouterEmpString() {
   }
   public update() {
     // tslint:disable-next-line:max-line-length
-    if (this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) {
+    if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 1500,
         progressBar: true,
@@ -460,5 +466,60 @@ set employesByDep(value: Array<Employe>) {
 
   set modifyEmp(value: string) {
     this._modifyEmp = value;
+  }
+
+  get employeFormation(): Employe {
+    if (this._employeFormation == null) {
+      this._employeFormation = new Employe();
+      this._employeFormation.dernierGrade = new GradeEmploye();
+      this._employeFormation.dernierGrade.grade = new Grade();
+      this._employeFormation.dernierNote = new NoteGeneraleDeAnnee();
+      this._employeFormation.sup = new Employe();
+      this._employeFormation.fonction = new Fonction();
+      this._employeFormation.dep = new Departement();
+      this._employeFormation.dernierNote = new NoteGeneraleDeAnnee();
+    }
+
+    return this._employeFormation;
+  }
+
+  set employeFormation(value: Employe) {
+    this._employeFormation = value;
+  }
+
+  get employePrix(): Employe {
+    if (this._employePrix == null) {
+      this._employePrix = new Employe();
+      this._employePrix.dernierGrade = new GradeEmploye();
+      this._employePrix.dernierGrade.grade = new Grade();
+      this._employePrix.dernierNote = new NoteGeneraleDeAnnee();
+      this._employePrix.sup = new Employe();
+      this._employePrix.fonction = new Fonction();
+      this._employePrix.dep = new Departement();
+      this._employePrix.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employePrix;
+  }
+
+  set employePrix(value: Employe) {
+    this._employePrix = value;
+  }
+
+  get employePunition(): Employe {
+    if (this._employePunition == null) {
+      this._employePunition = new Employe();
+      this._employePunition.dernierGrade = new GradeEmploye();
+      this._employePunition.dernierGrade.grade = new Grade();
+      this._employePunition.dernierNote = new NoteGeneraleDeAnnee();
+      this._employePunition.sup = new Employe();
+      this._employePunition.fonction = new Fonction();
+      this._employePunition.dep = new Departement();
+      this._employePunition.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employePunition;
+  }
+
+  set employePunition(value: Employe) {
+    this._employePunition = value;
   }
 }

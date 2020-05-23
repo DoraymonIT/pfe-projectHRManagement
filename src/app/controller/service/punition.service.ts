@@ -12,8 +12,21 @@ import {PrixEmploye} from '../model/prix-employe.model';
 export class PunitionService {
   private _punitions: Array<PunitionEmploye>;
   private _punitionEmploye: PunitionEmploye;
+  private _ajoutepunition: string;
 
-    constructor(private http: HttpClient,
+  get ajoutepunition(): string {
+    return this._ajoutepunition;
+  }
+public punitionEmployeNull(){
+    this.punitionEmploye = null;
+}
+  set ajoutepunition(value: string) {
+    this._ajoutepunition = value;
+  }
+public ajoutePunitionTitre() {
+  this._ajoutepunition = 'Formulaire pour affecter une punition a un employe';
+  }
+  constructor(private http: HttpClient,
                 private toast: ToastrService) { }
 public setPunition(punitionn: PunitionEmploye) {
       this._punitionEmploye = punitionn;
@@ -71,7 +84,18 @@ public setPunition(punitionn: PunitionEmploye) {
     set punitionEmploye(value: PunitionEmploye) {
       this._punitionEmploye = value;
     }
-    public save() {
+  public save() {
+    // tslint:disable-next-line:max-line-length
+    if ((this.punitionEmploye.employe == null || this.punitionEmploye.punition == null || this.punitionEmploye.dateObtenation == null ) || (this.punitionEmploye.employe == null && this.punitionEmploye.punition == null && this.punitionEmploye.dateObtenation == null )) {
+      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+      this._ajoutepunition = 'champ est vide';
+      document.getElementById('span').style.color = 'red';
+    } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/save', this.punitionEmploye).subscribe(
         data => {
           // console.log(data);
@@ -82,12 +106,43 @@ public setPunition(punitionn: PunitionEmploye) {
             positionClass: 'toast-top-right'
           });
           this.punitions.push(this.clonePunition(this.punitionEmploye));
-          console.log('data lli b7ra d5lty dyal punition hhh' + data);
+          this._ajoutepunition = 'punition ajouter';
+          document.getElementById('span').style.color = 'green';
           this.punitionEmploye = null;
         }, eror => {
           console.log('eroro', eror);
-        }
-      );
+        });
+    }
+  }
+  public update() {
+      // tslint:disable-next-line:max-line-length
+      if ((this.punitionEmploye.employe == null || this.punitionEmploye.punition == null || this.punitionEmploye.dateObtenation == null ) || (this.punitionEmploye.employe == null && this.punitionEmploye.punition == null && this.punitionEmploye.dateObtenation == null )) {
+        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+        this._ajoutepunition = 'champ est vide';
+        document.getElementById('span').style.color = 'red';
+      } else {
+      this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/update', this.punitionEmploye).subscribe(
+        data => {
+          // console.log(data);
+          this.toast.info(`${this.punitionEmploye.employe.doti} add prix employe to the database.`, 'prix Added', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this.punitions.push(this.clonePunition(this.punitionEmploye));
+          this._ajoutepunition = 'punition modifier';
+          document.getElementById('span').style.color = 'green';
+          this.punitionEmploye = null;
+        }, eror => {
+          console.log('eroro', eror);
+        });
+    }
     }
     // public deleteByReference(conge: CongeEmploye) {
     //   this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
@@ -104,8 +159,6 @@ public setPunition(punitionn: PunitionEmploye) {
       myClone.dateObtenation = p.dateObtenation;
       myClone.id = p.id;
       myClone.employe = p.employe;
-
-
       return myClone;
     }
 

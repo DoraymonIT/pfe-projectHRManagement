@@ -13,14 +13,16 @@ import {PersonnelEmployesService} from '../../../controller/service/personnel-em
 export class PrixComponent implements OnInit {
   public tabindex;
   public demo1TabIndex = 0;
-
+chercher: boolean;
   constructor(private prixService: PrixService,
               private employeService: PersonnelEmployesService) { }
 
   ngOnInit(): void {
+    this.chercher = true;
   }
   public getPrixxByDoti() {
     document.getElementById('tablePrix').style.display = 'inline';
+    document.getElementById('checherPrix').style.display = 'none';
     this.prixService.findallPrixByDoti(this.employe.doti);
   }
   public editerUnPrix(prix: PrixEmploye){
@@ -37,12 +39,21 @@ public imprimerLesPrix(value: Array<PrixEmploye>) {
     this.demo1TabIndex = value ;
   }
   get employe(): Employe {
-    return this.employeService.employe;
+    return this.employeService.employePrix;
   }
   get prixs(): Array<PrixEmploye> {
     return this.prixService.prixs;
   }
   public listeVide(): boolean {
     return this.prixs.length < 1 ? true : false;
+  }
+  public afficher(){
+    // tslint:disable-next-line:triple-equals
+    if(this.chercher == true){
+      document.getElementById('checherPrix').style.display = 'none';
+      this.chercher = false;
+    } else {
+      document.getElementById('checherPrix').style.display = 'inline';
+    }
   }
 }

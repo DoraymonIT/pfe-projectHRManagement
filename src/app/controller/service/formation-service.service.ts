@@ -8,9 +8,21 @@ import { Employe } from '../model/employe.model';
   providedIn: 'root'
 })
 export class FormationServiceService {
+  get ajouteFormation(): String {
+    return this._ajouteFormation;
+  }
+public formationEmployeNull(){
+    this.formationEmploye = null;
+}
+  set ajouteFormation(value: String) {
+    this._ajouteFormation = value;
+  }
+  public ajouteFormationTitre(){
+    this._ajouteFormation = 'Formulaire pour affecter une formation a un employe';
+  }
   private _formations: Array<Formation>;
   private _formationEmploye: Formation;
-
+  private _ajouteFormation: String;
     constructor(private http: HttpClient,
       private toast: ToastrService) { }
 public setformation(formationn: Formation) {
@@ -66,23 +78,65 @@ public imprimerLesFormations(value: Array<Formation>) {
     set formationEmploye(value: Formation) {
       this._formationEmploye = value;
     }
-    public save() {
+  public save() {
+    // tslint:disable-next-line:max-line-length
+    if ((this.formationEmploye.employe == null || this.formationEmploye.annee == null || this.formationEmploye.mention == null || this.formationEmploye.domaine == null || this.formationEmploye.ville == null || this.formationEmploye.etablissement == null || this.formationEmploye.attestation == null) || (this.formationEmploye.employe == null && this.formationEmploye.annee == null && this.formationEmploye.mention == null && this.formationEmploye.domaine == null && this.formationEmploye.ville == null && this.formationEmploye.etablissement == null && this.formationEmploye.attestation == null)) {
+      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+      this._ajouteFormation = 'champ est vide';
+      document.getElementById('span').style.color = 'red';
+    } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/save', this.formationEmploye).subscribe(
         data => {
-          // console.log(data);
-          this.toast.success(`${this.formationEmploye.employe.fullName} add formation employe to the database.`, 'conge Added', {
+          this.toast.success(`${this.formationEmploye.employe.doti} add formation employe to the database.`, 'conge Added', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           });
           this.formations.push(this.cloneFormation(this.formationEmploye));
-          console.log('data lli b7ra d5lty dyal formation hhh'+ data);
+          this._ajouteFormation = 'formation ajouter';
+          document.getElementById('span').style.color = 'red';
           this.formationEmploye = null;
         }, eror => {
           console.log('eroro', eror);
         }
       );
+    }
+  }
+  public update() {
+      // tslint:disable-next-line:max-line-length
+      if ((this.formationEmploye.employe == null || this.formationEmploye.annee == null || this.formationEmploye.mention == null || this.formationEmploye.domaine == null || this.formationEmploye.ville == null || this.formationEmploye.etablissement == null || this.formationEmploye.attestation == null) || (this.formationEmploye.employe == null && this.formationEmploye.annee == null && this.formationEmploye.mention == null && this.formationEmploye.domaine == null && this.formationEmploye.ville == null && this.formationEmploye.etablissement == null && this.formationEmploye.attestation == null)) {
+        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+        this._ajouteFormation = 'champ est vide';
+        document.getElementById('span').style.color = 'red';
+      } else {
+        this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/update', this.formationEmploye).subscribe(
+        data => {
+          this.toast.info(`${this.formationEmploye.employe.fullName} add formation employe to the database.`, 'conge Added', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this.formations.push(this.cloneFormation(this.formationEmploye));
+          this._ajouteFormation = 'formation modifier';
+          document.getElementById('span').style.color = 'red';
+          this.formationEmploye = null;
+        }, eror => {
+          console.log('eroro', eror);
+        }
+      );
+    }
     }
     // public deleteByReference(conge: CongeEmploye) {
     //   this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(

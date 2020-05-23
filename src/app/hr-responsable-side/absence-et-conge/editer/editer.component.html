@@ -5,7 +5,6 @@
 </mat-toolbar>
 <form class="normal-form">
   <div class="container-fluid">
-
     <div class="controles-container">
       <mat-form-field>
         <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
@@ -19,19 +18,6 @@
         <mat-select [(ngModel)]="congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}"  [value]="congeEmploye.congee.libelle">
           <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle }}</mat-option>
         </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <label>Raison :*</label>
-        <mat-select [(ngModel)]="congeEmploye.raison" [ngModelOptions]="{standalone: true}"
-          [value]="congeEmploye.raison">
-          <mat-option value="true">True</mat-option>
-          <mat-option value="false">False</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <label> Etat :* </label>
-        <input matInput [(ngModel)]="congeEmploye.etat" [ngModelOptions]="{standalone: true}"
-          [value]="congeEmploye.etat">
       </mat-form-field>
       <mat-form-field>
         <label>Date de debut de conge</label>

@@ -30,7 +30,7 @@ export class EditerComponent implements OnInit {
     return this.congeservice.typeConge;
   }
   public save() {
-    if (this.congeEmploye.id === null) {
+    if (this.congeEmploye.id == null) {
       this.congeservice.save();
     } else {
     this.congeservice.update();

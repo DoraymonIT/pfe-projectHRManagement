@@ -12,24 +12,31 @@ import { PunitionSmallService } from 'src/app/controller/service/punition-small.
   styleUrls: ['./ajouter-punition.component.css']
 })
 export class AjouterPunitionComponent implements OnInit {
-
-  constructor( private employeService: PersonnelEmployesService,private punitionService : PunitionService,
-    private punitionSmall : PunitionSmallService ) { }
+  constructor( private employeService: PersonnelEmployesService,
+               private punitionService: PunitionService,
+               private punitionSmall: PunitionSmallService ) { }
 
   ngOnInit() {
     this.employeService.findAll();
     this.punitionSmall.findAll();
-
+    this.punitionService.ajoutePunitionTitre();
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
+  }
+
+  get ajoutepunition(): string {
+    return this.punitionService.ajoutepunition;
   }
   get punitionEmploye(): PunitionEmploye{
     return this.punitionService.punitionEmploye;
   }
   public save(){
-
+if (this.punitionEmploye.id == null){
     return this.punitionService.save();
+} else {
+  return this.punitionService.update();
+}
   }
   get punitions(): Array<Punition> {
     return this.punitionSmall.ps;
