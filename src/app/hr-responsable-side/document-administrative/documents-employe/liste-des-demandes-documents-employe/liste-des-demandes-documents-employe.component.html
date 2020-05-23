@@ -6,6 +6,11 @@
           <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="15">
             <ng-template pTemplate="caption">
               liste des employes ( Documents Administratives )
+              <div style="    text-align: left; margin-bottom: 10px;">
+                <button class="btn"style="background-color: white;color: black;float: left"
+              matTooltip="Ce button permet d imprimer ce table en format PDF"
+              ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+              </div>
               <div style="text-align: right">
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
                 <input type="text" pInputText size="50" placeholder="Global Filter"
@@ -28,19 +33,18 @@
             <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
               <tr>
                 <td>
-                  <a href="#" [pRowToggler]="rowData" class="fa fa-address-book">
-                  </a>
+                  <i class="fas fa-file-archive    "></i>
                 </td>
                 <td *ngFor="let col of columns">
                   {{rowData[col.field]}}
                 </td>
-                <td >
+                <td style="text-align: center;" >
                   <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverHistoriqueDemandeDialog(rowData)"
-                        style="margin-right: 10px;"></button>
+                       ></button>
                 </td>
               </tr>
             </ng-template>
-            <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
+            <!-- <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
               <tr>
                 <td [attr.colspan]="columns.length + 1">
                   <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
@@ -64,7 +68,7 @@
                   </div>
                 </td>
               </tr>
-            </ng-template>
+            </ng-template> -->
           </p-table>
         </div>
       </div>

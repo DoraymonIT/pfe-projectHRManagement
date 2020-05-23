@@ -41,7 +41,7 @@ private _employefullname: string;
     // tslint:disable-next-line:max-line-length
     if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.congee == null ||  this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null  && this.congeEmploye.congee == null  && this.congeEmploye.employe == null)) {
         this.toast.error(`remplir toutes les champ`, 'champ vide', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -53,7 +53,7 @@ private _employefullname: string;
       data => {
         if (data > 0) {
           this.toast.info(`le conge employe est bien modifie`, ' champ modified', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -73,7 +73,7 @@ private _employefullname: string;
       data => {
         if (data === 1) {
           this.toast.success(` document liste congé est bien preparé.`, 'document prepared', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -124,7 +124,7 @@ private _employefullname: string;
     // tslint:disable-next-line:max-line-length
     if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.congee == null ||  this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null && this.congeEmploye.congee == null  && this.congeEmploye.employe == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
-        timeOut: 1500,
+        timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
@@ -135,8 +135,8 @@ private _employefullname: string;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/save', this.congeEmploye).subscribe(
       data => {
         if (data > 0) {
-          this.toast.success(`${this.congeEmploye.employe.doti} add conge employe to the database.`, 'conge Added', {
-            timeOut: 1500,
+          this.toast.success(`${this.congeEmploye.employe.fullName} add conge employe to the database.`, 'conge Added', {
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'

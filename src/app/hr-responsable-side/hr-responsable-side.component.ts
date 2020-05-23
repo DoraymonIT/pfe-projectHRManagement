@@ -14,23 +14,23 @@ export class HRResponsableSideComponent implements OnInit {
   this.hideMatBadge = false;
   this.ex = 12;
    }
-  get conncter(): boolean {
-    return this.logInService.conncter;
-  }
+  // get conncter(): boolean {
+  //   return this.logInService.conncter;
+  // }
   opened: boolean;
 
   panelOpenState = false;
   hideMatBadge: boolean;
   ex: number;
-  public connecter(): boolean {
-    if (this.conncter === false) {
-      this.router.navigate(['']).then();
-      return false;
-    }
-    return true;
-  }
+  // public connecter(): boolean {
+  //   if (this.conncter === false) {
+  //     this.router.navigate(['']).then();
+  //     return false;
+  //   }
+  //   return true;
+  // }
   ngOnInit(): void {
-    this.connecter();
+    // this.connecter();
   }
 badge(){
  this.hideMatBadge= true;

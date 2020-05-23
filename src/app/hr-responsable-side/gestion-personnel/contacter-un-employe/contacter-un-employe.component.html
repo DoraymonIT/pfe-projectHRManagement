@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" style="text-align: center;"> <i class="fas fa-chart-bar    "></i> contacter Un Employe </span>
+    <span class="span" > <i class="fas fa-mail-bulk    "></i> Contacter Un Employe via son / sa Mail</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -12,16 +12,16 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field style="padding-bottom:10px;width:100%">
-    <label> email :* </label>
+    <label> Email : </label>
     <input matInput  [(ngModel)]="this.email.email"
            [ngModelOptions]="{standalone: true}" [value]="employeInfo.email" type="email" >
   </mat-form-field>
   <mat-form-field style="padding-bottom:10px;width:100%">
-    <label> subject :* </label>
+    <label> Subject :* </label>
     <input matInput  [(ngModel)]="this.email.subject"
            [ngModelOptions]="{standalone: true}" type="email" >
   </mat-form-field>
-  <p-editor [(ngModel)]="this.email.text" [style]="{'height':'320px'}"></p-editor>
-  <div class="button-row">
+  <p-editor  [(ngModel)]="this.email.text" [style]="{'height':'320px'}"></p-editor>
+  <div class="button-row" style="padding-top: 10px;">
     <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="envoyer()"> <i class="fas fa-check-circle    "></i> Envoyer</button>
   </div>

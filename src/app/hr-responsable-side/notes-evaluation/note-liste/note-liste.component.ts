@@ -19,8 +19,8 @@ export class NOteListeComponent implements OnInit {
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
-  get notes(): Array<NoteGeneraleDeAnnee> {
-    return this.noteService.notes;
+  get notesParDoti(): Array<NoteGeneraleDeAnnee> {
+    return this.noteService.notesParDoti;
   }
   get employe(): Employe {
     return this.employeService.employe;
@@ -33,9 +33,9 @@ export class NOteListeComponent implements OnInit {
   ngOnInit(): void {
     this.cols = [
       { field: 'id', header: 'id' },
-      { field: 'moyenGeneral', header: 'moyen general' },
-      { field: 'mention', header: 'mention' },
-      { field: 'date', header: 'date' },
+      { field: 'moyenGeneral', header: 'Moyen general' },
+      { field: 'mention', header: 'Mention' },
+      { field: 'date', header: 'Date d Evaluation' },
     ];
     this.employeService.findAll();
   }
@@ -50,8 +50,8 @@ export class NOteListeComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '95%';
-    dialogConfig.height = '80%';
+    dialogConfig.width = '80%';
+    dialogConfig.height = '100%';
     this.dialog.open(NoteDetailComponent,
       dialogConfig);
   }

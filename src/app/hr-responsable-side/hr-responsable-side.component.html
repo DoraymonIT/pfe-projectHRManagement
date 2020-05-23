@@ -1,4 +1,4 @@
-<mat-sidenav-container class="example-container" class="side-barr" *ngIf="conncter">
+<mat-sidenav-container class="example-container" class="side-barr" > <!--- *ngIf="conncter"-->
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 289px;">
     <mat-list role="list">
       <mat-list-item  role="listitem" >
@@ -74,7 +74,7 @@
             <!-- <i class="fas fa-bell"></i> -->
           </mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #menu="matMenu" >
           <a href="#" mat-menu-item >demande document,type document</a>
           <a mat-menu-item >Liste evaluation Aujourd'hui</a>
             <a mat-menu-item >Liste Notification Aujourd'hui</a>

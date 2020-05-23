@@ -25,18 +25,22 @@ export interface Table {
 })
 export class NotesEvaluationComponent implements OnInit {
 
-  constructor(private noteService: NoteServiceService) { }
+  constructor(private noteService: NoteServiceService,private ps : PersonnelEmployesService) { }
 
   public tabindex;
   public demo1TabIndex = 0;
   ngOnInit(): void {
     this.noteService.findAllNoteNonTraite();
+    this.ps.trouverEmployerNoteGeneraleToday();
   }
-  get notes(): Array<NoteGeneraleDeAnnee> {
-    return this.noteService.notes;
+  // get notesNonTraites(): Array<NoteGeneraleDeAnnee> {
+  //   return this.noteService.notesNonTraite;
+  // }
+  get notesNonTraites(): Array<Employe> {
+    return this.ps.employesByNoteGeneraleToday;
   }
   public listeVide(): boolean {
-    return this.notes.length < 1 ? true : false;
+    return this.notesNonTraites.length < 1 ? true : false;
   }
   public affecteruneNote(note: NoteGeneraleDeAnnee){
     this.demo1BtnClick(2);

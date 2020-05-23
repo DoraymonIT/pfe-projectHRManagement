@@ -1,5 +1,10 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<h1>rapport de {{rapportEvaluation.employe.fullName}} pour avancement de grade {{rapportEvaluation.nouveauGrade.grade.libelle}}</h1>
+<button  mat-raised-button matTooltip="Fermer la fenetre" color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<div style="    text-align: left; margin-bottom: 10px;">
+  <button class="btn"style="background-color: white;color: black;float: left"
+matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerRapport()"
+><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+</div>
+<h3>Rapport de {{rapportEvaluation.employe.fullName}} pour avancement de grade {{rapportEvaluation.nouveauGrade.grade.libelle}}</h3>
 <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
         <div class="container" style="padding-top:20px">
           <div class="row ">
@@ -204,5 +209,8 @@
           </div>
         </div>
       </div>
-<button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerRapport()"><i class="fa fa-file-pdf" ></i> PDF</button>
+<button class="btn"style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerRapport()"
+matTooltip="Ce button permet d imprimer rapport sous format PDF "
+><i class="fa fa-file-pdf" ></i> PDF</button>
 <button class="btn"style="background-color: #0057e7;color: beige;width: 80px;" (click)="editRapport()"><i class="fa fa-file-pdf" ></i> Edit</button>
+

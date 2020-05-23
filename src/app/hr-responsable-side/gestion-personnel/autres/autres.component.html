@@ -1,17 +1,17 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"  matTooltip="Fermer le dialog"> <i class="fas fa-window-close "></i> </button>
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailles sur un Employe </span>
+    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailes sur cet Employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container" style="padding-top:20px">
-  <mat-form-field style="padding-bottom:50px;width:100%">
+  <!-- <mat-form-field style="padding-bottom:50px;width:100%">
     <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
     <mat-select [(ngModel)]="employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.employeInfo.doti)">
       <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
   <div class="row ">
     <div class="col-md-12">
       <mat-accordion>
@@ -171,14 +171,14 @@
               <div class="col-md-6">
                 <span>
                   <h6>Moyen :
-                    {{employeInfo.dernierNote.moyenGeneral}}
+                    <!-- {{employeInfo.dernierNote.moyenGeneral}} -->
                   </h6>
                 </span>
               </div>
               <div class="col-md-6">
                 <span>
                   <h6>Mention :
-                    {{employeInfo.dernierNote.mention}}
+                    <!-- {{employeInfo.dernierNote.mention}} -->
                     </h6>
                 </span>
               </div>
@@ -187,7 +187,7 @@
               <div class="col-md-6">
                 <span>
                   <h6>Date de dernier Note Saisie :
-                    {{employeInfo.dernierNote.date}}
+                    <!-- {{employeInfo.dernierNote.date}} -->
                   </h6>
                 </span>
               </div>
@@ -282,4 +282,4 @@
     </div>
   </div>
 </div>
-<button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerInfoEmploye()" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+<button mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerInfoEmploye()" ><i class="fa fa-file-pdf"  ></i> PDF</button>

@@ -4,7 +4,7 @@
     <div class="example-large-box mat-elevation-z4" >
       <mat-toolbar (click)="afficher()">
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-search "></i> Chercher les prix d'un employe a partir d un doti </span>
+          <span class="span"> <i class="fas fa-medal    "></i> Chercher les prix d'un employe a partir du <strong>doti</strong> </span>
         </mat-toolbar-row>
       </mat-toolbar>
       <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherPrix">
@@ -12,6 +12,7 @@
           <mat-form-field  style="width: 500px">
             <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
             <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPrixxByDoti()">
+              <mat-option >---None---</mat-option>
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -20,15 +21,15 @@
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tablePrix">
         <mat-toolbar>
           <mat-toolbar-row>
-            <span class="span"> la listes des prix  </span>
+            <span class="span"><i class="fas fa-medal    "></i> la liste des prix  </span>
           </mat-toolbar-row>
         </mat-toolbar>
         <table class="table table-hover table-dark table-striped" style="color: wheat">
           <thead>
           <th>Employe</th>
-          <th>prix</th>
-          <th>date Obtenation</th>
-          <th style="padding-left: 40px">Action</th>
+          <th>Nom du Prix</th>
+          <th>Date Obtenation</th>
+          <!-- <th style="padding-left: 40px">Action</th> -->
           </thead>
           <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
@@ -37,17 +38,18 @@
             <td>{{c.employe.fullName}}</td>
             <td>{{c.prix.libelle}}</td>
             <td>{{c.dateDeObtenation}}</td>
-            <td>
+            <!-- <td>
               <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUnPrix(c)"></button>
               <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
               <button class="btn btn-info btn-sm fa fa-trash"></button>
-            </td>
+            </td> -->
           </tr>
           </tbody>
         </table>
         <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesPrix(this.prixs)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
       </div>
     </div>
+    <!-- <button *ngIf="prixs"  mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerLesPrix(this.prixs)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
   </mat-tab>
   <mat-tab label="AFFECTER UN PRIX A UN EMPLOYE" tabindex="2">
     <div class="example-large-box mat-elevation-z4">

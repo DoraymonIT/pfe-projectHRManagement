@@ -1,18 +1,16 @@
-  <mat-toolbar (click)="afficher()">
-    <mat-toolbar-row>
-      <span class="span"> <i class="fas fa-search "></i> chercher historique d'avancement d'un employe </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherGrade">
-    <div class="card-body">
-      <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
-        <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="findAllGradeEmployeByDoti(this.employeInfo.doti)">
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span" > <i class="fas fa-chart-bar    "></i> historique de grade d'un employe </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container" style="padding-top:20px">
+  <mat-form-field style="padding-bottom:10px;width:100%">
+    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
+    <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
+      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="fourmule">
     <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des grades de employe ayant le nombre doti : {{employeInfo.doti}} </h1></div>
     <table class="table table-hover table-dark table-striped" style="color: wheat">
@@ -30,11 +28,15 @@
         <td>{{c.grade.libelle}}</td>
         <td>{{c.dateDeAffectation}}</td>
         <td>
-          <button class="btn btn-danger btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"></button>
+          <button class="btn btn-info btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"
+          matTooltip="Ce button permet de donner le rapport de en detailles cet element"
+          ></button>
         </td>
       </tr>
       </tbody>
     </table>
     <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
   </div>
+</div>
+<!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
 

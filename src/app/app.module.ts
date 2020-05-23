@@ -98,11 +98,14 @@ import { ContacterUnEmployeComponent } from './hr-responsable-side/gestion-perso
 import { DialogDepComponent } from './hr-responsable-side/architecture-de-fstg/departement/dialog-dep/dialog-dep.component';
 import { RapportInfoComponent } from './hr-responsable-side/avancement/rapport-info/rapport-info.component';
 import { AjouteAvancementComponent } from './hr-responsable-side/avancement/ajoute-avancement/ajoute-avancement.component';
-import { AjouteRapportComponent } from './hr-responsable-side/avancement/ajoute-rapport/ajoute-rapport.component';
+
 import {ListeFonctionComponent} from './hr-responsable-side/architecture-de-fstg/departement/ListeFonction/liste.component';
 import {AjouteUneFonctionUndeartementComponent} from './hr-responsable-side/architecture-de-fstg/departement/ajoute-une-fonction-undeartement/ajoute-une-fonction-undeartement.component';
 import {CountdownModule} from 'ngx-countdown';
+import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-rapport/ajoute-rapport.component';
+import { ArchitectureOrgComponent } from './hr-responsable-side/architecture-de-fstg/architecture-org/architecture-org.component'
 
+import {OrganizationChartModule} from 'primeng/organizationchart';
 
 @NgModule({
   declarations: [
@@ -178,9 +181,11 @@ import {CountdownModule} from 'ngx-countdown';
 
     AjouteAvancementComponent,
 
-    AjouteRapportComponent,
+
 
     AjouteUneFonctionUndeartementComponent,
+    AjouteRapportComponent,
+    ArchitectureOrgComponent
   ],
     imports: [
         BrowserModule,
@@ -225,7 +230,9 @@ import {CountdownModule} from 'ngx-countdown';
         TableModule,
         InputTextModule,
         ToastrModule,
-        EditorModule, CountdownModule
+        EditorModule, CountdownModule,
+
+        OrganizationChartModule
     ],
   providers: [
     {
@@ -242,6 +249,14 @@ import {CountdownModule} from 'ngx-countdown';
     PersonnelEmployesService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ListeDesJoursFriesComponent,GradeListeComponent,DialogDepComponent,ListeDesDocumentsEmployeComponent]
+  entryComponents: [
+    // Dialog de conge
+    ListeDesJoursFriesComponent,
+     // Dialog de gradeEmployes
+    GradeListeComponent,
+     // Dialog de departementEmployes
+    DialogDepComponent,
+     // Dialog de documentsEmployes
+    ListeDesDocumentsEmployeComponent]
 })
 export class AppModule { }

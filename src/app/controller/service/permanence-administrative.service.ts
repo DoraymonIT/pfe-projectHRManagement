@@ -74,7 +74,7 @@ export class PermanenceAdministrativeService {
       data => {
         console.log(data);
         this.toast.success(`${this.permanenceAdministrative.employe.fullName} add permanence Administrative to the database.`, 'Permanence Administrative Added', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'

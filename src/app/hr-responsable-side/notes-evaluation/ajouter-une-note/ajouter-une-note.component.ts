@@ -31,7 +31,7 @@ public div5: boolean;
     this.div5 = false;
   }
   get note(): NoteGeneraleDeAnnee {
-    return this.noteService.note;
+    return this.noteService.noteSave;
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;

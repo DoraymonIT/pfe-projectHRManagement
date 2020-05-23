@@ -1,19 +1,19 @@
-<div style="width:100%; margin-left: 50px;margin-right: 50px">
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> <i class="fas fa-plus-circle"> {{ajoutedocument}}</i> </span>
+    <span class="span" id="span"> <i class="fas fa-plus-circle"> </i> {{ajoutedocument}} </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
   <div class="container-fluid">
         <div class="controles-container">
           <mat-form-field>
-            <label> titre :* </label>
+            <mat-label>Titre de document :*</mat-label>
             <input matInput  [(ngModel)]="this.typeDocument.titre" [ngModelOptions]="{standalone: true}" >
           </mat-form-field>
           <p-editor [(ngModel)]="this.typeDocument.body"  [style]="{'height':'320px'}" [ngModelOptions]="{standalone: true}" type="text"></p-editor>
-            <button mat-raised-button color="primary" type="submit" (click)="save()" > <i class="fas fa-save"></i> cree</button>
+       <br>
+          <button mat-raised-button color="primary" type="submit"  (click)="save()" > <i class="fas fa-save"></i> Creer</button>
+
         </div>
   </div>
 </form>
-</div>

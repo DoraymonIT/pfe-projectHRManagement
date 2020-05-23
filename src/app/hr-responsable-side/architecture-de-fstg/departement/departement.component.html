@@ -9,6 +9,11 @@
               <p-table #dt [columns]="cols" [value]="deps" dataKey="nom" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="caption">
                <i class="fa fa-building" ></i>  liste des departements
+               <div style="    text-align: left; margin-bottom: 10px;">
+                <button class="btn"style="background-color: white;color: black;float: left"
+              matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesdepartement()"
+              ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+              </div>
                   <div style="text-align: right">
                     <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
                     <input type="text" pInputText size="50" placeholder="Ex: par Nom : Informatique ,par Chef : Ahmed Ali"
@@ -44,9 +49,13 @@
           </td> -->
                     <td style="text-align:center">
                       <button class="btn btn-info  btn-sm fa fa-edit" style="margin-right: 10px;" (click)="modifierDepartement(rowData)"></button>
-                      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)" style="margin-right: 10px;"></button>
-                      <button class="btn btn-outline-info btn-sm fa fa-address-book" (click)="trouverFonctionParNomDepDialog(rowData)" style="margin-right: 10px;"></button>
-                      <button class="btn btn-danger btn-sm fa fa-trash"  ></button>
+                      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)"
+                      matTooltip="Ce button permet de donner d afficher les employes de cet departement"
+                      style="margin-right: 10px;"></button>
+                      <button class="btn btn-primary btn-sm fa fa-info" (click)="trouverFonctionParNomDepDialog(rowData)"
+                      matTooltip="Ce button permet de donner d afficher les fonctions de cet departement"
+                      style="margin-right: 10px;"></button>
+                      <!-- <button class="btn btn-danger btn-sm fa fa-trash"  ></button> -->
                     </td>
                   </tr>
                 </ng-template>
@@ -56,12 +65,12 @@
         </div>
       </div>
     </div>
-      <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesdepartement()" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+      <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesdepartement()" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
   </mat-tab>
   <mat-tab label="AJOUTER UN DEPARTEMENT" style="width: 25px">
     <app-dep-ajout></app-dep-ajout>
   </mat-tab>
-  <mat-tab label="Affecter une fonction a un departement" style="width: 25px">
+  <mat-tab label="AFFECTER UNE FONCTION A UN DEPARTEMENT" style="width: 25px">
     <app-ajoute-une-fonction-undeartement></app-ajoute-une-fonction-undeartement>
   </mat-tab>
 </mat-tab-group>

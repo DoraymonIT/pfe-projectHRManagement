@@ -4,7 +4,7 @@
     <div class="example-large-box mat-elevation-z4" >
       <mat-toolbar (click)="afficher()">
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-search "></i> Chercher les formation d'un employe a partir d un doti </span>
+          <span class="span"> <i class="fas fa-graduation-cap    "></i> Chercher les formations d'un employe a partir du <strong>doti</strong>  </span>
         </mat-toolbar-row>
       </mat-toolbar>
       <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
@@ -12,6 +12,7 @@
           <mat-form-field  style="width: 500px">
             <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
             <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getFormationsByDoti()">
+              <mat-option >---None---</mat-option>
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -20,19 +21,19 @@
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableFormation">
         <mat-toolbar>
           <mat-toolbar-row>
-            <span class="span">  la listes des formation  </span>
+            <span class="span"><i class="fas fa-graduation-cap    "></i> la listes des formations  </span>
           </mat-toolbar-row>
         </mat-toolbar>
         <table class="table table-hover table-dark table-striped" style="color: wheat">
           <thead>
           <th>Employe</th>
-          <th>attestation</th>
-          <th>mention</th>
-          <th>annee</th>
-          <th>ville</th>
-          <th>etablissement</th>
-          <th>domaine</th>
-          <th style="padding-left: 40px">Action</th>
+          <th>Attestation</th>
+          <th>Mention</th>
+          <th>Annee</th>
+          <th>Ville</th>
+          <th>Etablissement</th>
+          <th>Domaine</th>
+          <!-- <th style="padding-left: 40px">Action</th> -->
           </thead>
           <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
@@ -45,17 +46,18 @@
             <td>{{c.ville}}</td>
             <td>{{c.etablissement}}</td>
             <td>{{c.domaine}}</td>
-            <td>
+            <!-- <td>
               <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerFormation(c)"></button>
               <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
               <button class="btn btn-info btn-sm fa fa-trash"></button>
-            </td>
+            </td> -->
           </tr>
           </tbody>
         </table>
         <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesFormations(this.formations)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
       </div>
     </div>
+    <!-- <button *ngIf="formations"  mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerLesFormations(this.formations)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
   </mat-tab>
   <mat-tab label="AFFECTER UNE FORMATION A UN EMPLOYE" tabindex="2">
     <div class="example-large-box mat-elevation-z4">

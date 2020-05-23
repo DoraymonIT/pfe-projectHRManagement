@@ -1,11 +1,7 @@
 <mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="LISTE DE DOCUMENTS GERER PAR APPLICATION" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-      <mat-toolbar>
-        <mat-toolbar-row>
-          <span class="span" style="text-align: center; margin-right: 18px"> Liste des document gérer par application </span>
-        </mat-toolbar-row>
-      </mat-toolbar>
+      <div class="card-header"><h1 style="text-align: center"> Liste des documents gérer par l application </h1></div>
       <table class="table table-hover table-dark table-striped" style="color: wheat">
         <thead>
         <!-- <th>id</th> -->
@@ -18,7 +14,9 @@
           <td>{{c.libelle}}</td>
           <td>
             <!-- <button class="btn btn-danger btn-sm fa  fa-check-square" (click)="editUnTypeDeDocument(c)"></button> -->
-            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
+            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
+            matTooltip="Ce button permet de supprimer cet element"
+            ></button>
           </td>
         </tr>
         </tbody>

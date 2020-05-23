@@ -1,6 +1,6 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
   [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="lISTE DES CONGES" style="width: 25px" tabindex="1">
+  <mat-tab label="LISTE DES CONGES" style="width: 25px" tabindex="1">
     <table>
     <div class="example-small-box mat-elevation-z4">
         <div class="container-fluid" style="padding-top: 10px;">
@@ -9,6 +9,11 @@
               <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="caption">
             <i class="fas fa-bed    "></i>      liste des conges
+            <div style="    text-align: left; margin-bottom: 10px;">
+              <button class="btn"style="background-color: white;color: black;float: left"
+            matTooltip="Ce button permet d imprimer ce table en format PDF"
+            ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+            </div>
                   <div style="text-align: right">
                     <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
                     <input type="text" pInputText size="50" placeholder="Ex : Conge de maladie , Azizi Ahmed,...."
@@ -25,8 +30,9 @@
                         ariaLabelAsc="Activate to sort in ascending order">
                       </p-sortIcon>
                     </th>
-                    <th style="width: 80px" >Details</th>
-                    <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+                    <th style="width: 3em"></th>
+                  </tr>
+                  <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                   <tr>
@@ -39,8 +45,10 @@
                     <td *ngFor="let col of columns">
                       {{rowData[col.field]}}
                     </td>
-                    <td style="width: 80px">
-                      <button class="btn btn-info btn-sm fa fa-info" (click)="trouverCongeParSonDotiDialog(rowData)"></button>
+                    <td>
+                      <button class="btn btn-info btn-sm fa fa-info" (click)="trouverCongeParSonDotiDialog(rowData)"
+                      matTooltip="Ce button permet de donner plus d info sur cet element"
+                      ></button>
                     </td>
                   </tr>
                 </ng-template>

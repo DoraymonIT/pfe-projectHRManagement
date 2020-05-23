@@ -29,7 +29,7 @@ public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDeGradeDeEmployePdf',value).subscribe(
       data => {
         this.toast.success(` document est bien preparer`, ' document preparer', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -87,7 +87,7 @@ public findAll() {
       data => {
         //    console.log(data);
         this.toast.success(`${this.grade.libelle} add grade to the database.`, 'grade Added', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -103,7 +103,7 @@ public findAll() {
     // tslint:disable-next-line:max-line-length
   if ((this.gradeEmploye.grade == null || this.gradeEmploye.dateDeAffectation == null || this.gradeEmploye.doti == null) || (this.gradeEmploye.grade == null && this.gradeEmploye.dateDeAffectation == null && this.gradeEmploye.doti == null)) {
     this.toast.error(`$ remplir les champs`, 'champ vide', {
-      timeOut: 1500,
+      timeOut: 2500,
       progressBar: true,
       progressAnimation: 'increasing',
       positionClass: 'toast-top-right'
@@ -115,7 +115,7 @@ public findAll() {
       data => {
         if ( data === 1) {
         this.toast.success(`$ add grade employe to the database.`, 'grade Added', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'

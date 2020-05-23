@@ -39,7 +39,7 @@ public  cloneDepartement(departement: Departement): Departement {
     this.http.post<number>(this._url + 'save', this.departement).subscribe(
       data => {
         this.toast.success(`${this.departement.nom} add departement to the database.`, 'depatrement Added', {
-          timeOut: 1500,
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
@@ -72,8 +72,8 @@ public  cloneDepartement(departement: Departement): Departement {
   public imprimerLesdepartements() {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Departement/listedepartementPdf').subscribe(
       data => {
-        this.toast.success(` document est bien preparer`, ' document preparer', {
-          timeOut: 1500,
+        this.toast.success(` document  est bien preparer`, ' document preparer', {
+          timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'

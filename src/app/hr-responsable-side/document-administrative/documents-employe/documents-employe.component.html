@@ -2,9 +2,10 @@
   <mat-tab label="LISTE DE DEMANDES DE DOCUMENTS" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
       <mat-toolbar>
-          <mat-toolbar-row>
-            <span class="span" style="text-align: center; margin-right: 18px"> liste des demandes non traité </span>
-          </mat-toolbar-row>
+        <mat-toolbar-row>
+          <span class="span"> <i class="fas fa-file-pdf    "></i> la liste des demandes de documents non traite </span>
+
+        </mat-toolbar-row>
       </mat-toolbar>
       <table class="table table-hover table-dark table-striped" style="color: wheat">
         <thead>
@@ -12,7 +13,7 @@
         <th>Type de document</th>
         <th>Date de demande</th>
         <th>Maniere de retrait</th>
-        <th style="padding-left: 40px">Action</th>
+        <th >Action</th>
         </thead>
         <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
@@ -21,11 +22,17 @@
           <td>{{c.employe.fullName}}</td>
           <td>{{c.typeDeDocument.libelle  || "----"}}</td>
           <td>{{c.dateDemande}}</td>
-          <td style="padding-left: 40px">{{c.maniereDeRetrait}}</td>
+          <td >{{c.maniereDeRetrait}}</td>
           <td>
-            <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"></button>
-            <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="imprimer(c)"></button>
-            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"></button>
+            <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"
+            matTooltip="Ce button permet de modifier cet element"
+            style="margin-right: 5px;"   ></button>
+            <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="imprimer(c)"
+            matTooltip="Ce button permet de traiter cet element"
+            style="margin-right: 5px;"    ></button>
+            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
+            matTooltip="Ce button permet de supprimer cet element"
+            ></button>
           </td>
         </tr>
         </tbody>
