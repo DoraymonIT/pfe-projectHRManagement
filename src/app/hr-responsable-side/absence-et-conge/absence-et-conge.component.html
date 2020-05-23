@@ -9,6 +9,11 @@
               <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="caption">
             <i class="fas fa-bed    "></i>      liste des conges
+            <div style="    text-align: left; margin-bottom: 10px;">
+              <button class="btn"style="background-color: white;color: black;float: left"
+            matTooltip="Ce button permet d imprimer ce table en format PDF"
+            ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+            </div>
                   <div style="text-align: right">
                     <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
                     <input type="text" pInputText size="50" placeholder="Ex : Conge de maladie , Azizi Ahmed,...."
@@ -26,7 +31,8 @@
                       </p-sortIcon>
                     </th>
                     <th style="width: 3em"></th>
-                    <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+                  </tr>
+                  <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                   <tr>

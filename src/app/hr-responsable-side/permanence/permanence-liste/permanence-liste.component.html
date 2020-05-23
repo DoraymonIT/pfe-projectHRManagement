@@ -4,6 +4,11 @@
       <p-table #dt [columns]="cols" [value]="permanences" dataKey="id" [paginator]="true" [rows]="4">
         <ng-template pTemplate="caption">
           <i class="fas fa-calendar-check    "></i>  Liste of permanence Administratives
+          <div style="    text-align: left; margin-bottom: 10px;">
+            <button class="btn"style="background-color: white;color: black;float: left"
+          matTooltip="Ce button permet d imprimer ce table en format PDF"
+          ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+          </div>
           <div style="text-align: right">
             <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
             <input type="text" pInputText size="50" placeholder="Chercher par date: yyyy-MM-dd"
@@ -23,7 +28,7 @@
               Action
             </th> -->
           </tr>
-          <!-- <p-progressSpinner *ngIf="listeVide()" style="margin-left:780px ;"></p-progressSpinner> -->
+          <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
           <tr>

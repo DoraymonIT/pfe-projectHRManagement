@@ -102,7 +102,10 @@ import { AjouteAvancementComponent } from './hr-responsable-side/avancement/ajou
 import {ListeFonctionComponent} from './hr-responsable-side/architecture-de-fstg/departement/ListeFonction/liste.component';
 import {AjouteUneFonctionUndeartementComponent} from './hr-responsable-side/architecture-de-fstg/departement/ajoute-une-fonction-undeartement/ajoute-une-fonction-undeartement.component';
 import {CountdownModule} from 'ngx-countdown';
-import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-rapport/ajoute-rapport.component'
+import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-rapport/ajoute-rapport.component';
+import { ArchitectureOrgComponent } from './hr-responsable-side/architecture-de-fstg/architecture-org/architecture-org.component'
+
+import {OrganizationChartModule} from 'primeng/organizationchart';
 
 @NgModule({
   declarations: [
@@ -181,7 +184,8 @@ import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-ra
 
 
     AjouteUneFonctionUndeartementComponent,
-    AjouteRapportComponent
+    AjouteRapportComponent,
+    ArchitectureOrgComponent
   ],
     imports: [
         BrowserModule,
@@ -226,7 +230,9 @@ import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-ra
         TableModule,
         InputTextModule,
         ToastrModule,
-        EditorModule, CountdownModule
+        EditorModule, CountdownModule,
+
+        OrganizationChartModule
     ],
   providers: [
     {
