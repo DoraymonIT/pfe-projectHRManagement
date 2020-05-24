@@ -45,9 +45,13 @@ chercher: boolean;
     return this.formations.length < 1 ? true : false;
   }
   public getFormationsByDoti() {
+    if( this.employe.doti === 0) {
+      document.getElementById('tablePrix').style.display = 'none';
+    } else {
     document.getElementById('tableFormation').style.display = 'inline';
     document.getElementById('checherFormation').style.display = 'none';
     this.formationService.findallFourmationsByDoti(this.employe.doti);
+  }
   }
 public editerFormation(formation: Formation) {
     this.demo1BtnClick(2);

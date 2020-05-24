@@ -45,7 +45,9 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _employesByDep: Array<Employe>;
   private _employesByNoteGeneraleToday: Array<Employe>;
-
+  // tslint:disable-next-line:variable-name
+  private _employesByEvaluationToday: Array<Employe>;
+  private _employeDateEvaluation: Employe;
   // tslint:disable-next-line:variable-name
   private _employesByGrade: Array<Employe>;
   // tslint:disable-next-line:variable-name
@@ -91,8 +93,31 @@ export class PersonnelEmployesService {
         }
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
+  }
+  public trouveremployeByDate(value: Date){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateDeProchainNote/dateDeProchainNote/' + value).subscribe(
+      data => {
+        this.employesByNoteGeneraleToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public trouveremployeByDateEvaluation(value: Date){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateProchainEvaluation/dateProchainEvaluation/' + value).subscribe(
+      data => {
+        this.employesByEvaluationToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public trouveremployeByDateAvancement(value: Date){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateAvancementPrevue/dateAvancementPrevue/' + value).subscribe(
+      data => {
+        this.employesByEvaluationToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
   }
   // save
   public save() {
@@ -551,5 +576,42 @@ export class PersonnelEmployesService {
 
   set employePunition(value: Employe) {
     this._employePunition = value;
+  }
+
+  get employesByEvaluationToday(): Array<Employe> {
+    if (this._employesByEvaluationToday == null) {
+      this._employesByEvaluationToday = new Array<Employe>();
+      this._employesByEvaluationToday.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+
+    return this._employesByEvaluationToday;
+  }
+
+  set employesByEvaluationToday(value: Array<Employe>) {
+    this._employesByEvaluationToday = value;
+  }
+
+  get employeDateEvaluation(): Employe {
+    if (this._employeDateEvaluation == null) {
+      this._employeDateEvaluation = new Employe();
+      this._employeDateEvaluation.dernierGrade = new GradeEmploye();
+      this._employeDateEvaluation.dernierGrade.grade = new Grade();
+      this._employeDateEvaluation.dernierNote = new NoteGeneraleDeAnnee();
+      this._employeDateEvaluation.sup = new Employe();
+      this._employeDateEvaluation.fonction = new Fonction();
+      this._employeDateEvaluation.dep = new Departement();
+      this._employeDateEvaluation.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employeDateEvaluation;
+  }
+
+  set employeDateEvaluation(value: Employe) {
+    this._employeDateEvaluation = value;
   }
 }

@@ -360,6 +360,10 @@ this.formationService.formationEmployeNull();
     });
   }
   public save(){
-    this.avancementService.save();
+    if(this.rapportEvaluation == null){
+      this.avancementService.save();
+    } else {
+      this.avancementService.update();
+    }
   }
 }

@@ -1,6 +1,12 @@
 <mat-tab-group mat-stretch-tabs  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="liste des employe besoin d'une note" style="width: 25px" tabindex="1">
-    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+     <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+  <div class="card-body" style="text-align: center">
+    <label>date note</label>
+    <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px" [(ngModel)]="this.employe.dateDeProchainNote" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
+  </div>
+     </div>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableNote">
       <mat-toolbar>
         <mat-toolbar-row>
           <span class="span"> <i class="fas fa-book-open    "></i> les employes ayant l evaluation d'une note Aujourd Hui</span>

@@ -25,13 +25,14 @@ export interface Table {
 })
 export class NotesEvaluationComponent implements OnInit {
 
-  constructor(private noteService: NoteServiceService,private ps : PersonnelEmployesService) { }
+  constructor(private noteService: NoteServiceService,
+              private ps: PersonnelEmployesService) { }
 
   public tabindex;
   public demo1TabIndex = 0;
   ngOnInit(): void {
     this.noteService.findAllNoteNonTraite();
-    this.ps.trouverEmployerNoteGeneraleToday();
+  //  this.ps.trouverEmployerNoteGeneraleToday();
   }
   // get notesNonTraites(): Array<NoteGeneraleDeAnnee> {
   //   return this.noteService.notesNonTraite;
@@ -41,6 +42,14 @@ export class NotesEvaluationComponent implements OnInit {
   }
   public listeVide(): boolean {
     return this.notesNonTraites.length < 1 ? true : false;
+  }
+
+  get employe(): Employe {
+    return this.noteService.employe;
+  }
+  public getemployeByDate() {
+    document.getElementById('tableNote').style.display = 'inline';
+    this.ps.trouveremployeByDate(this.employe.dateDeProchainNote);
   }
   public affecteruneNote(note: NoteGeneraleDeAnnee){
     this.demo1BtnClick(2);

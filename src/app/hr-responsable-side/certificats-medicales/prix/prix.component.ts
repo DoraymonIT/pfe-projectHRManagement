@@ -21,9 +21,13 @@ chercher: boolean;
     this.chercher = true;
   }
   public getPrixxByDoti() {
-    document.getElementById('tablePrix').style.display = 'inline';
-    document.getElementById('checherPrix').style.display = 'none';
-    this.prixService.findallPrixByDoti(this.employe.doti);
+    if( this.employe.doti === 0){
+      document.getElementById('tablePrix').style.display = 'none';
+    } else {
+      document.getElementById('tablePrix').style.display = 'inline';
+      document.getElementById('checherPrix').style.display = 'none';
+      this.prixService.findallPrixByDoti(this.employe.doti);
+    }
   }
   public editerUnPrix(prix: PrixEmploye){
     this.demo1BtnClick(2);

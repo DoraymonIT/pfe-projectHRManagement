@@ -20,6 +20,7 @@ export class NoteServiceService {
   private _notesAll: Array<NoteGeneraleDeAnnee>;
   private _notesParDoti: Array<NoteGeneraleDeAnnee>;
   private _noteDoti: Note;
+  private _employe: Employe;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/';
   constructor(private http: HttpClient,
@@ -73,6 +74,7 @@ public noteNull(){
         console.log('eroro', eror);
       });
   }
+
   public trouverNoteParSonDotiEtParDate() {
     this.http.get<NoteGeneraleDeAnnee>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByDateAndEmployeDoti/date/' + this.note.date + '/doti/' + this.note.employeDoti).subscribe(
       data => {
@@ -95,7 +97,8 @@ public noteNull(){
         });
         this.notesAll.push(this.cloneNote(this.noteSave));
         this._noteSave = null;
-      }, eror => {
+      }
+      } , eror => {
         console.log('eroro',eror);
       });
   }
@@ -213,4 +216,14 @@ public affecteruneNote(note:NoteGeneraleDeAnnee){
     this._noteDoti = value;
   }
 
+  get employe(): Employe {
+    if(this._employe == null){
+      this._employe = new Employe();
+    }
+    return this._employe;
+  }
+
+  set employe(value: Employe) {
+    this._employe = value;
+  }
 }

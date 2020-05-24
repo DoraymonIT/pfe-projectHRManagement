@@ -98,7 +98,7 @@ private _rapportEvaluation: RapportDeEvaluation;
         data => {
           // console.log(data);
           if (data === 1)
-          this.toast.success(`${this.rapportEvaluation.employe.fullName} add rapport to the database.`, 'rapport Added', {
+          this.toast.success(`${this.rapportEvaluation.employe.doti} add rapport to the database.`, 'rapport Added', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -109,4 +109,22 @@ private _rapportEvaluation: RapportDeEvaluation;
           console.log('eroro', eror);
         });
     }
+  public update() {
+    // tslint:disable-next-line:max-line-length
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/update', this.rapportEvaluation).subscribe(
+      data => {
+        // console.log(data);
+        if (data === 1)
+          this.toast.info(`${this.rapportEvaluation.employe.fullName} add rapport to the database.`, 'rapport Added', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        document.getElementById('span').style.color = 'green';
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
 }

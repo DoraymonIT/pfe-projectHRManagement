@@ -22,9 +22,13 @@ export class PunitionComponent implements OnInit {
     return this.punitionService.punitions;
   }
   public getPunitionnByDoti() {
+    if (this.employe.doti === 0){
+      document.getElementById('tablePunition').style.display = 'none';
+    } else {
     document.getElementById('tablePunition').style.display = 'inline';
     document.getElementById('checherPunition').style.display = 'none';
     this.punitionService.findallPunitionByDoti(this.employe.doti);
+    }
   }
   public imprimerLesPunitions(value: Array<PunitionEmploye>) {
     this.punitionService.imprimerLesPunitions(value);

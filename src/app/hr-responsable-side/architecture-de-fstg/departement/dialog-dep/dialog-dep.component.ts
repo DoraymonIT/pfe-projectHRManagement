@@ -9,18 +9,25 @@ import { Employe } from 'src/app/controller/model/employe.model';
   styleUrls: ['./dialog-dep.component.css']
 })
 export class DialogDepComponent implements OnInit {
+  depfullname: string;
   constructor(private es: PersonnelEmployesService ) { }
   fully: string;
   ngOnInit(): void {
+    this.getFullName();
+  }
+  public  getFullName() : string{
+    this.employesByDep.forEach(dep =>{
+      this.depfullname = dep.dep.nom;
+    });
+    return this.depfullname;
   }
   public listeVide1(): boolean {
-    //    console.log(this.employes.length);
     return this.employesByDep.length < 1 ? true : false;
   }
   get employesByDep(): Array<Employe> {
-
     return this.es.employesByDep;
   }
+
 
 
 }

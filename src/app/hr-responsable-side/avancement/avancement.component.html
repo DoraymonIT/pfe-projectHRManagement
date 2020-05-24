@@ -1,10 +1,103 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
   <mat-tab label="LISTE DE GRADE NON TRAITES" style="width: 25px" tabindex="1">
-    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-      <div class="card-header" style="text-align: center; width: 100%;">
-        <h1> Liste des demandes Non tarité </h1>
+    <a>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date evaluation </span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </a>
+    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+      <div class="card-body" style="text-align: center">
+        <label>date evaluation</label>
+        <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
       </div>
+    </div>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableEvaluation">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span"> <i class="fas fa-book-open "></i> les employes ayant l evaluation d'une grade par date</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
       <table class="table table-hover table-dark table-striped" style="color: wheat">
+        <thead>
+        <!-- <th>id note</th> -->
+        <th>Full name</th>
+        <th> DOTI</th>
+        <th>Date d evaluation</th>
+        <th>Dernier grade</th>
+        <th style="padding-left: 40px">Action</th>
+        </thead>
+        <tbody>
+        <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
+
+        <tr *ngFor="let c of employesByEvaluationToday">
+          <!-- <td>{{c.id}}</td> -->
+          <td>{{c.fullName}}</td>
+          <td>{{c.doti}}</td>
+          <td>{{c.dateDeProchainNote}}</td>
+          <td>{{c.dernierGrade}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+            <button class="btn btn-info btn-sm fa fa-trash"></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date avancement </span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </a>
+    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+      <div class="card-body" style="text-align: center">
+        <label>date avancement</label>
+        <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
+      </div>
+    </div>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableavancement">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span"> <i class="fas fa-book-open "></i> les employes ayant l avancement d'une grade par date</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <table class="table table-hover table-dark table-striped" style="color: wheat">
+        <thead>
+        <!-- <th>id note</th> -->
+        <th>Full name</th>
+        <th> DOTI</th>
+        <th>Date d avancement</th>
+        <th>Dernier grade</th>
+        <th style="padding-left: 40px">Action</th>
+        </thead>
+        <tbody>
+        <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
+
+        <tr *ngFor="let c of employesByEvaluationToday">
+          <!-- <td>{{c.id}}</td> -->
+          <td>{{c.fullName}}</td>
+          <td>{{c.doti}}</td>
+          <td>{{c.dateDeProchainNote}}</td>
+          <td>{{c.dernierGrade}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+            <button class="btn btn-info btn-sm fa fa-trash"></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" (click)="listeDesDemandeNonTraite()">
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> liste des demandes non traite </span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      <table class="table table-hover table-dark table-striped" style="color: wheat" id="gradeNonTraite">
         <thead>
         <th>Employe</th>
         <th>Grade</th>
