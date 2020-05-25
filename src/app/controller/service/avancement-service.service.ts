@@ -31,6 +31,23 @@ private _rapportEvaluation: RapportDeEvaluation;
         console.log('eroro', eror);
       });
   }
+  public creeUnGradeNonTraite(value: number){
+    console.log('ha doti' + value);
+    this.http.get <number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/creeUnGradeNonTraite/doti/' + value).subscribe(
+      data => {
+        if (data === 1) {
+          this.toast.success(`le grade employe est bien cree`, 'grade cree', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   public imprimerLeRapport() {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/rapportPdf', this.rapportEvaluation).subscribe(
       data => {

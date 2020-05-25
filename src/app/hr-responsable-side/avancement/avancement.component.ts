@@ -17,7 +17,9 @@ import {Fonction} from '../../controller/model/fonction.model';
   styleUrls: ['./avancement.component.css']
 })
 export class AvancementComponent implements OnInit {
-
+cherche1: boolean;
+cherche2: boolean;
+cherche3: boolean;
   constructor(private avancementService: AvancementServiceService,
               private gradeService: GradeService,
               private employeService: PersonnelEmployesService,
@@ -25,6 +27,9 @@ export class AvancementComponent implements OnInit {
   panelOpenState = false;
   cols: any[];
   ngOnInit(): void {
+    this.cherche1 = false;
+    this.cherche2 = false;
+    this.cherche3 = false;
   }
   public getemployeByDate() {
     document.getElementById('tableEvaluation').style.display = 'inline';
@@ -34,9 +39,21 @@ export class AvancementComponent implements OnInit {
     document.getElementById('tableavancement').style.display = 'inline';
     this.employeService.trouveremployeByDateAvancement(this.employeDateEvaluation.dateAvancementPrevue);
   }
+  public creeUnGradeEmployeNonTraite(value: Employe){
+    this.avancementService.creeUnGradeNonTraite(value.doti);
+  }
   public listeDesDemandeNonTraite(){
-    document.getElementById('gradeNonTraite').style.display = 'inline';
-    this.gradeService.findAllGradeNonTraite();
+    // tslint:disable-next-line:triple-equals
+    if (this.cherche3 == false) {
+      document.getElementById('gradeNonTraite').style.display = 'inline';
+      document.getElementById('liste').style.display = 'none';
+      this.gradeService.findAllGradeNonTraite();
+      this.cherche3 = true;
+    } else {
+      document.getElementById('gradeNonTraite').style.display = 'none';
+      document.getElementById('liste').style.display = 'inline';
+      this.cherche3 = false;
+    }
   }
   get employesByEvaluationToday(): Array<Employe> {
     return this.employeService.employesByEvaluationToday;
@@ -67,6 +84,23 @@ export class AvancementComponent implements OnInit {
     this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);
   }
  public afficher1(){
-
+   // tslint:disable-next-line:triple-equals
+    if (this.cherche1 == true){
+document.getElementById('chercher1').style.display = 'none';
+this.cherche1 = false;
+ } else {
+  document.getElementById('chercher1').style.display = 'inline';
+  this.cherche1 = true;
+  }
  }
+  public afficher2(){
+    // tslint:disable-next-line:triple-equals
+    if (this.cherche2 == true){
+      document.getElementById('chercher2').style.display = 'none';
+      this.cherche2 = false;
+    } else {
+      document.getElementById('chercher2').style.display = 'inline';
+      this.cherche2 = true;
+    }
+  }
 }

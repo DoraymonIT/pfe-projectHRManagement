@@ -1,13 +1,12 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
   <mat-tab label="LISTE DE GRADE NON TRAITES" style="width: 25px" tabindex="1">
-    <a>
-      <mat-toolbar>
+
+      <mat-toolbar (click)="afficher1()">
         <mat-toolbar-row>
-          <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date evaluation </span>
+          <span class="span"  style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date evaluation </span>
         </mat-toolbar-row>
       </mat-toolbar>
-    </a>
-    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+    <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher1">
       <div class="card-body" style="text-align: center">
         <label>date evaluation</label>
         <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
@@ -38,7 +37,7 @@
           <td>{{c.dateDeProchainNote}}</td>
           <td>{{c.dernierGrade}}</td>
           <td>
-            <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+            <button class="btn btn-primary btn-sm fa  fa-check-square"  (click)="creeUnGradeEmployeNonTraite(c)"></button>
             <button class="btn btn-info btn-sm fa fa-trash"></button>
           </td>
         </tr>
@@ -46,14 +45,13 @@
       </table>
     </div>
 
-    <a>
-      <mat-toolbar>
+      <mat-toolbar (click)="afficher2()">
         <mat-toolbar-row>
           <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date avancement </span>
         </mat-toolbar-row>
       </mat-toolbar>
-    </a>
-    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+
+    <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher2">
       <div class="card-body" style="text-align: center">
         <label>date avancement</label>
         <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
@@ -76,7 +74,6 @@
         </thead>
         <tbody>
         <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
-
         <tr *ngFor="let c of employesByEvaluationToday">
           <!-- <td>{{c.id}}</td> -->
           <td>{{c.fullName}}</td>
@@ -91,13 +88,20 @@
         </tbody>
       </table>
     </div>
-    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" (click)="listeDesDemandeNonTraite()">
-        <mat-toolbar>
-          <mat-toolbar-row>
-            <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> liste des demandes non traite </span>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      <table class="table table-hover table-dark table-striped" style="color: wheat" id="gradeNonTraite">
+    <div class="ui-g ui-fluid" style="font-size:16px;" (click)="listeDesDemandeNonTraite()" id="liste">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="span"> <i class="fas fa-book-open "></i> les demande avancement non traité</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    </div>
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" (click)="listeDesDemandeNonTraite()" id="gradeNonTraite">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span"> <i class="fas fa-book-open "></i> les demande avancement non traité</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    <table class="table table-hover table-dark table-striped" style="color: wheat;">
         <thead>
         <th>Employe</th>
         <th>Grade</th>
@@ -106,18 +110,14 @@
         </thead>
         <tbody>
         <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
-
         <tr *ngFor="let c of gradeNonTraite">
           <td>{{c.doti}}</td>
           <td>{{c.grade.libelle}}</td>
           <td>{{c.dateDeAffectation}}</td>
           <td>
-            <button class="btn btn-light btn-sm fas fa-plus" (click)="accepterUnRapport(c)"
-
-            ></button>
+            <button class="btn btn-light btn-sm fas fa-plus" (click)="accepterUnRapport(c)"></button>
             <button class="btn btn-info btn-sm fa fa-info" (click)="trouverRapportParEmployeDoti(c)"
-            matTooltip="Ce button permet de donner plus d info sur cet element"
-            ></button>
+            matTooltip="Ce button permet de donner plus d info sur cet element"></button>
           </td>
         </tr>
         </tbody>
