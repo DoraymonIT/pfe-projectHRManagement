@@ -55,3 +55,9 @@
 .example-full-width {
   width: 100%;
 }
+#service{
+  position: absolute;
+  right: 20px;
+  bottom: 500px;
+
+}

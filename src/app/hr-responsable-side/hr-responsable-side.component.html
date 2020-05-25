@@ -1,13 +1,16 @@
-<mat-sidenav-container class="example-container" class="side-barr" > <!--- *ngIf="conncter"-->
+<mat-sidenav-container class="example-container" class="side-barr">
+  <!--- *ngIf="conncter"-->
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 289px;">
     <mat-list role="list">
-      <mat-list-item  role="listitem" >
-       <span style="text-align:center ;color:#b0bec5"  class="span"> <i class="fas fa-school" style="font-size: 45px;text-align: center;"></i>
-      <br> FSTG Marrakech </span>
+      <mat-list-item role="listitem">
+        <span style="text-align:center ;color:#b0bec5" class="span"> <i class="fas fa-school"
+            style="font-size: 45px;text-align: center;"></i>
+          <br> FSTG Marrakech </span>
       </mat-list-item>
 
 
-      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem" style="margin-top: 35px; margin-bottom:4px;">
+      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem"
+        style="margin-top: 35px; margin-bottom:4px;">
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -26,9 +29,9 @@
       </mat-list-item>
       <mat-divider></mat-divider>
 
-     <!-- // blasst mandiru certificats ghandiru punition w formation w prix blasstha hh-->
+      <!-- // blasst mandiru certificats ghandiru punition w formation w prix blasstha hh-->
       <mat-list-item [routerLink]="[{ outlets: { un: ['FPP'] } }]" class="list1" role="listitem">
-        <h6> <i class="fas fa-bookmark" ></i> Formation,Prix et Punition</h6>
+        <h6> <i class="fas fa-bookmark"></i> Formation,Prix et Punition</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
 
@@ -54,9 +57,14 @@
       <!-- </mat-list-item> -->
       <!-- <br><br><br><br><br> -->
       <mat-list-item [routerLink]="[{ outlets: { un: ['architecture'] } }]" class="list1" role="listitem">
-        <h6>   <i class="fas fa-building" ></i> Architecture Interne</h6>
+        <h6> <i class="fas fa-building"></i> Architecture Interne</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="[{ outlets: { un: [''] } }]" class="list1" role="listitem">
+        <h6>    <i class="fas fa-cog"></i>  Parametres Avances</h6>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
       <mat-list-item class="list1" role="listitem" [routerLink]="['']" routerLinkActive="active">
         <h6><i class="fas fa-sign-out-alt"></i> Se Deconnecter</h6>
       </mat-list-item>
@@ -68,29 +76,29 @@
       <button mat-mini-fab (click)="sidenav.toggle()"><i class="fas fa-bars" style="font-size:25px;"></i></button>
       <form class="form-inline my-lg-0">
         <button mat-icon-button [matMenuTriggerFor]="menu" (click)="badge()">
-          <mat-icon class="icons" [matBadge]="ex" matBadgePosition="above before" matBadgeSize="small"
+          <mat-icon class="icons" [matBadge]="ex" matBadgePosition="above after" matBadgeSize="small"
             [matBadgeHidden]="hideMatBadge" matBadgeColor="warn" style="cursor: pointer;" matTooltip="Notifications">
             notifications
             <!-- <i class="fas fa-bell"></i> -->
           </mat-icon>
         </button>
-        <mat-menu #menu="matMenu" >
-          <a href="#" mat-menu-item >demande document,type document</a>
-          <a mat-menu-item >Liste evaluation Aujourd'hui</a>
-            <a mat-menu-item >Liste Notification Aujourd'hui</a>
-              <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">Liste Avancement Aujourd'hui</a>
+        <mat-menu #menu="matMenu">
+
+          <a href="#" mat-menu-item>demande document,type document</a>
+          <a href="#" mat-menu-item>Liste evaluation Aujourd'hui</a>
+          <a href="#" mat-menu-item>Liste Notification Aujourd'hui</a>
+          <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">Liste Avancement Aujourd'hui</a>
         </mat-menu>
         <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
           Profile</button> -->
-        <button class="icons" mat-raised-button [matMenuTriggerFor]="menu2"><i class="fas fa-cog"></i> Settings</button>
+        <button class="icons" mat-raised-button [matMenuTriggerFor]="menu2"><i class="fas fa-cog"></i></button>
         <mat-menu #menu2="matMenu">
           <button mat-menu-item [routerLink]="['']" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Se
             Deconnecter</button>
-          <button mat-menu-item>Autres</button>
+          <!-- <button mat-menu-item>Autres</button> -->
         </mat-menu>
       </form>
     </nav>
-
     <router-outlet name="un"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

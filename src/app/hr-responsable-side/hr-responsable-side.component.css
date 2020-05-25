@@ -45,3 +45,9 @@ mat-sidenav{
 .span {
   margin: auto;
 }
+a{
+  color: white;
+}
+a:hover{
+  color: aquamarine;
+}
