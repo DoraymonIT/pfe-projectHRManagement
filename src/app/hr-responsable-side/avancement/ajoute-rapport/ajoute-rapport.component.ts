@@ -25,7 +25,7 @@ import {NoteServiceService} from '../../../controller/service/note-service.servi
   styleUrls: ['./ajoute-rapport.component.css']
 })
 export class AjouteRapportComponent implements OnInit {
-
+indice: number;
   constructor(private avancementService: AvancementServiceService,
               private employeService: PersonnelEmployesService,
               private gradeService: GradeService,
@@ -182,20 +182,85 @@ export class AjouteRapportComponent implements OnInit {
     document.getElementById('div5').style.display = 'none';
   }
   public saveformation() {
-this.rapportEvaluation.formation.push(this.formationEmploye);
+    this.formationEmploye.employe = this.rapportEvaluation.employe;
+    if (this.formationEmploye == null){
+this.rapportEvaluation.formation.push(this.cloneFormation(this.formationEmploye));
+    } else {
+      this.rapportEvaluation.formation[ this.rapportEvaluation.formation.indexOf(this.formationEmploye)] = this.formationEmploye;
+    }
+this.formationService.formationEmployeNull();
 }
+  cloneFormation(formation: Formation): Formation {
+    const myClone = new Formation();
+    myClone.annee = formation.annee;
+    myClone.attestation = formation.attestation;
+    myClone.domaine = formation.domaine;
+    myClone.employe = formation.employe;
+    myClone.etablissement = formation.etablissement;
+    myClone.id = formation.id;
+    myClone.mention = formation.mention;
+    myClone.ville = formation.ville;
+    return myClone;
+  }
   public saveprix() {
-    this.rapportEvaluation.prix.push(this.prixEmploye);
+    this.prixEmploye.employe = this.rapportEvaluation.employe;
+    if (this.prixEmploye == null){
+    this.rapportEvaluation.prix.push(this.clonePrix(this.prixEmploye));
+    } else {
+      this.rapportEvaluation.prix[ this.rapportEvaluation.prix.indexOf(this.prixEmploye)] = this.prixEmploye;
+    }
+    this.prixService.prixEmployeNull();
 }
+  clonePrix(p: PrixEmploye): PrixEmploye {
+    const myClone = new PrixEmploye();
+    myClone.prix = p.prix;
+    myClone.id = p.id;
+    myClone.employe = p.employe;
+    myClone.dateDeObtenation = p.dateDeObtenation;
+
+    return myClone;
+  }
   public savepunition() {
-    this.rapportEvaluation.punition.push(this.punitionEmploye);
+    this.punitionEmploye.employe = this.rapportEvaluation.employe;
+    if(this.punitionEmploye.id == null){
+    this.rapportEvaluation.punition.push(this.clonePunition(this.punitionEmploye));
+    } else {
+      this.rapportEvaluation.formation[ this.rapportEvaluation.formation.indexOf(this.formationEmploye)] = this.formationEmploye;
+    }
+    this.punitionService.punitionEmployeNull();
 }
+  clonePunition(p: PunitionEmploye): PunitionEmploye {
+    const myClone = new PunitionEmploye();
+    myClone.punition = p.punition;
+    myClone.dateObtenation = p.dateObtenation;
+    myClone.id = p.id;
+    myClone.employe = p.employe;
+    return myClone;
+  }
   get note(): NoteGeneraleDeAnnee {
     return this.noteService.note;
   }
+
   public saveNote() {
-    this.rapportEvaluation.noteGenerale.push(this.note);
+    this.note.employeDoti = this.rapportEvaluation.employe.doti;
+    if (this.note.id == null){
+    this.rapportEvaluation.noteGenerale.push(this.cloneNote(this.note));
+    } else {
+      this.rapportEvaluation.formation[ this.rapportEvaluation.formation.indexOf(this.formationEmploye)] = this.formationEmploye;
+    }
+    this.noteService.noteNull();
 }
+  public  cloneNote(noteGeneraleDeAnnee: NoteGeneraleDeAnnee): NoteGeneraleDeAnnee {
+    const myClone = new NoteGeneraleDeAnnee() ;
+    myClone.employeDoti = noteGeneraleDeAnnee.employeDoti;
+    myClone.fuulName = noteGeneraleDeAnnee.fuulName;
+    myClone.noteDeAffectationDesTachesLieeAuTravail = noteGeneraleDeAnnee.noteDeAffectationDesTachesLieeAuTravail;
+    myClone.noteDeCapaciteDeOrganisation = noteGeneraleDeAnnee.noteDeCapaciteDeOrganisation;
+    myClone.noteDeCompotement = noteGeneraleDeAnnee.noteDeCompotement;
+    myClone.noteDeRechercheEtDeInnovation = noteGeneraleDeAnnee.noteDeRechercheEtDeInnovation;
+    myClone.noteDeRentabilite = noteGeneraleDeAnnee.noteDeRentabilite;
+    return myClone;
+  }
   public afficher7() {
     if (this.div7 === false) {
       document.getElementById('div7').style.display = 'inline-block';
@@ -293,5 +358,12 @@ this.rapportEvaluation.formation.push(this.formationEmploye);
         this.noteService.setNote(notee);
       }
     });
+  }
+  public save(){
+    if(this.rapportEvaluation == null){
+      this.avancementService.save();
+    } else {
+      this.avancementService.update();
+    }
   }
 }

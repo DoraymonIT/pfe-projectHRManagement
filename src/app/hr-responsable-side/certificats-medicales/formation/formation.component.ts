@@ -14,14 +14,14 @@ import {FormationServiceService} from '../../../controller/service/formation-ser
   styleUrls: ['./formation.component.css']
 })
 export class FormationComponent implements OnInit {
-
+chercher: boolean;
   constructor(private employeService: PersonnelEmployesService,
               private formationService: FormationServiceService) { }
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
     get employe(): Employe {
-    return this.employeService.employe;
+    return this.employeService.employeFormation;
   }
   get formations(): Array<Formation> {
     return this.formationService.formations;
@@ -30,13 +30,28 @@ export class FormationComponent implements OnInit {
   public demo1TabIndex = 0;
 
   ngOnInit(): void {
+    this.chercher = true;
+  }
+  public afficher(){
+    // tslint:disable-next-line:triple-equals
+    if(this.chercher == true){
+      document.getElementById('checherFormation').style.display = 'none';
+      this.chercher = false;
+    } else {
+      document.getElementById('checherFormation').style.display = 'inline';
+    }
   }
   public listeVide(): boolean {
     return this.formations.length < 1 ? true : false;
   }
   public getFormationsByDoti() {
+    if( this.employe.doti === 0) {
+      document.getElementById('tablePrix').style.display = 'none';
+    } else {
     document.getElementById('tableFormation').style.display = 'inline';
+    document.getElementById('checherFormation').style.display = 'none';
     this.formationService.findallFourmationsByDoti(this.employe.doti);
+  }
   }
 public editerFormation(formation: Formation) {
     this.demo1BtnClick(2);

@@ -12,8 +12,21 @@ import {Formation} from '../model/formation.model';
 export class PrixService {
   private _prixs: Array<PrixEmploye>;
   private _prixEmploye: PrixEmploye;
+  private _ajoutePrix: string;
 
-    constructor(private http: HttpClient,
+  get ajoutePrix(): string {
+    return this._ajoutePrix;
+  }
+public prixEmployeNull(){
+    this.prixEmploye = null;
+  }
+  set ajoutePrix(value: string) {
+    this._ajoutePrix = value;
+  }
+public  ajoutePrixTitre(){
+    this._ajoutePrix = 'Formulaire pour ajouter un prix a un employe';
+}
+  constructor(private http: HttpClient,
       private toast: ToastrService) { }
     public setprix(prixx: PrixEmploye){
       this._prixEmploye = prixx;
@@ -72,7 +85,18 @@ public editerCePrixx(prix: PrixEmploye){
       this._prixEmploye = value;
     }
     public save() {
-      this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/save', this.prixEmploye).subscribe(
+      // tslint:disable-next-line:max-line-length
+      if ((this.prixEmploye.employe == null || this.prixEmploye.prix == null || this.prixEmploye.dateDeObtenation == null ) || (this.prixEmploye.employe == null && this.prixEmploye.prix == null && this.prixEmploye.dateDeObtenation == null )) {
+        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+          timeOut: 1500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+        this._ajoutePrix = 'champ est vide';
+        document.getElementById('span').style.color = 'red';
+      } else {
+        this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/save', this.prixEmploye).subscribe(
         data => {
           // console.log(data);
           this.toast.success(`${this.prixEmploye.employe.fullName} add prix employe to the database.`, 'prix Added', {
@@ -82,13 +106,43 @@ public editerCePrixx(prix: PrixEmploye){
             positionClass: 'toast-top-right'
           });
           this.prixs.push(this.clonePrix(this.prixEmploye));
-          console.log('data lli b7ra d5lty dyal prix hhh'+ data);
+          this._ajoutePrix = 'prix ajouter';
+          document.getElementById('span').style.color = 'green';
           this.prixEmploye = null;
         }, eror => {
           console.log('eroro', eror);
-        }
-      );
+        });
     }
+  }
+  public update() {
+    // tslint:disable-next-line:max-line-length
+    if ((this.prixEmploye.employe == null || this.prixEmploye.prix == null || this.prixEmploye.dateDeObtenation == null ) || (this.prixEmploye.employe == null && this.prixEmploye.prix == null && this.prixEmploye.dateDeObtenation == null )) {
+      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+      this._ajoutePrix = 'champ est vide';
+      document.getElementById('span').style.color = 'red';
+    } else {
+      this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/update', this.prixEmploye).subscribe(
+        data => {
+          this.toast.info(`${this.prixEmploye.employe.fullName} add prix employe to the database.`, 'prix Added', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this.prixs.push(this.clonePrix(this.prixEmploye));
+          this._ajoutePrix = 'prix modifier';
+          document.getElementById('span').style.color = 'green';
+          this.prixEmploye = null;
+        }, eror => {
+          console.log('eroro', eror);
+        });
+    }
+  }
     // public deleteByReference(conge: CongeEmploye) {
     //   this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
     //     data => {

@@ -20,6 +20,10 @@ export class AjouterPrixComponent implements OnInit {
   ngOnInit() {
     this.employeService.findAll();
     this.prixSmall.findAll();
+    this.prixService.ajoutePrixTitre();
+  }
+  get ajoutePrix(): string {
+    return this.prixService.ajoutePrix;
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -28,7 +32,11 @@ export class AjouterPrixComponent implements OnInit {
     return this.prixService.prixEmploye;
   }
   public save(){
-    return this.prixService.save();
+    if (this.prixEmploye.id == null){
+      return this.prixService.save();
+    } else {
+    return this.prixService.update();
+    }
   }
   get ps(): Array<Prix> {
     return this.prixSmall.ps;

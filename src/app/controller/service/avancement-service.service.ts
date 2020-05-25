@@ -22,7 +22,6 @@ private _rapportEvaluation: RapportDeEvaluation;
 
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
-
   public findRapportByGradeIdAndEmployeDoti(id: number, doti: number) {
     // tslint:disable-next-line:max-line-length
     this.http.get<RapportDeEvaluation>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/findByNouveauGradeIdAndEmployeDoti/id/' + id + '/doti/' + doti).subscribe(
@@ -50,7 +49,7 @@ private _rapportEvaluation: RapportDeEvaluation;
   public accepterRapportAvancement(gradeeemploye: GradeEmploye) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/accepterUnGrade', gradeeemploye).subscribe(
       data => {
-        if (data > 0) {
+        if (data == 1) {
           this.toast.success(` avancement est bie effectué`, 'avancement affectuer', {
             timeOut: 2500,
             progressBar: true,
@@ -92,6 +91,40 @@ private _rapportEvaluation: RapportDeEvaluation;
 
   set rapportEvaluation(value: RapportDeEvaluation) {
     this._rapportEvaluation = value;
+  }
+  public save() {
+    // tslint:disable-next-line:max-line-length
+      this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/save', this.rapportEvaluation).subscribe(
+        data => {
+          // console.log(data);
+          if (data === 1)
+          this.toast.success(`${this.rapportEvaluation.employe.doti} add rapport to the database.`, 'rapport Added', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          document.getElementById('span').style.color = 'green';
+        }, eror => {
+          console.log('eroro', eror);
+        });
+    }
+  public update() {
+    // tslint:disable-next-line:max-line-length
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/update', this.rapportEvaluation).subscribe(
+      data => {
+        // console.log(data);
+        if (data === 1)
+          this.toast.info(`${this.rapportEvaluation.employe.fullName} add rapport to the database.`, 'rapport Added', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        document.getElementById('span').style.color = 'green';
+      }, eror => {
+        console.log('eroro', eror);
+      });
   }
 
 }

@@ -20,6 +20,7 @@ export class NoteServiceService {
   private _notesAll: Array<NoteGeneraleDeAnnee>;
   private _notesParDoti: Array<NoteGeneraleDeAnnee>;
   private _noteDoti: Note;
+  private _employe: Employe;
   // private _url = 'http://localhost:3000/characters';
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/';
   constructor(private http: HttpClient,
@@ -41,6 +42,9 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
     }, eror => {
       console.log('eroro', eror);
     });
+}
+public noteNull(){
+    this.note = null;
 }
   public findAll() {
     this.http.get<Array<NoteGeneraleDeAnnee>>(this._url + 'findAll').subscribe(
@@ -70,6 +74,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
         console.log('eroro', eror);
       });
   }
+
   public trouverNoteParSonDotiEtParDate() {
     this.http.get<NoteGeneraleDeAnnee>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByDateAndEmployeDoti/date/' + this.note.date + '/doti/' + this.note.employeDoti).subscribe(
       data => {
@@ -83,6 +88,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   public save() {
     this.http.post<number>(this._url + 'save', this.noteSave).subscribe(
       data => {
+        if(data === 1) {
         this.toast.success(`${'note'} add note to the database.`, 'note Added', {
           timeOut: 2500,
           progressBar: true,
@@ -91,7 +97,8 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
         });
         this.notesAll.push(this.cloneNote(this.noteSave));
         this._noteSave = null;
-      }, eror => {
+      }
+      } , eror => {
         console.log('eroro',eror);
       });
   }
@@ -209,4 +216,14 @@ public affecteruneNote(note:NoteGeneraleDeAnnee){
     this._noteDoti = value;
   }
 
+  get employe(): Employe {
+    if(this._employe == null){
+      this._employe = new Employe();
+    }
+    return this._employe;
+  }
+
+  set employe(value: Employe) {
+    this._employe = value;
+  }
 }

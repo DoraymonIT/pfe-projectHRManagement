@@ -12,17 +12,23 @@ import {PunitionEmploye} from '../../../controller/model/punition-employe.model'
 export class PunitionComponent implements OnInit {
   public tabindex;
   public demo1TabIndex = 0;
+  chercher: boolean;
   constructor(private punitionService: PunitionService,
               private employeService: PersonnelEmployesService) { }
-
   ngOnInit(): void {
+    this.chercher = true;
   }
   get punitions(): Array<PunitionEmploye> {
     return this.punitionService.punitions;
   }
   public getPunitionnByDoti() {
+    if (this.employe.doti === 0){
+      document.getElementById('tablePunition').style.display = 'none';
+    } else {
     document.getElementById('tablePunition').style.display = 'inline';
+    document.getElementById('checherPunition').style.display = 'none';
     this.punitionService.findallPunitionByDoti(this.employe.doti);
+    }
   }
   public imprimerLesPunitions(value: Array<PunitionEmploye>) {
     this.punitionService.imprimerLesPunitions(value);
@@ -39,10 +45,18 @@ export class PunitionComponent implements OnInit {
     this.demo1TabIndex = value ;
   }
   get employe(): Employe {
-    return this.employeService.employe;
+    return this.employeService.employePunition;
   }
   public listeVide(): boolean {
     return this.punitions.length < 1 ? true : false;
   }
-
+  public afficher(){
+    // tslint:disable-next-line:triple-equals
+    if(this.chercher == true){
+      document.getElementById('checherPunition').style.display = 'none';
+      this.chercher = false;
+    } else {
+      document.getElementById('checherPunition').style.display = 'inline';
+    }
+  }
 }

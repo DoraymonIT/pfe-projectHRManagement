@@ -73,7 +73,7 @@ private _typeDocument: TypeDocument;
   }
   public updateDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
-    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null || this.document.dateDemande == null) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null && this.document.dateDemande == null)) {
+    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,

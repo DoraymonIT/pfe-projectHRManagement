@@ -15,8 +15,8 @@ import {RapportInfoComponent} from '../rapport-info/rapport-info.component';
   styleUrls: ['./liste-avancement-non-traite.component.css']
 })
 export class ListeAvancementNonTraiteComponent implements OnInit {
-
-  constructor(private employeService : PersonnelEmployesService,
+chercher: boolean;
+  constructor(private employeService: PersonnelEmployesService,
               private gradesEmploye: GradeService,
               private avancementService: AvancementServiceService,
               private dialog: MatDialog) { }
@@ -24,12 +24,14 @@ export class ListeAvancementNonTraiteComponent implements OnInit {
   ngOnInit(): void {
     this.employeService.findAll();
     this.listeVide();
+    this.chercher = true;
   }
   public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
     this.gradesEmploye.imprimerLesGradesDeEmploye(value);
   }
   public findAllGradeEmployeByDoti(doti: number){
-    document.getElementById('fourmule').style.display = 'inline-flex'
+    document.getElementById('fourmule').style.display = 'inline-flex';
+    document.getElementById('checherGrade').style.display = 'none';
     this.gradesEmploye.findAllGradeEmployeByDoti(doti);
   }
   get gradesEployess(): Array<GradeEmploye> {
@@ -41,6 +43,15 @@ export class ListeAvancementNonTraiteComponent implements OnInit {
   public listeVide():boolean{
     console.log(this.employes.length);
     return this.employes.length <1 ? true:false;
+  }
+  public afficher(){
+    // tslint:disable-next-line:triple-equals
+    if(this.chercher == true){
+      document.getElementById('checherGrade').style.display = 'none';
+      this.chercher = false;
+    } else {
+      document.getElementById('checherGrade').style.display = 'inline';
+    }
   }
   get employeInfo(): Employe {
     return this.employeService.employeInfo;

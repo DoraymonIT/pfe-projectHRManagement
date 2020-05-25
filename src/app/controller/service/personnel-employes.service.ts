@@ -23,6 +23,12 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _employe: Employe;
   // tslint:disable-next-line:variable-name
+  private _employeFormation: Employe;
+  // tslint:disable-next-line:variable-name
+  private _employePrix: Employe;
+  // tslint:disable-next-line:variable-name
+  private _employePunition: Employe;
+  // tslint:disable-next-line:variable-name
   private _employes: Array<Employe>;
   // tslint:disable-next-line:variable-name
   private _depFonctions: Array<DepFonction>;
@@ -39,7 +45,9 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _employesByDep: Array<Employe>;
   private _employesByNoteGeneraleToday: Array<Employe>;
-
+  // tslint:disable-next-line:variable-name
+  private _employesByEvaluationToday: Array<Employe>;
+  private _employeDateEvaluation: Employe;
   // tslint:disable-next-line:variable-name
   private _employesByGrade: Array<Employe>;
   // tslint:disable-next-line:variable-name
@@ -85,13 +93,36 @@ export class PersonnelEmployesService {
         }
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
+  }
+  public trouveremployeByDate(value: Date){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateDeProchainNote/dateDeProchainNote/' + value).subscribe(
+      data => {
+        this.employesByNoteGeneraleToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public trouveremployeByDateEvaluation(value: Date){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateProchainEvaluation/dateProchainEvaluation/' + value).subscribe(
+      data => {
+        this.employesByEvaluationToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public trouveremployeByDateAvancement(value: Date){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateAvancementPrevue/dateAvancementPrevue/' + value).subscribe(
+      data => {
+        this.employesByEvaluationToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
   }
   // save
   public save() {
     // tslint:disable-next-line:max-line-length
-    if (this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) {
+    if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,
@@ -140,7 +171,7 @@ export class PersonnelEmployesService {
   }
   public update() {
     // tslint:disable-next-line:max-line-length
-    if (this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) {
+    if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,
@@ -490,5 +521,97 @@ export class PersonnelEmployesService {
 
   set modifyEmp(value: string) {
     this._modifyEmp = value;
+  }
+
+  get employeFormation(): Employe {
+    if (this._employeFormation == null) {
+      this._employeFormation = new Employe();
+      this._employeFormation.dernierGrade = new GradeEmploye();
+      this._employeFormation.dernierGrade.grade = new Grade();
+      this._employeFormation.dernierNote = new NoteGeneraleDeAnnee();
+      this._employeFormation.sup = new Employe();
+      this._employeFormation.fonction = new Fonction();
+      this._employeFormation.dep = new Departement();
+      this._employeFormation.dernierNote = new NoteGeneraleDeAnnee();
+    }
+
+    return this._employeFormation;
+  }
+
+  set employeFormation(value: Employe) {
+    this._employeFormation = value;
+  }
+
+  get employePrix(): Employe {
+    if (this._employePrix == null) {
+      this._employePrix = new Employe();
+      this._employePrix.dernierGrade = new GradeEmploye();
+      this._employePrix.dernierGrade.grade = new Grade();
+      this._employePrix.dernierNote = new NoteGeneraleDeAnnee();
+      this._employePrix.sup = new Employe();
+      this._employePrix.fonction = new Fonction();
+      this._employePrix.dep = new Departement();
+      this._employePrix.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employePrix;
+  }
+
+  set employePrix(value: Employe) {
+    this._employePrix = value;
+  }
+
+  get employePunition(): Employe {
+    if (this._employePunition == null) {
+      this._employePunition = new Employe();
+      this._employePunition.dernierGrade = new GradeEmploye();
+      this._employePunition.dernierGrade.grade = new Grade();
+      this._employePunition.dernierNote = new NoteGeneraleDeAnnee();
+      this._employePunition.sup = new Employe();
+      this._employePunition.fonction = new Fonction();
+      this._employePunition.dep = new Departement();
+      this._employePunition.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employePunition;
+  }
+
+  set employePunition(value: Employe) {
+    this._employePunition = value;
+  }
+
+  get employesByEvaluationToday(): Array<Employe> {
+    if (this._employesByEvaluationToday == null) {
+      this._employesByEvaluationToday = new Array<Employe>();
+      this._employesByEvaluationToday.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+
+    return this._employesByEvaluationToday;
+  }
+
+  set employesByEvaluationToday(value: Array<Employe>) {
+    this._employesByEvaluationToday = value;
+  }
+
+  get employeDateEvaluation(): Employe {
+    if (this._employeDateEvaluation == null) {
+      this._employeDateEvaluation = new Employe();
+      this._employeDateEvaluation.dernierGrade = new GradeEmploye();
+      this._employeDateEvaluation.dernierGrade.grade = new Grade();
+      this._employeDateEvaluation.dernierNote = new NoteGeneraleDeAnnee();
+      this._employeDateEvaluation.sup = new Employe();
+      this._employeDateEvaluation.fonction = new Fonction();
+      this._employeDateEvaluation.dep = new Departement();
+      this._employeDateEvaluation.dernierNote = new NoteGeneraleDeAnnee();
+    }
+    return this._employeDateEvaluation;
+  }
+
+  set employeDateEvaluation(value: Employe) {
+    this._employeDateEvaluation = value;
   }
 }

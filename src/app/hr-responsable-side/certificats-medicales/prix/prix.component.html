@@ -1,18 +1,18 @@
 <mat-tab-group  style="width: 100%;"  (selectedIndexChange)="demo1BtnClick(tabindex)"
                 [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="LISTES DES EMPLOYES AVEC LEURS PRIX " style="width: 25px" tabindex="1">
-    <div class="example-large-box mat-elevation-z4">
-      <mat-toolbar>
+    <div class="example-large-box mat-elevation-z4" >
+      <mat-toolbar (click)="afficher()">
         <mat-toolbar-row>
           <span class="span"> <i class="fas fa-medal    "></i> Chercher les prix d'un employe a partir du <strong>doti</strong> </span>
         </mat-toolbar-row>
       </mat-toolbar>
-      <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+      <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherPrix">
         <div class="card-body">
           <mat-form-field  style="width: 500px">
             <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
             <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPrixxByDoti()">
-              <mat-option >---None---</mat-option>
+              <mat-option [value]="0">---None---</mat-option>
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -46,6 +46,7 @@
           </tr>
           </tbody>
         </table>
+        <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesPrix(this.prixs)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
       </div>
     </div>
     <!-- <button *ngIf="prixs"  mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerLesPrix(this.prixs)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->

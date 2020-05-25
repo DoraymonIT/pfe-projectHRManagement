@@ -39,7 +39,7 @@ private _employefullname: string;
   }
   public update() {
     // tslint:disable-next-line:max-line-length
-    if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.raison == null || this.congeEmploye.congee == null || this.congeEmploye.etat == null || this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null && this.congeEmploye.raison == null && this.congeEmploye.congee == null && this.congeEmploye.etat == null && this.congeEmploye.employe == null)) {
+    if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.congee == null ||  this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null  && this.congeEmploye.congee == null  && this.congeEmploye.employe == null)) {
         this.toast.error(`remplir toutes les champ`, 'champ vide', {
           timeOut: 2500,
           progressBar: true,
@@ -122,7 +122,7 @@ private _employefullname: string;
   }
   public save() {
     // tslint:disable-next-line:max-line-length
-    if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.raison == null || this.congeEmploye.congee == null || this.congeEmploye.etat == null || this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null && this.congeEmploye.raison == null && this.congeEmploye.congee == null && this.congeEmploye.etat == null && this.congeEmploye.employe == null)) {
+    if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.congee == null ||  this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null && this.congeEmploye.congee == null  && this.congeEmploye.employe == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,
@@ -167,8 +167,6 @@ private _employefullname: string;
     myClone.congee = conge.congee;
     myClone.periode = conge.periode;
     myClone.dateDeDebut = conge.dateDeDebut;
-    myClone.etat = conge.etat;
-    myClone.raison = conge.raison;
     myClone.id = conge.id;
     return myClone;
   }
