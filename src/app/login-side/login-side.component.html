@@ -3,16 +3,16 @@
     <div class="col-md-7 fs" style="margin-top:180px;text-align: center;">
       <!-- <h2>FSTG MARRAKECH</h2> -->
       <!-- <h6>Gestion du personnel , avancement , conges , demandes en lignes de documents ,...</h6> -->
-      <img id="im" src="assets/images/login2.svg" width="590px" />
-      <img id="fst"  src="assets/images/fstgLogo.png"  />
+      <img id="im" src="assets/images/login2.svg" class="animate__animated animate__fadeInUp animate__repeat-5" width="590px" />
+      <img id="fst" class="animate__animated animate__fadeInLeft animate__repeat-4" src="assets/images/fstgLogo.png"  />
     </div>
     <div class="col-md-5 cc" style="padding: 40px;margin-top: 80px;margin-bottom: 90px; text-align: center; ">
-      <h2 id="service"> <b>Service des Ressources Humaines</b> </h2>
+      <h2 id="service" class="animate__animated animate__bounce animate__repeat-3"> <b>Service des Ressources Humaines</b> </h2>
       <span class="hh">
         <!-- <h2>FSTG MARRAKECH</h2> -->
         <!-- <h6>Gestion du personnel , avancement , conges , demandes en lignes de documents ,...</h6> -->
       </span>
-      <div class="card bg-secondary text-white" style=" box-shadow: 0px 13px 90px -7px #343a40; border-radius: 10px;">
+      <div class="card bg-secondary text-white" style=" box-shadow: 0px 13px 90px -7px #848d97; border-radius: 10px;">
         <div class="card-header" style="text-align: center;">
           <countdown [config]="{ leftTime: 900, format: 'm:s' }" (event)="showw()" id="count"></countdown>
           <h5 id="span"><i class="fas fa-user-circle" style="font-size: 60px;"></i><br>{{this.loginTitre}}</h5>

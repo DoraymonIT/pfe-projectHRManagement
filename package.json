@@ -33,6 +33,7 @@
     "@types/jquery": "^3.3.36",
     "angular-calendar": "^0.28.11",
     "angularx-flatpickr": "^6.3.1",
+    "animate.css": "^4.1.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "date-fns": "^2.12.0",

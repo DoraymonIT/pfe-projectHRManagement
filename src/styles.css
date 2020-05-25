@@ -7,14 +7,12 @@
 @import '~ngx-toastr/toastr';
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
+@import '~animate.css/animate.min.css';
 button:focus{
     outline:1px none;
 }
 html, body { height: 100%;
 
-    background-image: url("/assets/images/back1.jpg");
-    /* Mumkiin tbddl back1 w tddir back2 wlla back3 w chuuf lli 3jbattk  */
-    /* position: relative; */
   }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
