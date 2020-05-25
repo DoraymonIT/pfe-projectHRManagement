@@ -6,6 +6,13 @@
 #count{
   display: none;
 }
+#fst{
+  position: absolute;
+    left: 120px;
+    height: 200px;
+    bottom: 500px;
+
+}
 .bouton {
   border-radius: 10px;
   background-color: rgb(53, 53, 53);

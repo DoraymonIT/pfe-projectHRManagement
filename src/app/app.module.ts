@@ -106,6 +106,8 @@ import {AjouteRapportComponent} from './hr-responsable-side/avancement/ajoute-ra
 import { ArchitectureOrgComponent } from './hr-responsable-side/architecture-de-fstg/architecture-org/architecture-org.component'
 
 import {OrganizationChartModule} from 'primeng/organizationchart';
+import { TestTestComponent } from './hr-responsable-side/avancement/test-test/test-test.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -185,7 +187,8 @@ import {OrganizationChartModule} from 'primeng/organizationchart';
 
     AjouteUneFonctionUndeartementComponent,
     AjouteRapportComponent,
-    ArchitectureOrgComponent
+    ArchitectureOrgComponent,
+    TestTestComponent
   ],
     imports: [
         BrowserModule,
@@ -232,7 +235,8 @@ import {OrganizationChartModule} from 'primeng/organizationchart';
         ToastrModule,
         EditorModule, CountdownModule,
 
-        OrganizationChartModule
+        OrganizationChartModule,
+        MatStepperModule
     ],
   providers: [
     {

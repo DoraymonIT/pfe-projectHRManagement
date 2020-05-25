@@ -1,0 +1,48 @@
+<div class="container-fluid" style="padding-top: 10px;">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-horizontal-stepper labelPosition="bottom" #stepper  >
+        <mat-step>
+          <ng-template matStepLabel>Etape 1</ng-template>
+          etape1
+          <div>
+            <button mat-button matStepperNext >Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Etape 2</ng-template>
+          etape2
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Etape 3</ng-template>
+          etape3
+          <div>
+            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Etape 4</ng-template>
+          etape4
+          <div>
+            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Etape 5</ng-template>
+          etape5
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button>Save the changes</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div>
