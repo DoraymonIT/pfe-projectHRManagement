@@ -183,7 +183,7 @@ public findAll() {
     this._gradeEmploye = value;
   }
 public ajouteGradeemployeTitre() {
-  this._ajouteGradeEmploye = 'Formulaire pour avacement une note a un employe';
+  this._ajouteGradeEmploye = 'Formulaire pour affecter un grade a un employe ';
 }
   get ajouteGradeEmploye(): string {
     return this._ajouteGradeEmploye;
