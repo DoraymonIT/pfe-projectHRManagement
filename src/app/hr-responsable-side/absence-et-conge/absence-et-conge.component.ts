@@ -6,6 +6,7 @@ import {CongeService} from '../../controller/service/conge.service';
 import {TypeCongee} from '../../controller/model/type-congee.model';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ListeDesJoursFriesComponent } from './liste-des-jours-fries/liste-des-jours-fries.component';
+import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class AbsenceEtCongeComponent implements OnInit {
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
+
   get conges(): Array<CongeEmploye> {
     return this.congeservice.conges;
   }
@@ -35,10 +37,12 @@ export class AbsenceEtCongeComponent implements OnInit {
   cols: any[];
   public tabindex;
   public demo1TabIndex = 0;
-
-
+ loading: boolean;
+ totalRecords: number;
+ dataSource : Array<Employe>=[];
   ngOnInit(): void {
     this.employeService.findAll();
+    this.dataSource=this.employes;
     this.cols = [
       { field: 'cin', header: 'C I N' },
       { field: 'fullName', header: 'Nom Complet' },
@@ -46,7 +50,20 @@ export class AbsenceEtCongeComponent implements OnInit {
       { field: 'doti', header: 'DOTI' },
       { field: 'soldeRestantesCongéExceptionnel', header: 'solde Restantes Congé Exceptionnel' },
     ];
+    this.loading = true;
+    this.totalRecords = this.employes.length;
   }
+  loadCarsLazy(event: LazyLoadEvent) {
+    this.loading = true;
+
+
+    setTimeout(() => {
+        if (this.employes) {
+            this.dataSource = this.employes.slice(event.first, (event.first + event.rows));
+            this.loading = false;
+        }
+    }, 4000);
+}
   public deleteByReference(conge: CongeEmploye) {
     this.congeservice.deleteByReference(conge);
   }

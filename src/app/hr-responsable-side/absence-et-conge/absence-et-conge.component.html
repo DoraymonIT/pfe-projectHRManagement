@@ -6,7 +6,9 @@
         <div class="container-fluid" style="padding-top: 10px;">
           <div class="row">
             <div class="col-md-12">
-              <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="5">
+              <p-table #dt [columns]="cols" [value]="employes" dataKey="doti" [paginator]="true" [rows]="15" [lazy]="true"
+              (onLazyLoad)="loadCarsLazy($event)"  [totalRecords]="totalRecords" [loading]="loading"
+              >
                 <ng-template pTemplate="caption">
             <i class="fas fa-bed    "></i>      liste des conges
             <div style="    text-align: left; margin-bottom: 10px;">
@@ -32,7 +34,7 @@
                     </th>
                     <th style="width: 3em"></th>
                   </tr>
-                  <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+                  <!-- <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner> -->
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
                   <tr>

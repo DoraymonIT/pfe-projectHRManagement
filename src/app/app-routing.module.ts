@@ -14,6 +14,7 @@ import { CertificatsMedicalesComponent } from './hr-responsable-side/certificats
 import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-de-fstg/architecture-de-fstg.component';
 
 import { HelpDocumentationComponent } from './help-documentation/help-documentation.component';
+import { ParametresAvancesComponent } from './hr-responsable-side/parametres-avances/parametres-avances.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
       } , {
         path: 'architecture',
         component: ArchitectureDeFSTGComponent,
+        outlet: 'un'
+      }, {
+        path: 'parametresAvances',
+        component: ParametresAvancesComponent,
         outlet: 'un'
       }
     ]

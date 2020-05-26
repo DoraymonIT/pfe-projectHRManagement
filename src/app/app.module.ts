@@ -108,6 +108,7 @@ import { ArchitectureOrgComponent } from './hr-responsable-side/architecture-de-
 import {OrganizationChartModule} from 'primeng/organizationchart';
 import { TestTestComponent } from './hr-responsable-side/avancement/test-test/test-test.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ParametresAvancesComponent } from './hr-responsable-side/parametres-avances/parametres-avances.component';
 
 @NgModule({
   declarations: [
@@ -188,7 +189,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     AjouteUneFonctionUndeartementComponent,
     AjouteRapportComponent,
     ArchitectureOrgComponent,
-    TestTestComponent
+    TestTestComponent,
+    ParametresAvancesComponent
   ],
     imports: [
         BrowserModule,
