@@ -16,7 +16,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label> <i class="fas fa-user-tie    "></i> Selectionnez le grade : </mat-label>
+        <mat-label>  Selectionnez le grade : </mat-label>
         <mat-select [(ngModel)]="this.rapportEvaluation.nouveauGrade.grade.libelle" [ngModelOptions]="{standalone: true}" [value] ="this.rapportEvaluation.nouveauGrade.grade.libelle">
           <mat-option *ngFor="let gr of gradesEployess" [value]="gr.grade.libelle">{{gr.grade.libelle}}</mat-option>
         </mat-select>
