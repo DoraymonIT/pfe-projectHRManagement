@@ -51,7 +51,7 @@ export class DepartementComponent implements OnInit {
     this.dialog.open(ListeFonctionComponent, dialogConfig);
   }
   public modifierDepartement(value: Departement){
-    this.demo1BtnClick(2);
+    this.demo1BtnClick(1);
     this.departementservice.EditerDepartement(value);
   }
   get deps(): Array<Departement> {

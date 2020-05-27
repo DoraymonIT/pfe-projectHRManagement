@@ -26,6 +26,10 @@ export class DepAjoutComponent implements OnInit {
     return this.employeservice.employes;
   }
   public save(){
-    this.departementservice.save();
+    if(this.departement.id == null) {
+      this.departementservice.save();
+    } else {
+      this.departementservice.update();
+    }
   }
 }

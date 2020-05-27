@@ -59,7 +59,20 @@ export class ArchitectureOrgComponent implements OnInit {
                       label: 'Dep de Informatique : Bourquia'
                   }
               ]
-          }
+          },
+        {
+          label: 'Superviseur de departements : Bouigrouane',
+          expanded: true,
+          children: [
+            {
+              label: 'Dep de Physique : Mimani'
+            },
+            {
+              label: 'Dep de Informatique : Bourquia'
+            }
+          ]
+        }
+
       ]
   }];
   }

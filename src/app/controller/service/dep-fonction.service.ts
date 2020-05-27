@@ -26,7 +26,8 @@ public save(){
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
-        })
+        });
+        this.depfonction = null;
       }
     }, eror => {
       console.log('eroro', eror);
