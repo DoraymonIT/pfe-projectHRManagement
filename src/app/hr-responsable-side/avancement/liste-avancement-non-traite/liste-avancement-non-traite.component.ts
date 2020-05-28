@@ -29,9 +29,9 @@ chercher: boolean;
   public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
     this.gradesEmploye.imprimerLesGradesDeEmploye(value);
   }
-  public findAllGradeEmployeByDoti(doti: number){
+  public findAllGradeEmployeByDoti(doti: string) {
     document.getElementById('fourmule').style.display = 'inline-flex';
-    document.getElementById('checherGrade').style.display = 'none';
+   // document.getElementById('checherGrade').style.display = 'none';
     this.gradesEmploye.findAllGradeEmployeByDoti(doti);
   }
   get gradesEployess(): Array<GradeEmploye> {
@@ -40,13 +40,13 @@ chercher: boolean;
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
-  public listeVide():boolean{
+  public listeVide(): boolean {
     console.log(this.employes.length);
-    return this.employes.length <1 ? true:false;
+    return this.employes.length < 1 ? true : false;
   }
-  public afficher(){
+  public afficher() {
     // tslint:disable-next-line:triple-equals
-    if(this.chercher == true){
+    if (this.chercher == true) {
       document.getElementById('checherGrade').style.display = 'none';
       this.chercher = false;
     } else {
@@ -56,12 +56,12 @@ chercher: boolean;
   get employeInfo(): Employe {
     return this.employeService.employeInfo;
   }
-  public trouverRapportParEmployeDoti(gradeEmloye: GradeEmploye){
+  public trouverRapportParEmployeDoti(gradeEmloye: GradeEmploye) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "95%";
-    dialogConfig.height = "80%";
+    dialogConfig.width = '95%';
+    dialogConfig.height = '80%';
     this.dialog.open(RapportInfoComponent,
       dialogConfig);
     this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);

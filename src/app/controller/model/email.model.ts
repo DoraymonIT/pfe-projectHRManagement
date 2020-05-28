@@ -1,6 +1,6 @@
 export class Email {
 doti: number;
-subject:string;
-email: string;
+subject: string;
+emaill: string;
 text: string;
 }

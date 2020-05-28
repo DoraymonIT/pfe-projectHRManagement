@@ -39,6 +39,11 @@ export class EditerEmployeComponent implements OnInit {
    return this.employeService.employes;
     }
   public update() {
+    console.log('ha full name' + this.EditEmploye.fullName);
+    console.log('ha full name' + this.EditEmploye.tel);
+    console.log('ha full name' + this.EditEmploye.email);
+    console.log('ha full name' + this.EditEmploye.fonction);
+    console.log('ha full name' + this.EditEmploye.adresse);
     return this.employeService.update();
   }
   show(): boolean{
@@ -57,7 +62,7 @@ export class EditerEmployeComponent implements OnInit {
     console.log('ha howa 3yiiit 3lia');
     this.employeService.findFonctionByDepartement(value);
   }
-  public  trouverEmployerParSonDoti(value:number){
+  public  trouverEmployerParSonDoti(value:string){
     return this.employeService.trouverEmployerParSonDoti(value);
   }
   get EditEmploye(): Employe {

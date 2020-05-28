@@ -12,7 +12,7 @@ export class PermanenceAdministrativeService {
   private _permanenceAdministrative: PermanenceAdministrative;
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
-  public findAllPermanenceByDoti(value: number) {
+  public findAllPermanenceByDoti(value: string) {
     this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByemployeDoti/doti/' + value).subscribe(
       data => {
         this._perm = data ;
@@ -58,7 +58,7 @@ export class PermanenceAdministrativeService {
  }
     return this._permanenceAdministrative;
   }
-  public trouverEmployerParSonDoti(value: number){
+  public trouverEmployerParSonDoti(value: string){
     this.http.get<PermanenceAdministrative>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByemployeDoti//doti/' + value).subscribe(
       data => {
 //        console.log('ha data' + data);

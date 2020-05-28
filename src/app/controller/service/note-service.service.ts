@@ -66,7 +66,7 @@ public noteNull(){
   public infoUnNote(value: NoteGeneraleDeAnnee) {
     this.note = value;
   }
-  public trouverNoteParSonDoti(value: number) {
+  public trouverNoteParSonDoti(value: string) {
     this.http.get<Array<NoteGeneraleDeAnnee>>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findByEmployeDoti/doti/' + value).subscribe(
       data => {
         this.notesParDoti = data ;

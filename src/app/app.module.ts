@@ -59,7 +59,6 @@ import { PermanenceComponent } from './hr-responsable-side/permanence/permanence
 import { AvancementComponent } from './hr-responsable-side/avancement/avancement.component';
 import { NotesEvaluationComponent } from './hr-responsable-side/notes-evaluation/notes-evaluation.component';
 import { CertificatsMedicalesComponent } from './hr-responsable-side/certificats-medicales/certificats-medicales.component';
-import { ListeComponent } from './hr-responsable-side/absence-et-conge/liste/liste.component';
 import { EditerComponent } from './hr-responsable-side/absence-et-conge/editer/editer.component';
 import { PersonnelEmployesService } from './controller/service/personnel-employes.service';
 import {TableModule} from 'primeng/table';
@@ -109,6 +108,10 @@ import {OrganizationChartModule} from 'primeng/organizationchart';
 import { TestTestComponent } from './hr-responsable-side/avancement/test-test/test-test.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ParametresAvancesComponent } from './hr-responsable-side/parametres-avances/parametres-avances.component';
+import {ListeComponent} from './hr-responsable-side/absence-et-conge/liste/liste.component';
+import { ListeDesCongeComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/liste-des-conge.component';
+import { ListeDesCertificatsComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/liste-des-certificats/liste-des-certificats.component';
+import { ListeDesCongeExceptionelComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/liste-des-conge-exceptionel/liste-des-conge-exceptionel.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +126,6 @@ import { ParametresAvancesComponent } from './hr-responsable-side/parametres-ava
     DocumentAdministrativeComponent,
     GestionPersonnelComponent,
     ListeEmployesComponent,
-    ListeComponent,
     AjouterEmployeComponent,
     EditerEmployeComponent,
     AutresComponent,
@@ -136,8 +138,8 @@ import { ParametresAvancesComponent } from './hr-responsable-side/parametres-ava
     ListeEmployesComponent,
     NotesEvaluationComponent,
     CertificatsMedicalesComponent,
-    ListeComponent,
     EditerComponent,
+    ListeComponent,
     ArchitectureDeFSTGComponent,
     PermanenceCalendrierComponent,
     PermanenceAjouterComponent,
@@ -184,13 +186,14 @@ import { ParametresAvancesComponent } from './hr-responsable-side/parametres-ava
 
     AjouteAvancementComponent,
 
-
-
     AjouteUneFonctionUndeartementComponent,
     AjouteRapportComponent,
     ArchitectureOrgComponent,
     TestTestComponent,
-    ParametresAvancesComponent
+    ParametresAvancesComponent,
+    ListeDesCongeComponent,
+    ListeDesCertificatsComponent,
+    ListeDesCongeExceptionelComponent
   ],
     imports: [
         BrowserModule,

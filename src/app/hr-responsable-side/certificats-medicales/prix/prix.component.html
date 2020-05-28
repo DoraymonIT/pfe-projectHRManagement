@@ -12,8 +12,8 @@
           <mat-form-field  style="width: 500px">
             <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
             <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPrixxByDoti()">
-              <mat-option [value]="0">---None---</mat-option>
-              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
+              <mat-option [value]="null">---None---</mat-option>
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

@@ -1,4 +1,4 @@
 export class Fonction {
-id : number;
-libelle : string;
+id: number;
+libelle: string;
 }

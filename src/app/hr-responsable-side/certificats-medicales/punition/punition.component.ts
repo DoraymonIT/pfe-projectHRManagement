@@ -22,7 +22,7 @@ export class PunitionComponent implements OnInit {
     return this.punitionService.punitions;
   }
   public getPunitionnByDoti() {
-    if (this.employe.doti === 0){
+    if (this.employe.doti === null){
       document.getElementById('tablePunition').style.display = 'none';
     } else {
     document.getElementById('tablePunition').style.display = 'inline';
@@ -50,7 +50,7 @@ export class PunitionComponent implements OnInit {
   public listeVide(): boolean {
     return this.punitions.length < 1 ? true : false;
   }
-  public afficher(){
+  public afficher() {
     // tslint:disable-next-line:triple-equals
     if(this.chercher == true){
       document.getElementById('checherPunition').style.display = 'none';

@@ -5,7 +5,7 @@ import {Fonction} from './fonction.model';
 
 export class Employe {
   id: number;
-  doti: number;
+  doti: string;
   enfants: number;
   fullName: string;
   cin: string;
@@ -27,7 +27,7 @@ export class Employe {
   dateProchainEvaluation: Date;
   dateDeProchainNote: Date;
   dateAvancementPrevue: Date;
-  soldeRestantesCongéExceptionnel: number;
+  soldeRestantesCongeExceptionnel: number;
   dernierGrade: GradeEmploye;
 }
 

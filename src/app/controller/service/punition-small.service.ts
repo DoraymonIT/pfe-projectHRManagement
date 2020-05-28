@@ -14,9 +14,7 @@ export class PunitionSmallService {
     public findAll() {
       this.http.get<Array<Punition>>('http://localhost:8080/gestionDesEmployee-Api/Punition/findAll').subscribe(
         data => {
-          console.log('ha data dyal types de Punition' + data);
           this._ps= data;
-          //console.log('ha  employe' + this._EditEmploye);
         }, eror => {
           console.log('eroro', eror);
         }
@@ -45,6 +43,4 @@ export class PunitionSmallService {
     set punition(value: Punition) {
       this._punition = value;
     }
-
-
 }

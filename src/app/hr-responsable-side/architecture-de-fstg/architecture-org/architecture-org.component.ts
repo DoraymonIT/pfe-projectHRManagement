@@ -72,7 +72,6 @@ export class ArchitectureOrgComponent implements OnInit {
             }
           ]
         }
-
       ]
   }];
   }

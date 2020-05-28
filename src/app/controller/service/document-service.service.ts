@@ -109,6 +109,7 @@ private _typeDocument: TypeDocument;
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
+        this.findAllDemandeNonTraite();
       }, eror => {
         console.log('eroro', eror);
       });
@@ -122,6 +123,7 @@ private _typeDocument: TypeDocument;
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
+        this.findAllDemandeNonTraite();
       }, eror => {
         console.log('eroro', eror);
       });

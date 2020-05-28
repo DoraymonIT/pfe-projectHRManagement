@@ -21,7 +21,7 @@ chercher: boolean;
     this.chercher = true;
   }
   public getPrixxByDoti() {
-    if( this.employe.doti === 0){
+    if( this.employe.doti === null){
       document.getElementById('tablePrix').style.display = 'none';
     } else {
       document.getElementById('tablePrix').style.display = 'inline';

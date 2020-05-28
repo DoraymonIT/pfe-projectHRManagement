@@ -16,7 +16,7 @@ export class ContacterUnEmployeComponent implements OnInit {
   ngOnInit(): void {
     this.employeService.findAll();
   }
-  public trouverEmployerParSonDoti(value: number){
+  public trouverEmployerParSonDoti(value: string) {
     this.employeService.trouverEmployerParSonDoti(value);
   }
   get employes(): Array<Employe> {
@@ -28,9 +28,13 @@ export class ContacterUnEmployeComponent implements OnInit {
   get employeInfo(): Employe {
     return this.employeService.EditEmploye;
   }
-public envoyer(){
-  this.email.text = this.email.text.replace('<p>', '');
-  this.email.text = this.email.text.replace('</p>', '');
-  this.employeService.contacterUnEmploye();
+public envoyer() {
+    while (this.email.text.search('<p>') !== -1) {
+      this.email.text = this.email.text.replace('<p>', '                                         ');
+    }
+    while (this.email.text.search('</p>') !== -1) {
+    this.email.text = this.email.text.replace('</p>', '                                                    ');
+  }
+    this.employeService.contacterUnEmploye();
   }
 }

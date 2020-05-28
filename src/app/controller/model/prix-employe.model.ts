@@ -5,5 +5,5 @@ export class PrixEmploye {
   id: number;
   prix: Prix;
   employe: Employe;
-  dateDeObtenation:Date;
+  dateDeObtenation: Date;
 }
