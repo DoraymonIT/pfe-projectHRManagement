@@ -95,13 +95,18 @@
               <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date avancement </span>
             </mat-toolbar-row>
           </mat-toolbar>
-
-        <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher2">
+          <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher1">
+            <div class="card-body" style="text-align: center">
+              <label>date avancement</label>
+              <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
+            </div>
+          </div>
+        <!-- <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher2">
           <div class="card-body" style="text-align: center">
             <label>date avancement</label>
             <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
           </div>
-        </div>
+        </div> -->
         <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableavancement">
           <mat-toolbar>
             <mat-toolbar-row>
