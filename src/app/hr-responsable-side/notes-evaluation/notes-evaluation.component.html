@@ -2,14 +2,14 @@
   <mat-tab label="EMPLOYES ONT L EVALUATION A UNE DATE DONNEE" style="width: 25px" tabindex="1">
      <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
   <div class="card-body" style="text-align: center">
-    <label>Date d evaluation ( Note ) : </label>
-    <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px;" [(ngModel)]="this.employe.dateDeProchainNote" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
+    <label>Date de Note  : </label>
+    <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employe.dateDeProchainNote" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
   </div>
      </div>
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableNote">
       <mat-toolbar>
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-book-open    "></i> les employes ayant l evaluation d'une note </span>
+          <span class="span"> <i class="fas fa-book-open    "></i> les employes ayant la note <strong> par date</strong></span>
         </mat-toolbar-row>
       </mat-toolbar>
       <table class="table table-hover table-dark table-striped" style="color: wheat">
@@ -17,7 +17,7 @@
         <!-- <th>id note</th> -->
         <th>Full name</th>
         <th> DOTI</th>
-        <th>Date d evaluation</th>
+        <th>Date de prochaine note</th>
         <th>Dernier Note</th>
         <th style="padding-left: 40px">Action</th>
         </thead>
@@ -29,7 +29,7 @@
           <td>{{c.fullName}}</td>
           <td>{{c.doti}}</td>
           <td>{{c.dateDeProchainNote}}</td>
-          <td>{{c.dernierNote}}</td>
+          <td>{{c.dernierNote.moyenGeneral}}</td>
           <td>
             <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="affecteruneNote(c)" ></button>
             <button class="btn btn-info btn-sm fa fa-trash"></button>

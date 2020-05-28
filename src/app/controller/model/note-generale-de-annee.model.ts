@@ -5,12 +5,12 @@ export class NoteGeneraleDeAnnee {
   id : number;
   noteDeAffectationDesTachesLieeAuTravail : Note;
   noteDeRentabilite: Note;
-  noteDeCapaciteDeOrganisation:Note ;
+  noteDeCapaciteDeOrganisation: Note ;
   noteDeCompotement: Note ;
-  noteDeRechercheEtDeInnovation:Note ;
+  noteDeRechercheEtDeInnovation: Note ;
   moyenGeneral: number;
   mention: string;
-  employeDoti: number;
+  employeDoti: string;
   fuulName: string;
   date: Date;
 }

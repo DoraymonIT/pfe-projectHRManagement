@@ -26,7 +26,7 @@ export class PermanenceAjouterComponent implements OnInit {
   get permanenceAdministrative(): PermanenceAdministrative {
     return this.pemanenceAdministrativeservice.permanenceAdministrative;
   }
-  public trouverEmployerParSonDoti(value: number){
+  public trouverEmployerParSonDoti(value: string){
     this.pemanenceAdministrativeservice.trouverEmployerParSonDoti(value);
   }
   public save(){

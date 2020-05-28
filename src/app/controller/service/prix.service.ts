@@ -47,7 +47,7 @@ public  ajoutePrixTitre(){
 public editerCePrixx(prix: PrixEmploye){
       this._prixEmploye = prix;
 }
-     public findallPrixByDoti(value: number) {
+     public findallPrixByDoti(value: string) {
        // tslint:disable-next-line:max-line-length
        this.http.get<Array<PrixEmploye>>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/findByEmployeDoti/doti/' + value).subscribe(
          data => {

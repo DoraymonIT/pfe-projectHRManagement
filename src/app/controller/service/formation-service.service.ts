@@ -44,7 +44,7 @@ public imprimerLesFormations(value: Array<Formation>) {
       console.log('eroro', eror);
     });
 }
-     public findallFourmationsByDoti(value: number) {
+     public findallFourmationsByDoti(value: string) {
        this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/Formation/findByemployeDoti/doti/' + value).subscribe(
          data => {
            this._formations = data;
@@ -101,7 +101,7 @@ public imprimerLesFormations(value: Array<Formation>) {
           });
           this.formations.push(this.cloneFormation(this.formationEmploye));
           this._ajouteFormation = 'formation ajouter';
-          document.getElementById('span').style.color = 'red';
+          document.getElementById('span').style.color = 'green';
           this.formationEmploye = null;
         }, eror => {
           console.log('eroro', eror);
@@ -131,7 +131,7 @@ public imprimerLesFormations(value: Array<Formation>) {
           });
           this.formations.push(this.cloneFormation(this.formationEmploye));
           this._ajouteFormation = 'formation modifier';
-          document.getElementById('span').style.color = 'red';
+          document.getElementById('span').style.color = 'green';
           this.formationEmploye = null;
         }, eror => {
           console.log('eroro', eror);
@@ -162,11 +162,9 @@ public imprimerLesFormations(value: Array<Formation>) {
     }
 
 
-    public findFormationByDoti( doti: number) {
-
+    public findFormationByDoti( doti: string) {
       this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/Formation/findByemployeDoti/doti/'+ doti).subscribe(
         data => {
-          console.log('ha data formations d un emp' + data);
           this.formations = data
          , eror => {
           console.log('eroro'+ eror);

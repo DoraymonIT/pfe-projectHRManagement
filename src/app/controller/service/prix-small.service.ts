@@ -14,9 +14,7 @@ export class PrixSmallService {
     public findAll() {
       this.http.get<Array<Prix>>('http://localhost:8080/gestionDesEmployee-Api/Prix/findAll').subscribe(
         data => {
-          console.log('ha data dyal types de prix' + data);
           this._ps= data;
-          //console.log('ha  employe' + this._EditEmploye);
         }, eror => {
           console.log('eroro', eror);
         }
@@ -45,7 +43,4 @@ export class PrixSmallService {
     set prix(value: Prix) {
       this._prix = value;
     }
-
-
-
 }

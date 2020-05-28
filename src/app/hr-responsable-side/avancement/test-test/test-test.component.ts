@@ -60,7 +60,7 @@ export class TestTestComponent implements OnInit {
     this.prixSmall.findAll();
     this.punitionSmall.findAll();
   }
-  public findAllGradeEmployeByDoti(doti: number) {
+  public findAllGradeEmployeByDoti(doti: string) {
     this.gradeService.findAllGradeEmployeByDoti(doti);
   }
   get punitionEmploye(): PunitionEmploye {

@@ -47,6 +47,8 @@ export class PersonnelEmployesService {
   private _employesByNoteGeneraleToday: Array<Employe>;
   // tslint:disable-next-line:variable-name
   private _employesByEvaluationToday: Array<Employe>;
+  // tslint:disable-next-line:variable-name
+  private _employesConge: Array<Employe>;
   private _employeDateEvaluation: Employe;
   // tslint:disable-next-line:variable-name
   private _employesByGrade: Array<Employe>;
@@ -81,15 +83,16 @@ export class PersonnelEmployesService {
   // save
   public contacterUnEmploye() {
     // tslint:disable-next-line:max-line-length
-    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/NotificationEmploye/sendmail/email/' + this._email.email + '/subject/' + this._email.subject + '/content/' + this._email.text).subscribe(
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/NotificationEmploye/sendmail/email/' + this._email.emaill + '/subject/' + this._email.subject + '/content/' + this._email.text).subscribe(
       data => {
-        if (data == 1) {
-          this.toast.success(`${this._email.email} `, 'email sended', {
+        if (data === 1) {
+          this.toast.success(`${this.email.emaill} `, 'email sended', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           });
+          this.email = null;
         }
       }, eror => {
         console.log('eroro', eror);
@@ -115,6 +118,24 @@ export class PersonnelEmployesService {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDateAvancementPrevue/dateAvancementPrevue/' + value).subscribe(
       data => {
         this.employesByEvaluationToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  public trouveremployeAyantEpuiselesoldeRestantes(){
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findLesEmployeAyantEpuiseSoldeRestant').subscribe(
+      data => {
+        this.employesConge = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public trouveremployeBysoldeRestantes(value: number) {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findBySoldeRestantesCongeExceptionnel/soldeRestantesCongeExceptionnel/' + value).subscribe(
+      data => {
+        this.employesConge = data ;
       }, eror => {
         console.log('eroro', eror);
       });
@@ -170,8 +191,13 @@ export class PersonnelEmployesService {
     }
   }
   public update() {
+    console.log('ha data ' + this.EditEmploye.fullName);
+    console.log('ha adress ' + this.EditEmploye.adresse);
+    console.log('ha fonction ' + this.EditEmploye.fonction);
+    console.log('ha email ' + this.EditEmploye.email);
+    console.log('ha tell ' + this.EditEmploye.tel);
     // tslint:disable-next-line:max-line-length
-    if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
+    if ((this.EditEmploye.fullName == null || this.EditEmploye.adresse == null || this.EditEmploye.fonction == null  || this.EditEmploye.email == null || this.EditEmploye.tel == null) || (this.EditEmploye.fullName == null && this.employe.adresse == null && this.EditEmploye.fonction == null &&  this.EditEmploye.email == null && this.EditEmploye.tel == null)) {
       this.toast.error(`remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,
@@ -236,7 +262,7 @@ export class PersonnelEmployesService {
     myClone.lieuDeNaissance = employe.lieuDeNaissance;
     myClone.gender = employe.gender;
     myClone.situationFamiliale = employe.situationFamiliale;
-    myClone.soldeRestantesCongéExceptionnel = employe.soldeRestantesCongéExceptionnel;
+    myClone.soldeRestantesCongeExceptionnel = employe.soldeRestantesCongeExceptionnel;
     myClone.sup = employe.sup;
     myClone.tel = employe.tel;
     myClone.pays = employe.pays;
@@ -252,15 +278,17 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
-  public trouverEmployerParSonDoti(value: number) {
+  public trouverEmployerParSonDoti(value: string) {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         this.EditEmploye = data;
+        this.email.emaill = data.email;
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
   }
+
+
   public imprimerInfoLesEmploye() {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/infoEmployePdf', this.employeInfo).subscribe(
       data => {
@@ -294,7 +322,7 @@ export class PersonnelEmployesService {
       });
   }
 
-  public trouverSalaireParSonDoti(value: number) {
+  public trouverSalaireParSonDoti(value: string) {
     this.http.get<SalaireEmploye>('http://localhost:8080/gestionDesEmployee-Api/SalaireEmploye/findByEmployeDoti/doti/' + value).subscribe(
       data => {
         this._saleireEmolye = data;
@@ -589,8 +617,26 @@ export class PersonnelEmployesService {
         data.sup = new Employe();
       });
     }
-
     return this._employesByEvaluationToday;
+  }
+
+
+  get employesConge(): Array<Employe> {
+    if (this._employesConge == null) {
+      this._employesConge = new Array<Employe>();
+      this._employesConge.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+    return this._employesConge;
+  }
+
+  set employesConge(value: Array<Employe>) {
+    this._employesConge = value;
   }
 
   set employesByEvaluationToday(value: Array<Employe>) {

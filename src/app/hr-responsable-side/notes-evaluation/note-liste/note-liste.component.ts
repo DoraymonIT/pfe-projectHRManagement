@@ -15,7 +15,7 @@ import {NoteDetailComponent} from '../note-detail/note-detail.component';
 export class NOteListeComponent implements OnInit {
   constructor(private noteService: NoteServiceService,
               private employeService: PersonnelEmployesService,
-              private dialog :MatDialog) { }
+              private dialog: MatDialog) { }
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
@@ -35,7 +35,7 @@ export class NOteListeComponent implements OnInit {
       { field: 'id', header: 'id' },
       { field: 'moyenGeneral', header: 'Moyen general' },
       { field: 'mention', header: 'Mention' },
-      { field: 'date', header: 'Date d Evaluation' },
+      { field: 'date', header: 'Date' },
     ];
     this.employeService.findAll();
   }

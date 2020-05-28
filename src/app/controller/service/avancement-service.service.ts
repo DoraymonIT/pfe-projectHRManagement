@@ -22,7 +22,7 @@ private _rapportEvaluation: RapportDeEvaluation;
 
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
-  public findRapportByGradeIdAndEmployeDoti(id: number, doti: number) {
+  public findRapportByGradeIdAndEmployeDoti(id: number, doti: string) {
     // tslint:disable-next-line:max-line-length
     this.http.get<RapportDeEvaluation>('http://localhost:8080/gestionDesEmployee-Api/RapportDeEvaluation/findByNouveauGradeIdAndEmployeDoti/id/' + id + '/doti/' + doti).subscribe(
       data => {
@@ -31,7 +31,7 @@ private _rapportEvaluation: RapportDeEvaluation;
         console.log('eroro', eror);
       });
   }
-  public creeUnGradeNonTraite(value: number){
+  public creeUnGradeNonTraite(value: string){
     console.log('ha doti' + value);
     this.http.get <number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/creeUnGradeNonTraite/doti/' + value).subscribe(
       data => {

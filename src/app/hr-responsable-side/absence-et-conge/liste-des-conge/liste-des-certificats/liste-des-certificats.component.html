@@ -1,0 +1,57 @@
+<div class="example-large-box mat-elevation-z4" >
+  <mat-toolbar  style="cursor: pointer;">
+    <mat-toolbar-row>
+      <span class="span"> <i class="fas fa-graduation-cap    "></i> Chercher les congé des employe a partir de <strong> type certificat</strong>  </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
+    <div class="card-body">
+      <mat-form-field  style="width: 500px">
+        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de certificat</mat-label>
+        <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeCertificat()">
+          <mat-option value="null">_ _ null _ _</mat-option>
+          <mat-option value="longDuree">long duree</mat-option>
+          <mat-option value="courtDuree">court duree</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 470px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.congeEmploye.dateDeDebut" placeholder="date de conge">
+      <br>
+      <button class="btn btn-light fa fa-search" style="width: 500px" (click)="chercher()">   chercher</button>
+    </div>
+  </div>
+  <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableConge">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span class="span"><i class="fas fa-graduation-cap    "></i> la listes des conges  </span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <table class="table table-hover table-dark table-striped" style="color: wheat">
+      <thead>
+      <th>Employe</th>
+      <th>type de conge</th>
+      <th>date de debut</th>
+      <th>periode</th>
+
+      <!-- <th style="padding-left: 40px">Action</th> -->
+      </thead>
+      <tbody>
+      <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
+
+      <tr *ngFor="let c of congesCertificat">
+        <td>{{c.employe.fullName}}</td>
+        <td>{{c.congee.libelle}}</td>
+        <td>{{c.dateDeDebut}}</td>
+        <td>{{c.periode}}</td>
+
+        <!-- <td>
+          <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerFormation(c)"></button>
+          <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+          <button class="btn btn-info btn-sm fa fa-trash"></button>
+        </td> -->
+      </tr>
+      </tbody>
+    </table>
+    <button mat-raised-button class="btn"style="background-color: white;color: black;" ><i class="fa fa-file-pdf"  ></i> Export <b>PDF</b> </button>
+  </div>
+</div>

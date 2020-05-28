@@ -3,7 +3,7 @@ import { Grade } from './grade.model';
 
 export class GradeEmploye {
   id: number;
-  doti: number;
+  doti: string;
   grade: Grade;
   dateDeAffectation: Date;
 }

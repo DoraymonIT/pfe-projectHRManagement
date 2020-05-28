@@ -12,6 +12,8 @@ export class CongeService {
 // tslint:disable-next-line:variable-name
 private _conges: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
+private _congesCertificat: Array<CongeEmploye>;
+// tslint:disable-next-line:variable-name
 private _congeEmploye: CongeEmploye;
 // tslint:disable-next-line:variable-name
 private _typeConge: Array<TypeCongee>;
@@ -23,11 +25,11 @@ private _employefullname: string;
   private _ajouteCongeEmp: string;
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
-  public trouverCongéParSonDoti(value: number) {
+  public trouverCongéParSonDoti(value: string) {
     this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByEmployeDoti/doti/' + value).subscribe(
       data => {
-        this._conges = data;
-        this._conges.forEach(conge => {
+        this.conges = data;
+        this.conges.forEach(conge => {
           this.employefullname = conge.employe.fullName;
         });
       }, eror => {
@@ -151,6 +153,41 @@ private _employefullname: string;
       });
     }
   }
+
+  public findCongeCertificatLongDuree() {
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findCongeCertificatLongDuree').subscribe(
+      data => {
+        this.congesCertificat = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public findCongeByAnne(annee: number, type: string) {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findCongeByAnne/annee/' + annee + '/type/' + type).subscribe(
+      data => {
+        this.congesCertificat = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public findCongeBydateAndType(annee: Date, type: string) {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByCongeeLibelleAndDateDeDebut/libelle/' + type + '/date/' + annee).subscribe(
+      data => {
+        this.congesCertificat = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public findCongeCertificatCourtDuree() {
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findCongeCertificatcourtDuree').subscribe(
+      data => {
+        this.congesCertificat = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
   public deleteByReference(conge: CongeEmploye) {
     this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
       data => {
@@ -208,5 +245,21 @@ private _employefullname: string;
 
   set ajouteCongeEmp(value: string) {
     this._ajouteCongeEmp = value;
+  }
+
+  get congesCertificat(): Array<CongeEmploye> {
+    if (this._congesCertificat == null) {
+      this._congesCertificat = new Array<CongeEmploye>();
+      this._congesCertificat.forEach(conge => {
+        conge = new CongeEmploye();
+        conge.congee = new TypeCongee();
+        conge.employe = new Employe();
+      });
+    }
+    return this._congesCertificat;
+  }
+
+  set congesCertificat(value: Array<CongeEmploye>) {
+    this._congesCertificat = value;
   }
 }

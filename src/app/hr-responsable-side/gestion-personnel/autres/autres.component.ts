@@ -24,7 +24,7 @@ export class AutresComponent implements OnInit {
   ngOnInit(): void {
     this.employeService.findAll();
   }
-  public trouverEmployerParSonDoti(value: number){
+  public trouverEmployerParSonDoti(value: string){
     this.employeService.trouverEmployerParSonDoti(value);
   }
   get employes(): Array<Employe> {
@@ -36,10 +36,10 @@ export class AutresComponent implements OnInit {
   get saleireEmolye(): SalaireEmploye {
     return this.employeService.saleireEmolye;
   }
-  public Trouversalaireemploye(value: number){
+  public Trouversalaireemploye(value: string){
     this.employeService.trouverSalaireParSonDoti(value);
   }
-  public TrouverFPP(x : number){
+  public TrouverFPP(x: string){
 return this.fs.findFormationByDoti(x);
   }
   get formations(): Array<Formation> {

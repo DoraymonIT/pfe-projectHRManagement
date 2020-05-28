@@ -51,6 +51,22 @@ public  cloneDepartement(departement: Departement): Departement {
       }
     );
   }
+  public update() {
+    this.http.post<number>(this._url + 'update', this.departement).subscribe(
+      data => {
+        this.toast.info(`${this.departement.nom} add departement to the database.`, 'depatrement Added', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+        this.deps.push(this.cloneDepartement(this.departement));
+        this._departement = null;
+      }, eror => {
+        console.log('eroro',eror);
+      });
+  }
+
   get dep(): Departement {
     if (this._dep == null) {
       this._dep = new Departement();

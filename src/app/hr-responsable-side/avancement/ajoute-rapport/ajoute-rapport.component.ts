@@ -61,7 +61,7 @@ indice: number;
     this.prixSmall.findAll();
     this.punitionSmall.findAll();
   }
-  public findAllGradeEmployeByDoti(doti: number) {
+  public findAllGradeEmployeByDoti(doti: string) {
     this.gradeService.findAllGradeEmployeByDoti(doti);
   }
   get punitionEmploye(): PunitionEmploye {
@@ -204,7 +204,7 @@ this.formationService.formationEmployeNull();
   }
   public saveprix() {
     this.prixEmploye.employe = this.rapportEvaluation.employe;
-    if (this.prixEmploye == null){
+    if (this.prixEmploye == null) {
     this.rapportEvaluation.prix.push(this.clonePrix(this.prixEmploye));
     } else {
       this.rapportEvaluation.prix[ this.rapportEvaluation.prix.indexOf(this.prixEmploye)] = this.prixEmploye;

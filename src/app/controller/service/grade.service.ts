@@ -26,7 +26,7 @@ export class GradeService {
     return this._gradesEployess;
   }
 public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
-    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDeGradeDeEmployePdf',value).subscribe(
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDeGradeDeEmployePdf', value).subscribe(
       data => {
         this.toast.success(` document est bien preparer`, ' document preparer', {
           timeOut: 2500,
@@ -73,7 +73,7 @@ public findAll() {
       }
     );
   }
-  public findAllGradeEmployeByDoti(value: number) {
+  public findAllGradeEmployeByDoti(value: string) {
     this.http.get<Array<GradeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/findByDoti/doti/' + value).subscribe(
       data => {
         this.gradesEployess = data ;

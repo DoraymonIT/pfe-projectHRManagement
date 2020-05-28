@@ -10,16 +10,20 @@ import {PrixEmploye} from '../model/prix-employe.model';
   providedIn: 'root'
 })
 export class PunitionService {
+  // tslint:disable-next-line:variable-name
   private _punitions: Array<PunitionEmploye>;
+  // tslint:disable-next-line:variable-name
   private _punitionEmploye: PunitionEmploye;
+  // tslint:disable-next-line:variable-name
   private _ajoutepunition: string;
 
   get ajoutepunition(): string {
     return this._ajoutepunition;
   }
-public punitionEmployeNull(){
+public punitionEmployeNull() {
     this.punitionEmploye = null;
 }
+  // tslint:disable-next-line:adjacent-overload-signatures
   set ajoutepunition(value: string) {
     this._ajoutepunition = value;
   }
@@ -27,11 +31,11 @@ public ajoutePunitionTitre() {
   this._ajoutepunition = 'Formulaire pour affecter une punition a un employe';
   }
   constructor(private http: HttpClient,
-                private toast: ToastrService) { }
+              private toast: ToastrService) { }
 public setPunition(punitionn: PunitionEmploye) {
       this._punitionEmploye = punitionn;
 }
-    public  findallPunitionByDoti(value: number) {
+    public  findallPunitionByDoti(value: string) {
       // tslint:disable-next-line:max-line-length
        this.http.get<Array<PunitionEmploye>>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/findByEmployeDoti/doti/' + value).subscribe(
          data => {
@@ -81,6 +85,7 @@ public setPunition(punitionn: PunitionEmploye) {
       });
   }
 
+  // tslint:disable-next-line:adjacent-overload-signatures
     set punitionEmploye(value: PunitionEmploye) {
       this._punitionEmploye = value;
     }
@@ -161,5 +166,4 @@ public setPunition(punitionn: PunitionEmploye) {
       myClone.employe = p.employe;
       return myClone;
     }
-
 }
