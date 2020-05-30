@@ -7,10 +7,13 @@
             style="font-size: 45px;text-align: center;"></i>
           <br> FSTG Marrakech </span>
       </mat-list-item>
-
-
-      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem"
-        style="margin-top: 35px; margin-bottom:4px;">
+      <mat-list-item [routerLink]="[{ outlets: { un: ['historique'] } }]" class="list2" role="listitem"
+      style="margin-top: 35px; margin-bottom:4px;">
+      <h6> <i class="fas fa-history"></i> Historique Et Video</h6>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list1" role="listitem"
+        >
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -34,16 +37,16 @@
         <h6> <i class="fas fa-bookmark"></i> Formation,Prix et Punition</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
-
-
-      <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-forward"></i> Avancement</h6>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-
       <mat-list-item [routerLink]="[{ outlets: { un: ['evaluation'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-sticky-note"></i> Evaluation Et Notation</h6>
       </mat-list-item>
+
+     
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
+        <h6><i class="fas fa-forward"></i> Avancement</h6>
+      </mat-list-item>
+     
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['permanence'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-calendar-check    "></i> Permanence Administrative</h6>
