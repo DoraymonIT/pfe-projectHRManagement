@@ -24,60 +24,60 @@ public ajouteLoginTitre(){
 }
 
   public login() {
-    this.router.navigate(['RhResponsable']).then();
-    // this.findUser();
-    // this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/User/seConnecter', this.userEmploye).subscribe(
-    //    data => {
-    //      if (data === 1) {
-    //  this.toast.success(`$ login est bien faites`, 'login reussit', {
-    //    timeOut: 500,
-    //    progressBar: true,
-    //    progressAnimation: 'increasing',
-    //    positionClass: 'toast-top-right'
-    //  });
-    //  this._conncter = true;
-    //  this.router.navigate(['RhResponsable']).then();
-    //      } else if (data === -1) {
-    //        this.toast.error(`$ login not found`, 'login failed', {
-    //          timeOut: 1500,
-    //          progressBar: true,
-    //          progressAnimation: 'increasing',
-    //          positionClass: 'toast-top-right'
-    //        });
-    //      } else if (data === -3) {
-    //        this.toast.error(`$ mot de pass erroné`, 'login failed', {
-    //          timeOut: 1500,
-    //          progressBar: true,
-    //          progressAnimation: 'increasing',
-    //          positionClass: 'toast-top-right'
-    //        });
-    //        this.findUser();
-    //        document.getElementById('span').style.color = 'red';
-    //      } else if (data === -2) {
-    //        this.toast.error(`$ authentification est bloqué `, 'login failed', {
-    //          timeOut: 1500,
-    //          progressBar: true,
-    //          progressAnimation: 'increasing',
-    //          positionClass: 'toast-top-right'
-    //        });
-    //        document.getElementById('count').style.display = 'inline';
-    //        this._show = true;
-    //        document.getElementById('span').style.color = 'red';
-    //        this.findUser();
-    //      } else if (data === -4) {
-    //        this.toast.error(`$ authentification est bloqué 15min`, 'login failed', {
-    //          timeOut: 1500,
-    //          progressBar: true,
-    //          progressAnimation: 'increasing',
-    //          positionClass: 'toast-top-right'
-    //        });
-    //        document.getElementById('count').style.display = 'inline';
-    //        this._loginTitre = 'please wait 15min ';
-    //        document.getElementById('span').style.color = 'red';
-    //      }
-    //    }, eror => {
-    //      console.log('eroro');
-    //    });
+    //this.router.navigate(['RhResponsable']).then();
+     this.findUser();
+     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/User/seConnecter', this.userEmploye).subscribe(
+        data => {
+          if (data === 1) {
+      this.toast.success(`$ login est bien faites`, 'login reussit', {
+        timeOut: 500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+      this._conncter = true;
+      this.router.navigate(['RhResponsable']).then();
+          } else if (data === -1) {
+            this.toast.error(`$ login not found`, 'login failed', {
+              timeOut: 1500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+          } else if (data === -3) {
+            this.toast.error(`$ mot de pass erroné`, 'login failed', {
+              timeOut: 1500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            this.findUser();
+            document.getElementById('span').style.color = 'red';
+          } else if (data === -2) {
+            this.toast.error(`$ authentification est bloqué `, 'login failed', {
+              timeOut: 1500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            document.getElementById('count').style.display = 'inline';
+            this._show = true;
+            document.getElementById('span').style.color = 'red';
+            this.findUser();
+          } else if (data === -4) {
+            this.toast.error(`$ authentification est bloqué 15min`, 'login failed', {
+              timeOut: 1500,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-top-right'
+            });
+            document.getElementById('count').style.display = 'inline';
+            this._loginTitre = 'please wait 15min ';
+            document.getElementById('span').style.color = 'red';
+          }
+        }, eror => {
+          console.log('eroro');
+        });
   }
 public  findUser() {
   this.http.get<User>('http://localhost:8080/gestionDesEmployee-Api/User/findByLogin/login/' +  this.userEmploye.login).subscribe(
@@ -88,7 +88,51 @@ public  findUser() {
       console.log('eroro');
     });
 }
-
+  public  sendCodeVerification(login: string) {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/User/sendCode/email/' + login).subscribe(
+      data => {
+        if(data === 1){
+          this.toast.info(`$verifier votre gmail`, 'code est bien envoye', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro');
+      });
+  }
+  public  resetPasswordCodeVerification(login: string, nvPassword: string, code: number) {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/User/resetPasswordCodeVerification/email/' + login + '/nvpassword/' + nvPassword + '/code/' + code).subscribe(
+      data => {
+        if(data === 1){
+          this.toast.info(`$password est bien modifier`, 'password modifier', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro');
+      });
+  }
+  public  resetPassword(login: string, oldPassword: string, nvPassword: string) {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/User/resetPassword/email/' + login + '/oldPassword/' + oldPassword + '/nvPassword/' + nvPassword).subscribe(
+      data => {
+        if(data === 1) {
+          this.toast.info(`$password est bien modifier`, 'password modifier', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro');
+      });
+  }
   get loginTitre(): string {
     return this._loginTitre;
   }
