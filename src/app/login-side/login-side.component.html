@@ -38,7 +38,7 @@
         <div class="card-footer">
           <button type="submit" class="btn btn-outline btn-block  bouton" matTooltip="Se connecter" (click)="Login()" >Se connecter</button>
           <hr>
-          <a [routerLink]="['/forgetPassword']" routerLinkActive="active"  class="lien" style="color: white;"><span style="text-align: center;display:block"><i
+          <a [routerLink]="['/forgetPassword']" (click)="sendcodeeDeVerification()" routerLinkActive="active"  class="lien" style="color: white;"><span style="text-align: center;display:block"><i
                 class="	fas fa-key" style=" font-size: 15px;"></i> J'oublie mon mot de passe ?</span></a>
         </div>
       </div>

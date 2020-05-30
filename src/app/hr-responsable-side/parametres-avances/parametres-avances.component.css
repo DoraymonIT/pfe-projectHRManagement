@@ -10,7 +10,9 @@
 .controles-container > * {
   width: 100%;
   }
-
+#form{
+  display: none;
+}
   .add-bottom-padding{
     padding-bottom: 10px;
 }
