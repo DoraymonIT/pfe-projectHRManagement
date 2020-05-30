@@ -3,26 +3,26 @@
     <span class="span" id="span"> <i class="fas fa-cog    "></i> Parametres Avances </span>
   </mat-toolbar-row>
 </mat-toolbar>
-<div class="container-fluid" style="padding-top: 10px;">
-  <h5 style="border: 3px solid white;width: 255px;text-align: center;padding: 10px;"> <i class="fas fa-key    "></i> Reset Password</h5>
-  <div class="row">
+<div class="container-fluid" style="padding-top: 10px;" >
+  <h5 style="border: 3px solid white;width: 255px;text-align: center;padding: 10px;" (click)="show()"> <i class="fas fa-key    "></i> Reset Password</h5>
+  <div class="row" id="form">
     <div class="col-md-6">
       <div class="controles-container">
         <mat-form-field>
-          <input matInput placeholder="Old Password *">
+          <input matInput placeholder="Old Password *" [(ngModel)]="userEmploye.oldpassword" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="New Password *">
+          <input matInput placeholder="New Password *" [(ngModel)]="userEmploye.nvpassword" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
     </div>
     <div class="col-md-6">
       <div class="controles-container">
         <mat-form-field>
-          <input matInput placeholder="New Password ( Confirmation ) *">
+          <input matInput placeholder="New Password ( Confirmation ) *" [(ngModel)]="userEmploye.nvpasswordConfirmation" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <div class="button-row" style="    padding-top: 10px;">
-          <button mat-raised-button color="primary" type="submit" class="btn-block"> <i
+          <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="modifierPasswordsansCodeConfirmation()"> <i
               class="fas fa-check-circle    "></i> Enregistrer les changements</button>
         </div>
       </div>

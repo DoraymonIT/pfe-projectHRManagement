@@ -30,11 +30,14 @@ export class LoginSideComponent implements OnInit {
   public showw(): boolean{
    return  this.show;
   }
+  public sendcodeeDeVerification() {
+    this.login.sendCodeVerification(this.userEmploye.login);
+  }
   public Login() {
     // console.log('ha email' + this.userEmploye.login);
     // console.log('ha password' + this.userEmploye.pwd);
-    // this.login.login();
-    this.router.navigate(['RhResponsable']).then();
+     this.login.login();
+    //this.router.navigate(['RhResponsable']).then();
   }
   get loginTitre(): string {
     return this.login.loginTitre;
