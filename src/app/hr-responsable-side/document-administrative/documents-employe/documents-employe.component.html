@@ -7,17 +7,20 @@
 
         </mat-toolbar-row>
       </mat-toolbar>
-      <table class="table table-hover table-dark table-striped" style="color: wheat">
+    <div class="scrolli">
+      <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+      border: 2px solid white;"
+   
+      >
         <thead>
-        <th>Employe</th>
-        <th>Type de document</th>
-        <th>Date de demande</th>
-        <th>Maniere de retrait</th>
-        <th >Action</th>
+        <th style=" border: 2px solid white;">Employe</th>
+        <th style=" border: 2px solid white;">Type de document</th>
+        <th style=" border: 2px solid white;">Date de demande</th>
+        <th style=" border: 2px solid white;">Maniere de retrait</th>
+        <th style=" border: 2px solid white;" >Action</th>
         </thead>
         <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
-
         <tr *ngFor="let c of documents">
           <td>{{c.employe.fullName}}</td>
           <td>{{c.typeDeDocument.libelle  || "----"}}</td>
@@ -37,6 +40,8 @@
         </tr>
         </tbody>
       </table>
+    </div>
+     
     </div>
   </mat-tab>
   <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">

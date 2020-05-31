@@ -1,12 +1,12 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" > <i class="fas fa-search-plus    "></i> Chercher pour voir historique de grade d'un employe </span>
+    <span class="span" > <i class="fas fa-search    "></i> Chercher pour voir historique de grade d'un employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container" style="padding-top:20px">
   <mat-form-field style="padding-bottom:10px;width:100%">
-    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
+    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  concerne </mat-label>
     <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
       <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
     </mat-select>

@@ -16,7 +16,7 @@
                 <div class="container-fluid">
                       <div class="controles-container">
                   <mat-form-field>
-                    <mat-label> <i class="fas fa-user-tie"></i> Selectionnez l employe a avancer : </mat-label>
+                    <mat-label> <i class="fas fa-user-tie"></i> Selectionnez l employe concerne : </mat-label>
                     <mat-select [(ngModel)]="this.rapportEvaluation.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="findAllGradeEmployeByDoti(this.rapportEvaluation.employe.doti)" [value]="this.rapportEvaluation.employe.doti" >
                       <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
                     </mat-select>
