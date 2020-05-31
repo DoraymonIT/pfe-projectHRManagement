@@ -28,13 +28,16 @@ export class LoginSideComponent implements OnInit {
   }
   // tslint:disable-next-line:adjacent-overload-signatures
   public showw(): boolean{
-   return  this.show;
+    return  this.show;
+  }
+  public sendcodeeDeVerification() {
+    this.login.sendCodeVerification(this.userEmploye.login);
   }
   public Login() {
     // console.log('ha email' + this.userEmploye.login);
     // console.log('ha password' + this.userEmploye.pwd);
-    // this.login.login();
-    this.router.navigate(['RhResponsable']).then();
+    this.login.login();
+    //this.router.navigate(['RhResponsable']).then();
   }
   get loginTitre(): string {
     return this.login.loginTitre;
