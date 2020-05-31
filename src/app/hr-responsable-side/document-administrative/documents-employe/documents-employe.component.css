@@ -1,3 +1,18 @@
 .span {
   margin: auto;
 }
+.mat-toolbar-row, .mat-toolbar-single-row {
+ 
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+}
+.scrolli{
+  width: 100%;
+ 
+}
+
+thead{
+  text-align: center;
+  color:white;
+}

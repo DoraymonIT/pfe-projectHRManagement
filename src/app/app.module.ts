@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
-import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService} from 'primeng/api';
-
 import {Pipe, PipeTransform} from '@angular/core';
 // import {FullCalendarModule} from 'primeng/fullcalendar';
 import { MatFormFieldModule } from '@angular/material/form-field';

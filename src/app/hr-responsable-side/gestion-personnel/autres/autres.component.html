@@ -1,4 +1,5 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"  matTooltip="Fermer le dialog"> <i class="fas fa-window-close "></i> </button>
+<button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+    class="fas fa-window-close "></i> </button>
 <mat-toolbar>
   <mat-toolbar-row>
     <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailes sur cet Employe </span>
@@ -179,7 +180,7 @@
                 <span>
                   <h6>Mention :
                     <!-- {{employeInfo.dernierNote.mention}} -->
-                    </h6>
+                  </h6>
                 </span>
               </div>
             </div>
@@ -257,7 +258,7 @@
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-        (click)="TrouverFPP(this.employeInfo.doti)">
+          (click)="TrouverFPP(this.employeInfo.doti)">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span><i class="fas fa-bookmark"></i> Formation, Prix Et Punition</span>
@@ -268,12 +269,85 @@
           </mat-expansion-panel-header>
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6" *ngFor="let f of formations">
+              <div class="col-md-12">
                 <h3>Formation</h3>
-                <!---Idem pour punition et prix j pense -->
-{{f.annee}} <br> {{f.attestation}} <br> {{f.etablissement}} <br> {{f.mention}} <br> {{f.ville}}
+                <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+              border: 2px solid white;">
+                  <thead>
+                    <th style=" border: 2px solid white;">Attestation</th>
+                    <th style=" border: 2px solid white;">Etablissement</th>
+                    <th style=" border: 2px solid white;">Mention</th>
+                    <th style=" border: 2px solid white;">Annee</th>
+                    <th style=" border: 2px solid white;">Ville</th>
+                  </thead>
+                  <tbody>
+                    <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
+                    <tr *ngFor="let f of formations">
+                      <td>{{f.attestation}}</td>
+                      <td>{{f.etablissement}}</td>
+                      <td> {{f.mention}} </td>
+                      <td>{{f.annee}}</td>
+                      <td>
+                        {{f.ville}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="col-md-6">
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Prix</h3>
+                <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+              border: 2px solid white;">
+                  <thead>
+                    <th style=" border: 2px solid white;">Prix</th>
+                    <th style=" border: 2px solid white;">Date d obtention</th>
+                    <th style=" border: 2px solid white;">Mention</th>
+                    
+                  </thead>
+                  <tbody>
+                    <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
+                    <tr >
+                      <td></td>
+                      <td></td>
+                      <td>  </td>
+                      <td></td>
+                      <td>
+                       
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Punition</h3>
+                <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+              border: 2px solid white;">
+                  <thead>
+                    <th style=" border: 2px solid white;">Punition</th>
+                    <th style=" border: 2px solid white;">Type de punition</th>
+                    <th style=" border: 2px solid white;">Libelle</th>
+                    <th style=" border: 2px solid white;">Date de punition</th>
+                 
+                  </thead>
+                  <tbody>
+                    <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
+                    <tr >
+                      <td></td>
+                      <td></td>
+                      <td> </td>
+                      <td></td>
+                      <td>
+                    
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -282,4 +356,5 @@
     </div>
   </div>
 </div>
-<button mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerInfoEmploye()" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+<button mat-raised-button class="btn btn-block btn-primary" style=" margin-top: 20px" (click)="imprimerInfoEmploye()"><i
+    class="fa fa-file-pdf"></i> PDF</button>
