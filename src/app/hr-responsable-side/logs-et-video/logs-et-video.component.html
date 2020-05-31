@@ -1,18 +1,16 @@
-<div class="container-fluid" style="padding-top:20px">
-    <div class="row">
-        <div class="col-md-7">
-<h6 style="text-align:center"><i class="fas fa-file-video"></i> Video : Intro sur Commet Utiliser cette Application</h6>
-<div style="background-color: aquamarine;height: 350px;"></div>
-        </div>
-        <div class="col-md-5">
-            <h6 style="text-align:center"> <i class="fas fa-history"></i> Historique de l activite d Aujourd Hui</h6>
-<div class="scrolli" style="overflow: scroll;">
-            <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+<h6 style="text-align:center" (click)="show()"> <i class="fas fa-history"></i> Historique de l activite d Aujourd Hui</h6>
+<div class="scrolli" style="overflow: scroll;" id="menu1">
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
     <mat-chip>Ajouter un fonctionnaire au liste des employes a 29/03/2020 a 12:22:01 AM </mat-chip>
     <mat-chip>Affecter un conge de type exceptonnelle au employe dont le doti est FSG23462 a 29/03/2020 a 02:52:21 PM </mat-chip>
     <mat-chip>Evaluer et etudier le grade de l employe dont le doti est FSG23462 a 29/03/2020 a 02:52:21 PM </mat-chip>
 
-  </mat-chip-list></div>
-        </div>
-    </div>
+  </mat-chip-list>
+</div>
+
+
+<div class="container-fluid" style="padding-top:30px; margin-left: 20%; margin-top: 2%;">
+          <video class="video-fluid z-depth-1" autoplay loop controls muted style="width: 800px;height: 600px">
+            <source src="../../../assets/video/PFE4.mp4" type="video/mp4" />
+          </video>
 </div>

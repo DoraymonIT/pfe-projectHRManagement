@@ -142,11 +142,9 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6">
-
                 <span>
                   <h6>Grade : {{employeInfo.dernierGrade.grade.libelle}} </h6>
                 </span>
-
               </div>
               <div class="col-md-6">
                 <span>
@@ -172,14 +170,18 @@
               <div class="col-md-6">
                 <span>
                   <h6>Moyen :
-                    <!-- {{employeInfo.dernierNote.moyenGeneral}} -->
+                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock> pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.moyenGeneral || "pas de moyen"}} </ng-template>
                   </h6>
                 </span>
               </div>
               <div class="col-md-6">
                 <span>
                   <h6>Mention :
-                    <!-- {{employeInfo.dernierNote.mention}} -->
+                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock> pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.mention || "pas de mention"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -188,7 +190,9 @@
               <div class="col-md-6">
                 <span>
                   <h6>Date de dernier Note Saisie :
-                    <!-- {{employeInfo.dernierNote.date}} -->
+                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock> pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.date || "pas de date de note"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -304,19 +308,13 @@
                   <thead>
                     <th style=" border: 2px solid white;">Prix</th>
                     <th style=" border: 2px solid white;">Date d obtention</th>
-                    <th style=" border: 2px solid white;">Mention</th>
-                    
+
                   </thead>
                   <tbody>
                     <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
-                    <tr >
-                      <td></td>
-                      <td></td>
-                      <td>  </td>
-                      <td></td>
-                      <td>
-                       
-                      </td>
+                    <tr *ngFor="let p of prixs">
+                      <td>{{p.prix.libelle}}</td>
+                      <td>{{p.dateDeObtenation}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -329,22 +327,17 @@
                 <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
               border: 2px solid white;">
                   <thead>
-                    <th style=" border: 2px solid white;">Punition</th>
                     <th style=" border: 2px solid white;">Type de punition</th>
                     <th style=" border: 2px solid white;">Libelle</th>
                     <th style=" border: 2px solid white;">Date de punition</th>
-                 
+
                   </thead>
                   <tbody>
                     <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
-                    <tr >
-                      <td></td>
-                      <td></td>
-                      <td> </td>
-                      <td></td>
-                      <td>
-                    
-                      </td>
+                    <tr *ngFor="let pu of punitions">
+                      <td>{{pu.punition.libelle}}</td>
+                      <td> {{pu.punition.type}}</td>
+                      <td> {{pu.dateObtenation}}</td>
                     </tr>
                   </tbody>
                 </table>

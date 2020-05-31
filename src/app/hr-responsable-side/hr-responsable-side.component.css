@@ -7,6 +7,9 @@ mat-sidenav{
 .icons{
   margin: 10px;
 }
+#menu1{
+  display: none;
+}
 .example-tree-progress-bar {
   margin-left: 30px;
 }

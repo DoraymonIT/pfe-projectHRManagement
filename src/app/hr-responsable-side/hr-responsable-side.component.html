@@ -41,12 +41,12 @@
         <h6><i class="fas fa-sticky-note"></i> Evaluation Et Notation</h6>
       </mat-list-item>
 
-     
+
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-forward"></i> Avancement</h6>
       </mat-list-item>
-     
+
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['permanence'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-calendar-check    "></i> Permanence Administrative</h6>
@@ -92,6 +92,8 @@
           <a href="#" mat-menu-item>Liste Notification Aujourd'hui</a>
           <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">Liste Avancement Aujourd'hui</a>
         </mat-menu>
+
+
         <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
           Profile</button> -->
         <button class="icons" mat-raised-button [matMenuTriggerFor]="menu2"><i class="fas fa-cog"></i></button>
@@ -100,6 +102,7 @@
             Deconnecter</button>
           <!-- <button mat-menu-item>Autres</button> -->
         </mat-menu>
+
       </form>
     </nav>
     <router-outlet name="un"></router-outlet>

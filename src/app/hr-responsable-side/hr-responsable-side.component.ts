@@ -33,6 +33,7 @@ export class HRResponsableSideComponent implements OnInit {
     // this.connecter();
   }
 badge(){
- this.hideMatBadge= true;
+ this.hideMatBadge = true;
 }
+
 }
