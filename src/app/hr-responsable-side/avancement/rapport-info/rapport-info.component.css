@@ -1,0 +1,20 @@
+.span {
+  margin: auto;
+}
+.container{
+   
+    
+        border: 3px solid white;
+        padding: 20px;
+}
+h6{
+    text-align: center; 
+}
+.hh{
+    border-bottom: 2px solid white;
+    text-align: center;
+    padding-bottom: 20px;
+}
+thead{
+    text-align: center;
+}

@@ -19,7 +19,7 @@ mat-sidenav{
   color: white;
   border-radius: 1px;
   padding-left: 1px;
-  border-left : 4px solid white;
+  border-left : 7px solid white;
 }
 .list2:hover{
   cursor: pointer;
@@ -27,7 +27,7 @@ mat-sidenav{
   color: white;
   border-radius: 1px;
   padding-left: 1px;
-  border-left : 4px solid white;
+  border-left : 7px solid white;
 }
 .list1{
   margin-bottom:4px;
