@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <p-table #dt [columns]="cols" [value]="permanences" dataKey="id" [paginator]="true" [rows]="4">
         <ng-template pTemplate="caption">
-          <i class="fas fa-calendar-check    "></i>  Liste of permanence Administratives
+          <i class="fas fa-calendar-check    "></i>  Liste of permanences Administratives
           <div style="    text-align: left; margin-bottom: 10px;">
             <button class="btn"style="background-color: white;color: black;float: left"
           matTooltip="Ce button permet d imprimer ce table en format PDF"
@@ -48,28 +48,24 @@
         <ng-template  pTemplate="rowexpansion" let-rowData let-columns="columns" >
           <tr>
             <td [attr.colspan]="columns.length + 1">
-              <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
-<h3 style="text-align:center">Personne Permanenent</h3>
-                <div class="ui-g-12 ui-md-9" >
-                  <div class="ui-g">
-                    <div class="ui-g-4">
+            
+                <div class="container" style="padding:10px">
+                  <h3 style="text-align:center">Personne Permanenent</h3>
+                  <div class="row" style="text-align: center;">
+                    <div class="col-md-6">
                       <b>Full name  :</b> {{rowData.employe.fullName}}
-                    </div>
-                    <div class="ui-g-4">
-                      <b>cin :</b> {{rowData.employe.cin}}
-                    </div>
-                    <div class="ui-g-4">
+                      <br>
+                      <b>Cin :</b> {{rowData.employe.cin}}
+                      <br>
                       <b>Doti:</b> {{rowData.employe.doti}}
                     </div>
-                    <div class="ui-g-4">
+                    <div class="col-md-6">
                       <b>Gmail:</b> {{rowData.employe.email}}
-                    </div>
-                    <div class="ui-g-4">
+                      <br>
                       <b>Telephone:</b> {{rowData.employe.tel}}
                     </div>
                   </div>
-                </div>
-              </div>
+                </div>               
             </td>
           </tr>
         </ng-template>

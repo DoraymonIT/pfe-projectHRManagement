@@ -6,14 +6,14 @@
           <div class="ui-g ui-fluid" style="font-size:16px;" (click)="listeDesDemandeNonTraite()" id="liste">
             <mat-toolbar>
               <mat-toolbar-row>
-                <span class="span"> <i class="fas fa-book-open "></i> les demandes d  avancement non traité : </span>
+                <span class="span"> <i class="fas fa-truck-loading    "></i> les demandes d  avancement non traité : </span>
               </mat-toolbar-row>
             </mat-toolbar>
             </div>
             <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" (click)="listeDesDemandeNonTraite()" id="gradeNonTraite">
               <mat-toolbar>
                 <mat-toolbar-row>
-                  <span class="span"> <i class="fas fa-book-open "></i> les demandes d avancement non traité</span>
+                  <span class="span"> <i class="fas fa-truck-loading    "></i> les demandes d avancement non traité</span>
                 </mat-toolbar-row>
               </mat-toolbar>
             <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;">
@@ -45,15 +45,15 @@
       <div class="example-large-box mat-elevation-z4">
         <mat-toolbar (click)="afficher1()" style="cursor: pointer;">
           <mat-toolbar-row>
-            <span class="span"  style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date evaluation </span>
+            <span class="span"  style="text-align: center"> <i class="fas fa-search    "></i> chercher les employe par date evaluation </span>
           </mat-toolbar-row>
         </mat-toolbar>
-      <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher1">
-        <div class="card-body" style="text-align: center">
-          <label>date evaluation</label>
-          <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
+        <div  style="text-align: center;padding-top: 15px;" id="chercher1">
+          <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date evaluation</h6>
+<br>
+          <input class="search" type="date"  style=" width: 240px; text-align: center; " [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
         </div>
-      </div>
+      
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableEvaluation">
         <mat-toolbar>
           <mat-toolbar-row>
@@ -92,16 +92,16 @@
         <div class="example-large-box mat-elevation-z4">
           <mat-toolbar (click)="afficher2()" style="cursor: pointer;">
             <mat-toolbar-row>
-              <span class="span" id="span" style="text-align: center">  chercher les employes par date avancement </span>
+              <span class="span" id="span" style="text-align: center"> <i class="fas fa-search    "></i> chercher les employes par date avancement </span>
             </mat-toolbar-row>
           </mat-toolbar>
 
-        <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher2">
-          <div class="card-body" style="text-align: center">
-            <label>date avancement</label>
-            <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
+          <div  style="text-align: center;padding-top: 15px;" id="chercher2">
+           <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date avancement</h6>
+           <br>
+            <input class="search" type="date"  style=" width: 240px; text-align: center; " [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
           </div>
-        </div>
+       
         <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableavancement">
           <mat-toolbar>
             <mat-toolbar-row>

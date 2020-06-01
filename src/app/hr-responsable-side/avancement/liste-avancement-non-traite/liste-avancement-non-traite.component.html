@@ -11,14 +11,14 @@
       <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="fourmule">
-    <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des grades de employe ayant le nombre doti : {{employeInfo.doti}} </h1></div>
-    <table class="table table-hover table-dark table-striped" style="color: wheat">
+  <div class="ui-g ui-fluid" style="padding:10px" id="fourmule">
+    <div class="card-header" style="text-align: center"><h4 style="text-align: center"> Liste des grades d employe ayant le nombre doti : {{employeInfo.doti}} </h4></div>
+    <table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
       <thead>
-      <th>doti employe</th>
-      <th>grade</th>
+      <th>Doti d employe</th>
+      <th>Grade</th>
       <th>Date Affectation</th>
-      <th style="padding-left: 40px">Action</th>
+      <th >Action</th>
       </thead>
       <tbody>
       <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
@@ -35,7 +35,10 @@
       </tr>
       </tbody>
     </table>
-    <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+    <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerLesGradesDeEmploye(this.gradesEployess)"
+    matTooltip="Ce button permet d imprimer ce table en format PDF"
+    ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+    <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
   </div>
 </div>
 <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
