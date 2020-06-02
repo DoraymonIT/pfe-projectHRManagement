@@ -28,7 +28,7 @@ public punitionEmployeNull() {
     this._ajoutepunition = value;
   }
 public ajoutePunitionTitre() {
-  this._ajoutepunition = 'Formulaire pour affecter une punition a un employe';
+  this._ajoutepunition = 'Formulaire pour affecter une punition à un employé';
   }
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
@@ -92,13 +92,13 @@ public setPunition(punitionn: PunitionEmploye) {
   public save() {
     // tslint:disable-next-line:max-line-length
     if ((this.punitionEmploye.employe == null || this.punitionEmploye.punition == null || this.punitionEmploye.dateObtenation == null ) || (this.punitionEmploye.employe == null && this.punitionEmploye.punition == null && this.punitionEmploye.dateObtenation == null )) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champ`, 'Un champ est vide', {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
       });
-      this._ajoutepunition = 'champ est vide';
+      this._ajoutepunition = 'Un champ est vide';
       document.getElementById('span').style.color = 'red';
     } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/save', this.punitionEmploye).subscribe(
@@ -122,13 +122,13 @@ public setPunition(punitionn: PunitionEmploye) {
   public update() {
       // tslint:disable-next-line:max-line-length
       if ((this.punitionEmploye.employe == null || this.punitionEmploye.punition == null || this.punitionEmploye.dateObtenation == null ) || (this.punitionEmploye.employe == null && this.punitionEmploye.punition == null && this.punitionEmploye.dateObtenation == null )) {
-        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        this.toast.error(`Remplir toutes les champ`, 'Un Champ vide', {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._ajoutepunition = 'champ est vide';
+        this._ajoutepunition = 'Un Champ est vide';
         document.getElementById('span').style.color = 'red';
       } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/update', this.punitionEmploye).subscribe(
@@ -141,7 +141,7 @@ public setPunition(punitionn: PunitionEmploye) {
             positionClass: 'toast-top-right'
           });
           this.punitions.push(this.clonePunition(this.punitionEmploye));
-          this._ajoutepunition = 'punition modifier';
+          this._ajoutepunition = 'Punition a été bien modifié';
           document.getElementById('span').style.color = 'green';
           this.punitionEmploye = null;
         }, eror => {

@@ -1,13 +1,13 @@
 <div class="example-large-box mat-elevation-z4">
   <mat-toolbar>
     <mat-toolbar-row>
-      <span class="span"> <i class="fas fa-search    "></i> Chercher les notes d un employe a partir d un doti </span>
+      <span class="span"> <i class="fas fa-search    "></i> Chercher les notes d un employé a partir de son Numéro </span>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
     <div class="card-body">
       <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
+        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Sélectionnez l employé concerné</mat-label>
         <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="trouverNoteParSonDoti(this.employe)">
           <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
         </mat-select>
@@ -19,7 +19,7 @@
       <div class="col-md-12">
         <p-table #dt [columns]="cols" [value]="notesParDoti" dataKey="id" [paginator]="true" [rows]="5">
           <ng-template pTemplate="caption">
-            <i class="fas fa-sticky-note" ></i>  liste des notes de cet employe ( Evaluation )
+            <i class="fas fa-sticky-note" ></i>  liste des notes de cet employé ( Evaluation )
             <div style="text-align: right">
               <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
               <input type="text" pInputText size="50" placeholder="Ex : Ahmed Azizi , 123456, ...."

@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-plus-circle" ></i> Ajouter / Affecter Permanence a un employe </span>
+    <span class="span"> <i class="fas fa-plus-circle" ></i> Ajouter | Affecter Permanence à un Employé </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -8,30 +8,30 @@
 
           <div class="controles-container">
             <mat-form-field>
-              <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+              <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employé par son Numéro</mat-label>
               <mat-select [(ngModel)]="permanenceAdministrative.employe.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.permanenceAdministrative.employe.doti)">
                 <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field>
-              <mat-label> Periode :*</mat-label>
+              <mat-label> Période : *</mat-label>
               <label>  </label>
               <input matInput  [(ngModel)]="permanenceAdministrative.periode"
                      [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.periode" type="number" >
             </mat-form-field>
             <mat-form-field>
-              <mat-label> Recuperation :*</mat-label>
+              <mat-label> Récupération : *</mat-label>
               <mat-select [(ngModel)]="permanenceAdministrative.recuperation" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.recuperation">
-                <mat-option value="true">True</mat-option>
-                <mat-option value="false">False</mat-option>
+                <mat-option value="true">Oui</mat-option>
+                <mat-option value="false">Non</mat-option>
               </mat-select>
             </mat-form-field>
               <mat-form-field>
-                <mat-label> Periode Recuperation :*</mat-label>
+                <mat-label> Période éecupération : *</mat-label>
               <input matInput  [(ngModel)]="permanenceAdministrative.periodeDeRecuperation" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.periodeDeRecuperation" type="number">
             </mat-form-field>
             <mat-form-field>
-              <mat-label>Date de permanence ( Debut )</mat-label>
+              <mat-label>Date de permanence ( Début ) : *</mat-label>
               <input matInput [matDatepicker]="picker"
                      [(ngModel)]="permanenceAdministrative.date" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.date">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

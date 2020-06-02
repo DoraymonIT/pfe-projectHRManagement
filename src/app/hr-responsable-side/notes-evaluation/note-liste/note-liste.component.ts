@@ -32,8 +32,8 @@ export class NOteListeComponent implements OnInit {
   cols: any[];
   ngOnInit(): void {
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'moyenGeneral', header: 'Moyen general' },
+      { field: 'id', header: 'ID' },
+      { field: 'moyenGeneral', header: 'Moyen géneral' },
       { field: 'mention', header: 'Mention' },
       { field: 'date', header: 'Date' },
     ];
@@ -50,7 +50,7 @@ export class NOteListeComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '80%';
+    dialogConfig.width = '85%';
     dialogConfig.height = '100%';
     this.dialog.open(NoteDetailComponent,
       dialogConfig);

@@ -9,13 +9,13 @@
       <div class="col-md-6">
         <div class="controles-container">
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employé par son Numéro</mat-label>
             <mat-select [(ngModel)]="punitionEmploye.employe.doti" [ngModelOptions]="{standalone: true}" [value]="punitionEmploye.employe.doti">
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Violation </mat-label>
+            <mat-label>Violation </mat-label>
             <mat-select [(ngModel)]="punitionEmploye.punition.libelle" [ngModelOptions]="{standalone: true}" [value]="punitionEmploye.punition.libelle">
               <mat-option *ngFor="let p of punitions" [value]="p.libelle">{{p.libelle }}</mat-option>
             </mat-select>
@@ -40,7 +40,7 @@
           <mat-label></mat-label>
           <mat-form-field>
             <mat-label>Remarques , Commentaires ou Description</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput placeholder="Ex. Cet employé est ..."></textarea>
           </mat-form-field>
         </div>
         <div class="button-row">
