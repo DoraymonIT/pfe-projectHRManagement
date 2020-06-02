@@ -1,12 +1,12 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" > <i class="fas fa-mail-bulk    "></i> Contacter Un Employe via son / sa Mail</span>
+    <span class="span" > <i class="fas fa-mail-bulk    "></i> Contacter Un Employe via son | sa Mail</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container" style="padding-top:20px">
   <mat-form-field style="padding-bottom:10px;width:100%">
-    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
+    <mat-label> <i class="fas fa-user-tie    "></i> Seléctionnez l employé concerné : </mat-label>
     <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.employeInfo.doti)">
       <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
     </mat-select>
@@ -16,7 +16,7 @@
     <input matInput  [(ngModel)]="this.email.emaill" [ngModelOptions]="{standalone: true}" [value]="employeInfo.email" type="email" >
   </mat-form-field>
   <mat-form-field style="padding-bottom:10px;width:100%">
-    <label> Subject :* </label>
+    <label> Sujet :* </label>
     <input matInput  [(ngModel)]="this.email.subject"
            [ngModelOptions]="{standalone: true}" type="email" >
   </mat-form-field>

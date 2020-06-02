@@ -1,7 +1,7 @@
 <div class="example-large-box mat-elevation-z4" >
   <mat-toolbar  style="cursor: pointer;">
     <mat-toolbar-row>
-      <span class="span"> <i class="fas fa-search    "></i> Chercher les congé des employe a partir de <strong> type certificat medical</strong>  </span>
+      <span class="span"> <i class="fas fa-search    "></i> Chercher les congé des employé à partir de <strong> type de certificat medical</strong>  </span>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
@@ -10,8 +10,8 @@
         <mat-label style="text-align: center">  Selectionnez le type de certificat</mat-label>
         <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeCertificat()">
           <mat-option value="null">--None--</mat-option>
-          <mat-option value="longDuree">Long Duree</mat-option>
-          <mat-option value="courtDuree">Court Duree</mat-option>
+          <mat-option value="longDuree">Long Durée</mat-option>
+          <mat-option value="courtDuree">Court Durée</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -23,15 +23,15 @@
   <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableConge">
     <mat-toolbar>
       <mat-toolbar-row>
-        <span class="span"><i class="fas fa-bed    "></i> la liste des emplyes Trouves </span>
+        <span class="span"><i class="fas fa-bed    "></i> la liste des emplyés Trouvés </span>
       </mat-toolbar-row>
     </mat-toolbar>
     <table class="table table-hover table-dark table-striped" style="color: wheat">
       <thead>
-      <th>Employe</th>
-      <th>Type de conge</th>
-      <th>Date de debut</th>
-      <th>Periode</th>
+      <th>Employé</th>
+      <th>Type de congé</th>
+      <th>Date de début</th>
+      <th>Période</th>
 
       <!-- <th style="padding-left: 40px">Action</th> -->
       </thead>

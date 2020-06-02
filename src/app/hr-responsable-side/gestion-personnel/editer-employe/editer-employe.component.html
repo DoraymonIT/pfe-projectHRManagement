@@ -10,16 +10,16 @@
         <div class="controles-container">
           <div class="controles-container">
             <mat-form-field>
-              <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par en utilisant le doti</mat-label>
+              <mat-label> <i class="fas fa-user-tie    "></i> Sélectionnez l'employé concerné </mat-label>
               <mat-select [(ngModel)]="EditEmploye.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.EditEmploye.doti)">
                 <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
               </mat-select>
             </mat-form-field>
-          <mat-form-field>
-            <label> Full Name :* </label>
+          <!-- <mat-form-field>
+            <label> Nom Complet :* </label>
             <input matInput  [(ngModel)]="EditEmploye.fullName"
                    [ngModelOptions]="{standalone: true}" [value]="EditEmploye.fullName" >
-          </mat-form-field>
+          </mat-form-field> -->
           <!-- <mat-form-field>
             <label> cin:* </label>
             <input matInput  [(ngModel)]="EditEmploye.cin" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.cin">
@@ -70,23 +70,23 @@
           </mat-form-field> -->
           <br><br>
           <mat-form-field>
-            <label>Situation Familiale</label>
+            <label>Situation Familiale :</label>
             <mat-select [(ngModel)]="EditEmploye.situationFamiliale" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.situationFamiliale">
-              <mat-option value="Marie">Marie</mat-option>
-              <mat-option value="Celebataire">Celebataire</mat-option>
-              <mat-option value="Divorce">Divorce</mat-option>
-              <mat-option value="Autre">Autre</mat-option>
+              <mat-option value="Marie">Marié</mat-option>
+              <mat-option value="Celebataire">Célébataire</mat-option>
+              <mat-option value="Divorce">Divorcé</mat-option>
+              <!-- <mat-option value="Autre">Autre</mat-option> -->
             </mat-select>
           </mat-form-field>
           <mat-form-field *ngIf="show()">
-            <input matInput placeholder="Nombre Enfants" [(ngModel)]="EditEmploye.enfants"
+            <input matInput placeholder="Nombre des enfants" [(ngModel)]="EditEmploye.enfants"
                    [ngModelOptions]="{standalone: true}">
 
           </mat-form-field>
 
 
           <mat-form-field>
-            <label>Departement</label>
+            <label>Département</label>
             <mat-select [(ngModel)]="EditEmploye.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.EditEmploye.dep.nom)" >
               <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>
             </mat-select>
@@ -106,7 +106,7 @@
             </mat-select>
           </mat-form-field> -->
           <mat-form-field>
-            <label>Date d Entree</label>
+            <label>Date d Entrée</label>
             <input matInput [matDatepicker]="picker5"  [(ngModel)]="EditEmploye.dateEntree"
                    [ngModelOptions]="{standalone: true}">
             <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>

@@ -2,7 +2,7 @@
     class="fas fa-window-close "></i> </button>
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailes sur cet Employe </span>
+    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en détailes sur cet Employé </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-md-6">
                 <span>
-                  <h6>Numero d emploi ( DOTI) : {{employeInfo.doti}}</h6>
+                  <h6>Numero : {{employeInfo.doti}}</h6>
                 </span>
 
               </div>
@@ -101,7 +101,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span> <i class="fas fa-building    "></i> Info sur son / sa departement</span>
+              <span> <i class="fas fa-building    "></i> Info sur son / sa département</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations sur le departement de cet employe.
@@ -112,15 +112,15 @@
               <div class="col-md-6">
 
                 <span>
-                  <h6>Departement : {{employeInfo.dep.nom}}</h6>
+                  <h6>Département : {{employeInfo.dep.nom}}</h6>
                 </span>
 
               </div>
               <div class="col-md-6">
                 <span>
-                  <h6>Nom de Chef de departement:
+                  <h6>Nom de Chef de département:
                     <div *ngIf="employeInfo.sup == null; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock>pas de sup</ng-template>
+                    <ng-template #thenBlock>Pas de sup</ng-template>
                     <ng-template #elseBlock> {{employeInfo.sup.fullName}} </ng-template>
                   </h6>
                 </span>
@@ -159,10 +159,10 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span><i class="fas fa-sticky-note   "></i> Informations sur son / sa Note</span>
+              <span><i class="fas fa-sticky-note   "></i> Informations sur ses Notes</span>
             </mat-panel-title>
             <mat-panel-description>
-              Cette partie contient les informations sur les notes d evaluation de cet employe.
+              Cette partie contient les informations sur les notes d évaluation de cet employé.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="container-fluid">
@@ -171,8 +171,8 @@
                 <span>
                   <h6>Moyen :
                     <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock> pas encore noté</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.dernierNote.moyenGeneral || "pas de moyen"}} </ng-template>
+                    <ng-template #thenBlock> Pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.moyenGeneral || "Pas de Moyen"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -181,7 +181,7 @@
                   <h6>Mention :
                     <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
                     <ng-template #thenBlock> pas encore noté</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.dernierNote.mention || "pas de mention"}} </ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.mention || "Pas de Mention"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -192,7 +192,7 @@
                   <h6>Date de dernier Note Saisie :
                     <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
                     <ng-template #thenBlock> pas encore noté</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.dernierNote.date || "pas de date de note"}} </ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.date || "Pas de date de note"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -209,7 +209,7 @@
               <span> <i class="fas fa-money-bill-wave    "></i> Informations sur le Salaire</span>
             </mat-panel-title>
             <mat-panel-description>
-              Cette partie contient les informations sur le salaire de cet employe en detailles.
+              Cette partie contient les informations sur le salaire de cet employé en détailles.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
@@ -218,7 +218,7 @@
               <mat-label>{{saleireEmolye.salaireNet}}</mat-label>
             </div>
             <div class="col-md-6" style="text-align:center">
-              <mat-label style="margin-right: 10px; color: #ffa700;">Salaire modifie:</mat-label>
+              <mat-label style="margin-right: 10px; color: #ffa700;">Salaire modifié:</mat-label>
               <mat-label>{{saleireEmolye.monatntModifie}}</mat-label>
             </div>
           </div>
@@ -233,18 +233,18 @@
               <mat-label>{{saleireEmolye.allocationDeEnseignement.montant}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #008744;">Idem Famialiele Marocaine:</mat-label>
+              <mat-label style="margin-right: 10px; color: #008744;">Idem Famialiale Marocaine:</mat-label>
               <mat-label>{{saleireEmolye.idemFamialieleMarocaine.montant}}</mat-label>
             </div>
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #008744;">Idem De La Residence:</mat-label>
+              <mat-label style="margin-right: 10px; color: #008744;">Idem De La Résidence:</mat-label>
               <mat-label>{{saleireEmolye.idemDeLaResidence.montant}}</mat-label>
             </div>
           </div>
           <div style="font-size: x-large;color: #d62d20; margin-bottom: 10px; margin-top: 10px;text-align:center"> REVENUE </div>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
             <div class="col-md-6">
-              <mat-label style="margin-right: 10px; color: #d62d20;">Mituelle Caisse Retrait Et Deces:</mat-label>
+              <mat-label style="margin-right: 10px; color: #d62d20;">Mituelle Caisse Retrait Et Déces:</mat-label>
               <mat-label>{{saleireEmolye.mutuelleCaisseRetraitEtDeces.montant}}</mat-label>
             </div>
             <div class="col-md-6">
@@ -268,7 +268,7 @@
               <span><i class="fas fa-bookmark"></i> Formation, Prix Et Punition</span>
             </mat-panel-title>
             <mat-panel-description>
-              Cette partie contient les informations sur les formations,prix et punitions de cet employe.
+              Cette partie contient les informations sur les formations,prix et punitions de cet employé.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="container-fluid">
@@ -281,7 +281,7 @@
                     <th style=" border: 2px solid white;">Attestation</th>
                     <th style=" border: 2px solid white;">Etablissement</th>
                     <th style=" border: 2px solid white;">Mention</th>
-                    <th style=" border: 2px solid white;">Annee</th>
+                    <th style=" border: 2px solid white;">Année</th>
                     <th style=" border: 2px solid white;">Ville</th>
                   </thead>
                   <tbody>
@@ -349,5 +349,5 @@
     </div>
   </div>
 </div>
-<button mat-raised-button class="btn btn-block btn-primary" style=" margin-top: 20px" (click)="imprimerInfoEmploye()"><i
-    class="fa fa-file-pdf"></i> PDF</button>
+<button mat-raised-button class="btn" style=" margin-top: 20px;color:black;background-color: white;" (click)="imprimerInfoEmploye()"><i
+    class="fa fa-file-pdf"></i> Exporter le <b>PDF</b> </button>

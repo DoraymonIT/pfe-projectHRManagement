@@ -8,11 +8,11 @@
             <div class="col-md-12">
               <p-table #dt [columns]="cols" [value]="deps" dataKey="nom" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="caption">
-               <i class="fa fa-building" ></i>  liste des departements
+               <i class="fa fa-building" ></i>  liste des départements
                <div style="    text-align: left; margin-bottom: 10px;">
                 <button class="btn"style="background-color: white;color: black;float: left"
               matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesdepartement()"
-              ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+              ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
               </div>
                   <div style="text-align: right">
                     <i class="pi pi-search" style="margin:4px 4px 0 0"></i>

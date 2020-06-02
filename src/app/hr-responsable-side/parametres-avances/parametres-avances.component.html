@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> <i class="fas fa-cog    "></i> Parametres Avances </span>
+    <span class="span" id="span"> <i class="fas fa-cog    "></i> Paramètres Avancés </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="container-fluid" style="padding-top: 10px;" >
@@ -9,17 +9,17 @@
     <div class="col-md-6">
       <div class="controles-container">
         <mat-form-field>
-          <input matInput placeholder="Old Password *" [(ngModel)]="userEmploye.oldpassword" [ngModelOptions]="{standalone: true}">
+          <input matInput placeholder="Ancienne Mot de Pass * " [(ngModel)]="userEmploye.oldpassword" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="New Password *" [(ngModel)]="userEmploye.nvpassword" [ngModelOptions]="{standalone: true}">
+          <input matInput placeholder="Nouveau Mot de Pass * " [(ngModel)]="userEmploye.nvpassword" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
     </div>
     <div class="col-md-6">
       <div class="controles-container">
         <mat-form-field>
-          <input matInput placeholder="New Password ( Confirmation ) *" [(ngModel)]="userEmploye.nvpasswordConfirmation" [ngModelOptions]="{standalone: true}">
+          <input matInput placeholder="Nouveau Mot de Pass ( Confirmation ) * " [(ngModel)]="userEmploye.nvpasswordConfirmation" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <div class="button-row" style="    padding-top: 10px;">
           <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="modifierPasswordsansCodeConfirmation()"> <i

@@ -9,7 +9,7 @@
       <div class="col-md-6">
         <div class="controles-container">
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son Numéro</mat-label>
             <mat-select [(ngModel)]="formationEmploye.employe.doti" [ngModelOptions]="{standalone: true}" [value]="formationEmploye.employe.doti">
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
             </mat-select>

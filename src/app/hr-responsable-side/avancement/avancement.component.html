@@ -6,19 +6,19 @@
           <div class="ui-g ui-fluid" style="font-size:16px;" (click)="listeDesDemandeNonTraite()" id="liste">
             <mat-toolbar>
               <mat-toolbar-row>
-                <span class="span"> <i class="fas fa-truck-loading    "></i> les demandes d  avancement non traité : </span>
+                <span class="span"> <i class="fas fa-truck-loading    "></i> les demandes d'avancement non traité : </span>
               </mat-toolbar-row>
             </mat-toolbar>
             </div>
             <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" (click)="listeDesDemandeNonTraite()" id="gradeNonTraite">
               <mat-toolbar>
                 <mat-toolbar-row>
-                  <span class="span"> <i class="fas fa-truck-loading    "></i> les demandes d avancement non traité</span>
+                  <span class="span"> <i class="fas fa-truck-loading    "></i> les demandes d'avancement non traité</span>
                 </mat-toolbar-row>
               </mat-toolbar>
             <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;">
                 <thead>
-                <th>Employe</th>
+                <th>Employé</th>
                 <th>Grade</th>
                 <th>Date Affectation</th>
                 <th style="padding-left: 40px">Action</th>
@@ -45,7 +45,7 @@
       <div class="example-large-box mat-elevation-z4">
         <mat-toolbar (click)="afficher1()" style="cursor: pointer;">
           <mat-toolbar-row>
-            <span class="span"  style="text-align: center"> <i class="fas fa-search    "></i> chercher les employe par date evaluation </span>
+            <span class="span"  style="text-align: center"> <i class="fas fa-search    "></i> chercher les employé par date évaluation </span>
           </mat-toolbar-row>
         </mat-toolbar>
         <div  style="text-align: center;padding-top: 15px;" id="chercher1">
@@ -57,15 +57,15 @@
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableEvaluation">
         <mat-toolbar>
           <mat-toolbar-row>
-            <span class="span"> les employes ayant l evaluation de grade par date</span>
+            <span class="span"> les employes ayant l'évaluation de grade par date</span>
           </mat-toolbar-row>
         </mat-toolbar>
         <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat">
           <thead>
           <!-- <th>id note</th> -->
-          <th>Full name</th>
-          <th>DOTI</th>
-          <th>Date d evaluation</th>
+          <th>No, Complet</th>
+          <th>Numéro</th>
+          <th>Date d'évaluation</th>
           <th>Dernier grade</th>
           <th style="padding-left: 40px">Action</th>
           </thead>
@@ -105,15 +105,15 @@
         <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableavancement">
           <mat-toolbar>
             <mat-toolbar-row>
-              <span class="span">  les employes ayant l avancement d'une grade par date</span>
+              <span class="span">  les employés ayant l'avancement d'une grade par date</span>
             </mat-toolbar-row>
           </mat-toolbar>
           <table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
             <thead>
             <!-- <th>id note</th> -->
-            <th>Full name</th>
-            <th> DOTI</th>
-            <th>Date d avancement</th>
+            <th>Nom Complet</th>
+            <th> Numéro</th>
+            <th>Date d'avancement</th>
             <th>Dernier grade</th>
             <th style="padding-left: 40px">Action</th>
             </thead>

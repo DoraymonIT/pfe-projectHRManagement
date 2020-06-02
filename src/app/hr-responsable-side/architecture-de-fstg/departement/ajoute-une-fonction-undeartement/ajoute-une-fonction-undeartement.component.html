@@ -1,13 +1,13 @@
 <div class="example-large-box mat-elevation-z4">
   <mat-toolbar>
     <mat-toolbar-row>
-      <span class="span"> <i class="fas fa-plus-circle" ></i>  Affecter ou ajouter une fonction a un departement </span>
+      <span class="span"> <i class="fas fa-plus-circle" ></i>  Affecter ou ajouter une fonction à un département </span>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
     <div class="card-body">
       <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> <i class="fas fa-building    "></i> Selectionnez le departement concerene</mat-label>
+        <mat-label style="text-align: center"> <i class="fas fa-building    "></i> Selectionnez le département concerené</mat-label>
         <mat-select [(ngModel)]="this.depfonction.departemant.nom" [ngModelOptions]="{standalone: true}">
           <mat-option *ngFor="let gr of deps" [value]="gr.nom">{{gr.nom}}</mat-option>
         </mat-select>
@@ -17,17 +17,17 @@
         <mat-label style="text-align: center">  Selectionnez la fonction convenable </mat-label>
         <mat-select [(ngModel)]="this.depfonction.fonction.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="show()">
           <mat-option *ngFor="let gr of fonctions" [value]="gr.libelle">{{gr.libelle}}</mat-option>
-          <mat-option value="autre">autre</mat-option>
+          <mat-option value="autre">Autre</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
       <mat-form-field style="width: 500px" id="autre">
-        <label >Le nom de La fonction : *</label>
+        <label >Le Nom de La fonction : *</label>
         <input matInput  [(ngModel)]="depfonction.fonction.libelle"
                [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <br>
-      <button class="btn btn-light fa fa-save" style="width: 500px" (click)="save()">   save</button>
+      <button class="btn btn-light fa fa-save"  (click)="save()">   Ajouter</button>
     </div>
   </div>
 </div>

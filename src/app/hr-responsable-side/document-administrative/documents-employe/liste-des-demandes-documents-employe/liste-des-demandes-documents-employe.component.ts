@@ -23,11 +23,12 @@ cols: any[];
   ngOnInit(): void {
     this.employeService.findAll();
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'cin', header: 'C I N' },
+      { field: 'id', header: 'ID' },
+      { field: 'cin', header: 'CIN' },
+      { field: 'doti', header: 'Numero' },
       { field: 'fullName', header: 'Nom Complet' },
       { field: 'email', header: 'G-mail' },
-      { field: 'doti', header: 'DOTI' },
+      
     ];
   }
   get employes(): Array<Employe> {

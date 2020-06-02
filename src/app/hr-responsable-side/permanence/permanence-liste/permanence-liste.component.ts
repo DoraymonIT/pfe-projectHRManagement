@@ -18,7 +18,7 @@ export class PermanenceListeComponent implements OnInit {
     this.cols = [
 
       { field: 'id', header: 'ID-Permanence' },
-      { field: 'periode', header: 'Periode' },
+      { field: 'periode', header: 'Période' },
       { field: 'recuperation', header: 'Récuperation' },
       { field: 'periodeDeRecuperation', header: 'Période de Récuperation' },
       { field: 'date', header: 'Date de permanence' },

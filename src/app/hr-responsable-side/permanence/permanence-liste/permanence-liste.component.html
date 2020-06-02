@@ -3,15 +3,15 @@
     <div class="col-md-12">
       <p-table #dt [columns]="cols" [value]="permanences" dataKey="id" [paginator]="true" [rows]="4">
         <ng-template pTemplate="caption">
-          <i class="fas fa-calendar-check    "></i>  Liste of permanences Administratives
+          <i class="fas fa-calendar-check    "></i>  Liste des permanences Administratives
           <div style="    text-align: left; margin-bottom: 10px;">
             <button class="btn"style="background-color: white;color: black;float: left"
           matTooltip="Ce button permet d imprimer ce table en format PDF"
-          ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+          ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
           </div>
           <div style="text-align: right">
             <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-            <input type="text" pInputText size="50" placeholder="Chercher par date: yyyy-MM-dd"
+            <input type="text" pInputText size="50" placeholder="Chercher par date:Format : yyyy-MM-dd"
                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
           </div>
         </ng-template>
@@ -53,16 +53,16 @@
                   <h3 style="text-align:center">Personne Permanenent</h3>
                   <div class="row" style="text-align: center;">
                     <div class="col-md-6">
-                      <b>Full name  :</b> {{rowData.employe.fullName}}
+                      <b>Nom Complet :</b> {{rowData.employe.fullName}}
                       <br>
-                      <b>Cin :</b> {{rowData.employe.cin}}
+                      <b>CIN :</b> {{rowData.employe.cin}}
                       <br>
-                      <b>Doti:</b> {{rowData.employe.doti}}
+                      <b>Numéro:</b> {{rowData.employe.doti}}
                     </div>
                     <div class="col-md-6">
                       <b>Gmail:</b> {{rowData.employe.email}}
                       <br>
-                      <b>Telephone:</b> {{rowData.employe.tel}}
+                      <b>Téléphone:</b> {{rowData.employe.tel}}
                     </div>
                   </div>
                 </div>               

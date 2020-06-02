@@ -4,15 +4,15 @@
     <div class="example-large-box mat-elevation-z4">
       <mat-toolbar (click)="afficher()"  style="cursor: pointer;">
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-arrow-down    "></i> Chercher les punitions d'un employe a partir du <strong>doti</strong> </span>
+          <span class="span"> <i class="fas fa-arrow-down    "></i> Chercher les punitions d'un employé a partir du <strong>Numéro</strong> </span>
         </mat-toolbar-row>
       </mat-toolbar>
       <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherPunition">
         <div class="card-body">
           <mat-form-field  style="width: 500px">
-            <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employe concerene</mat-label>
+            <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employé concerené</mat-label>
             <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPunitionnByDoti()">
-              <mat-option [value]="null">---None---</mat-option>
+              <mat-option [value]="null">---NuLL---</mat-option>
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -26,7 +26,7 @@
         </mat-toolbar>
         <table class="table table-hover table-dark table-striped" style="color: wheat">
           <thead>
-          <th>Employe</th>
+          <th>Employé</th>
           <th>Punition</th>
           <th>Date de Punition</th>
           <!-- <th style="padding-left: 40px">Action</th> -->
@@ -46,7 +46,7 @@
           </tr>
           </tbody>
         </table>
-        <button mat-raised-button class="btn"style="background-color: white;color: black;"(click)="imprimerLesPunitions(this.punitions)"  ><i class="fa fa-file-pdf"  ></i> Export <b>PDF</b> </button>
+        <button mat-raised-button class="btn"style="background-color: white;color: black;"(click)="imprimerLesPunitions(this.punitions)"  ><i class="fa fa-file-pdf"  ></i> Exporter le <b>PDF</b> </button>
         <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesPunitions(this.punitions)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
       </div>
     </div>

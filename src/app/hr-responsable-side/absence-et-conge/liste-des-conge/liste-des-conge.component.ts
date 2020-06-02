@@ -42,10 +42,10 @@ export class ListeDesCongeComponent implements OnInit {
     this.employeService.findAll();
     this.dataSource = this.employes;
     this.cols = [
-      { field: 'cin', header: 'C I N' },
+      { field: 'cin', header: 'CIN' },
+      { field: 'doti', header: 'Numéro' },
       { field: 'fullName', header: 'Nom Complet' },
       { field: 'email', header: 'G-mail' },
-      { field: 'doti', header: 'DOTI' },
       { field: 'soldeRestantesCongeExceptionnel', header: 'solde Restantes Congé Exceptionnel' },
     ];
     this.loading = true;

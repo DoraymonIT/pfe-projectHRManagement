@@ -9,11 +9,17 @@
       <div class="col-md-6">
         <div class="controles-container">
           <mat-form-field>
-            <input matInput placeholder="Full Name *" [(ngModel)]="employe.fullName" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Nom *" [(ngModel)]="employe.fullName" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Prénom *" >
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="CIN *" [(ngModel)]="employe.cin" [ngModelOptions]="{standalone: true}">
 
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Numéro Administratif *" >
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="Gmail" [(ngModel)]="employe.email" [ngModelOptions]="{standalone: true}">
@@ -41,7 +47,7 @@
 
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Ville de Residence" [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Ville de Résidence" [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
 
           </mat-form-field>
 
@@ -68,10 +74,10 @@
           <mat-form-field>
             <mat-label>Situation Familiale</mat-label>
             <mat-select [(ngModel)]="employe.situationFamiliale" [ngModelOptions]="{standalone: true}">
-              <mat-option value="Marie">Marie</mat-option>
-              <mat-option value="Celebataire">Celebataire</mat-option>
-              <mat-option value="Divorce">Divorce</mat-option>
-              <mat-option value="Autre">Autre</mat-option>
+              <mat-option value="Marie">Marié</mat-option>
+              <mat-option value="Celebataire">Célébataire</mat-option>
+              <mat-option value="Divorce">Divorcé</mat-option>
+           
             </mat-select>
           </mat-form-field>
           <mat-form-field *ngIf="show()">
@@ -79,7 +85,7 @@
               [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Department</mat-label>
+            <mat-label>Départment</mat-label>
 
             <mat-select [(ngModel)]="employe.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.employe.dep.nom)" >
               <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>
@@ -107,7 +113,7 @@
             <mat-datepicker #picker5></mat-datepicker>
           </mat-form-field>
           <div class="add-bottom-padding">
-            <mat-label>Gender : </mat-label>
+            <mat-label>Sexe : </mat-label>
             <mat-radio-group [(ngModel)]="employe.gender" [ngModelOptions]="{standalone: true}">
 
               <mat-radio-button value="Homme">Homme</mat-radio-button>
