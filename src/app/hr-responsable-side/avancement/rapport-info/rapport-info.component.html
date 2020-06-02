@@ -3,7 +3,7 @@
 <div style=" text-align: left; margin-bottom: 10px;">
   <button class="btn" mat-raised-button style="background-color: white;color: black;float: left"
     matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerRapport()"><i
-      class="fa fa-file-pdf"></i> Exporter le <strong>PDF</strong> </button>
+      class="fa fa-file-pdf"></i> Export <strong>PDF</strong> </button>
 
   <button class="btn" matTooltip="Ce button permet de editer et modifier ce document" mat-raised-button
     style="background-color: #0057e7;color: beige;margin-left: 10px;" (click)="editRapport()">
@@ -26,11 +26,21 @@
             <mat-label style="margin-right: 10px; ">Nom Complet :</mat-label>
             <mat-label>{{rapportEvaluation.employe.fullName}}</mat-label>
             <br>
-            <mat-label style="margin-right: 10px; ">Numéro :</mat-label>
+            <mat-label style="margin-right: 10px; ">DOTI :</mat-label>
             <mat-label>{{rapportEvaluation.employe.doti}}</mat-label>
             <br>
             <mat-label style="margin-right: 10px;">CNI :</mat-label>
             <mat-label>{{rapportEvaluation.employe.cin}}</mat-label>
+          </div>
+          <div class="col-md-6">
+            <mat-label style="margin-right: 10px;">Adresse :</mat-label>
+            <mat-label>{{rapportEvaluation.employe.adresse}}</mat-label>
+            <br>
+            <mat-label style="margin-right: 10px; ">Situation Familiale:</mat-label>
+            <mat-label>{{rapportEvaluation.employe.situationFamiliale}}</mat-label>
+            <br>
+            <mat-label style="margin-right: 10px; ">Email :</mat-label>
+            <mat-label>{{rapportEvaluation.employe.email}}</mat-label>
           </div>
         </div>
       </div>
@@ -39,7 +49,7 @@
         <h6 class="hh">Informations sur le Grade :</h6>
         <div class="row">
           <div class="col-md-6">
-            <mat-label style="margin-right: 10px; ">Libellé :</mat-label>
+            <mat-label style="margin-right: 10px; ">Libelle :</mat-label>
             <mat-label>{{rapportEvaluation.nouveauGrade.grade.libelle}}</mat-label>
           </div>
           <div class="col-md-6">
@@ -50,13 +60,13 @@
       </div>
       <br>
       <div class="container-fluid" style="padding-top:20px">
-        <h6>Informations sur les notes de l'évaluation : </h6>
+        <h6>Informations sur les notes de l evaluation annuel : </h6>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover table-striped table-bordered" style="color: wheat">
               <thead>
                 <th>id</th>
-                <th>Moyen Génerale</th>
+                <th>Moyen Generale</th>
                 <th>Mention</th>
                 <th>Date</th>
               </thead>
@@ -82,10 +92,10 @@
                 <th>id</th>
                 <th>Attestation</th>
                 <th>Domaine</th>
-                <th>Etablissement</th>
+                <th>etablissement</th>
                 <th>Ville</th>
                 <th>Mention</th>
-                <th>Année</th>
+                <th>Annee</th>
               </thead>
               <tbody>
                 <tr *ngFor="let c of rapportEvaluation.formation">
@@ -110,7 +120,7 @@
             <table class="table table-hover table-striped table-bordered" style="color: wheat">
               <thead>
                 <th>id</th>
-                <th>Libellé</th>
+                <th>Libelle</th>
                 <th>Date De Obtenation</th>
               </thead>
               <tbody>
@@ -132,7 +142,7 @@
             <table class="table table-hover table-striped table-bordered" style="color: wheat">
               <thead>
                 <th>id</th>
-                <th>Libellé</th>
+                <th>Libelle</th>
                 <th>Date De Obtenation</th>
               </thead>
               <tbody>
@@ -148,7 +158,7 @@
       </div>
       <br>
       <div class="container-fluid" style="padding-top:20px">
-        <h6>A propos de la Note Génerale et Les remarques : </h6>
+        <h6>A propos de la Note Generale et Les remarques : </h6>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover table-striped table-bordered" style="color: wheat">
@@ -169,3 +179,10 @@
         </div>
       </div>
 
+
+
+    </div>
+  </div>
+</div>
+<!-- <button class="btn" style="background-color: yellow;color: beige;width: 80px;" (click)="imprimerRapport()"
+  matTooltip="Ce button permet d imprimer rapport sous format PDF "><i class="fa fa-file-pdf"></i> PDF</button> -->

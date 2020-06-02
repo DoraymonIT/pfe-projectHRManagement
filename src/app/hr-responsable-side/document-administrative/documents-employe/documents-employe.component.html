@@ -21,9 +21,9 @@
         </thead>
         <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
-        <tr *ngFor="let c of documents">
+        <tr *ngFor="let c of documents ">
           <td>{{c.employe.fullName}}</td>
-          <td>{{c.typeDeDocument.libelle  || "----"}}</td>
+          <td>{{c.typeDeDocument.libelle }}</td>
           <td>{{c.dateDemande}}</td>
           <td >{{c.maniereDeRetrait}}</td>
           <td>
@@ -40,6 +40,7 @@
         </tr>
         </tbody>
       </table>
+      <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
     </div>
      
     </div>

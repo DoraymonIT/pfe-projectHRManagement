@@ -78,7 +78,7 @@ cherche3: boolean;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '95%';
-    dialogConfig.height = '80%';
+    dialogConfig.height = '100%';
     this.dialog.open(RapportInfoComponent,
       dialogConfig);
     this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);
