@@ -48,12 +48,13 @@
             <span class="span"  style="text-align: center"> <i class="fas fa-search    "></i> chercher les employés par date évaluation </span>
           </mat-toolbar-row>
         </mat-toolbar>
-        <div  style="text-align: center;padding-top: 15px;" id="chercher1">
-          <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date d'évaluation</h6>
-<br>
-          <input class="search" type="date"  style=" width: 240px; text-align: center; " [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
+        <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher1">
+          <div class="card-body">
+          <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date evaluation</h6>
+            <br>
+          <input class="search" type="date"  style="background-color: #343a40; width: 500px; margin-left: 200px;border-right: none;border-left: none; border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
         </div>
-      
+        </div>
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableEvaluation">
         <mat-toolbar>
           <mat-toolbar-row>
@@ -96,12 +97,13 @@
             </mat-toolbar-row>
           </mat-toolbar>
 
-          <div  style="text-align: center;padding-top: 15px;" id="chercher2">
+          <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher2">
+            <div class="card-body">
            <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date avancement</h6>
            <br>
-            <input class="search" type="date"  style=" width: 240px; text-align: center; " [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
+            <input class="search" type="date"  style="background-color: #343a40; width: 500px; margin-left: 200px;border-right: none;border-left: none; border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
           </div>
-       
+          </div>
         <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableavancement">
           <mat-toolbar>
             <mat-toolbar-row>

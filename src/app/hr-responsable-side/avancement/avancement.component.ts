@@ -89,7 +89,7 @@ cherche3: boolean;
 document.getElementById('chercher1').style.display = 'none';
 this.cherche1 = false;
  } else {
-  document.getElementById('chercher1').style.display = 'inline';
+  document.getElementById('chercher1').style.display = 'block';
   this.cherche1 = true;
   }
  }
@@ -99,7 +99,7 @@ this.cherche1 = false;
       document.getElementById('chercher2').style.display = 'none';
       this.cherche2 = false;
     } else {
-      document.getElementById('chercher2').style.display = 'inline';
+      document.getElementById('chercher2').style.display = 'block';
       this.cherche2 = true;
     }
   }

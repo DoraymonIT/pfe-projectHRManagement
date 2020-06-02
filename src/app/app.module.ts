@@ -243,7 +243,7 @@ import { LogsEtVideoComponent } from './hr-responsable-side/logs-et-video/logs-e
         EditorModule, CountdownModule,
 
         OrganizationChartModule,
-        MatStepperModule
+        MatStepperModule,
     ],
   providers: [
     {
