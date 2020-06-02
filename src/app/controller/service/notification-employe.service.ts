@@ -7,6 +7,6 @@ import {PermanenceAdministrative} from '../model/PermanenceAdministrative';
 export class NotificationEmployeService {
 
   constructor() { }
-
+  
 
 }

@@ -113,7 +113,6 @@ import { ListeDesCongeComponent } from './hr-responsable-side/absence-et-conge/l
 import { ListeDesCertificatsComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/liste-des-certificats/liste-des-certificats.component';
 import { ListeDesCongeExceptionelComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/liste-des-conge-exceptionel/liste-des-conge-exceptionel.component';
 import { LogsEtVideoComponent } from './hr-responsable-side/logs-et-video/logs-et-video.component';
-import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -244,8 +243,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
         EditorModule, CountdownModule,
 
         OrganizationChartModule,
-        MatStepperModule,
-        NgxPaginationModule
+        MatStepperModule
     ],
   providers: [
     {
