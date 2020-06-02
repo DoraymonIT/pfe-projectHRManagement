@@ -26,7 +26,7 @@
 
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Telephone" [(ngModel)]="employe.tel" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Téléphone" [(ngModel)]="employe.tel" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="Adresse" [(ngModel)]="employe.adresse" [ngModelOptions]="{standalone: true}">
@@ -107,7 +107,7 @@
             </mat-select>
           </mat-form-field> -->
           <mat-form-field>
-            <input matInput [matDatepicker]="picker5" placeholder="Date D Emabauche" [(ngModel)]="employe.dateEntree"
+            <input matInput [matDatepicker]="picker5" placeholder="Date D'emabauche" [(ngModel)]="employe.dateEntree"
               [ngModelOptions]="{standalone: true}">
             <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
             <mat-datepicker #picker5></mat-datepicker>

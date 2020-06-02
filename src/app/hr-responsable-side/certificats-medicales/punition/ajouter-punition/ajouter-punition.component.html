@@ -15,7 +15,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Violation </mat-label>
+            <mat-label>Violation </mat-label>
             <mat-select [(ngModel)]="punitionEmploye.punition.libelle" [ngModelOptions]="{standalone: true}" [value]="punitionEmploye.punition.libelle">
               <mat-option *ngFor="let p of punitions" [value]="p.libelle">{{p.libelle }}</mat-option>
             </mat-select>

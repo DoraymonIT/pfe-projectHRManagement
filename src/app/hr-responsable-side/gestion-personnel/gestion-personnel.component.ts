@@ -22,10 +22,10 @@ export class GestionPersonnelComponent implements OnInit {
     this.listeVide();
     this.cols = [
       { field: 'cin', header: 'CIN' },
-      { field: 'doti', header: 'Numero' },
+      { field: 'doti', header: 'Numéro' },
       { field: 'fullName', header: 'Nom Complet' },
       { field: 'email', header: 'G-mail' },
-      { field: 'tel', header: 'Telephone' },
+      { field: 'tel', header: 'Téléphone' },
       // { field: 'pays', header: 'Pays' },
       // { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
 

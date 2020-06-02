@@ -40,16 +40,16 @@
             </div>
         </div>
       </mat-tab>
-      <mat-tab label="Trouver les employes par date evaluation" style="width: 25px" tabindex="1">
+      <mat-tab label="Trouver les employes par date d'évaluation" style="width: 25px" tabindex="1">
 
       <div class="example-large-box mat-elevation-z4">
         <mat-toolbar (click)="afficher1()" style="cursor: pointer;">
           <mat-toolbar-row>
-            <span class="span"  style="text-align: center"> <i class="fas fa-search    "></i> chercher les employé par date évaluation </span>
+            <span class="span"  style="text-align: center"> <i class="fas fa-search    "></i> chercher les employés par date évaluation </span>
           </mat-toolbar-row>
         </mat-toolbar>
         <div  style="text-align: center;padding-top: 15px;" id="chercher1">
-          <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date evaluation</h6>
+          <h6> <i class="fas fa-calendar-times    "></i> Choisir une Date d'évaluation</h6>
 <br>
           <input class="search" type="date"  style=" width: 240px; text-align: center; " [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
         </div>
@@ -92,7 +92,7 @@
         <div class="example-large-box mat-elevation-z4">
           <mat-toolbar (click)="afficher2()" style="cursor: pointer;">
             <mat-toolbar-row>
-              <span class="span" id="span" style="text-align: center"> <i class="fas fa-search    "></i> chercher les employes par date avancement </span>
+              <span class="span" id="span" style="text-align: center"> <i class="fas fa-search    "></i> chercher les employés par date avancement </span>
             </mat-toolbar-row>
           </mat-toolbar>
 
@@ -112,7 +112,7 @@
             <thead>
             <!-- <th>id note</th> -->
             <th>Nom Complet</th>
-            <th> Numéro</th>
+            <th>Numéro</th>
             <th>Date d'avancement</th>
             <th>Dernier grade</th>
             <th style="padding-left: 40px">Action</th>

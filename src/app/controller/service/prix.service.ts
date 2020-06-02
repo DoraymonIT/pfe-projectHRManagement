@@ -24,7 +24,7 @@ public prixEmployeNull(){
     this._ajoutePrix = value;
   }
 public  ajoutePrixTitre(){
-    this._ajoutePrix = 'Formulaire pour ajouter un prix a un employe';
+    this._ajoutePrix = 'Formulaire pour ajouter un prix à un employé';
 }
   constructor(private http: HttpClient,
       private toast: ToastrService) { }
@@ -87,13 +87,13 @@ public editerCePrixx(prix: PrixEmploye){
     public save() {
       // tslint:disable-next-line:max-line-length
       if ((this.prixEmploye.employe == null || this.prixEmploye.prix == null || this.prixEmploye.dateDeObtenation == null ) || (this.prixEmploye.employe == null && this.prixEmploye.prix == null && this.prixEmploye.dateDeObtenation == null )) {
-        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        this.toast.error(`Remplir toutes les champs`, 'Un champ est  vide', {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._ajoutePrix = 'champ est vide';
+        this._ajoutePrix = 'Un Champ est vide';
         document.getElementById('span').style.color = 'red';
       } else {
         this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/save', this.prixEmploye).subscribe(
@@ -106,7 +106,7 @@ public editerCePrixx(prix: PrixEmploye){
             positionClass: 'toast-top-right'
           });
           this.prixs.push(this.clonePrix(this.prixEmploye));
-          this._ajoutePrix = 'prix ajouter';
+          this._ajoutePrix = 'Un prix a été bien affecté';
           document.getElementById('span').style.color = 'green';
           this.prixEmploye = null;
         }, eror => {
@@ -117,13 +117,13 @@ public editerCePrixx(prix: PrixEmploye){
   public update() {
     // tslint:disable-next-line:max-line-length
     if ((this.prixEmploye.employe == null || this.prixEmploye.prix == null || this.prixEmploye.dateDeObtenation == null ) || (this.prixEmploye.employe == null && this.prixEmploye.prix == null && this.prixEmploye.dateDeObtenation == null )) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champs`, ' Un Champ est vide', {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
       });
-      this._ajoutePrix = 'champ est vide';
+      this._ajoutePrix = 'Un Champ est vide';
       document.getElementById('span').style.color = 'red';
     } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/update', this.prixEmploye).subscribe(
@@ -135,7 +135,7 @@ public editerCePrixx(prix: PrixEmploye){
             positionClass: 'toast-top-right'
           });
           this.prixs.push(this.clonePrix(this.prixEmploye));
-          this._ajoutePrix = 'prix modifier';
+          this._ajoutePrix = 'Un prix a été bien modifié';
           document.getElementById('span').style.color = 'green';
           this.prixEmploye = null;
         }, eror => {

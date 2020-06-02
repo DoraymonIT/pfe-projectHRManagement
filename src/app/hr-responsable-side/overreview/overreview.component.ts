@@ -1,80 +1,78 @@
-import { Component, OnInit } from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
+import { Component, OnInit } from "@angular/core";
+import { ThemePalette } from "@angular/material/core";
 
-import {TreeNode} from 'primeng/api';
-export interface ChipColor {
-  name: string;
-  color: ThemePalette;
-}
+
 export interface ages {
-  range: string;
-  total: number;
+  nom: string;
   color: ThemePalette;
 }
 @Component({
-  selector: 'app-overreview',
-  templateUrl: './overreview.component.html',
-
-  styleUrls: ['./overreview.component.css'],
-
+  selector: "app-overreview",
+  templateUrl: "./overreview.component.html",
+  styleUrls: ["./overreview.component.css"],
 })
 export class OverreviewComponent implements OnInit {
-
-  data: any; data2: any;
+  data: any;
+  data2: any;
+  data3: any;
 
   constructor() {
-      this.data = {
-          labels: ['Biology','Informatique','Chimie','physique'],
-          datasets: [
-              {
-                  data: [300, 50, 100,12],
-                  backgroundColor: [
-                      "#FF6384",
-                      "#36A2EB",
-                      "#FFCE56"
-                  ],
-                  hoverBackgroundColor: [
-                      "#FF6384",
-                      "#36A2EB",
-                      "#FFCE56"
-                  ]
-              }]
-          };
-          this.data2 = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'Homme',
-                    backgroundColor: '#42A5F5',
-                    borderColor: '#1E88E5',
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: 'Femme',
-                    backgroundColor: '#9CCC65',
-                    borderColor: '#7CB342',
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
-            ]
-        }
+    this.data = {
+      labels: [
+        "Biologie",
+        "Informatique",
+        "Chimie",
+        "physique",
+        "TEC",
+        "Mathémathique",
+        "Géologie",
+      ],
+      datasets: [
+        {
+          data: [29, 31, 33, 32, 15, 34, 30],
+          backgroundColor: [
+            "yellow",
+            "black",
+            "red",
+            "green",
+            "orange",
+            "white",
+            "pink",
+          ],
+        },
+      ],
+    };
+
+    this.data2 = {
+      labels: [
+        "Grade 1",
+        "Grade 2",
+        "Grade 3",
+        "Grade 4",
+        "Grade 5",
+        "Grade 6",
+        "Grade 7",
+        "Grade 8",
+        "Grade 9",
+        "Grade 10",
+        "Grade 11",
+      ],
+      datasets: [
+        {
+          backgroundColor: "#42A5F5",
+label:"Nombre d'employés par grade",
+          data: [65, 59, 80, 81, 56, 55, 54, 80, 81, 56, 55],
+        },
+      ],
+    };
   }
-  availableColors: ChipColor[] = [
-    {name: 'Ahmed', color: 'accent'},
-    {name: 'Khadija', color: 'accent'},
-    {name: 'Khalid', color: 'accent'},
-    {name: 'Hafssa', color: 'accent'}
-  ];
+
   agesCa: ages[] = [
-    {range: '30-35',total: 12, color: 'accent'},
-    {range: '35-40',total: 112, color: 'warn'},
-    {range: '40-45',total: 20, color: 'primary'},
-    {range: '45-50',total: 33, color: 'accent'},
-    {range: '55-60',total: 18, color: 'primary'},
-
+    { nom: "Département de Phisique", color: "accent" },
+    { nom: "Département de Chimie", color: "warn" },
+    { nom: "Département de Matématique", color: "primary" },
+    { nom: "Département de de Biologie", color: "accent" },
+    { nom: "Département de Géologie", color: "primary" },
   ];
-  ngOnInit() {
-
-}
-
-
+  ngOnInit() {}
 }

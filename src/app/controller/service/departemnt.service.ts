@@ -38,7 +38,7 @@ public  cloneDepartement(departement: Departement): Departement {
   public save() {
     this.http.post<number>(this._url + 'save', this.departement).subscribe(
       data => {
-        this.toast.success(`${this.departement.nom} add departement to the database.`, 'depatrement Added', {
+        this.toast.success(`${this.departement.nom} a été bien ajouté.`, 'Département ajouté', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -54,7 +54,7 @@ public  cloneDepartement(departement: Departement): Departement {
   public update() {
     this.http.post<number>(this._url + 'update', this.departement).subscribe(
       data => {
-        this.toast.info(`${this.departement.nom} add departement to the database.`, 'depatrement Added', {
+        this.toast.info(`${this.departement.nom} a été bien modifié.`, 'Département modifié', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -88,7 +88,7 @@ public  cloneDepartement(departement: Departement): Departement {
   public imprimerLesdepartements() {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Departement/listedepartementPdf').subscribe(
       data => {
-        this.toast.success(` document  est bien preparer`, ' document preparer', {
+        this.toast.success(`Document est bien exporter en PDF`, ' Voir votre dossier de téléchargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',

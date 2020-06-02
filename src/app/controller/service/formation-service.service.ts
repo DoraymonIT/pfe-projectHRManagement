@@ -18,7 +18,7 @@ public formationEmployeNull(){
     this._ajouteFormation = value;
   }
   public ajouteFormationTitre(){
-    this._ajouteFormation = 'Formulaire pour affecter une formation a un employe';
+    this._ajouteFormation = 'Formulaire pour affecter une formation à un employé';
   }
   private _formations: Array<Formation>;
   private _formationEmploye: Formation;

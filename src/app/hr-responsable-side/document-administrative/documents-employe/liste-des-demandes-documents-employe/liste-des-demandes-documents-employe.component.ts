@@ -25,7 +25,7 @@ cols: any[];
     this.cols = [
       { field: 'id', header: 'ID' },
       { field: 'cin', header: 'CIN' },
-      { field: 'doti', header: 'Numero' },
+      { field: 'doti', header: 'Numéro' },
       { field: 'fullName', header: 'Nom Complet' },
       { field: 'email', header: 'G-mail' },
       

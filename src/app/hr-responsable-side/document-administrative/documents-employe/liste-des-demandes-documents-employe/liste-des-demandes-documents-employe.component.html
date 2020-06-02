@@ -9,11 +9,11 @@
               <div style="    text-align: left; margin-bottom: 10px;">
                 <button class="btn"style="background-color: white;color: black;float: left"
               matTooltip="Ce button permet d imprimer ce table en format PDF"
-              ><i class="fa fa-file-pdf" ></i>  Exporter le<strong>PDF</strong> </button>
+              ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
               </div>
               <div style="text-align: right">
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="50" placeholder="Global Filter"
+                <input type="text" pInputText size="50" placeholder="Chercher par nom, Numéro,..."
                        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
               </div>
             </ng-template>
@@ -28,6 +28,7 @@
                 </th>
                 <th style="width: 3em">
                 </th>
+              </tr>
                 <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >

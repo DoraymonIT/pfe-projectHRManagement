@@ -21,7 +21,7 @@ public save(){
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/DepFonction/save', this.depfonction).subscribe(
     data => {
       if (data > 0){
-        this.toast.success(` dep fonction est bien ajout&`, ' fonction ajouté', {
+        this.toast.success(` La fonction est bien ajouté`, ' fonction ajouté', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',

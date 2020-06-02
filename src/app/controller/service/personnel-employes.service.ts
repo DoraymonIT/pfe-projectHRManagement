@@ -65,10 +65,10 @@ export class PersonnelEmployesService {
   }
 
   public ajouterEmpString() {
-    this.ajouteEmp = ' Formulaire pour ajouter un employe au FSTG';
+    this.ajouteEmp = ' Formulaire pour ajouter un employé au FSTG';
   }
   public modifyEmpString() {
-    this.modifyEmp = ' Modifier Les donnes d un employe ';
+    this.modifyEmp = ' Modifier Les données d un employé ';
   }
   // trouver Employer Par Nom Grade
   public trouverEmployerParNomGrade(value: string) {
@@ -86,7 +86,7 @@ export class PersonnelEmployesService {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/NotificationEmploye/sendmail/email/' + this._email.emaill + '/subject/' + this._email.subject + '/content/' + this._email.text).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(`${this.email.emaill} `, 'email sended', {
+          this.toast.success(`${this.email.emaill} `, 'E-mail a été envoyé', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -144,13 +144,13 @@ export class PersonnelEmployesService {
   public save() {
     // tslint:disable-next-line:max-line-length
     if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champs`, 'Un champ est  vide', {
         timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
       });
-      this._ajouteEmp = 'champ est vide';
+      this._ajouteEmp = 'Champ est vide';
       document.getElementById('span').style.color = 'red';
     } else {
       this.http.post<number>(this._url + 'save', this.employe).subscribe(
@@ -174,13 +174,13 @@ export class PersonnelEmployesService {
             this._ajouteEmp = 'format du email est incorrect';
             document.getElementById('span').style.color = 'red';
           } else {
-            this.toast.success(`${this.employe.fullName} add employe to the database.`, 'employe Added', {
+            this.toast.success(`${this.employe.fullName} a été ajouté au base de données`, 'employé ajouté', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
               positionClass: 'toast-top-right'
             });
-            this._ajouteEmp = 'employe est bien ajouter';
+            this._ajouteEmp = 'Employé est bien ajouté avec succées';
             document.getElementById('span').style.color = 'green';
             this.employes.push(this.cloneEmploye(this.employe));
             this.employe = null;
@@ -198,13 +198,13 @@ export class PersonnelEmployesService {
     console.log('ha tell ' + this.EditEmploye.tel);
     // tslint:disable-next-line:max-line-length
     if ((this.EditEmploye.fullName == null || this.EditEmploye.adresse == null || this.EditEmploye.fonction == null  || this.EditEmploye.email == null || this.EditEmploye.tel == null) || (this.EditEmploye.fullName == null && this.employe.adresse == null && this.EditEmploye.fonction == null &&  this.EditEmploye.email == null && this.EditEmploye.tel == null)) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champs`, 'champ est vide', {
         timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
       });
-      this._modifyEmp = 'champ est vide';
+      this._modifyEmp = 'Un Champ est vide';
       document.getElementById('span').style.color = 'red';
     } else {
       this.http.post<number>(this._url + 'update', this.EditEmploye).subscribe(
@@ -228,13 +228,13 @@ export class PersonnelEmployesService {
             this._ajouteEmp = 'format du email est incorrect';
             document.getElementById('span').style.color = 'red';
           } else {
-            this.toast.info(`${this.EditEmploye.fullName} modify employe to the database.`, 'employe Modified', {
+            this.toast.info(`${this.EditEmploye.fullName} a été bien modifié`, 'employé modifié', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
               positionClass: 'toast-top-right'
             });
-            this._modifyEmp = 'employe est bien modifie';
+            this._modifyEmp = 'Employé est bien modifié aec succées';
             document.getElementById('span').style.color = 'green';
             this.findAll();
             this.EditEmploye = null;
