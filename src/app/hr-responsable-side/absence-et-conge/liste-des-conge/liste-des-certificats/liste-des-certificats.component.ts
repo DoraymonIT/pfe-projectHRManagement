@@ -14,7 +14,12 @@ export class ListeDesCertificatsComponent implements OnInit {
   constructor(private congeService: CongeService) { }
 
   ngOnInit(): void {
+    this.congeService.findallCertificatDansCetteAnnee();
   }
+  getYear(): number{
+    return new Date().getFullYear();
+  }
+
   get congesCertificat(): Array<CongeEmploye> {
     return this.congeService.congesCertificat;
   }

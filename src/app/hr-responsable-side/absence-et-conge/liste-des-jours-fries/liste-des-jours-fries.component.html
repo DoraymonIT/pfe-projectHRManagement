@@ -1,10 +1,22 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<div style="    text-align: left; margin-bottom: 10px;">
-  <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerLalisteDeConge()"
-matTooltip="Ce button permet d imprimer ce table en format PDF"
-><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
+<div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
+  <div class="card-body">
+    <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+    <div style=" text-align: left; margin-bottom: 10px;">
+      <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerLalisteDeConge()"
+              matTooltip="Ce button permet d imprimer ce table en format PDF"
+      ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
+    </div>
+    <mat-form-field  style="width: 500px">
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'employe concerené</mat-label>
+      <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeByDotiAndLibelle()">
+        <mat-option [value]="null">---None---</mat-option>
+        <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
-<h4 > Liste de congé en détailes de {{employefullname}}  </h4>
+
+<h4 style="margin-top: 40px"> Liste de congé en détailes de {{employefullname}}  </h4>
 
 <table class="table table-hover table-striped table-dark" style="color: wheat">
   <thead>

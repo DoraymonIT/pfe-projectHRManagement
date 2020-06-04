@@ -14,6 +14,8 @@ private _conges: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
 private _congesCertificat: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
+  private _congesCertificatCalendrier: Array<CongeEmploye>;
+// tslint:disable-next-line:variable-name
 private _congeEmploye: CongeEmploye;
 // tslint:disable-next-line:variable-name
 private _typeConge: Array<TypeCongee>;
@@ -23,6 +25,7 @@ private _filterrsult: TypeCongee;
 private _employefullname: string;
 // tslint:disable-next-line:variable-name
   private _ajouteCongeEmp: string;
+
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
   public trouverCongéParSonDoti(value: string) {
@@ -162,11 +165,33 @@ private _employefullname: string;
         console.log('eroro', eror);
       });
   }
+public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
+  // tslint:disable-next-line:max-line-length
+  this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByEmployeDotiAndCongeeLibelle/matricule/' + doti + '/libelle/' + libelle).subscribe(
+    data => {
+      this.conges = data;
+    }, eror => {
+      console.log('eroro', eror);
+    });
+
+}
   public findCongeByAnne(annee: number, type: string) {
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findCongeByAnne/annee/' + annee + '/type/' + type).subscribe(
       data => {
         this.congesCertificat = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+
+  public findallCertificatDansCetteAnnee() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findListeCertificatByAnnee').subscribe(
+      data => {
+        this.congesCertificatCalendrier = data;
+        console.log('ana hna tani');
       }, eror => {
         console.log('eroro', eror);
       });
@@ -245,6 +270,22 @@ private _employefullname: string;
 
   set ajouteCongeEmp(value: string) {
     this._ajouteCongeEmp = value;
+  }
+
+  get congesCertificatCalendrier(): Array<CongeEmploye> {
+    if (this._congesCertificatCalendrier == null) {
+      this._congesCertificatCalendrier = new Array<CongeEmploye>();
+      this._congesCertificatCalendrier.forEach(conge => {
+        conge = new CongeEmploye();
+        conge.congee = new TypeCongee();
+        conge.employe = new Employe();
+      });
+    }
+    return this._congesCertificatCalendrier;
+  }
+
+  set congesCertificatCalendrier(value: Array<CongeEmploye>) {
+    this._congesCertificatCalendrier = value;
   }
 
   get congesCertificat(): Array<CongeEmploye> {
