@@ -1,7 +1,7 @@
-<div class="container" style="padding-top: 30px; text-align: center;">
+<div class="container-fluid" style="padding-top: 30px; text-align: center;">
   <h6 style="text-align: center;" >
-  <i class="fas fa-video    "></i> Titre de vidéo 
-    
+    <i class="fas fa-video    "></i> Titre de video
+
   </h6>
   <video
     class="video-fluid z-depth-1"
@@ -9,7 +9,7 @@
     loop
     controls
     muted
-    style="width: 800px; margin: 20px;"
+    style="width: 800px; height: 600px;"
   >
     <source src="../../../assets/video/PFE4.mp4" type="video/mp4" />
   </video>
@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-md-12">
       <h6 style="text-align: center;cursor:pointer" (click)="show()">
-        <i class="fas fa-history"></i> Historique de l'activité d'Aujourd'Hui
+        <i class="fas fa-history"></i> Historique de l activite d Aujourd Hui
         <i class="fas fa-chevron-circle-down"></i>
       </h6>
       <div class="scrolli" style="overflow: scroll;" id="menu1">
@@ -28,16 +28,12 @@
           aria-label="Color selection"
         >
           <mat-chip
-            >Ajouter un fonctionnaire au liste des employes a 29/03/2020 a
+          >Ajouter un fonctionnaire au liste des employes a 29/03/2020 a
             12:22:01 AM
           </mat-chip>
           <mat-chip
-            >Affecter un conge de type exceptonnelle au employe dont le doti est
+          >Affecter un conge de type exceptonnelle au employe dont le doti est
             FSG23462 a 29/03/2020 a 02:52:21 PM
-          </mat-chip>
-          <mat-chip
-            >Evaluer et etudier le grade de l employe dont le doti est FSG23462
-            a 29/03/2020 a 02:52:21 PM
           </mat-chip>
         </mat-chip-list>
       </div>

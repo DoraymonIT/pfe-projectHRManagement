@@ -10,7 +10,7 @@
     <div class="scrolli">
       <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
       border: 2px solid white;"
-   
+
       >
         <thead>
         <th style=" border: 2px solid white;">Employé</th>
@@ -22,7 +22,7 @@
         <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
         <tr *ngFor="let c of documents ">
-          <td>{{c.employe.fullName}}</td>
+          <td>{{c.employe.firstName + " " + c.employe.lastName}}</td>
           <td>{{c.typeDeDocument.libelle }}</td>
           <td>{{c.dateDemande}}</td>
           <td >{{c.maniereDeRetrait}}</td>
@@ -42,7 +42,7 @@
       </table>
       <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
     </div>
-     
+
     </div>
   </mat-tab>
   <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">

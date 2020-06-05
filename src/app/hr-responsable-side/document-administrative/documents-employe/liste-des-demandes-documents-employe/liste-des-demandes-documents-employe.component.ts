@@ -26,9 +26,10 @@ cols: any[];
       { field: 'id', header: 'ID' },
       { field: 'cin', header: 'CIN' },
       { field: 'doti', header: 'Numéro' },
-      { field: 'fullName', header: 'Nom Complet' },
+      { field: 'firstName', header: 'Prénom' },
+      { field: 'lastName', header: 'Nom' },
       { field: 'email', header: 'G-mail' },
-      
+
     ];
   }
   get employes(): Array<Employe> {
@@ -45,7 +46,7 @@ cols: any[];
     return this.documentService.documents;
   }
   public getFullName(employe: Employe): string{
-    return employe.fullName;
+    return employe.firstName + employe.lastName;
   }
   trouverHistoriqueDemandeDialog(employe: Employe) {
     this.documentService.trouverDemandeParSonDoti(employe);

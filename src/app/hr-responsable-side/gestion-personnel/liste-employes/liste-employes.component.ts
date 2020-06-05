@@ -21,7 +21,8 @@ export class ListeEmployesComponent implements OnInit {
     this.listeVide();
     this.cols = [
       { field: 'cin', header: 'C I N' },
-      { field: 'fullName', header: 'Nom Complet' },
+      { field: 'firstName', header: 'Prenom' },
+      { field: 'lastName', header: 'nom' },
       { field: 'pays', header: 'Pays' },
       { field: 'email', header: 'G-mail' },
       { field: 'doti', header: 'DOTI' },
@@ -53,11 +54,9 @@ public listeVide():boolean{
     return this.employes.length <1 ? true:false;
 }
 public deleteByReference(employe: Employe) {
-console.log("ha howa:"+ employe.fullName);
 this.employeService.deleteByReference(employe);
 }
 public editerUnEmployer(employe: Employe){
-console.log(employe);
 this.employeService.editerUnEmployer(employe);
 }
 }

@@ -8,17 +8,17 @@
   <mat-form-field style="padding-bottom:10px;width:100%">
     <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employé  concerné </mat-label>
     <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
-      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
     </mat-select>
   </mat-form-field>
   <div class="ui-g ui-fluid" style="padding:10px" id="fourmule">
     <div class="card-header" style="text-align: center;width: 100%;"><h4 style="text-align: center"> Liste des grades d'employé ayant le numéro : {{employeInfo.doti}} </h4></div>
     <table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
       <thead>
-      <th>Numéro de l'employé</th>
-      <th>Grade</th>
+      <th>doti employe</th>
+      <th>grade</th>
       <th>Date Affectation</th>
-      <th >Action</th>
+      <th style="padding-left: 40px">Action</th>
       </thead>
       <tbody>
       <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
@@ -35,10 +35,7 @@
       </tr>
       </tbody>
     </table>
-    <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerLesGradesDeEmploye(this.gradesEployess)"
-    matTooltip="Ce button permet d imprimer ce table en format PDF"
-    ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
-    <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
+    <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
   </div>
 </div>
 <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->

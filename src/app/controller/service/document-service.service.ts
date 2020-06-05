@@ -187,10 +187,19 @@ public ajoutedemandeDecumentTitre() {
         console.log('eroro', eror);
       });
   }
+  public getByTypeDocument(libelle: string, doti: string) {
+    this.http.get<Array<DemaneDeDocument>>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/findByTypeDeDocumentLibelleAndEmployeDoti/libelle/' + libelle + '/doti/' + doti).subscribe(
+      data => {
+        this.documentsByDoti = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   public findAllTypeDocument() {
     this.http.get<Array<TypeDocument>>('http://localhost:8080/gestionDesEmployee-Api/TypeDocument/findAll').subscribe(
       data => {
-        this._typeDocuments = data ;
+        this.typeDocuments = data ;
         }, eror => {
         console.log('eroro', eror);
       });
@@ -249,7 +258,7 @@ public ajoutedemandeDecumentTitre() {
     this.http.get<Array<DemaneDeDocument>>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/findByEmployeDoti/doti/' + employe.doti).subscribe(
       data => {
         this.documentsByDoti = data ;
-        this.fullname = employe.fullName;
+        this.fullname = employe.firstName + employe.lastName;
        }, eror => {
         console.log('eroro', eror);
       });
@@ -273,6 +282,9 @@ public editeUneDemande(demande: DemaneDeDocument) {
   get typeDocuments(): Array<TypeDocument> {
     if (this._typeDocuments == null) {
       this._typeDocuments = new Array<TypeDocument>();
+      this._typeDocuments.forEach(doc =>{
+        doc = new TypeDocument();
+      });
     }
     return this._typeDocuments;
   }

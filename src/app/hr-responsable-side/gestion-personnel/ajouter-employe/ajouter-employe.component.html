@@ -9,10 +9,10 @@
       <div class="col-md-6">
         <div class="controles-container">
           <mat-form-field>
-            <input matInput placeholder="Nom *" [(ngModel)]="employe.fullName" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="prenom *" [(ngModel)]="employe.firstName" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Prénom *" >
+            <input matInput placeholder="nom *" [(ngModel)]="employe.lastName" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="CIN *" [(ngModel)]="employe.cin" [ngModelOptions]="{standalone: true}">
@@ -77,7 +77,7 @@
               <mat-option value="Marie">Marié</mat-option>
               <mat-option value="Celebataire">Célébataire</mat-option>
               <mat-option value="Divorce">Divorcé</mat-option>
-           
+
             </mat-select>
           </mat-form-field>
           <mat-form-field *ngIf="show()">

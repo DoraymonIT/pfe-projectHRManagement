@@ -7,7 +7,8 @@ export class Employe {
   id: number;
   doti: string;
   enfants: number;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   cin: string;
   email: string;
   dateEntree: Date;

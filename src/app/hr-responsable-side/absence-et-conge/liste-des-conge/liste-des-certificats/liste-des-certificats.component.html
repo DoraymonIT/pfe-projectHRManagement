@@ -1,3 +1,5 @@
+<mat-tab-group style="width: 100%;">
+  <mat-tab label="historique des certificat medicaux">
 <div class="example-large-box mat-elevation-z4" >
   <mat-toolbar  style="cursor: pointer;">
     <mat-toolbar-row>
@@ -39,7 +41,7 @@
       <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
       <tr *ngFor="let c of congesCertificat">
-        <td>{{c.employe.fullName}}</td>
+        <td>{{c.employe.firstName + c.employe.lastName}}</td>
         <td>{{c.congee.libelle}}</td>
         <td>{{c.dateDeDebut}}</td>
         <td>{{c.periode}}</td>
@@ -55,3 +57,8 @@
     <button mat-raised-button class="btn"style="background-color: white;color: black;" ><i class="fa fa-file-pdf"  ></i> Export <b>PDF</b> </button>
   </div>
 </div>
+  </mat-tab>
+  <mat-tab label="calendrier des certificats de maladies pour année {{getYear()}}" style="width: 25%;" tabindex="4">
+    <app-calendrier-des-certificats></app-calendrier-des-certificats>
+  </mat-tab>
+</mat-tab-group>

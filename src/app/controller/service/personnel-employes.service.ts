@@ -13,6 +13,7 @@ import { Emoluments } from '../model/emoluments.model';
 import { Revenu } from '../model/revenu.model';
 import { EmailValidator } from '@angular/forms';
 import { Email } from '../model/email.model';
+import {RapportDeEvaluation} from '../model/rapport-de-evaluation.model';
 
 
 
@@ -140,10 +141,20 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
+  public findAllemployeAyantDateAvancementProche() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/getProchaineAvancement').subscribe(
+      data => {
+        this.employesByEvaluationToday = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   // save
   public save() {
     // tslint:disable-next-line:max-line-length
-    if ((this.employe.fullName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.fullName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
+    if ((this.employe.firstName == null ||this.employe.lastName == null || this.employe.cin == null || this.employe.adresse == null || this.employe.fonction == null || this.employe.dateDeNaissance == null || this.employe.lieuDeNaissance == null || this.employe.email == null) || (this.employe.firstName == null &&this.employe.lastName == null && this.employe.cin == null && this.employe.adresse == null && this.employe.fonction == null && this.employe.dateDeNaissance == null && this.employe.lieuDeNaissance == null && this.employe.email == null)) {
       this.toast.error(`Remplir toutes les champs`, 'Un champ est  vide', {
         timeOut: 2500,
         progressBar: true,
@@ -174,7 +185,7 @@ export class PersonnelEmployesService {
             this._ajouteEmp = 'format du email est incorrect';
             document.getElementById('span').style.color = 'red';
           } else {
-            this.toast.success(`${this.employe.fullName} a été ajouté au base de données`, 'employé ajouté', {
+            this.toast.success(`${this.employe.firstName + this.employe.lastName} a été ajouté au base de données`, 'employé ajouté', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -191,13 +202,8 @@ export class PersonnelEmployesService {
     }
   }
   public update() {
-    console.log('ha data ' + this.EditEmploye.fullName);
-    console.log('ha adress ' + this.EditEmploye.adresse);
-    console.log('ha fonction ' + this.EditEmploye.fonction);
-    console.log('ha email ' + this.EditEmploye.email);
-    console.log('ha tell ' + this.EditEmploye.tel);
     // tslint:disable-next-line:max-line-length
-    if ((this.EditEmploye.fullName == null || this.EditEmploye.adresse == null || this.EditEmploye.fonction == null  || this.EditEmploye.email == null || this.EditEmploye.tel == null) || (this.EditEmploye.fullName == null && this.employe.adresse == null && this.EditEmploye.fonction == null &&  this.EditEmploye.email == null && this.EditEmploye.tel == null)) {
+    if ((this.EditEmploye.firstName == null ||this.EditEmploye.lastName == null || this.EditEmploye.adresse == null || this.EditEmploye.fonction == null  || this.EditEmploye.email == null || this.EditEmploye.tel == null) || (this.EditEmploye.firstName == null && this.EditEmploye.lastName && this.employe.adresse == null && this.EditEmploye.fonction == null &&  this.EditEmploye.email == null && this.EditEmploye.tel == null)) {
       this.toast.error(`Remplir toutes les champs`, 'champ est vide', {
         timeOut: 2500,
         progressBar: true,
@@ -228,7 +234,7 @@ export class PersonnelEmployesService {
             this._ajouteEmp = 'format du email est incorrect';
             document.getElementById('span').style.color = 'red';
           } else {
-            this.toast.info(`${this.EditEmploye.fullName} a été bien modifié`, 'employé modifié', {
+            this.toast.info(`${this.EditEmploye.firstName + this.EditEmploye.lastName} a été bien modifié`, 'employé modifié', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -257,7 +263,8 @@ export class PersonnelEmployesService {
     myClone.dernierNote = null;
     myClone.doti = employe.doti;
     myClone.enfants = employe.enfants;
-    myClone.fullName = employe.fullName;
+    myClone.firstName = employe.firstName;
+    myClone.lastName = employe.lastName;
     myClone.email = employe.email;
     myClone.lieuDeNaissance = employe.lieuDeNaissance;
     myClone.gender = employe.gender;

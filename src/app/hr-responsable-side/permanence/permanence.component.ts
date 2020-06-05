@@ -3,6 +3,7 @@ import {PersonnelEmployesService} from '../../controller/service/personnel-emplo
 import {PermanenceAdministrativeService} from '../../controller/service/permanence-administrative.service';
 import {PermanenceAdministrative} from '../../controller/model/PermanenceAdministrative';
 import {Employe} from '../../controller/model/employe.model';
+import {CongeService} from '../../controller/service/conge.service';
 
 @Component({
   selector: 'app-permanence',
@@ -16,6 +17,7 @@ export class PermanenceComponent implements OnInit {
   cols: any[];
 
   ngOnInit(): void {
+    this.pemanenceAdministrative.findAll();
   }
   get employes(): Array<Employe> {
     return this.employerService.employes;

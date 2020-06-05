@@ -1,9 +1,7 @@
 .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
-#tableavancement{
-  display: none;
-}
+
 #gradeNonTraite{
   display: none;
 }

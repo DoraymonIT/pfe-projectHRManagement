@@ -11,7 +11,7 @@
           <mat-form-field>
             <mat-label> <i class="fas fa-user-tie    "></i> Selectionnew l'employé concerné</mat-label>
             <mat-select [(ngModel)]="prixEmploye.employe.doti" [ngModelOptions]="{standalone: true}">
-              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
