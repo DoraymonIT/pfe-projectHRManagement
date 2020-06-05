@@ -99,7 +99,7 @@ public editerCePrixx(prix: PrixEmploye){
         this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/save', this.prixEmploye).subscribe(
         data => {
           // console.log(data);
-          this.toast.success(`${this.prixEmploye.employe.fullName} add prix employe to the database.`, 'prix Added', {
+          this.toast.success(`${this.prixEmploye.employe.firstName + this.prixEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -128,7 +128,7 @@ public editerCePrixx(prix: PrixEmploye){
     } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/update', this.prixEmploye).subscribe(
         data => {
-          this.toast.info(`${this.prixEmploye.employe.fullName} add prix employe to the database.`, 'prix Added', {
+          this.toast.info(`${this.prixEmploye.employe.firstName + this.prixEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

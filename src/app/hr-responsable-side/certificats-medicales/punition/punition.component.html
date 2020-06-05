@@ -13,7 +13,7 @@
             <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employé concerené</mat-label>
             <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPunitionnByDoti()">
               <mat-option [value]="null">---NuLL---</mat-option>
-              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + "  " + gr.lastName}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -35,7 +35,7 @@
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
           <tr *ngFor="let c of punitions">
-            <td>{{c.employe.fullName}}</td>
+            <td>{{c.employe.firstName + c.employe.lastName}}</td>
             <td>{{c.punition.libelle}}</td>
             <td>{{c.dateObtenation}}</td>
             <!-- <td>

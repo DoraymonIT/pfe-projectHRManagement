@@ -104,7 +104,7 @@ public setPunition(punitionn: PunitionEmploye) {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/save', this.punitionEmploye).subscribe(
         data => {
           // console.log(data);
-          this.toast.success(`${this.punitionEmploye.employe.fullName} add prix employe to the database.`, 'prix Added', {
+          this.toast.success(`${this.punitionEmploye.employe.firstName + this.punitionEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',

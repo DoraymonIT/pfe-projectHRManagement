@@ -132,7 +132,7 @@ private _rapportEvaluation: RapportDeEvaluation;
       data => {
         // console.log(data);
         if (data === 1)
-          this.toast.info(` le rqpport de ${this.rapportEvaluation.employe.fullName} a modifié .`, 'Rapport Modifié', {
+          this.toast.info(` le rqpport de ${this.rapportEvaluation.employe.firstName + this.rapportEvaluation.employe.lastName} a modifié .`, 'Rapport Modifié', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

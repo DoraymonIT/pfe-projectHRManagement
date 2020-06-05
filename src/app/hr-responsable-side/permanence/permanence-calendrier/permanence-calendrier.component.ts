@@ -22,10 +22,9 @@ export class PermanenceCalendrierComponent implements OnInit {
     this.permanences.forEach(per => {
       this.calendarEvents.push({
         date: per.date.toString(),
-        title: per.employe.fullName,
+        title: per.employe.firstName + per.employe.lastName,
       });
     });
-    console.log('ha howa event jdid' + this.calendarEvents.toString());
   }
   get permanences(): Array<PermanenceAdministrative> {
     return this.pemanenceAdministrative.perm;

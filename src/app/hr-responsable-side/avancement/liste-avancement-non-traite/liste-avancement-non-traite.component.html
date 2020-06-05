@@ -8,7 +8,7 @@
   <mat-form-field style="padding-bottom:10px;width:100%">
     <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employé  concerné </mat-label>
     <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
-      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
     </mat-select>
   </mat-form-field>
   <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="fourmule">

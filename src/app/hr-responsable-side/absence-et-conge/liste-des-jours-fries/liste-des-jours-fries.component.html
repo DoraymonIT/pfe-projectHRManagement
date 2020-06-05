@@ -7,7 +7,7 @@
       ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
     </div>
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'employe concerené</mat-label>
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de congé concerené</mat-label>
       <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeByDotiAndLibelle()">
         <mat-option [value]="null">---None---</mat-option>
         <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle}}</mat-option>
@@ -30,7 +30,7 @@
   <tbody>
     <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
     <tr *ngFor="let c of conges">
-      <td>{{c.employe.fullName}}</td>
+      <td>{{c.employe.firstName + c.employe.lastName}}</td>
       <td>{{c.congee.libelle}}</td>
       <td>{{c.dateDeDebut.toString()}}</td>
       <td>{{c.periode}}</td>

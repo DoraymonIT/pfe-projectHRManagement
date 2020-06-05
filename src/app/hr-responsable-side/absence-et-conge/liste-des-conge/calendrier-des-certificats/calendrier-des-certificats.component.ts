@@ -27,7 +27,7 @@ export class CalendrierDesCertificatsComponent implements OnInit {
     this.congeService.findallCertificatDansCetteAnnee();
     this.congesCertificat.forEach(per => {
       this.calendarEvents.push({
-        title: per.employe.fullName,
+        title: per.employe.firstName + per.employe.lastName,
         start: per.dateDeDebut.toString(),
         end: per.dateDeFin.toString(),
       });

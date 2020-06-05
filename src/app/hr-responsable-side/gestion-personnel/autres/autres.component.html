@@ -30,7 +30,7 @@
               <div class="col-md-6">
 
                 <span>
-                  <h6>Nom Complet : {{employeInfo.fullName}} </h6>
+                  <h6>Nom Complet : {{employeInfo.firstName + employeInfo.lastName}} </h6>
                 </span>
 
               </div>
@@ -121,7 +121,7 @@
                   <h6>Nom de Chef de département:
                     <div *ngIf="employeInfo.sup == null; then thenBlock else elseBlock"></div>
                     <ng-template #thenBlock>Pas de sup</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.sup.fullName}} </ng-template>
+                    <ng-template #elseBlock> {{employeInfo.sup.firstName + employeInfo.sup.lastName}} </ng-template>
                   </h6>
                 </span>
 

@@ -73,7 +73,7 @@ export class PermanenceAdministrativeService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/save', this._permanenceAdministrative).subscribe(
       data => {
         console.log(data);
-        this.toast.success(`${this.permanenceAdministrative.employe.fullName} add permanence Administrative to the database.`, 'Permanence Administrative Added', {
+        this.toast.success(`${this.permanenceAdministrative.employe.firstName + this.permanenceAdministrative.employe.lastName} add permanence Administrative to the database.`, 'Permanence Administrative Added', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',

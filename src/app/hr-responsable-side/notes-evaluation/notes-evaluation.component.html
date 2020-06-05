@@ -6,7 +6,7 @@
      [(ngModel)]="this.employe.dateDeProchainNote" placeholder="yyyy-MM-dd"
       (ngModelChange)="getemployeByDate()">
   </div>
-   
+
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableNote">
       <mat-toolbar>
         <mat-toolbar-row>
@@ -27,12 +27,12 @@
 
         <tr *ngFor="let c of notesNonTraites">
           <!-- <td>{{c.id}}</td> -->
-          <td>{{c.fullName}}</td>
+          <td>{{c.firstName + c.lastName}}</td>
           <td>{{c.doti}}</td>
           <td>{{c.dateDeProchainNote}}</td>
           <td>{{c.dernierNote.moyenGeneral}}</td>
           <td>
-            <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="affecteruneNote(c)" ></button>
+            <button class="btn btn-primary btn-sm fa  fa-check-square"  ></button>
             <button class="btn btn-info btn-sm fa fa-trash"></button>
           </td>
         </tr>

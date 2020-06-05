@@ -33,7 +33,7 @@ private _employefullname: string;
       data => {
         this.conges = data;
         this.conges.forEach(conge => {
-          this.employefullname = conge.employe.fullName;
+          this.employefullname = conge.employe.firstName + conge.employe.lastName;
         });
       }, eror => {
         console.log('eroro', eror);
@@ -140,7 +140,7 @@ private _employefullname: string;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/save', this.congeEmploye).subscribe(
       data => {
         if (data > 0) {
-          this.toast.success(`Un congé a été effectuer au ${this.congeEmploye.employe.fullName} `, 'congé est Bien affecter', {
+          this.toast.success(`Un congé a été effectuer au ${this.congeEmploye.employe.firstName + this.congeEmploye.employe.lastName} `, 'congé est Bien affecter', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',

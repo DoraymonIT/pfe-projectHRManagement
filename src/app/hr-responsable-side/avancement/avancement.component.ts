@@ -30,6 +30,7 @@ cherche3: boolean;
     this.cherche1 = false;
     this.cherche2 = false;
     this.cherche3 = false;
+    this.employeService.findAllemployeAyantDateAvancementProche();
   }
   public getemployeByDate() {
     document.getElementById('tableEvaluation').style.display = 'inline';
