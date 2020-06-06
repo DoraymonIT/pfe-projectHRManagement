@@ -16,6 +16,7 @@ mat-sidenav{
 .mat-menu-content{
   height: 100px;
 }
+
 .list1:hover{
   cursor: pointer;
   background-color: rgb(131, 131, 131);

@@ -24,7 +24,7 @@ export class ParametresAvancesComponent implements OnInit {
   }
   public show(){
     if(this.showfrom === false){
-      document.getElementById('form').style.display = 'inline';
+      document.getElementById('form').style.display = 'block';
       this.showfrom = true;
     } else {
       document.getElementById('form').style.display = 'none';
