@@ -22,6 +22,15 @@ export class ContacterUnEmployeComponent implements OnInit {
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
+  public getEmailubject(value: String){
+    if(value == 'doucumentpret'){
+      this.email.subject = 'document est prèt';
+      this.email.text = ' votre document est prèt merci de se deplacer au guichet pour tirer votre document';
+    } else if(value == 'autre'){
+    document.getElementById('emailSujet').style.display = 'inline';
+    document.getElementById('emailText').style.display = 'inline';
+  }
+  }
   get email(): Email {
     return this.employeService.email;
   }

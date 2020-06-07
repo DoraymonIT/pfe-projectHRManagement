@@ -19,7 +19,7 @@
 
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Numéro Administratif *" >
+            <input matInput placeholder="Numéro Administratif *" [(ngModel)]="employe.doti" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="Gmail" [(ngModel)]="employe.email" [ngModelOptions]="{standalone: true}">
@@ -47,7 +47,7 @@
 
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Ville de Résidence" [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Ville de Résidence" [(ngModel)]="employe.lieuDeResedence" [ngModelOptions]="{standalone: true}">
 
           </mat-form-field>
 

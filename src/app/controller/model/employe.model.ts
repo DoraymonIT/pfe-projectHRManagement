@@ -30,6 +30,7 @@ export class Employe {
   dateAvancementPrevue: Date;
   soldeRestantesCongeExceptionnel: number;
   dernierGrade: GradeEmploye;
+  lieuDeResedence: string;
 }
 
 

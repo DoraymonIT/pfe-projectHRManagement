@@ -27,7 +27,6 @@ export class GestionPersonnelComponent implements OnInit {
       { field: 'lastName', header: 'Nom' },
       { field: 'email', header: 'email' },
       { field: 'tel', header: 'Téléphone' },
-      { field: 'soldeRestantesCongeExceptionnel', header: 'Solde Restantes congé exceptionnel' },
       // { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
 
     ];
