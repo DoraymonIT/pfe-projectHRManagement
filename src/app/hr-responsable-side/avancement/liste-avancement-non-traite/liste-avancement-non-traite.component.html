@@ -1,19 +1,19 @@
-<mat-toolbar>
+﻿<mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" > <i class="fas fa-search-plus    "></i> Chercher pour voir historique de grade d'un employe </span>
+    <span class="span" > <i class="fas fa-search    "></i> Chercher pour voir historique de grade d'un employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container" style="padding-top:20px">
   <mat-form-field style="padding-bottom:10px;width:100%">
-    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employer  en utilisant le doti</mat-label>
+    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employé  concerné </mat-label>
     <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
-      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="fourmule">
-    <div class="card-header" style="text-align: center"><h1 style="text-align: center"> Liste des grades de employe ayant le nombre doti : {{employeInfo.doti}} </h1></div>
-    <table class="table table-hover table-dark table-striped" style="color: wheat">
+  <div class="ui-g ui-fluid" style="padding:10px" id="fourmule">
+    <div class="card-header" style="text-align: center;width: 100%;"><h4 style="text-align: center"> Liste des grades d'employé ayant le numéro : {{employeInfo.doti}} </h4></div>
+    <table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
       <thead>
       <th>doti employe</th>
       <th>grade</th>

@@ -16,9 +16,9 @@
                 <div class="container-fluid">
                       <div class="controles-container">
                   <mat-form-field>
-                    <mat-label> <i class="fas fa-user-tie"></i> Selectionnez l employe a avancer : </mat-label>
+                    <mat-label> <i class="fas fa-user-tie"></i> Selectionnez l employe concerne : </mat-label>
                     <mat-select [(ngModel)]="this.rapportEvaluation.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="findAllGradeEmployeByDoti(this.rapportEvaluation.employe.doti)" [value]="this.rapportEvaluation.employe.doti" >
-                      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
+                      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
@@ -32,7 +32,7 @@
             </form>
             </div>
           <div style="float: right;">
-            <button mat-button matStepperNext >Next</button>
+            <button mat-button matStepperNext >Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -51,7 +51,7 @@
                   <div class="col-md-6">
                     <div class="controles-container">
                       <mat-form-field>
-                        <mat-label> <i class="fas fa-user-tie"></i> liste des fomations</mat-label>
+                        <mat-label>  liste des fomations</mat-label>
                         <mat-select [(ngModel)]="formationEmploye.attestation" [ngModelOptions]="{standalone: true}" (ngModelChange)="getformation()">
                           <mat-option *ngFor="let gr of rapportEvaluation.formation" [value]="gr.attestation">{{gr.attestation }}</mat-option>
                         </mat-select>
@@ -100,8 +100,8 @@
             </form>
             </div>
           <div style="float: right;">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Retour</button>
+            <button mat-button matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -119,7 +119,7 @@
                 <div class="row">
                     <div class="controles-container">
                       <mat-form-field>
-                        <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+                        <mat-label> Trouver les prix </mat-label>
                         <mat-select [(ngModel)]="prixEmploye.prix.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getprix()">
                           <mat-option *ngFor="let gr of rapportEvaluation.prix" [value]="gr.prix.libelle">{{gr.prix.libelle }}</mat-option>
                         </mat-select>
@@ -146,8 +146,8 @@
             </form>
           </div>
           <div style="float: right;">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Retour</button>
+            <button mat-button matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -201,8 +201,8 @@
             </form>
           </div>
           <div style="float: right;">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Retour</button>
+            <button mat-button matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
@@ -220,7 +220,7 @@
                 <div class="row">
                   <div class="controles-container">
                   <mat-form-field style="padding-right: 250px;margin-left: 100px">
-                    <mat-label> <i class="fas fa-user-tie"></i> Selectionnez l employe a noter : </mat-label>
+                    <mat-label> Trouver la note recherché : </mat-label>
                     <mat-select [(ngModel)]="note.id" [ngModelOptions]="{standalone: true}" (ngModelChange)="getnote()">
                       <mat-option *ngFor="let gr of rapportEvaluation.noteGenerale" [value]="gr.id">{{gr.id}}</mat-option>
                     </mat-select>
@@ -231,7 +231,7 @@
                     <mat-datepicker-toggle matSuffix [for]="pi22"></mat-datepicker-toggle>
                     <mat-datepicker #pi22></mat-datepicker>
                   </mat-form-field>
-                  <a (click)="afficher7()">  <div class="card-header"> Ajouter une note De Rentabilite <i class="fas fa-chevron-circle-down    "></i></div></a>
+                  <a (click)="afficher7()">  <div class="card-header"> Ajouter une note De Rentabilité <i class="fas fa-chevron-circle-down    "></i></div></a>
                   <div id="div7" class="card-body">
                     <mat-form-field style="padding-right: 200px;margin-left: 200px">
                       <input matInput placeholder="mention:*" [(ngModel)]="note.noteDeRentabilite.mention" [ngModelOptions]="{standalone: true}" type="number" [value]="note.noteDeRentabilite.mention">
@@ -266,7 +266,7 @@
                       <input matInput placeholder="remarque:*" [(ngModel)]="note.noteDeCapaciteDeOrganisation.remarque" [ngModelOptions]="{standalone: true}" [value]="note.noteDeCapaciteDeOrganisation.remarque">
                     </mat-form-field>
                   </div>
-                  <a (click)="afficher11()">  <div class="card-header"> Ajouter une note De Affectation Des Taches Liee Au Travail <i class="fas fa-chevron-circle-down    "></i></div></a>
+                  <a (click)="afficher11()">  <div class="card-header"> Ajouter une note De Affectation Des Taches Liée Au Travail <i class="fas fa-chevron-circle-down    "></i></div></a>
                   <div id="div11" class="card-body">
                     <mat-form-field style="padding-right: 200px;margin-left: 200px">
                       <input matInput placeholder="mention:*" [(ngModel)]="note.noteDeAffectationDesTachesLieeAuTravail.mention" [ngModelOptions]="{standalone: true}" type="number" [value]="note.noteDeAffectationDesTachesLieeAuTravail.mention">
@@ -286,16 +286,16 @@
           </div>
 
           <div style="float: right;">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious>Retour</button>
+            <button mat-button matStepperNext>Suivant</button>
           </div>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Modifier Moyen/Mention/Remarque</ng-template>
+          <ng-template matStepLabel>Modifier Moyen / Mention / Remarque</ng-template>
           <a (click)="afficher6()">
             <mat-toolbar>
               <mat-toolbar-row>
-                <span class="span" id="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> Modifier moyen/mention/remarque  </span>
+                <span class="span" id="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> Modifier Moyen / Mention / Remarque  </span>
               </mat-toolbar-row>
             </mat-toolbar>
           </a>
@@ -305,13 +305,13 @@
                 <div class="row">
                   <div class="controles-container">
             <mat-form-field>
-              <input matInput placeholder="mention:*" [(ngModel)]="rapportEvaluation.mention" [ngModelOptions]="{standalone: true}" type="number" [value]="rapportEvaluation.mention">
+              <input matInput placeholder="Mention:*" [(ngModel)]="rapportEvaluation.mention" [ngModelOptions]="{standalone: true}" type="number" [value]="rapportEvaluation.mention">
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="moyen:*" [(ngModel)]="rapportEvaluation.moyen" [ngModelOptions]="{standalone: true}" type="number" [value]="rapportEvaluation.moyen">
+              <input matInput placeholder="Moyen:*" [(ngModel)]="rapportEvaluation.moyen" [ngModelOptions]="{standalone: true}" type="number" [value]="rapportEvaluation.moyen">
             </mat-form-field>
               <mat-form-field>
-              <input matInput placeholder="remarque:*" [(ngModel)]="rapportEvaluation.remarques" [ngModelOptions]="{standalone: true}">
+              <input matInput placeholder="Remarque:*" [(ngModel)]="rapportEvaluation.remarques" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
           <button mat-raised-button color="primary" type="submit" class="btn-block"(click)="save()"> <i class="fas fa-check-square"></i> Ajouter</button>
                   </div>
@@ -321,8 +321,9 @@
           </div>
 
           <div style="float: right;">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button matStepperPrevious>Retour</button>
+
+            <button mat-button (click)="stepper.reset()">Annuler</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>

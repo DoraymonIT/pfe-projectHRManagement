@@ -30,6 +30,7 @@ cherche3: boolean;
     this.cherche1 = false;
     this.cherche2 = false;
     this.cherche3 = false;
+    this.employeService.findAllemployeAyantDateAvancementProche();
   }
   public getemployeByDate() {
     document.getElementById('tableEvaluation').style.display = 'inline';
@@ -78,7 +79,7 @@ cherche3: boolean;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '95%';
-    dialogConfig.height = '80%';
+    dialogConfig.height = '100%';
     this.dialog.open(RapportInfoComponent,
       dialogConfig);
     this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);
@@ -89,7 +90,7 @@ cherche3: boolean;
 document.getElementById('chercher1').style.display = 'none';
 this.cherche1 = false;
  } else {
-  document.getElementById('chercher1').style.display = 'inline';
+  document.getElementById('chercher1').style.display = 'block';
   this.cherche1 = true;
   }
  }
@@ -99,7 +100,7 @@ this.cherche1 = false;
       document.getElementById('chercher2').style.display = 'none';
       this.cherche2 = false;
     } else {
-      document.getElementById('chercher2').style.display = 'inline';
+      document.getElementById('chercher2').style.display = 'block';
       this.cherche2 = true;
     }
   }

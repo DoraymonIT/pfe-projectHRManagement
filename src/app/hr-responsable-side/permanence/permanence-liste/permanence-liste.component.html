@@ -7,11 +7,11 @@
           <div style="    text-align: left; margin-bottom: 10px;">
             <button class="btn"style="background-color: white;color: black;float: left"
           matTooltip="Ce button permet d imprimer ce table en format PDF"
-          ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+          ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
           </div>
           <div style="text-align: right">
             <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-            <input type="text" pInputText size="50" placeholder="Chercher par date: yyyy-MM-dd"
+            <input type="text" pInputText size="50" placeholder="Chercher par date:Format : yyyy-MM-dd"
                    (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
           </div>
         </ng-template>

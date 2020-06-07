@@ -19,24 +19,18 @@ export class PermanenceCalendrierComponent implements OnInit {
   }
 
   public loadEvent():void {
-    // console.log('hani dkhalt tani');
-    // console.log(this.permanences.length);
     this.permanences.forEach(per => {
-      // console.log('ha howa start date:' + per.date.toString());
-      // console.log('ha howa start fullname:' + per.employe.fullName);
       this.calendarEvents.push({
         date: per.date.toString(),
-        title: per.employe.fullName,
+        title: per.employe.firstName + per.employe.lastName,
       });
     });
-    console.log('ha howa event jdid' + this.calendarEvents.toString());
   }
   get permanences(): Array<PermanenceAdministrative> {
     return this.pemanenceAdministrative.perm;
   }
   public findAll(){
     this.pemanenceAdministrative.findAll();
-    // console.log(this.permanences.length);
     this.loadEvent();
   }
 //  public  addEvent() {

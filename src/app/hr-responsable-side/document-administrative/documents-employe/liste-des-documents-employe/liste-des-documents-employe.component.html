@@ -1,11 +1,27 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+<div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
+  <div class="card-body">
+    <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
+    <div style=" text-align: left; margin-bottom: 10px;">
+      <button class="btn"style="background-color: white;color: black;float: left" matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerListedemande()"
+      ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
+    </div>
+    <mat-form-field  style="width: 500px">
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de document concerené</mat-label>
+      <mat-select [(ngModel)]="this.typeDocument.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="findAllDemandeByTypeDocument()">
+        <mat-option [value]="null">---None---</mat-option>
+        <mat-option *ngFor="let gr of typeDocuments" [value]="gr.libelle">{{gr.libelle}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
 <h4 style="float:left">Historique de demande de documents de {{fullname}} </h4>
 <table class="table table-hover table-dark table-striped" style="color: wheat">
   <thead>
   <!-- <th>Nom Complet</th> -->
   <th>Type de document</th>
   <th>Date de demande</th>
-  <th>Maniere de retrait</th>
+  <th>Manière de retrait</th>
   </thead>
   <tbody>
     <p-progressSpinner *ngIf="listeVide2()"  ></p-progressSpinner>
@@ -17,4 +33,3 @@
   </tr>
   </tbody>
 </table>
-<button mat-raised-button  class="btn" (click)="imprimerListedemande()"><i class="fa fa-file-pdf" ></i> PDF</button>

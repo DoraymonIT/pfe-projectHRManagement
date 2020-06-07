@@ -6,7 +6,7 @@
     <div style="    text-align: left; margin-bottom: 10px;">
       <button class="btn"style="background-color: white;color: black;float: left"
     matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerNoteDeEmploye(this.note)"
-    ><i class="fa fa-file-pdf" ></i>  Export <strong>PDF</strong> </button>
+    ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
     </div>
     <!-- <span class="span"> <i class="fas fa-search    "></i> Chercher les notes d un employe a partir d un date donnee </span> -->
   </mat-toolbar-row>
@@ -40,9 +40,9 @@
     <div class="col-md-6"> Mention : {{note.mention}}</div>
   </div>
   <br>
-  <h4 style="background-color: white;color: black;">Note en Detailles</h4>
+  <h4 style="background-color: white;color: black;">Note en Détailles</h4>
   <br>
-  <h6>Note De Rentabilite</h6>
+  <h6>Note De Rentabilité</h6>
   <br>
   <div class="row">
     <div class="col-md-6"> Remarque : {{note.noteDeRentabilite.remarque}}</div>
@@ -56,7 +56,7 @@
     <div class="col-md-6"> Mention : {{note.noteDeAffectationDesTachesLieeAuTravail.mention}}</div>
   </div>
   <br>
-  <h6> Note De Capacite De Organisation</h6>
+  <h6> Note De Capacité De Organisation</h6>
   <br>
   <div class="row">
     <div class="col-md-6"> Remarque : {{note.noteDeCapaciteDeOrganisation.remarque}}</div>

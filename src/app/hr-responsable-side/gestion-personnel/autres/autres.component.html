@@ -1,7 +1,8 @@
-<button  mat-raised-button color="warn" mat-dialog-close style="float: right;"  matTooltip="Fermer le dialog"> <i class="fas fa-window-close "></i> </button>
+<button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+    class="fas fa-window-close "></i> </button>
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en detailes sur cet Employe </span>
+    <span class="span"> <i class="fas fa-chart-bar    "></i> Informations en détailes sur cet Employé </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -29,7 +30,7 @@
               <div class="col-md-6">
 
                 <span>
-                  <h6>Nom Complet : {{employeInfo.fullName}} </h6>
+                  <h6>Nom Complet : {{employeInfo.firstName + employeInfo.lastName}} </h6>
                 </span>
 
               </div>
@@ -43,7 +44,7 @@
             <div class="row">
               <div class="col-md-6">
                 <span>
-                  <h6>Numero d emploi ( DOTI) : {{employeInfo.doti}}</h6>
+                  <h6>Numero : {{employeInfo.doti}}</h6>
                 </span>
 
               </div>
@@ -100,7 +101,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span> <i class="fas fa-building    "></i> Info sur son / sa departement</span>
+              <span> <i class="fas fa-building    "></i> Info sur son / sa département</span>
             </mat-panel-title>
             <mat-panel-description>
               Cette partie contient les informations sur le departement de cet employe.
@@ -111,16 +112,16 @@
               <div class="col-md-6">
 
                 <span>
-                  <h6>Departement : {{employeInfo.dep.nom}}</h6>
+                  <h6>Département : {{employeInfo.dep.nom}}</h6>
                 </span>
 
               </div>
               <div class="col-md-6">
                 <span>
-                  <h6>Nom de Chef de departement:
+                  <h6>Nom de Chef de département:
                     <div *ngIf="employeInfo.sup == null; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock>pas de sup</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.sup.fullName}} </ng-template>
+                    <ng-template #thenBlock>Pas de sup</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.sup.firstName + employeInfo.sup.lastName}} </ng-template>
                   </h6>
                 </span>
 
@@ -141,11 +142,9 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6">
-
                 <span>
                   <h6>Grade : {{employeInfo.dernierGrade.grade.libelle}} </h6>
                 </span>
-
               </div>
               <div class="col-md-6">
                 <span>
@@ -160,10 +159,10 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span><i class="fas fa-sticky-note   "></i> Informations sur son / sa Note</span>
+              <span><i class="fas fa-sticky-note   "></i> Informations sur ses Notes</span>
             </mat-panel-title>
             <mat-panel-description>
-              Cette partie contient les informations sur les notes d evaluation de cet employe.
+              Cette partie contient les informations sur les notes d évaluation de cet employé.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="container-fluid">
@@ -171,15 +170,19 @@
               <div class="col-md-6">
                 <span>
                   <h6>Moyen :
-                    <!-- {{employeInfo.dernierNote.moyenGeneral}} -->
+                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock> Pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.moyenGeneral || "Pas de Moyen"}} </ng-template>
                   </h6>
                 </span>
               </div>
               <div class="col-md-6">
                 <span>
                   <h6>Mention :
-                    <!-- {{employeInfo.dernierNote.mention}} -->
-                    </h6>
+                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock> pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.mention || "Pas de Mention"}} </ng-template>
+                  </h6>
                 </span>
               </div>
             </div>
@@ -187,7 +190,9 @@
               <div class="col-md-6">
                 <span>
                   <h6>Date de dernier Note Saisie :
-                    <!-- {{employeInfo.dernierNote.date}} -->
+                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock> pas encore noté</ng-template>
+                    <ng-template #elseBlock> {{employeInfo.dernierNote.date || "Pas de date de note"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -204,7 +209,7 @@
               <span> <i class="fas fa-money-bill-wave    "></i> Informations sur le Salaire</span>
             </mat-panel-title>
             <mat-panel-description>
-              Cette partie contient les informations sur le salaire de cet employe en detailles.
+              Cette partie contient les informations sur le salaire de cet employé en détailles.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="row" style="font-size: medium; margin-bottom: 10px">
@@ -257,23 +262,85 @@
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-        (click)="TrouverFPP(this.employeInfo.doti)">
+          (click)="TrouverFPP(this.employeInfo.doti)">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span><i class="fas fa-bookmark"></i> Formation, Prix Et Punition</span>
             </mat-panel-title>
             <mat-panel-description>
-              Cette partie contient les informations sur les formations,prix et punitions de cet employe.
+              Cette partie contient les informations sur les formations,prix et punitions de cet employé.
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-6" *ngFor="let f of formations">
+              <div class="col-md-12">
                 <h3>Formation</h3>
-                <!---Idem pour punition et prix j pense -->
-{{f.annee}} <br> {{f.attestation}} <br> {{f.etablissement}} <br> {{f.mention}} <br> {{f.ville}}
+                <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+              border: 2px solid white;">
+                  <thead>
+                    <th style=" border: 2px solid white;">Attestation</th>
+                    <th style=" border: 2px solid white;">Etablissement</th>
+                    <th style=" border: 2px solid white;">Mention</th>
+                    <th style=" border: 2px solid white;">Année</th>
+                    <th style=" border: 2px solid white;">Ville</th>
+                  </thead>
+                  <tbody>
+                    <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
+                    <tr *ngFor="let f of formations">
+                      <td>{{f.attestation}}</td>
+                      <td>{{f.etablissement}}</td>
+                      <td> {{f.mention}} </td>
+                      <td>{{f.annee}}</td>
+                      <td>
+                        {{f.ville}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="col-md-6">
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Prix</h3>
+                <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+              border: 2px solid white;">
+                  <thead>
+                    <th style=" border: 2px solid white;">Prix</th>
+                    <th style=" border: 2px solid white;">Date d obtention</th>
+
+                  </thead>
+                  <tbody>
+                    <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
+                    <tr *ngFor="let p of prixs">
+                      <td>{{p.prix.libelle}}</td>
+                      <td>{{p.dateDeObtenation}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Punition</h3>
+                <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+              border: 2px solid white;">
+                  <thead>
+                    <th style=" border: 2px solid white;">Type de punition</th>
+                    <th style=" border: 2px solid white;">Libelle</th>
+                    <th style=" border: 2px solid white;">Date de punition</th>
+
+                  </thead>
+                  <tbody>
+                    <!-- <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner> -->
+                    <tr *ngFor="let pu of punitions">
+                      <td>{{pu.punition.libelle}}</td>
+                      <td> {{pu.punition.type}}</td>
+                      <td> {{pu.dateObtenation}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -282,4 +349,5 @@
     </div>
   </div>
 </div>
-<button mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerInfoEmploye()" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+<button mat-raised-button class="btn" style=" margin-top: 20px;color:black;background-color: white;" (click)="imprimerInfoEmploye()"><i
+    class="fa fa-file-pdf"></i> Exporter le <b>PDF</b> </button>

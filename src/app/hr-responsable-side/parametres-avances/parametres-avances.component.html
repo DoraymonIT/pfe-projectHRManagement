@@ -1,58 +1,44 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> <i class="fas fa-cog    "></i> Parametres Avances </span>
+    <span class="span" id="span"> <i class="fas fa-cog    "></i> Paramètres Avancés </span>
   </mat-toolbar-row>
 </mat-toolbar>
-<div class="container-fluid" style="padding-top: 10px;">
+<div class="container-fluid" style="padding-top: 10px;" >
   <h5 style="border: 3px solid white;width: 255px;text-align: center;padding: 10px;"> <i class="fas fa-key    "></i> Reset Password</h5>
   <div class="row">
     <div class="col-md-6">
       <div class="controles-container">
         <mat-form-field>
-          <input matInput placeholder="Old Password *">
+          <input matInput placeholder="Ancienne Mot de Passe * " [(ngModel)]="userEmploye.oldpassword" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="New Password *">
+          <input matInput placeholder="Nouveau Mot de Passe * " [(ngModel)]="userEmploye.nvpassword" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
     </div>
     <div class="col-md-6">
       <div class="controles-container">
         <mat-form-field>
-          <input matInput placeholder="New Password ( Confirmation ) *">
+          <input matInput placeholder="Nouveau Mot de Pass ( Confirmation ) * " [(ngModel)]="userEmploye.nvpasswordConfirmation" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <div class="button-row" style="    padding-top: 10px;">
-          <button mat-raised-button color="primary" type="submit" class="btn-block"> <i
-              class="fas fa-check-circle    "></i> Enregistrer les changements</button>
+          <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="modifierPasswordsansCodeConfirmation()"> <i
+            class="fas fa-check-circle    "></i> Enregistrer les changements</button>
         </div>
       </div>
     </div>
   </div>
-  <h5 style="border: 3px solid white;width: 255px;text-align: center;padding: 10px;"> <i class="fas fa-user-tie    "></i>  Info sur ce compte</h5>
-  <div class="row">
-    <div class="col-md-6">
-      Nom
-    </div>
-    <div class="col-md-6">
-    Prenom
-    </div>
-  </div>
-  <h5 style="border: 3px solid white;width: 255px;text-align: center;padding: 10px;"> <i class="fas fa-question-circle    "></i>  Aide</h5>
-  <div class="row">
-    <div class="col-md-6">
-      Documentation
-    </div>
-    <div class="col-md-6">
-    Q & R
-    </div>
-  </div>
+  
   <h5 style="border: 3px solid white;width: 255px;text-align: center;padding: 10px;"> <i class="fas fa-info-circle    "></i>  A propos</h5>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <button matTooltip="Documentation de Comment utiliser cette application" mat-button  [routerLink]="['help']" routerLinkActive="active"  ><i class="fas fa-info-circle" style="font-size: 19px;"></i> Aide et Documentation</button>
+    </div>
+    <div class="col-md-4">
       FSTG MARRAKECH Universite Qaddy Ayyad
     </div>
-    <div class="col-md-6">
-    Service Ressource Humaines
+    <div class="col-md-4">
+      Service des  Ressource Humaines
     </div>
   </div>
 </div>

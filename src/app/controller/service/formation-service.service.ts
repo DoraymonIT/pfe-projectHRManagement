@@ -18,7 +18,7 @@ public formationEmployeNull(){
     this._ajouteFormation = value;
   }
   public ajouteFormationTitre(){
-    this._ajouteFormation = 'Formulaire pour affecter une formation a un employe';
+    this._ajouteFormation = 'Formulaire pour affecter une formation à un employé';
   }
   private _formations: Array<Formation>;
   private _formationEmploye: Formation;
@@ -93,7 +93,7 @@ public imprimerLesFormations(value: Array<Formation>) {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/save', this.formationEmploye).subscribe(
         data => {
           // console.log(data);
-          this.toast.success(`${this.formationEmploye.employe.fullName} add formation employe to the database.`, 'conge Added', {
+          this.toast.success(`${this.formationEmploye.employe.firstName + this.formationEmploye.employe.lastName} add formation employe to the database.`, 'conge Added', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -123,7 +123,7 @@ public imprimerLesFormations(value: Array<Formation>) {
       } else {
         this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/update', this.formationEmploye).subscribe(
         data => {
-          this.toast.info(`${this.formationEmploye.employe.fullName} add formation employe to the database.`, 'conge Added', {
+          this.toast.info(`${this.formationEmploye.employe.firstName + this.formationEmploye.employe.lastName} add formation employe to the database.`, 'conge Added', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

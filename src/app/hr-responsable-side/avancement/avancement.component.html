@@ -1,24 +1,24 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
   <mat-tab label="LISTE DE GRADE NON TRAITES" style="width: 25px" tabindex="1">
     <mat-tab-group style="width: 100%;">
-      <mat-tab label=" les demande avancement non traité " style="width: 25%;" tabindex="2">
+      <mat-tab label=" les demandes d  avancement non traité " style="width: 25%;" tabindex="2">
         <div class="example-large-box mat-elevation-z4">
           <div class="ui-g ui-fluid" style="font-size:16px;" (click)="listeDesDemandeNonTraite()" id="liste">
             <mat-toolbar>
               <mat-toolbar-row>
-                <span class="span"> <i class="fas fa-book-open "></i> les demande avancement non traité : </span>
+                <span class="span"> <i class="fas fa-book-open "></i> les demandes d  avancement non traité : </span>
               </mat-toolbar-row>
             </mat-toolbar>
             </div>
             <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" (click)="listeDesDemandeNonTraite()" id="gradeNonTraite">
               <mat-toolbar>
                 <mat-toolbar-row>
-                  <span class="span"> <i class="fas fa-book-open "></i> les demande avancement non traité</span>
+                  <span class="span"> <i class="fas fa-book-open "></i> les demandes d avancement non traité</span>
                 </mat-toolbar-row>
               </mat-toolbar>
-            <table class="table table-hover table-dark table-striped" style="color: wheat;">
+            <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;">
                 <thead>
-                <th>Employe</th>
+                <th>Employé</th>
                 <th>Grade</th>
                 <th>Date Affectation</th>
                 <th style="padding-left: 40px">Action</th>
@@ -40,59 +40,11 @@
             </div>
         </div>
       </mat-tab>
-      <mat-tab label=" cherher les employe par date evaluation" style="width: 25px" tabindex="1">
-
-      <div class="example-large-box mat-elevation-z4">
-        <mat-toolbar (click)="afficher1()" style="cursor: pointer;">
-          <mat-toolbar-row>
-            <span class="span"  style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date evaluation </span>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher1">
-        <div class="card-body" style="text-align: center">
-          <label>date evaluation</label>
-          <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateProchainEvaluation" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
-        </div>
-      </div>
-      <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableEvaluation">
-        <mat-toolbar>
-          <mat-toolbar-row>
-            <span class="span"> <i class="fas fa-book-open "></i> les employes ayant l evaluation d'une grade par date</span>
-          </mat-toolbar-row>
-        </mat-toolbar>
-        <table class="table table-hover table-dark table-striped" style="color: wheat">
-          <thead>
-          <!-- <th>id note</th> -->
-          <th>Full name</th>
-          <th> DOTI</th>
-          <th>Date d evaluation</th>
-          <th>Dernier grade</th>
-          <th style="padding-left: 40px">Action</th>
-          </thead>
-          <tbody>
-          <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
-
-          <tr *ngFor="let c of employesByEvaluationToday">
-            <!-- <td>{{c.id}}</td> -->
-            <td>{{c.fullName}}</td>
-            <td>{{c.doti}}</td>
-            <td>{{c.dateProchainEvaluation}}</td>
-            <td>{{c.dernierGrade}}</td>
-            <td>
-              <button class="btn btn-primary btn-sm fa  fa-check-square"  (click)="creeUnGradeEmployeNonTraite(c)"></button>
-              <button class="btn btn-info btn-sm fa fa-trash"></button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-      </mat-tab>
-      <mat-tab label=" cherher les employe par date avancement" style="width: 25%;" tabindex="2">
+      <mat-tab label=" Trouver les employes par date avancement" style="width: 25%;" tabindex="2">
         <div class="example-large-box mat-elevation-z4">
           <mat-toolbar (click)="afficher2()" style="cursor: pointer;">
             <mat-toolbar-row>
-              <span class="span" id="span" style="text-align: center"> <i class="fas fa-plus-circle" aria-hidden="true"></i> cherher les employe par date avancement </span>
+              <span class="span" id="span" style="text-align: center">  chercher les employes par date avancement </span>
             </mat-toolbar-row>
           </mat-toolbar>
           <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="chercher1">
@@ -106,30 +58,32 @@
             <label>date avancement</label>
             <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employeDateEvaluation.dateAvancementPrevue" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDateAvancement()">
           </div>
-        </div> -->
-        <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableavancement">
+        </div>
+        <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
           <mat-toolbar>
             <mat-toolbar-row>
-              <span class="span"> <i class="fas fa-book-open "></i> les employes ayant l avancement d'une grade par date</span>
+              <span class="span">  les employes ayant l avancement d'une grade par date</span>
             </mat-toolbar-row>
           </mat-toolbar>
-          <table class="table table-hover table-dark table-striped" style="color: wheat">
+          <table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
             <thead>
-            <!-- <th>id note</th> -->
-            <th>Full name</th>
-            <th> DOTI</th>
-            <th>Date d avancement</th>
+          <th>id note</th> -->
+            <th>Nom Complet</th>
+            <th>Numéro</th>
+            <th>Date d'avancement</th>
             <th>Dernier grade</th>
+            <th>Date Affectation</th>
             <th style="padding-left: 40px">Action</th>
             </thead>
             <tbody>
             <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
             <tr *ngFor="let c of employesByEvaluationToday">
               <!-- <td>{{c.id}}</td> -->
-              <td>{{c.fullName}}</td>
+              <td>{{c.firstName + c.lastName}}</td>
               <td>{{c.doti}}</td>
               <td>{{c.dateDeProchainNote}}</td>
-              <td>{{c.dernierGrade}}</td>
+              <td>{{c.dernierGrade.grade.libelle}}</td>
+              <td>{{c.dernierGrade.dateDeAffectation}}</td>
               <td>
                 <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
                 <button class="btn btn-info btn-sm fa fa-trash"></button>

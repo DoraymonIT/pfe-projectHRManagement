@@ -4,7 +4,8 @@ import {TypeCongee} from './type-congee.model';
 export class CongeEmploye {
    id:number;
    dateDeDebut: Date;
-   employe: Employe;
+  dateDeFin: Date;
+  employe: Employe;
    congee: TypeCongee;
    periode: number;
 }

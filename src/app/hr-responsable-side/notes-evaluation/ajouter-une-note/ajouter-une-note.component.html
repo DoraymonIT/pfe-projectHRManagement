@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> Formulaire pour ajouter une note a un employe </span>
+    <span class="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> Formulaire pour ajouter une note à un employé </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -8,18 +8,18 @@
     <!-- <h3 style="text-align : center">Ajouter Une note</h3> -->
     <div class="controles-container">
       <mat-form-field>
-        <mat-label> <i class="fas fa-user-tie    "></i> Selectionnez l employe a noter : </mat-label>
+        <mat-label> <i class="fas fa-user-tie    "></i> Selectionnez l'employé à noter : </mat-label>
         <mat-select [(ngModel)]="note.employeDoti" [ngModelOptions]="{standalone: true}" >
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName}}</mat-option>
+          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="pi21" placeholder="Date d evaluation "
+        <input matInput [matDatepicker]="pi21" placeholder="Date d'évaluation "
                [(ngModel)]="note.date" [ngModelOptions]="{standalone: true}">
         <mat-datepicker-toggle matSuffix [for]="pi21"></mat-datepicker-toggle>
         <mat-datepicker #pi21></mat-datepicker>
       </mat-form-field>
-      <a (click)="afficher1()">  <div class="card-header"> Ajouter une note De Rentabilite <i class="fas fa-chevron-circle-down    "></i></div></a>
+      <a (click)="afficher1()">  <div class="card-header"> Ajouter une note De Rentabilité <i class="fas fa-chevron-circle-down    "></i></div></a>
       <div id="div1" class="card-body">
       <mat-form-field style="padding-right: 200px;margin-left: 200px">
         <input matInput placeholder="mention:*" [(ngModel)]="note.noteDeRentabilite.mention" [ngModelOptions]="{standalone: true}" type="number">
@@ -45,7 +45,7 @@
           <input matInput placeholder="remarque:*" [(ngModel)]="note.noteDeCompotement.remarque" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
-      <a (click)="afficher4()">  <div class="card-header"> Ajouter une note De Capacite De Organisation <i class="fas fa-chevron-circle-down    "></i></div></a>
+      <a (click)="afficher4()">  <div class="card-header"> Ajouter une note De Capacité De Organisation <i class="fas fa-chevron-circle-down    "></i></div></a>
       <div id="div4" class="card-body">
         <mat-form-field style="padding-right: 200px;margin-left: 200px">
           <input matInput placeholder="mention:*" [(ngModel)]="note.noteDeCapaciteDeOrganisation.mention" [ngModelOptions]="{standalone: true}" type="number">
@@ -54,7 +54,7 @@
           <input matInput placeholder="remarque:*" [(ngModel)]="note.noteDeCapaciteDeOrganisation.remarque" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
-      <a (click)="afficher5()">  <div class="card-header"> Ajouter une note De Affectation Des Taches Liee Au Travail <i class="fas fa-chevron-circle-down    "></i></div></a>
+      <a (click)="afficher5()">  <div class="card-header"> Ajouter une note De Affectation Des Taches Liée Au Travail <i class="fas fa-chevron-circle-down    "></i></div></a>
       <div id="div5" class="card-body">
         <mat-form-field style="padding-right: 200px;margin-left: 200px">
           <input matInput placeholder="mention:*" [(ngModel)]="note.noteDeAffectationDesTachesLieeAuTravail.mention" [ngModelOptions]="{standalone: true}" type="number">

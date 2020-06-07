@@ -1,21 +1,19 @@
 <mat-sidenav-container class="example-container" class="side-barr">
   <!--- *ngIf="conncter"-->
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 289px;">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="padding:15px;width: 295px;">
     <mat-list role="list">
       <mat-list-item role="listitem">
         <span style="text-align:center ;color:#b0bec5" class="span"> <i class="fas fa-school"
             style="font-size: 45px;text-align: center;"></i>
           <br> FSTG Marrakech </span>
       </mat-list-item>
-
-
-      <mat-list-item [routerLink]="[{ outlets: { un: ['Historique'] } }]" class="list2" role="listitem"
-        style="margin-top: 35px; margin-bottom:4px;">
-        <h6> <i class="fas fa-history    "></i> Historique et Video </h6>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem"
-     >
+      <mat-list-item [routerLink]="[{ outlets: { un: ['historique'] } }]" class="list2" role="listitem"
+      style="margin-top: 35px; margin-bottom:4px;">
+      <h6> <i class="fas fa-history"></i> Historique Et Vidéo</h6>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list1" role="listitem"
+        >
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -26,7 +24,7 @@
       <mat-divider></mat-divider>
 
       <mat-list-item [routerLink]="[{ outlets: { un: ['abscence'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-bed"></i> Conges Exceptionnels</h6>
+        <h6><i class="fas fa-bed"></i> Congés Exceptionnels</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['documents'] } }]" class="list1" role="listitem">
@@ -41,11 +39,15 @@
       <mat-list-item [routerLink]="[{ outlets: { un: ['evaluation'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-sticky-note"></i> Evaluation Et Notation</h6>
       </mat-list-item>
+
+
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-forward"></i> Avancement</h6>
       </mat-list-item>
+
       <mat-divider></mat-divider>
+
       <mat-list-item [routerLink]="[{ outlets: { un: ['permanence'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-calendar-check    "></i> Permanence Administrative</h6>
       </mat-list-item>
@@ -62,12 +64,12 @@
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['parametresAvances'] } }]" class="list1" role="listitem">
-        <h6>    <i class="fas fa-cog"></i>  Parametres Avances</h6>
+        <h6>    <i class="fas fa-cog"></i>  Paramètres Avancés</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
 
       <mat-list-item class="list1" role="listitem" [routerLink]="['']" routerLinkActive="active">
-        <h6><i class="fas fa-sign-out-alt"></i> Se Deconnecter</h6>
+        <h6><i class="fas fa-sign-out-alt"></i> Se Déconnecter</h6>
       </mat-list-item>
       <!-- <mat-divider></mat-divider> -->
     </mat-list>
@@ -83,21 +85,26 @@
             <!-- <i class="fas fa-bell"></i> -->
           </mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-
-          <a href="#" mat-menu-item>demande document,type document</a>
-          <a href="#" mat-menu-item>Liste evaluation Aujourd'hui</a>
-          <a href="#" mat-menu-item>Liste Notification Aujourd'hui</a>
-          <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">Liste Avancement Aujourd'hui</a>
+        <mat-menu class="my-class" #menu="matMenu">
+          <h6 style="text-align:center;color:white">{{aujourdHui| date: 'MMMM dd, y, hh:mm aa' }} </h6><hr>
+          <a mat-menu-item [routerLink]="[{ outlets: { un: ['documents'] } }]">
+            <i class="fas fa-file"></i>  Liste de demandes de documents d'Aujourd'hui </a>
+          <a mat-menu-item [routerLink]="[{ outlets: { un: ['evaluation'] } }]">
+            <i class="fas fa-sticky-note"></i>  Liste des employés qui ont l'évaluation Aujourd'hui</a>
+          <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">
+            <i class="fas fa-forward"></i>  Liste des employés qui ont l'étude de l'avancement Aujourd'hui</a>
         </mat-menu>
+
+
         <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
           Profile</button> -->
         <button class="icons" mat-raised-button [matMenuTriggerFor]="menu2"><i class="fas fa-cog"></i></button>
         <mat-menu #menu2="matMenu">
           <button mat-menu-item [routerLink]="['']" routerLinkActive="active"><i class="fas fa-sign-out-alt"></i> Se
-            Deconnecter</button>
+            Déconnecter</button>
           <!-- <button mat-menu-item>Autres</button> -->
         </mat-menu>
+
       </form>
     </nav>
     <router-outlet name="un"></router-outlet>

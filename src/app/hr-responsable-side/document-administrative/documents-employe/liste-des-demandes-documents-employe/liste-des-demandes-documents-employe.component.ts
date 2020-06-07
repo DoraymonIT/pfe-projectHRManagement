@@ -23,11 +23,13 @@ cols: any[];
   ngOnInit(): void {
     this.employeService.findAll();
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'cin', header: 'C I N' },
-      { field: 'fullName', header: 'Nom Complet' },
+      { field: 'id', header: 'ID' },
+      { field: 'cin', header: 'CIN' },
+      { field: 'doti', header: 'Numéro' },
+      { field: 'firstName', header: 'Prénom' },
+      { field: 'lastName', header: 'Nom' },
       { field: 'email', header: 'G-mail' },
-      { field: 'doti', header: 'DOTI' },
+
     ];
   }
   get employes(): Array<Employe> {
@@ -44,7 +46,7 @@ cols: any[];
     return this.documentService.documents;
   }
   public getFullName(employe: Employe): string{
-    return employe.fullName;
+    return employe.firstName + employe.lastName;
   }
   trouverHistoriqueDemandeDialog(employe: Employe) {
     this.documentService.trouverDemandeParSonDoti(employe);

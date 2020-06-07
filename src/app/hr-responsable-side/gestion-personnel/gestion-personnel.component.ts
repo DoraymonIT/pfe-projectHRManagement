@@ -21,13 +21,14 @@ export class GestionPersonnelComponent implements OnInit {
     this.employeService.findAll();
     this.listeVide();
     this.cols = [
-      { field: 'cin', header: 'C I N' },
-      { field: 'doti', header: 'DOTI' },
-      { field: 'fullName', header: 'Nom Complet' },
-      { field: 'email', header: 'G-mail' },
-      { field: 'tel', header: 'Phone' },
-      // { field: 'pays', header: 'Pays' },
-      { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
+      { field: 'cin', header: 'CIN' },
+      { field: 'doti', header: 'Numéro' },
+      { field: 'firstName', header: 'Prenom' },
+      { field: 'lastName', header: 'Nom' },
+      { field: 'email', header: 'email' },
+      { field: 'tel', header: 'Téléphone' },
+      { field: 'soldeRestantesCongeExceptionnel', header: 'Solde Restantes congé exceptionnel' },
+      // { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
 
     ];
 

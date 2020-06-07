@@ -12,8 +12,10 @@ export class HRResponsableSideComponent implements OnInit {
   constructor(private logInService: LogInService,
               private router: Router) {
   this.hideMatBadge = false;
-  this.ex = 12;
+  this.ex = 3;
+  this.aujourdHui = new Date();
    }
+  aujourdHui : Date ;
   // get conncter(): boolean {
   //   return this.logInService.conncter;
   // }
@@ -31,8 +33,10 @@ export class HRResponsableSideComponent implements OnInit {
   // }
   ngOnInit(): void {
     // this.connecter();
+    this.aujourdHui = new Date();
   }
 badge(){
- this.hideMatBadge= true;
+ this.hideMatBadge = true;
 }
+
 }

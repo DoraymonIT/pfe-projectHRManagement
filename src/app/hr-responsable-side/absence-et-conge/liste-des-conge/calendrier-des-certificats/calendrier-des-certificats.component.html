@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-calendar-check    "></i> Calendrier des certificats </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="container-fluid" style="padding-top: 20px;padding-bottom: 10px;">
+  <div class="row">
+    <div class="col-md-12">
+      <full-calendar [header]="{ left:'title',
+              center :'dayGridMonth,dayGridWeek',right:'today prev,next'}" [events]="calendarEvents" [plugins]="calendarPlugins " eventColor="blue"></full-calendar>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,7 @@ private _rapportEvaluation: RapportDeEvaluation;
     this.http.get <number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/creeUnGradeNonTraite/doti/' + value).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(`le grade employe est bien cree`, 'grade cree', {
+          this.toast.success(`le grade employe est bien crée`, 'grade crée', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -52,7 +52,7 @@ private _rapportEvaluation: RapportDeEvaluation;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/rapportPdf', this.rapportEvaluation).subscribe(
       data => {
         if (data > 0) {
-          this.toast.success(` le rapport est bien imprimer`, 'rapport imprimer', {
+          this.toast.success(` le rapport à été est bien imprimer`, 'Voir votre dossier de téléchargement', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -67,7 +67,7 @@ private _rapportEvaluation: RapportDeEvaluation;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/accepterUnGrade', gradeeemploye).subscribe(
       data => {
         if (data == 1) {
-          this.toast.success(` avancement est bie effectué`, 'avancement affectuer', {
+          this.toast.success(` Avancement est bien effectué`, 'Avancement effectuer', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -115,7 +115,7 @@ private _rapportEvaluation: RapportDeEvaluation;
         data => {
           // console.log(data);
           if (data === 1)
-          this.toast.success(`${this.rapportEvaluation.employe.doti} add rapport to the database.`, 'rapport Added', {
+          this.toast.success(`${this.rapportEvaluation.employe.doti} a ajouté un rapport au BD.`, 'Rapport Ajouté', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -132,7 +132,7 @@ private _rapportEvaluation: RapportDeEvaluation;
       data => {
         // console.log(data);
         if (data === 1)
-          this.toast.info(`${this.rapportEvaluation.employe.fullName} add rapport to the database.`, 'rapport Added', {
+          this.toast.info(` le rqpport de ${this.rapportEvaluation.employe.firstName + this.rapportEvaluation.employe.lastName} a modifié .`, 'Rapport Modifié', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

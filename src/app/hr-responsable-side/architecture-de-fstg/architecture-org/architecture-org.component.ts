@@ -14,61 +14,61 @@ export class ArchitectureOrgComponent implements OnInit {
 
   ngOnInit(): void {
     this.data2 = [{
-      label: 'Doyen : Taourirt',
+      label: 'Doyen ',
       expanded: true,
       children: [
           {
-              label: 'Vice-Doyen : Bachnou',
+              label: 'Vice-Doyen ',
               expanded: true,
               children: [
                   {
-                      label: 'Chef de filiere : MIPC : Ellabib'
+                      label: 'Chef de filiere : MIPC '
                   },
                   {
-                      label: 'Chef de filiere : BCG : Bendrimou'
+                      label: 'Chef de filiere : BCG '
                   },
                   {
 
-                      label: 'Chef de filiere : SIR : Amir'
+                      label: 'Chef de filiere : SIR '
                   }
               ]
           },
           {
-            label: 'Superviseur de scolarite : Ziaoui',
+            label: 'Superviseur de scolarite',
             expanded: true,
             children: [
                 {
-                    label: 'Fonctionnaire 1 : Ahmed'
+                    label: 'Fonctionnaire 1 '
                 },
                 {
-                  label: 'Fonctionnaire 2 : Hafssa'
+                  label: 'Fonctionnaire 2 '
               },
               {
-                label: 'Fonctionnaire 3 : Khadija'
+                label: 'Fonctionnaire 3 '
             }
             ]
         },
           {
-              label: 'Superviseur de departements : Bouigrouane',
+              label: 'Superviseur de départements ',
               expanded: true,
               children: [
                   {
-                      label: 'Dep de Physique : Mimani'
+                      label: 'Dép de Physique'
                   },
                   {
-                      label: 'Dep de Informatique : Bourquia'
+                      label: 'Dép de Informatique '
                   }
               ]
           },
         {
-          label: 'Superviseur de departements : Bouigrouane',
+          label: 'Superviseur de départements ',
           expanded: true,
           children: [
             {
-              label: 'Dep de Physique : Mimani'
+              label: 'Dép de Physique '
             },
             {
-              label: 'Dep de Informatique : Bourquia'
+              label: 'Dép de Informatique '
             }
           ]
         }

@@ -14,6 +14,8 @@ private _conges: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
 private _congesCertificat: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
+  private _congesCertificatCalendrier: Array<CongeEmploye>;
+// tslint:disable-next-line:variable-name
 private _congeEmploye: CongeEmploye;
 // tslint:disable-next-line:variable-name
 private _typeConge: Array<TypeCongee>;
@@ -23,6 +25,7 @@ private _filterrsult: TypeCongee;
 private _employefullname: string;
 // tslint:disable-next-line:variable-name
   private _ajouteCongeEmp: string;
+
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
   public trouverCongéParSonDoti(value: string) {
@@ -30,7 +33,7 @@ private _employefullname: string;
       data => {
         this.conges = data;
         this.conges.forEach(conge => {
-          this.employefullname = conge.employe.fullName;
+          this.employefullname = conge.employe.firstName + conge.employe.lastName;
         });
       }, eror => {
         console.log('eroro', eror);
@@ -42,26 +45,26 @@ private _employefullname: string;
   public update() {
     // tslint:disable-next-line:max-line-length
     if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.congee == null ||  this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null  && this.congeEmploye.congee == null  && this.congeEmploye.employe == null)) {
-        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        this.toast.error(`Remplir toutes les champs`, 'champ vide', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._ajouteCongeEmp = 'champ est vide';
+        this._ajouteCongeEmp = 'Un Champ est vide';
         document.getElementById('span').style.color = 'red';
       } else {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/update', this.congeEmploye).subscribe(
       data => {
         if (data > 0) {
-          this.toast.info(`le conge employe est bien modifie`, ' champ modified', {
+          this.toast.info(`le congé a été bien modifié`, 'Congé Modifié', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           });
-          this._ajouteCongeEmp = 'comge employe est bien modified';
-          document.getElementById('span').style.color = 'greed';
+          this._ajouteCongeEmp = 'Congé est Modifié avec Succes';
+          document.getElementById('span').style.color = 'green';
         }
         this.conges.push(this.cloneConge(this.congeEmploye));
         this.congeEmploye = null;
@@ -74,7 +77,7 @@ private _employefullname: string;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/listeDesCongéPdf' , this.conges).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(` document liste congé est bien preparé.`, 'document prepared', {
+          this.toast.success(` le docu,ent à été est bien exporter`, 'Voir votre dossier de téléchargement', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -125,19 +128,19 @@ private _employefullname: string;
   public save() {
     // tslint:disable-next-line:max-line-length
     if ((this.congeEmploye.dateDeDebut == null || this.congeEmploye.periode == null || this.congeEmploye.congee == null ||  this.congeEmploye.employe == null) || (this.congeEmploye.dateDeDebut == null && this.congeEmploye.periode == null && this.congeEmploye.congee == null  && this.congeEmploye.employe == null)) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champs`, 'Un Champ est vide', {
         timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
       });
-      this._ajouteCongeEmp = 'champ est vide';
+      this._ajouteCongeEmp = 'Un Champ est vide';
       document.getElementById('span').style.color = 'red';
     } else {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/save', this.congeEmploye).subscribe(
       data => {
         if (data > 0) {
-          this.toast.success(`${this.congeEmploye.employe.fullName} add conge employe to the database.`, 'conge Added', {
+          this.toast.success(`Un congé a été effectuer au ${this.congeEmploye.employe.firstName + this.congeEmploye.employe.lastName} `, 'congé est Bien affecter', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -145,8 +148,8 @@ private _employefullname: string;
           });
           this.conges.push(this.cloneConge(this.congeEmploye));
           this.congeEmploye = null;
-          this._ajouteCongeEmp = 'comge employe est bien added';
-          document.getElementById('span').style.color = 'greed';
+          this._ajouteCongeEmp = 'Le congé est bien affecté';
+          document.getElementById('span').style.color = 'green';
         }
       }, eror => {
         console.log('eroro', eror);
@@ -162,11 +165,33 @@ private _employefullname: string;
         console.log('eroro', eror);
       });
   }
+public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
+  // tslint:disable-next-line:max-line-length
+  this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByEmployeDotiAndCongeeLibelle/matricule/' + doti + '/libelle/' + libelle).subscribe(
+    data => {
+      this.conges = data;
+    }, eror => {
+      console.log('eroro', eror);
+    });
+
+}
   public findCongeByAnne(annee: number, type: string) {
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findCongeByAnne/annee/' + annee + '/type/' + type).subscribe(
       data => {
         this.congesCertificat = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+
+  public findallCertificatDansCetteAnnee() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findListeCertificatByAnnee').subscribe(
+      data => {
+        this.congesCertificatCalendrier = data;
+        console.log('ana hna tani');
       }, eror => {
         console.log('eroro', eror);
       });
@@ -245,6 +270,22 @@ private _employefullname: string;
 
   set ajouteCongeEmp(value: string) {
     this._ajouteCongeEmp = value;
+  }
+
+  get congesCertificatCalendrier(): Array<CongeEmploye> {
+    if (this._congesCertificatCalendrier == null) {
+      this._congesCertificatCalendrier = new Array<CongeEmploye>();
+      this._congesCertificatCalendrier.forEach(conge => {
+        conge = new CongeEmploye();
+        conge.congee = new TypeCongee();
+        conge.employe = new Employe();
+      });
+    }
+    return this._congesCertificatCalendrier;
+  }
+
+  set congesCertificatCalendrier(value: Array<CongeEmploye>) {
+    this._congesCertificatCalendrier = value;
   }
 
   get congesCertificat(): Array<CongeEmploye> {

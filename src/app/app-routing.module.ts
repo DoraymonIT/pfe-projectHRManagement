@@ -15,7 +15,7 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
 
 import { HelpDocumentationComponent } from './help-documentation/help-documentation.component';
 import { ParametresAvancesComponent } from './hr-responsable-side/parametres-avances/parametres-avances.component';
-import { LogsVideoComponent } from './hr-responsable-side/logs-video/logs-video.component';
+import { LogsEtVideoComponent } from './hr-responsable-side/logs-et-video/logs-et-video.component';
 
 const routes: Routes = [
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: OverreviewComponent,
+        component: LogsEtVideoComponent,
         outlet: 'un',
 
 
@@ -80,12 +80,12 @@ const routes: Routes = [
         path: 'parametresAvances',
         component: ParametresAvancesComponent,
         outlet: 'un'
-      }
-      , {
-        path: 'Historique',
-        component: LogsVideoComponent,
+      }, {
+        path: 'historique',
+        component: LogsEtVideoComponent,
         outlet: 'un'
       }
+
     ]
 
   }

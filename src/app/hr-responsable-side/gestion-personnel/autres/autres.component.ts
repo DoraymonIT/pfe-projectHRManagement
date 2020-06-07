@@ -11,6 +11,12 @@ import {Revenu} from '../../../controller/model/revenu.model';
 import { FormationServiceService } from 'src/app/controller/service/formation-service.service';
 import { Formation } from 'src/app/controller/model/formation.model';
 import {Grade} from '../../../controller/model/grade.model';
+import {PrixService} from '../../../controller/service/prix.service';
+import {PunitionService} from '../../../controller/service/punition.service';
+import {PrixEmploye} from '../../../controller/model/prix-employe.model';
+import {Prix} from '../../../controller/model/prix.model';
+import {PunitionEmploye} from '../../../controller/model/punition-employe.model';
+import {Punition} from '../../../controller/model/punition.model';
 
 @Component({
   selector: 'app-autres',
@@ -19,16 +25,24 @@ import {Grade} from '../../../controller/model/grade.model';
 })
 export class AutresComponent implements OnInit {
 
-  constructor(private employeService: PersonnelEmployesService,private fs: FormationServiceService) { }
+  constructor(private employeService: PersonnelEmployesService,
+              private fs: FormationServiceService,
+              private prixService: PrixService,
+              private punitionService: PunitionService) { }
   panelOpenState = false;
   ngOnInit(): void {
-    this.employeService.findAll();
   }
-  public trouverEmployerParSonDoti(value: string){
+  public trouverEmployerParSonDoti(value: string) {
     this.employeService.trouverEmployerParSonDoti(value);
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
+  }
+  get prixs(): Array<PrixEmploye> {
+    return this.prixService.prixs;
+  }
+  get punitions(): Array<PunitionEmploye> {
+    return this.punitionService.punitions;
   }
   get employeInfo(): Employe {
     return this.employeService.employeInfo;
@@ -39,11 +53,12 @@ export class AutresComponent implements OnInit {
   public Trouversalaireemploye(value: string){
     this.employeService.trouverSalaireParSonDoti(value);
   }
-  public TrouverFPP(x: string){
-return this.fs.findFormationByDoti(x);
+  public TrouverFPP(x: string) {
+    this.prixService.findallPrixByDoti(x);
+    this.punitionService.findallPunitionByDoti(x);
+    return this.fs.findFormationByDoti(x);
   }
   get formations(): Array<Formation> {
-
     return this.fs.formations;
   }
   public imprimerInfoEmploye(){

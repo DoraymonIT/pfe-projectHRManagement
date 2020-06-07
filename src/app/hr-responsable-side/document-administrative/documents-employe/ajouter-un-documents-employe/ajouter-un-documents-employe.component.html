@@ -7,19 +7,22 @@
   <div class="container-fluid">
         <div class="controles-container">
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son doti</mat-label>
+            <mat-label> <i class="fas fa-user-tie    "></i> Selectioonez l'employé concerné</mat-label>
             <mat-select [(ngModel)]="document.employe.doti" [ngModelOptions]="{standalone: true}">
-              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.fullName }}</mat-option>
+              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +" " + gr.lastName }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label> <i class="fas fa-book    "></i> Type de document</mat-label>
+            <mat-label>  Type de document</mat-label>
             <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">
               <mat-option *ngFor="let td of typeDocuments" [value]="td.libelle">{{ td.libelle }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Maniere de retrait</mat-label>
+            <input matInput placeholder="Nombre de documents " >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Manière de retrait</mat-label>
             <mat-select [(ngModel)]="document.maniereDeRetrait" [ngModelOptions]="{standalone: true}" >
               <mat-option value="papier">En papier</mat-option>
               <mat-option value="gmail">Par Gmail</mat-option>

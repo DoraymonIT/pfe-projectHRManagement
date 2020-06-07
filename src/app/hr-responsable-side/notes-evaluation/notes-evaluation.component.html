@@ -1,22 +1,23 @@
 <mat-tab-group mat-stretch-tabs  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
   <mat-tab label="EMPLOYES ONT L EVALUATION A UNE DATE DONNEE" style="width: 25px" tabindex="1">
-     <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
-  <div class="card-body" style="text-align: center">
-    <label>Date de Note  : </label>
-    <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.employe.dateDeProchainNote" placeholder="yyyy-MM-dd" (ngModelChange)="getemployeByDate()">
+  <div style="text-align: center;padding-top: 15px;">
+    <label> <i class="fas fa-calendar-times    "></i> Choisir une Date de Note  : </label>
+    <input class="search" type="date"  style=" width: 240px; text-align: center; "
+     [(ngModel)]="this.employe.dateDeProchainNote" placeholder="yyyy-MM-dd"
+      (ngModelChange)="getemployeByDate()">
   </div>
-     </div>
+
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableNote">
       <mat-toolbar>
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-book-open    "></i> les employes ayant la note <strong> par date</strong></span>
+          <span class="span"> <i class="fas fa-book-open    "></i> les employés ayant la note <strong> par date</strong></span>
         </mat-toolbar-row>
       </mat-toolbar>
       <table class="table table-hover table-dark table-striped" style="color: wheat">
         <thead>
         <!-- <th>id note</th> -->
-        <th>Full name</th>
-        <th> DOTI</th>
+        <th>Nom Complet</th>
+        <th>Numéro</th>
         <th>Date de prochaine note</th>
         <th>Dernier Note</th>
         <th style="padding-left: 40px">Action</th>
@@ -26,12 +27,12 @@
 
         <tr *ngFor="let c of notesNonTraites">
           <!-- <td>{{c.id}}</td> -->
-          <td>{{c.fullName}}</td>
+          <td>{{c.firstName + c.lastName}}</td>
           <td>{{c.doti}}</td>
           <td>{{c.dateDeProchainNote}}</td>
           <td>{{c.dernierNote.moyenGeneral}}</td>
           <td>
-            <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="affecteruneNote(c)" ></button>
+            <button class="btn btn-primary btn-sm fa  fa-check-square"  ></button>
             <button class="btn btn-info btn-sm fa fa-trash"></button>
           </td>
         </tr>
@@ -39,10 +40,10 @@
       </table>
     </div>
   </mat-tab>
-  <mat-tab label="LISTES DES EMPLOYES AVEC LEURS NOTES" style="width: 25%;" tabindex="2">
+  <mat-tab label="LISTE DES EMPLOYES AVEC LEURS NOTES" style="width: 25%;" tabindex="2">
     <app-note-liste></app-note-liste>
       </mat-tab>
-  <mat-tab label="AFFECTER NOTE A UN EMPLOYE" style="width: 25px" tabindex="3">
+  <mat-tab label="AFFECTER UNE NOTE A UN EMPLOYE" style="width: 25px" tabindex="3">
 <app-ajouter-une-note></app-ajouter-une-note>
   </mat-tab>
 </mat-tab-group>

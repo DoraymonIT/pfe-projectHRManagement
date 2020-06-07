@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-plus-circle" ></i> Formulaire pour Ajouter Un Departement</span>
+    <span class="span"> <i class="fas fa-plus-circle" ></i> Formulaire pour Ajouter Un Département</span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -9,10 +9,10 @@
         <div class="controles-container">
 
           <mat-form-field>
-            <input matInput placeholder="Nom de Departement*" [(ngModel)]="departement.nom" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Nom de Département*" [(ngModel)]="departement.nom" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Selectionner le Chef de cette Departement</mat-label>
+            <mat-label> <i class="fas fa-user-tie    "></i> Selectionner le Chef de cette Département</mat-label>
             <mat-select [(ngModel)]="departement.chefdoti" [ngModelOptions]="{standalone: true}" >
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.doti}}</mat-option>
             </mat-select>
