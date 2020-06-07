@@ -9,8 +9,13 @@
       </mat-list-item>
 
 
-      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem"
+      <mat-list-item [routerLink]="[{ outlets: { un: ['Historique'] } }]" class="list2" role="listitem"
         style="margin-top: 35px; margin-bottom:4px;">
+        <h6> <i class="fas fa-history    "></i> Historique et Video </h6>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="[{ outlets: { un: ['overview'] } }]" class="list2" role="listitem"
+     >
         <h6><i class="fas fa-tachometer-alt"></i> Overview</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -28,21 +33,17 @@
         <h6><i class="fas fa-file"></i> Demandes des documents</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
-
       <!-- // blasst mandiru certificats ghandiru punition w formation w prix blasstha hh-->
       <mat-list-item [routerLink]="[{ outlets: { un: ['FPP'] } }]" class="list1" role="listitem">
         <h6> <i class="fas fa-bookmark"></i> Formation,Prix et Punition</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
-
-
-      <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-forward"></i> Avancement</h6>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-
       <mat-list-item [routerLink]="[{ outlets: { un: ['evaluation'] } }]" class="list1" role="listitem">
         <h6><i class="fas fa-sticky-note"></i> Evaluation Et Notation</h6>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="[{ outlets: { un: ['avancement'] } }]" class="list1" role="listitem">
+        <h6><i class="fas fa-forward"></i> Avancement</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['permanence'] } }]" class="list1" role="listitem">

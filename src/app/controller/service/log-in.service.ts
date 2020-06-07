@@ -79,15 +79,15 @@ public ajouteLoginTitre(){
     //      console.log('eroro');
     //    });
   }
-public  findUser() {
-  this.http.get<User>('http://localhost:8080/gestionDesEmployee-Api/User/findByLogin/login/' +  this.userEmploye.login).subscribe(
-    data => {
-      this.userEmploye = data;
-      this._loginTitre = 'vous avez' + this.userEmploye.nbrTentatifRestant + 'restatntes';
-    }, eror => {
-      console.log('eroro');
-    });
-}
+// public  findUser() {
+//   this.http.get<User>('http://localhost:8080/gestionDesEmployee-Api/User/findByLogin/login/' +  this.userEmploye.login).subscribe(
+//     data => {
+//       this.userEmploye = data;
+//       this._loginTitre = 'vous avez' + this.userEmploye.nbrTentatifRestant + 'restatntes';
+//     }, eror => {
+//       console.log('eroro');
+//     });
+// }
 
   get loginTitre(): string {
     return this._loginTitre;

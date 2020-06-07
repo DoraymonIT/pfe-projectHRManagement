@@ -15,6 +15,7 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
 
 import { HelpDocumentationComponent } from './help-documentation/help-documentation.component';
 import { ParametresAvancesComponent } from './hr-responsable-side/parametres-avances/parametres-avances.component';
+import { LogsVideoComponent } from './hr-responsable-side/logs-video/logs-video.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,11 @@ const routes: Routes = [
       }, {
         path: 'parametresAvances',
         component: ParametresAvancesComponent,
+        outlet: 'un'
+      }
+      , {
+        path: 'Historique',
+        component: LogsVideoComponent,
         outlet: 'un'
       }
     ]
