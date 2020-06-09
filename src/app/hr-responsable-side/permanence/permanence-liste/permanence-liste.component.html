@@ -1,3 +1,38 @@
+<mat-toolbar  style="cursor: pointer;">
+  <mat-toolbar-row>
+    <span class="span"> <i class="fas fa-graduation-cap    "></i> Chercher les permanences d'un employe a partir du <strong>Numéro</strong>  </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
+  <div class="card-body">
+    <mat-form-field  style="width: 500px">
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'employe concerené</mat-label>
+      <mat-select [(ngModel)]="this.permanenceAdministrative1.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getpermanenceByDoti(this.permanenceAdministrative1.employe.doti)">
+        <mat-option [value]="null">---None---</mat-option>
+        <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + "  " + gr.lastName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field  style="width: 500px">
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'anneé concerené</mat-label>
+      <mat-select [(ngModel)]="this.permanenceAdministrative1.periode" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPermanenceByAnnee(this.permanenceAdministrative1.periode)">
+        <mat-option [value]=2010>---2010---</mat-option>
+        <mat-option [value]=2011>---2011---</mat-option>
+        <mat-option [value]=2012>---2012---</mat-option>
+        <mat-option [value]=2013>---2013---</mat-option>
+        <mat-option [value]=2014>---2014---</mat-option>
+        <mat-option [value]=2015>---2015---</mat-option>
+        <mat-option [value]=2016>---2016---</mat-option>
+        <mat-option [value]=2017>---2017---</mat-option>
+        <mat-option [value]=2018>---2018---</mat-option>
+        <mat-option [value]=2019>---2019---</mat-option>
+        <mat-option [value]=2020>---2020---</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button class="btn btn-light fa fa-search" style="width: 500px" (click)="chercher()"> chercher</button>
+  </div>
+</div>
 <div class="container-fluid" style="padding-top: 10px;">
   <div class="row">
     <div class="col-md-12">
@@ -53,7 +88,7 @@
                 <div class="ui-g-12 ui-md-9" >
                   <div class="ui-g">
                     <div class="ui-g-4">
-                      <b>Full name  :</b> {{rowData.employe.fullName}}
+                      <b>Full name  :</b> {{rowData.employe.firstName + ' ' + rowData.employe.lastName}}
                     </div>
                     <div class="ui-g-4">
                       <b>cin :</b> {{rowData.employe.cin}}

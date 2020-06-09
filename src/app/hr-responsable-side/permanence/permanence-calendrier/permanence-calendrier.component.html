@@ -4,13 +4,8 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="container-fluid" style="padding-top: 20px;padding-bottom: 10px;">
-  <div class="row">
-    <div class="col-md-12">
-      <!---Le calendrier  de permanence contient le jour et le nom d employe permamnent -->
-
-      <full-calendar [header]="{ left:'title',
-              center :'dayGridMonth,dayGridWeek',right:'today prev,next'
-            }" [events]="calendarEvents" [plugins]="calendarPlugins"></full-calendar>
-    </div>
+  <full-calendar
+    defaultView="dayGridMonth"
+    [plugins]="calendarPlugins"
+    [events]="calendarEvent"></full-calendar>
   </div>
-</div>

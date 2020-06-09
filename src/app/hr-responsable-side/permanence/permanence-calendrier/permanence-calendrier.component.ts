@@ -10,28 +10,37 @@ import {PermanenceAdministrative} from '../../../controller/model/PermanenceAdmi
 export class PermanenceCalendrierComponent implements OnInit {
   constructor(private pemanenceAdministrative : PermanenceAdministrativeService) {}
   calendarPlugins = [dayGridPlugin]; // important!
-  calendarEvents = [
-    { title: 'event 1', date: '2020-04-01' }
-  ];
+  calendarEvent = [];
+  start; boolean;
   ngOnInit(): void {
-    this.findAll();
-    this.loadEvent();
-  }
-
-  public loadEvent():void {
+    this.start = true;
+    this.pemanenceAdministrative.findAll();
     this.permanences.forEach(per => {
-      this.calendarEvents.push({
+      this.calendarEvent = this.calendarEvent.concat({
         date: per.date.toString(),
         title: per.employe.firstName + per.employe.lastName,
       });
     });
   }
+
+  public loadEvent():void {
+    this.pemanenceAdministrative.findAll();
+    console.log('cc');
+    console.log(this.permanences);
+    console.log(this.start);
+    if(this.start == true){
+      this.permanences.forEach(per => {
+        console.log('hehe');
+        this.calendarEvent = this.calendarEvent.concat({
+          date: per.date.toString(),
+          title: per.employe.firstName + per.employe.lastName,
+        });
+        this.start = false;
+      });
+    }
+  }
   get permanences(): Array<PermanenceAdministrative> {
     return this.pemanenceAdministrative.perm;
-  }
-  public findAll(){
-    this.pemanenceAdministrative.findAll();
-    this.loadEvent();
   }
 //  public  addEvent() {
   //  this.permanences.forEach(permanence =>{

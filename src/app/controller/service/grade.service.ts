@@ -58,7 +58,7 @@ public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
 public findAll() {
   this.http.get<Array<Grade>>(this._url + 'findAll').subscribe(
     data => {
-      this._grades = data ;
+      this.grades = data;
     }, eror => {
       console.log('eroro', eror);
     }
@@ -70,8 +70,37 @@ public findAll() {
         this.gradeNonTraite = data ;
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
+  }
+  public getDateEvaluation() {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getDateEvaluation').subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(`get date avancement prevue  of some employes`, 'date evaluation', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public getDateAvancement() {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getDateAvancement').subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(`creer un grade employe pour some employe`, 'date avancement', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
   }
   public findAllGradeEmployeByDoti(value: string) {
     this.http.get<Array<GradeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/findByDoti/doti/' + value).subscribe(

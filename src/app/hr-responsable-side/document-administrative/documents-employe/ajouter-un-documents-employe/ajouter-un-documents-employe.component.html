@@ -19,7 +19,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Nombre de documents " >
+            <input matInput type="number" placeholder="Nombre de documents " [(ngModel)]="document.nbrDeDocument" [ngModelOptions]="{standalone: true}" >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Manière de retrait</mat-label>

@@ -4,3 +4,12 @@ p-editor{
 .span {
   margin: auto;
 }
+#emailSujet{
+  display: none;
+}
+#emailText{
+  display: none;
+}
+#file{
+  display: none;
+}

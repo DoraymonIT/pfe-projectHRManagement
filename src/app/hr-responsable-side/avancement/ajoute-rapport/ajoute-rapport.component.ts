@@ -60,6 +60,7 @@ indice: number;
     this.div11 = false;
     this.prixSmall.findAll();
     this.punitionSmall.findAll();
+    this.gradeService.findAll();
   }
   public findAllGradeEmployeByDoti(doti: string) {
     this.gradeService.findAllGradeEmployeByDoti(doti);
@@ -77,10 +78,13 @@ indice: number;
     return this.gradeService.gradesEployess;
   }
   get rapportEvaluation(): RapportDeEvaluation {
-    return this.avancementService.rapportEvaluation;
+    return this.avancementService.rapportEvaluationEdit;
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
+  }
+  get grades(): Array<Grade> {
+    return this.gradeService.grades;
   }
   get formationEmploye(): Formation {
     return this.formationService.formationEmploye;
@@ -183,10 +187,10 @@ indice: number;
   }
   public saveformation() {
     this.formationEmploye.employe = this.rapportEvaluation.employe;
-    if (this.formationEmploye == null){
-this.rapportEvaluation.formation.push(this.cloneFormation(this.formationEmploye));
+    if (this.formationEmploye.id == null){
+      this.formationService.save();
     } else {
-      this.rapportEvaluation.formation[ this.rapportEvaluation.formation.indexOf(this.formationEmploye)] = this.formationEmploye;
+      this.formationService.update();
     }
 this.formationService.formationEmployeNull();
 }
@@ -204,10 +208,10 @@ this.formationService.formationEmployeNull();
   }
   public saveprix() {
     this.prixEmploye.employe = this.rapportEvaluation.employe;
-    if (this.prixEmploye == null) {
-    this.rapportEvaluation.prix.push(this.clonePrix(this.prixEmploye));
+    if (this.prixEmploye.id == null) {
+this.prixService.save();
     } else {
-      this.rapportEvaluation.prix[ this.rapportEvaluation.prix.indexOf(this.prixEmploye)] = this.prixEmploye;
+this.prixService.update();
     }
     this.prixService.prixEmployeNull();
 }
@@ -223,9 +227,9 @@ this.formationService.formationEmployeNull();
   public savepunition() {
     this.punitionEmploye.employe = this.rapportEvaluation.employe;
     if(this.punitionEmploye.id == null){
-    this.rapportEvaluation.punition.push(this.clonePunition(this.punitionEmploye));
+this.punitionService.save();
     } else {
-      this.rapportEvaluation.formation[ this.rapportEvaluation.formation.indexOf(this.formationEmploye)] = this.formationEmploye;
+this.punitionService.update();
     }
     this.punitionService.punitionEmployeNull();
 }
@@ -244,9 +248,9 @@ this.formationService.formationEmployeNull();
   public saveNote() {
     this.note.employeDoti = this.rapportEvaluation.employe.doti;
     if (this.note.id == null){
-    this.rapportEvaluation.noteGenerale.push(this.cloneNote(this.note));
+    this.noteService.save();
     } else {
-      this.rapportEvaluation.formation[ this.rapportEvaluation.formation.indexOf(this.formationEmploye)] = this.formationEmploye;
+this.noteService.update();
     }
     this.noteService.noteNull();
 }

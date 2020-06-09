@@ -26,19 +26,27 @@ export interface Table {
 export class NotesEvaluationComponent implements OnInit {
 
   constructor(private noteService: NoteServiceService,
-              private ps: PersonnelEmployesService) { }
-
+              private ps: PersonnelEmployesService,
+              private employeSrvice: PersonnelEmployesService) { }
+  cols: any[];
   public tabindex;
   public demo1TabIndex = 0;
   ngOnInit(): void {
-    this.noteService.findAllNoteNonTraite();
+    this.employeSrvice.trouverEmployerAyantBesoinDeNote();
+    this.cols = [
+      { field: 'id', header: 'ID-Employe' },
+      { field: 'doti', header: 'Numero' },
+      { field: 'firstName', header: 'Prenom' },
+      { field: 'lastName', header: 'Nom' },
+      { field: 'dateDeProchainNote', header: 'Date Note Prévue' },
+    ];
   //  this.ps.trouverEmployerNoteGeneraleToday();
   }
   // get notesNonTraites(): Array<NoteGeneraleDeAnnee> {
   //   return this.noteService.notesNonTraite;
   // }
   get notesNonTraites(): Array<Employe> {
-    return this.ps.employesByNoteGeneraleToday;
+    return this.employeSrvice.employeNote;
   }
   public listeVide(): boolean {
     return this.notesNonTraites.length < 1 ? true : false;

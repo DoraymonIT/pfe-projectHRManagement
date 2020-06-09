@@ -41,7 +41,6 @@ chercher: boolean;
     return this.employeService.employes;
   }
   public listeVide(): boolean {
-    console.log(this.employes.length);
     return this.employes.length < 1 ? true : false;
   }
   public afficher() {

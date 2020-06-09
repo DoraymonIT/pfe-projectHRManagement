@@ -5,6 +5,10 @@ import { LogInService } from "../controller/service/log-in.service";
 import { Employe } from "../controller/model/employe.model";
 import { User } from "../controller/model/user.model";
 import { ToastrService } from "ngx-toastr";
+import {CongeService} from '../controller/service/conge.service';
+import {PermanenceAdministrativeService} from '../controller/service/permanence-administrative.service';
+import {AvancementServiceService} from '../controller/service/avancement-service.service';
+import {GradeService} from '../controller/service/grade.service';
 /**
  * @title Input with error messages
  */
@@ -20,13 +24,20 @@ export class LoginSideComponent implements OnInit {
   constructor(
     private login: LogInService,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private permanenceService: PermanenceAdministrativeService,
+    private congeService: CongeService,
+    private avancementService: GradeService
   ) {}
   get show(): boolean {
     return this.login.show;
   }
   ngOnInit(): void {
     this.login.ajouteLoginTitre();
+    this.congeService.resetSoldeCongeEmploye();
+    this.permanenceService.findAll();
+    this.avancementService.getDateAvancement();
+    this.avancementService.getDateEvaluation();
   }
   get userEmploye(): User {
     return this.login.userEmploye;

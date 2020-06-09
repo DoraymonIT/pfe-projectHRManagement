@@ -16,12 +16,21 @@
     <input matInput  [(ngModel)]="this.email.emaill" [ngModelOptions]="{standalone: true}" [value]="employeInfo.email" type="email" >
   </mat-form-field>
   <mat-form-field style="padding-bottom:10px;width:100%">
+    <mat-form-field style="padding-bottom:10px;width:100%">
+      <mat-label> <i class="fas fa-user-tie    "></i> Seléctionnez le type email : </mat-label>
+      <mat-select [(ngModel)]="this.email.typeemail" [ngModelOptions]="{standalone: true}" (selectionChange)="getEmailubject(this.email.typeemail)">
+        <mat-option value="doucumentpret" > document prèt</mat-option>
+        <mat-option value="autre"> autre</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <mat-form-field id="emailSujet">
     <label> Sujet :* </label>
     <input matInput  [(ngModel)]="this.email.subject"
            [ngModelOptions]="{standalone: true}" type="email" >
   </mat-form-field>
-  <p-editor  [(ngModel)]="this.email.text" [style]="{'height':'320px'}"></p-editor>
-  <div class="button-row" style="padding-top: 10px;">
+  <p-editor id="emailText" [(ngModel)]="this.email.text" [style]="{'height':'320px'}"></p-editor>
+    <div class="button-row" style="padding-top: 10px;">
     <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="envoyer()"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer</button>
   </div>
+  </mat-form-field>
 </div>

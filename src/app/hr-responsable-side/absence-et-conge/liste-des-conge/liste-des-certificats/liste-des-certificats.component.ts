@@ -12,9 +12,10 @@ import {CongeService} from '../../../../controller/service/conge.service';
 export class ListeDesCertificatsComponent implements OnInit {
 
   constructor(private congeService: CongeService) { }
-
+Titre: String;
   ngOnInit(): void {
     this.congeService.findallCertificatDansCetteAnnee();
+    this.Titre = 'liste des  certificats depuis 1 septembre ' +((new Date().getMonth() > 9)? (this.getYear()) : (this.getYear() - 1));
   }
   getYear(): number{
     return new Date().getFullYear();
@@ -24,28 +25,26 @@ export class ListeDesCertificatsComponent implements OnInit {
     return this.congeService.congesCertificat;
   }
   get congeEmploye(): CongeEmploye {
-    return this.congeService.congeEmploye;
+    return this.congeService.congeEmploye2;
   }
   public getcongeCertificat(){
-    if(this.congeEmploye.congee.libelle === 'longDuree'){
-      this.congeService.findCongeCertificatLongDuree();
-      document.getElementById('tableConge').style.display = 'inline';
-    } else if (this.congeEmploye.congee.libelle === 'courtDuree') {
-      this.congeService.findCongeCertificatCourtDuree();
-      document.getElementById('tableConge').style.display = 'inline';
-    } else {
-      document.getElementById('tableConge').style.display = 'none';
+    if(this.congeEmploye.congee.libelle === 'certificat long duree'){
+      this.congeService.findCOngeByLibelle(this.congeEmploye.congee.libelle);
+      this.Titre = 'la liste des toutes les certificats long durée';
+    } else if (this.congeEmploye.congee.libelle === 'certificat court duree 3 mois') {
+      this.congeService.findCOngeByLibelle(this.congeEmploye.congee.libelle);
+      this.Titre = 'la liste des toutes les certificats moins de 3 mois';
+    } else if (this.congeEmploye.congee.libelle === 'certificat court duree 6 mois') {
+      this.congeService.findCOngeByLibelle(this.congeEmploye.congee.libelle);
+      this.Titre = 'la liste des toutes les certificats moins de 6 mois';
+
     }
   }
   public listeVide(): boolean {
     return this.congesCertificat.length < 1 ? true : false;
   }
   public chercher() {
-    if(this.congeEmploye.congee.libelle === 'longDuree'){
-    this.congeEmploye.congee.libelle = 'certificat long duree';
-    } else {
-      this.congeEmploye.congee.libelle = 'certificat court duree';
-    }
+    this.Titre = 'la liste des' +this.congeEmploye.congee.libelle +'  ayant effectuer dans '+ this.congeEmploye.dateDeDebut;
     this.congeService.findCongeBydateAndType(this.congeEmploye.dateDeDebut, this.congeEmploye.congee.libelle);
   }
 }
