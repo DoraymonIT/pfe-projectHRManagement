@@ -22,5 +22,6 @@ export class RapportInfoComponent implements OnInit {
     this.avancementService.imprimerLeRapport();
 }
   public editRapport(){
+    this.avancementService.editRapport()
   }
 }

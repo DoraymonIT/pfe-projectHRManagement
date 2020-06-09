@@ -19,6 +19,7 @@ import {Grade} from '../model/grade.model';
 export class AvancementServiceService {
 // tslint:disable-next-line:variable-name
 private _rapportEvaluation: RapportDeEvaluation;
+private _rapportEvaluationEdit: RapportDeEvaluation;
 
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
@@ -78,6 +79,42 @@ private _rapportEvaluation: RapportDeEvaluation;
         console.log('eroro', eror);
       });
   }
+public editRapport(){
+    this.rapportEvaluationEdit = this.rapportEvaluation;
+}
+  get rapportEvaluationEdit(): RapportDeEvaluation {
+    if(this._rapportEvaluationEdit == null){
+      this._rapportEvaluationEdit = new RapportDeEvaluation();
+      this._rapportEvaluationEdit.employe = new Employe();
+      this._rapportEvaluationEdit.formation = new Array<Formation>();
+      this._rapportEvaluationEdit.formation.forEach(foramation =>{
+        foramation = new Formation();
+      });
+      this._rapportEvaluationEdit.noteGenerale = new Array<NoteGeneraleDeAnnee>();
+      this._rapportEvaluationEdit.noteGenerale.forEach(notee => {
+        notee = new NoteGeneraleDeAnnee();
+      });
+      this._rapportEvaluationEdit.prix = new Array<PrixEmploye>();
+      this._rapportEvaluationEdit.prix.forEach(prrix =>{
+        prrix = new PrixEmploye();
+        prrix.prix = new Prix();
+      });
+      this._rapportEvaluationEdit.punition = new Array<PunitionEmploye>();
+      this._rapportEvaluationEdit.punition.forEach(punition => {
+        punition = new PunitionEmploye();
+        punition.punition = new Punition();
+      });
+      this._rapportEvaluationEdit.nouveauGrade = new GradeEmploye();
+      this._rapportEvaluationEdit.nouveauGrade.grade = new Grade();
+    }
+
+    return this._rapportEvaluationEdit;
+  }
+
+  set rapportEvaluationEdit(value: RapportDeEvaluation) {
+    this._rapportEvaluationEdit = value;
+  }
+
   get rapportEvaluation(): RapportDeEvaluation {
     if(this._rapportEvaluation == null){
       this._rapportEvaluation = new RapportDeEvaluation();

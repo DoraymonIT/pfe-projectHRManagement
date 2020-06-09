@@ -120,7 +120,7 @@
                 <span>
                    <ng-template [ngIf]="employeInfo.sup != null">
                      <h6>Chef département:
-                     {{ employeInfo.firstName + " " + employeInfo.lastName}}
+                     {{ employeInfo.sup.firstName + " " + employeInfo.sup.lastName}}
                    </h6>
                    </ng-template>
                 </span>
@@ -150,7 +150,6 @@
                 <span>
                   <h6>Date d affectation de ce grade: {{employeInfo.dernierGrade.dateDeAffectation}}</h6>
                 </span>
-
               </div>
             </div>
           </div>
@@ -179,9 +178,9 @@
               <div class="col-md-6">
                 <span>
                   <h6>Mention :
-                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock> pas encore noté</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.dernierNote.mention || "Pas de Mention"}} </ng-template>
+                    <div *ngIf="employeInfo.dernierNote == null; then thenBlock1 else elseBlock1"></div>
+                    <ng-template #thenBlock1> pas encore noté</ng-template>
+                    <ng-template #elseBlock1> {{employeInfo.dernierNote.mention || "Pas de Mention"}} </ng-template>
                   </h6>
                 </span>
               </div>
@@ -190,9 +189,9 @@
               <div class="col-md-6">
                 <span>
                   <h6>Date de dernier Note Saisie :
-                    <div *ngIf="(employeInfo.dernierNote)== null; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock> pas encore noté</ng-template>
-                    <ng-template #elseBlock> {{employeInfo.dernierNote.date || "Pas de date de note"}} </ng-template>
+                    <div *ngIf="employeInfo.dernierNote== null; then thenBlock2 else elseBlock2"></div>
+                    <ng-template #thenBlock2> pas encore noté</ng-template>
+                    <ng-template #elseBlock2> {{employeInfo.dernierNote.date || "Pas de date de note"}} </ng-template>
                   </h6>
                 </span>
               </div>

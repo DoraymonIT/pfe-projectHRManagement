@@ -34,7 +34,11 @@ export class HRResponsableSideComponent implements OnInit {
   ngOnInit(): void {
     // this.connecter();
     this.aujourdHui = new Date();
+    setInterval(() => {
+      this.time = new Date();
+    }, 1000);
   }
+  time = new Date();
 badge(){
  this.hideMatBadge = true;
 }

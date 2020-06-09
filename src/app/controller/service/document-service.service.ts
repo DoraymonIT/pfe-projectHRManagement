@@ -4,6 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 import {DemaneDeDocument} from '../model/demane-de-document.model';
 import {TypeDocument} from '../model/type-document.model';
 import {Employe} from '../model/employe.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,30 @@ private _typeDocument: TypeDocument;
           console.log('eroro', eror);
         });
               }
+ // postFile(fileToUpload: File): Observable<boolean> {
+   // const endpoint = 'your-destination-url';
+    //const formData: FormData = new FormData();
+    //formData.append('fileKey', fileToUpload, fileToUpload.name);
+    //return this.httpClient
+      //.post(endpoint, formData, { headers: yourHeadersConfig })
+      //.map(() => { return true; })
+      //.catch((e) => this.handleError(e));
+ // }
+  public sendDocument(email: string, subject: string, content: string, file: File) {
+    // tslint:disable-next-line:max-line-length
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/sendmail/email/' + email + '/subject/' + subject +'/content/' +content , file).subscribe(
+      data => {
+        this.toast.success(` document est bien envoyé`, ' document envoyé', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   public saveDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
     if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
@@ -64,8 +89,8 @@ private _typeDocument: TypeDocument;
         this._ajouteDemandeDocument = 'demande est bien sauvegrader';
         document.getElementById('span').style.color = 'green';
         this.documents.push(this.cloneDocumentEmploye(this.document));
-        this.findAll();
         this.document = null;
+        this.findAllDemandeNonTraite();
       }, eror => {
         console.log('eroro', eror);
       });
@@ -94,7 +119,7 @@ private _typeDocument: TypeDocument;
           this._ajouteDemandeDocument = 'demande est bien modifier';
           document.getElementById('span').style.color = 'green';
           this.documents.push(this.cloneDocumentEmploye(this.document));
-          this.findAll();
+          this.findAllDemandeNonTraite();
           this.document = null;
         }, eror => {
           console.log('eroro', eror);

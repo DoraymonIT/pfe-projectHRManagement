@@ -17,7 +17,6 @@ export class PermanenceComponent implements OnInit {
   cols: any[];
 
   ngOnInit(): void {
-    this.pemanenceAdministrative.findAll();
   }
   get employes(): Array<Employe> {
     return this.employerService.employes;

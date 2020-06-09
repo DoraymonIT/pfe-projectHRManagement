@@ -10,7 +10,7 @@
         <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son numéro</mat-label>
         <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.employe.doti">
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
+          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +' '+ gr.lastName}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
@@ -28,7 +28,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Période :*</mat-label>
-        <input matInput [(ngModel)]="congeEmploye.periode" [ngModelOptions]="{standalone: true}"
+        <input matInput [(ngModel)]="congeEmploye.periode" placeholder="Ex: 90 jours" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.periode" type="number">
       </mat-form-field>
     </div>

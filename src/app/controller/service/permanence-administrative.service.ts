@@ -10,12 +10,30 @@ import {PermanenceAdministrative} from '../model/PermanenceAdministrative';
 export class PermanenceAdministrativeService {
   private _perm: Array<PermanenceAdministrative>;
   private _permanenceAdministrative: PermanenceAdministrative;
+  private _permanenceAdministrative1: PermanenceAdministrative;
+  private _pemanenceListe: Array<PermanenceAdministrative>;
   constructor(private http: HttpClient,
               private toast: ToastrService) { }
   public findAllPermanenceByDoti(value: string) {
     this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByemployeDoti/doti/' + value).subscribe(
       data => {
-        this._perm = data ;
+        this.pemanenceListe = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public findAllPermanenceByannee(value: number) {
+    this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByAnnee/annee/' + value).subscribe(
+      data => {
+        this.pemanenceListe = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public findAllPermanenceByanneeAndDoti(annee: number, doti: string) {
+    this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByAnneeAndemployeDoti/annee/' + annee + '/doti/' + doti).subscribe(
+      data => {
+        this.pemanenceListe = data ;
       }, eror => {
         console.log('eroro', eror);
       });
@@ -23,7 +41,8 @@ export class PermanenceAdministrativeService {
   public findAll() {
     this.http.get<Array<PermanenceAdministrative>>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findAll').subscribe(
       data => {
-        this._perm = data ;
+        this.perm = data ;
+        this.pemanenceListe = data;
       }, eror => {
         console.log('eroro', eror);
       });
@@ -58,11 +77,39 @@ export class PermanenceAdministrativeService {
  }
     return this._permanenceAdministrative;
   }
+
+  get permanenceAdministrative1(): PermanenceAdministrative {
+    if(this._permanenceAdministrative1 == null){
+      this._permanenceAdministrative1 = new PermanenceAdministrative();
+      this._permanenceAdministrative1.employe = new Employe();
+    }
+    return this._permanenceAdministrative1;
+  }
+
+  set permanenceAdministrative1(value: PermanenceAdministrative) {
+    this._permanenceAdministrative1 = value;
+  }
+
+  get pemanenceListe(): Array<PermanenceAdministrative> {
+    if(this._pemanenceListe == null){
+      this._pemanenceListe = new Array<PermanenceAdministrative>();
+      this._pemanenceListe.forEach(per =>{
+        per = new PermanenceAdministrative();
+        per.employe = new Employe();
+      });
+    }
+    return this._pemanenceListe;
+  }
+
+  set pemanenceListe(value: Array<PermanenceAdministrative>) {
+    this._pemanenceListe = value;
+  }
+
   public trouverEmployerParSonDoti(value: string){
     this.http.get<PermanenceAdministrative>('http://localhost:8080/gestionDesEmployee-Api/PermanenceAdministrative/findByemployeDoti//doti/' + value).subscribe(
       data => {
 //        console.log('ha data' + data);
-        this._permanenceAdministrative = data ;
+        this.permanenceAdministrative = data ;
   //      console.log('ha  permanence Adminitrative' + this._permanenceAdministrative);
       }, eror => {
         console.log('eroro', eror);

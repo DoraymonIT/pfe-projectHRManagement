@@ -3,6 +3,7 @@ import {PersonnelEmployesService} from '../../../controller/service/personnel-em
 import {FormationServiceService} from '../../../controller/service/formation-service.service';
 import {Employe} from '../../../controller/model/employe.model';
 import {Email} from '../../../controller/model/email.model';
+import {DocumentServiceService} from '../../../controller/service/document-service.service';
 
 
 @Component({
@@ -11,7 +12,9 @@ import {Email} from '../../../controller/model/email.model';
   styleUrls: ['./contacter-un-employe.component.css']
 })
 export class ContacterUnEmployeComponent implements OnInit {
-  constructor(private employeService: PersonnelEmployesService, private fs: FormationServiceService) { }
+  constructor(private employeService: PersonnelEmployesService,
+              private fs: FormationServiceService,
+              private documentService: DocumentServiceService) { }
   panelOpenState = false;
   ngOnInit(): void {
     this.employeService.findAll();
@@ -27,12 +30,18 @@ export class ContacterUnEmployeComponent implements OnInit {
       this.email.subject = 'document est prèt';
       this.email.text = ' votre document est prèt merci de se deplacer au guichet pour tirer votre document';
     } else if(value == 'autre'){
-    document.getElementById('emailSujet').style.display = 'inline';
+      this.email.subject = 'document est prèt';
+      this.email.text = ' votre document est prèt merci de se deplacer au guichet pour tirer votre document';
+      document.getElementById('emailSujet').style.display = 'inline';
     document.getElementById('emailText').style.display = 'inline';
   }
   }
   get email(): Email {
     return this.employeService.email;
+  }
+  handleFileInput(files: FileList) {
+    this.email.file = files.item(0);
+    console.log(this.email.file);
   }
   get employeInfo(): Employe {
     return this.employeService.EditEmploye;

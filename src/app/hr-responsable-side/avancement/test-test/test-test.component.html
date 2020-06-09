@@ -311,7 +311,7 @@
               <input matInput placeholder="Moyen:*" [(ngModel)]="rapportEvaluation.moyen" [ngModelOptions]="{standalone: true}" type="number" [value]="rapportEvaluation.moyen">
             </mat-form-field>
               <mat-form-field>
-              <input matInput placeholder="Remarque:*" [(ngModel)]="rapportEvaluation.remarques" [ngModelOptions]="{standalone: true}">
+              <input matInput placeholder="Remarque:*" [(ngModel)]="rapportEvaluation.remarques" [ngModelOptions]="{standalone: true}" [value]="rapportEvaluation.remarques">
             </mat-form-field>
           <button mat-raised-button color="primary" type="submit" class="btn-block"(click)="save()"> <i class="fas fa-check-square"></i> Ajouter</button>
                   </div>

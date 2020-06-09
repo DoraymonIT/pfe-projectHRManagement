@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
+import {FileUploadModule} from 'primeng/fileupload';
+
 import {Pipe, PipeTransform} from '@angular/core';
 // import {FullCalendarModule} from 'primeng/fullcalendar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -224,7 +226,8 @@ import { CalendrierDesCertificatsComponent } from './hr-responsable-side/absence
         , MatDividerModule
         , MatTooltipModule,
         MatExpansionModule,
-        MatTableModule,
+      FileUploadModule,
+      MatTableModule,
         MatPaginatorModule,
         FullCalendarModule,
         MatCardModule,

@@ -18,6 +18,8 @@ private _congesCertificat: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
 private _congeEmploye: CongeEmploye;
 // tslint:disable-next-line:variable-name
+  private _congeEmploye2: CongeEmploye;
+// tslint:disable-next-line:variable-name
 private _typeConge: Array<TypeCongee>;
 // tslint:disable-next-line:variable-name
 private _filterrsult: TypeCongee;
@@ -73,11 +75,28 @@ private _employefullname: string;
       });
     }
   }
+  public  resetSoldeCongeEmploye(){
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/conge/resetSoldeCongéEmploye').subscribe(
+      data => {
+      if(data == 1){
+        this.toast.success(` le solde de conge employe est initialisé`, 'initialisation des soldes congé', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+
+            }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+
+  }
   public imprimerListeDeCongeDeEmploye() {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/listeDesCongéPdf' , this.conges).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(` le docu,ent à été est bien exporter`, 'Voir votre dossier de téléchargement', {
+          this.toast.success(` le document à été est bien exporter`, 'Voir votre dossier de téléchargement', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -122,6 +141,19 @@ private _employefullname: string;
     return this._congeEmploye;
   }
 
+  get congeEmploye2(): CongeEmploye {
+    if (this._congeEmploye2 == null) {
+      this._congeEmploye2 = new CongeEmploye();
+      this._congeEmploye2.congee = new TypeCongee();
+      this._congeEmploye2.employe = new Employe();
+    }
+    return this._congeEmploye2;
+  }
+
+  set congeEmploye2(value: CongeEmploye) {
+    this._congeEmploye2 = value;
+  }
+
   set congeEmploye(value: CongeEmploye) {
     this._congeEmploye = value;
   }
@@ -139,7 +171,7 @@ private _employefullname: string;
     } else {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/save', this.congeEmploye).subscribe(
       data => {
-        if (data > 0) {
+        if (data == 1) {
           this.toast.success(`Un congé a été effectuer au ${this.congeEmploye.employe.firstName + this.congeEmploye.employe.lastName} `, 'congé est Bien affecter', {
             timeOut: 2500,
             progressBar: true,
@@ -150,6 +182,33 @@ private _employefullname: string;
           this.congeEmploye = null;
           this._ajouteCongeEmp = 'Le congé est bien affecté';
           document.getElementById('span').style.color = 'green';
+        } else if(data  == -4){
+          this.toast.error(`la periode de congé est superieur de solde congé de employe `, 'error congé', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this._ajouteCongeEmp = 'Le congé est annulé';
+          document.getElementById('span').style.color = 'red';
+        } else if(data  == -5){
+          this.toast.error(`la durée de certificat court durée (3 mois) ne doit pas depassée 90 jours  `, 'error congé', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this._ajouteCongeEmp = 'Le congé est annulé';
+          document.getElementById('span').style.color = 'red';
+        } else if(data  == -6){
+          this.toast.error(`la durée de certificat court durée (6mois) ne doit pas depassée 180 jours  `, 'error congé', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this._ajouteCongeEmp = 'Le congé est annulé';
+          document.getElementById('span').style.color = 'red';
         }
       }, eror => {
         console.log('eroro', eror);
@@ -157,8 +216,8 @@ private _employefullname: string;
     }
   }
 
-  public findCongeCertificatLongDuree() {
-    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findCongeCertificatLongDuree').subscribe(
+  public findCOngeByLibelle(libelle: string) {
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByCongeeLibelle/libelle/' + libelle).subscribe(
       data => {
         this.congesCertificat = data;
       }, eror => {
@@ -190,7 +249,7 @@ public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
     // tslint:disable-next-line:max-line-length
     this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findListeCertificatByAnnee').subscribe(
       data => {
-        this.congesCertificatCalendrier = data;
+        this.congesCertificat = data;
         console.log('ana hna tani');
       }, eror => {
         console.log('eroro', eror);

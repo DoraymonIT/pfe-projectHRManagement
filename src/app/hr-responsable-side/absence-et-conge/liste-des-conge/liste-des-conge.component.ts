@@ -44,9 +44,10 @@ export class ListeDesCongeComponent implements OnInit {
     this.cols = [
       { field: 'cin', header: 'CIN' },
       { field: 'doti', header: 'Numéro' },
-      { field: 'fullName', header: 'Nom Complet' },
+      { field: 'lastName', header: 'Nom' },
+      { field: 'firstName', header: 'Prenom' },
       { field: 'email', header: 'G-mail' },
-      { field: 'soldeRestantesCongeExceptionnel', header: 'solde Restantes Congé Exceptionnel' },
+      { field: 'soldeRestantesCongeExceptionnel', header: 'solde Restantes' },
     ];
     this.loading = true;
     this.totalRecords = this.employes.length;

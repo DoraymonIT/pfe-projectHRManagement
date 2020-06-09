@@ -102,6 +102,24 @@ public noteNull(){
         console.log('eroro',eror);
       });
   }
+  public update() {
+    this.http.post<number>(this._url + 'update', this.noteSave).subscribe(
+      data => {
+        if(data === 1) {
+          this.toast.success(`${'note'} add note to the database.`, 'note Added', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this.notesAll.push(this.cloneNote(this.noteSave));
+          this._noteSave = null;
+        }
+      } , eror => {
+        console.log('eroro',eror);
+      });
+  }
+
   public  cloneNote(noteGeneraleDeAnnee: NoteGeneraleDeAnnee): NoteGeneraleDeAnnee {
     const myClone = new NoteGeneraleDeAnnee() ;
     myClone.employeDoti = noteGeneraleDeAnnee.employeDoti;

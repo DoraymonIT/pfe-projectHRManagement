@@ -8,4 +8,5 @@ export class DemaneDeDocument {
   typeDeDocument: TypeDocument;
   maniereDeRetrait: string;
   etat: string;
+  nbrDeDocument: number;
 }

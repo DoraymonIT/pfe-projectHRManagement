@@ -9,15 +9,14 @@
           <div class="controles-container">
             <mat-form-field>
               <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employé par son Numéro</mat-label>
-              <mat-select [(ngModel)]="permanenceAdministrative.employe.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.permanenceAdministrative.employe.doti)">
-                <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName }}</mat-option>
+              <mat-select [(ngModel)]="permanenceAdministrative.employe" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let gr of employes" [value]="gr">{{gr.firstName + gr.lastName }}</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field>
               <mat-label> Période : *</mat-label>
               <label>  </label>
-              <input matInput  [(ngModel)]="permanenceAdministrative.periode"
-                     [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.periode" type="number" >
+              <input matInput  [(ngModel)]="permanenceAdministrative.periode" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative.periode" type="number" >
             </mat-form-field>
             <mat-form-field>
               <mat-label> Récupération : *</mat-label>

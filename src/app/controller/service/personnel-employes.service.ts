@@ -24,6 +24,8 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _employe: Employe;
   // tslint:disable-next-line:variable-name
+  private _employeNote: Array<Employe>
+  // tslint:disable-next-line:variable-name
   private _employeFormation: Employe;
   // tslint:disable-next-line:variable-name
   private _employePrix: Employe;
@@ -62,7 +64,9 @@ export class PersonnelEmployesService {
   constructor(private http: HttpClient,
     private toast: ToastrService) { }
   public infoUnEmployer(employe: Employe) {
-    this._employeInfo = employe;
+    this.employeInfo = employe;
+    console.log(this.employeInfo.dernierNote.date);
+    console.log(this.employeInfo.dernierNote.mention);
   }
 
   public ajouterEmpString() {
@@ -280,7 +284,6 @@ export class PersonnelEmployesService {
     this.http.get<Array<DepFonction>>('http://localhost:8080/gestionDesEmployee-Api/DepFonction/findByDepartemantNom/nomDepartemant/' + value).subscribe(
       data => {
         this.depFonctions = data;
-        console.log('ha dep fonction' + this._depFonctions);
       }, eror => {
         console.log('eroro', eror);
       });
@@ -290,6 +293,14 @@ export class PersonnelEmployesService {
       data => {
         this.EditEmploye = data;
         this.email.emaill = data.email;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public trouverEmployerAyantBesoinDeNote() {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findLesEmployeAyantLaNoteGeneraleAujourdHui').subscribe(
+      data => {
+        this.employeNote = data;
       }, eror => {
         console.log('eroro', eror);
       });
@@ -382,6 +393,8 @@ export class PersonnelEmployesService {
     return this._employe;
   }
 
+
+
   set employe(value: Employe) {
     this._employe = value;
   }
@@ -426,6 +439,7 @@ export class PersonnelEmployesService {
       this._employes.forEach(data => {
         data = new Employe();
         data.dep = new Departement();
+        data.dernierNote = new NoteGeneraleDeAnnee();
         data.dernierGrade = new GradeEmploye();
         data.dernierGrade.grade = new Grade();
         data.sup = new Employe();
@@ -443,6 +457,7 @@ export class PersonnelEmployesService {
         data = new Employe();
         data.dep = new Departement();
         data.dernierGrade = new GradeEmploye();
+        data.dernierNote = new NoteGeneraleDeAnnee();
         data.dernierGrade.grade = new Grade();
         data.sup = new Employe();
       });
@@ -477,6 +492,7 @@ export class PersonnelEmployesService {
       this._EditEmploye.dernierGrade.grade = new Grade();
       this._EditEmploye.dep = new Departement();
       this._EditEmploye.fonction = new Fonction();
+      this._EditEmploye.dernierNote = new NoteGeneraleDeAnnee();
     }
     return this._EditEmploye;
   }
@@ -503,7 +519,6 @@ export class PersonnelEmployesService {
       this._employeInfo.sup = new Employe();
       this._employeInfo.fonction = new Fonction();
       this._employeInfo.dep = new Departement();
-      this._employeInfo.dernierNote = new NoteGeneraleDeAnnee();
     }
     return this._employeInfo;
   }
@@ -666,5 +681,24 @@ export class PersonnelEmployesService {
 
   set employeDateEvaluation(value: Employe) {
     this._employeDateEvaluation = value;
+  }
+
+  get employeNote(): Array<Employe> {
+    if (this._employeNote == null) {
+      this._employeNote = new Array<Employe>();
+      this._employeNote.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierNote = new NoteGeneraleDeAnnee();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+    return this._employeNote;
+  }
+
+  set employeNote(value: Array<Employe>) {
+    this._employeNote = value;
   }
 }

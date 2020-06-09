@@ -86,7 +86,7 @@
           </mat-icon>
         </button>
         <mat-menu class="my-class" #menu="matMenu">
-          <h6 style="text-align:center;color:white">{{aujourdHui| date: 'MMMM dd, y, hh:mm aa' }} </h6><hr>
+          <h6 style="text-align:center;color:white">{{this.time| date: 'MMMM dd, y, hh:mm:ss aa' }} </h6><hr>
           <a mat-menu-item [routerLink]="[{ outlets: { un: ['documents'] } }]">
             <i class="fas fa-file"></i>  Liste de demandes de documents d'Aujourd'hui </a>
           <a mat-menu-item [routerLink]="[{ outlets: { un: ['evaluation'] } }]">
@@ -94,7 +94,6 @@
           <a mat-menu-item [routerLink]="[{ outlets: { un: ['avancement'] } }]">
             <i class="fas fa-forward"></i>  Liste des employés qui ont l'étude de l'avancement Aujourd'hui</a>
         </mat-menu>
-
 
         <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>
           Profile</button> -->
