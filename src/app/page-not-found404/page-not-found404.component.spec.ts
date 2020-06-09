@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogsVideoComponent } from './logs-video.component';
+import { PageNotFound404Component } from './page-not-found404.component';
 
-describe('LogsVideoComponent', () => {
-  let component: LogsVideoComponent;
-  let fixture: ComponentFixture<LogsVideoComponent>;
+describe('PageNotFound404Component', () => {
+  let component: PageNotFound404Component;
+  let fixture: ComponentFixture<PageNotFound404Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogsVideoComponent ]
+      declarations: [ PageNotFound404Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LogsVideoComponent);
+    fixture = TestBed.createComponent(PageNotFound404Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

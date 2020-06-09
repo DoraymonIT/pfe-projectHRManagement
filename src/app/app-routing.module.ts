@@ -16,6 +16,8 @@ import { ArchitectureDeFSTGComponent } from './hr-responsable-side/architecture-
 import { HelpDocumentationComponent } from './help-documentation/help-documentation.component';
 import { ParametresAvancesComponent } from './hr-responsable-side/parametres-avances/parametres-avances.component';
 import { LogsEtVideoComponent } from './hr-responsable-side/logs-et-video/logs-et-video.component';
+import { FormulaireDeDocumentEnLigneComponent } from './formulaire-de-document-en-ligne/formulaire-de-document-en-ligne.component';
+import { PageNotFound404Component } from './page-not-found404/page-not-found404.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: LogsEtVideoComponent,
+        component: OverreviewComponent,
         outlet: 'un',
 
 
@@ -84,8 +86,11 @@ const routes: Routes = [
         path: 'historique',
         component: LogsEtVideoComponent,
         outlet: 'un'
+      },{
+        path: '**',
+        component: PageNotFound404Component,
+         outlet: 'un'
       }
-
     ]
 
   }
@@ -101,9 +106,13 @@ const routes: Routes = [
    {
     path: 'help',
     component: HelpDocumentationComponent
+  },
+  {
+    path: 'demandeEnLigneDeDocument',
+    component: FormulaireDeDocumentEnLigneComponent,
   },{
     path: '**',
-    component: HRResponsableSideComponent,
+    component: PageNotFound404Component,
   }
 
 ];

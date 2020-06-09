@@ -50,12 +50,7 @@
             <input matInput placeholder="Ville de Résidence" [(ngModel)]="employe.pays" [ngModelOptions]="{standalone: true}">
 
           </mat-form-field>
-          <mat-form-field>
-            <mat-label>Ville</mat-label>
-            <mat-select >
-              <mat-option  *ngFor="let item of cities" >{{item.ville}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+
         </div>
       </div>
       <div class="col-md-6">

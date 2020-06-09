@@ -7,11 +7,6 @@ import { Departement } from 'src/app/controller/model/departement.model';
 import { GradeService } from 'src/app/controller/service/grade.service';
 import { Grade } from 'src/app/controller/model/grade.model';
 import {DepFonction} from '../../../controller/model/dep-fonction.model';
-import { FetchJsonService } from 'src/app/controller/service/fetch-json.service';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/controller/model/user.model';
-import { City } from 'src/app/controller/model/city.model';
 
 
 @Component({
@@ -22,18 +17,13 @@ import { City } from 'src/app/controller/model/city.model';
 })
 export class AjouterEmployeComponent implements OnInit {
   constructor(public employeService: PersonnelEmployesService, public dialogRef: MatDialogRef<AjouterEmployeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,public departementService : DepartemntService,public gradeService : GradeService,
-    private jsonCities : FetchJsonService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,public departementService : DepartemntService,public gradeService : GradeService) { }
+
 
   ngOnInit(): void {
     this.departementService.findAll();
     this.gradeService.findAll();
     this.employeService.ajouterEmpString();
-    this.jsonCities.findAll();
-
-  }
-  get cities(): Array<City> {
-    return this.jsonCities.cities;
   }
 
   get ajouteEmp(): string {

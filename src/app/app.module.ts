@@ -114,6 +114,8 @@ import { ListeDesCertificatsComponent } from './hr-responsable-side/absence-et-c
 import { ListeDesCongeExceptionelComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/liste-des-conge-exceptionel/liste-des-conge-exceptionel.component';
 import { LogsEtVideoComponent } from './hr-responsable-side/logs-et-video/logs-et-video.component';
 import { CalendrierDesCertificatsComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/calendrier-des-certificats/calendrier-des-certificats.component';
+import { FormulaireDeDocumentEnLigneComponent } from './formulaire-de-document-en-ligne/formulaire-de-document-en-ligne.component';
+import { PageNotFound404Component } from './page-not-found404/page-not-found404.component';
 
 @NgModule({
   declarations: [
@@ -197,7 +199,9 @@ import { CalendrierDesCertificatsComponent } from './hr-responsable-side/absence
     ListeDesCertificatsComponent,
     ListeDesCongeExceptionelComponent,
     LogsEtVideoComponent,
-    CalendrierDesCertificatsComponent
+    CalendrierDesCertificatsComponent,
+    FormulaireDeDocumentEnLigneComponent,
+    PageNotFound404Component
   ],
     imports: [
         BrowserModule,
