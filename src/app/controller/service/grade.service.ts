@@ -28,7 +28,7 @@ export class GradeService {
 public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDeGradeDeEmployePdf', value).subscribe(
       data => {
-        this.toast.success(` document est bien preparer`, ' document preparer', {
+        this.toast.success(`Document a ete traites avec success`, ' Voir votre fichier de telechargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -131,25 +131,25 @@ public findAll() {
   public saveGradeEmploye() {
     // tslint:disable-next-line:max-line-length
   if ((this.gradeEmploye.grade == null || this.gradeEmploye.dateDeAffectation == null || this.gradeEmploye.doti == null) || (this.gradeEmploye.grade == null && this.gradeEmploye.dateDeAffectation == null && this.gradeEmploye.doti == null)) {
-    this.toast.error(`$ remplir les champs`, 'champ vide', {
+    this.toast.error(`$ Remplir les champs`, 'champ vide', {
       timeOut: 2500,
       progressBar: true,
       progressAnimation: 'increasing',
       positionClass: 'toast-top-right'
     });
-    this._ajouteGradeEmploye = 'remplir toutes les champs';
+    this._ajouteGradeEmploye = 'Remplir toutes les champs';
     document.getElementById('span').style.color = 'red';
   }
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/save', this.gradeEmploye).subscribe(
       data => {
         if ( data === 1) {
-        this.toast.success(`$ add grade employe to the database.`, 'grade Added', {
+        this.toast.success(`Un grade Employe a ete effectue avec succes`, 'grade Effectue', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._ajouteGradeEmploye = 'grade employe est bien ajouté';
+        this._ajouteGradeEmploye = 'Grade employe est bien ajouté avec succees';
         document.getElementById('span').style.color = 'green';
         }
         }, eror => {

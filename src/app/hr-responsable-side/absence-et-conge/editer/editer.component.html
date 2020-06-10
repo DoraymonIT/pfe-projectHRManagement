@@ -1,13 +1,13 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> <i class="fas fa-plus-circle "> {{ajouteCongeEmp}}</i> </span>
+    <span class="span" id="span"> <i class="fas fa-plus-circle "> {{ajouteCongeEmp}} </i> </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
   <div class="container-fluid">
     <div class="controles-container">
       <mat-form-field>
-        <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer par son numéro</mat-label>
+        <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employer concerné </mat-label>
         <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.employe.doti">
           <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +' '+ gr.lastName}}</mat-option>

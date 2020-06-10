@@ -9,7 +9,7 @@
       <mat-form-field  style="width: 500px">
         <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Sélectionnez l employé concerné</mat-label>
         <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="trouverNoteParSonDoti(this.employe)">
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
+          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +" "+ gr.lastName}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -44,8 +44,8 @@
                 {{rowData[col.field]}}
               </td>
               <td style="text-align: center;" >
-                <button class="btn btn-info btn-sm fa fa-trash" style="margin-right: 5px;" ></button>
-                <button class="btn btn-danger btn-sm fa fa-edit" style="margin-right: 5px;" ></button>
+                <!-- <button class="btn btn-info btn-sm fa fa-trash" style="margin-right: 5px;" ></button>
+                <button class="btn btn-danger btn-sm fa fa-edit" style="margin-right: 5px;" ></button> -->
                 <button class="btn btn-outline-info btn-sm fa fa-info" (click)="infoUnNote(rowData)"></button>
               </td>
             </tr>

@@ -55,10 +55,10 @@
       </div>
       <div class="col-md-6">
         <div class="controles-container">
+          <!--
           <mat-form-field>
             <input matInput placeholder="RIB de Bank " [(ngModel)]="employe.compteBancaireRib" [ngModelOptions]="{standalone: true}">
-
-          </mat-form-field>
+          </mat-form-field>-->
           <mat-form-field>
             <mat-label>Grade</mat-label>
             <mat-select [(ngModel)]="employe.dernierGrade.grade.libelle" [ngModelOptions]="{standalone: true}">
@@ -85,7 +85,7 @@
               [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Départment</mat-label>
+            <mat-label>Département</mat-label>
 
             <mat-select [(ngModel)]="employe.dep.nom" [ngModelOptions]="{standalone: true}" (selectionChange)="selectDepFonction(this.employe.dep.nom)" >
               <mat-option  *ngFor="let dep of deps" [value]="dep.nom">{{dep.nom}}</mat-option>

@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
-import {FileUploadModule} from 'primeng/fileupload';
 
-import {Pipe, PipeTransform} from '@angular/core';
 // import {FullCalendarModule} from 'primeng/fullcalendar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -30,8 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { ChartModule } from 'primeng/chart';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { Ng2CompleterModule } from '@akveo/ng2-completer';
+
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -230,7 +227,7 @@ import { PageNotFound404Component } from './page-not-found404/page-not-found404.
         , MatDividerModule
         , MatTooltipModule,
         MatExpansionModule,
-      FileUploadModule,
+
       MatTableModule,
         MatPaginatorModule,
         FullCalendarModule,
@@ -244,8 +241,7 @@ import { PageNotFound404Component } from './page-not-found404/page-not-found404.
         MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        Ng2SmartTableModule,
-        Ng2CompleterModule,
+
         TableModule,
         InputTextModule,
         ToastrModule,

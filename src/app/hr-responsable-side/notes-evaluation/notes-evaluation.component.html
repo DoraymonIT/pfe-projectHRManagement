@@ -1,5 +1,5 @@
 <mat-tab-group mat-stretch-tabs  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="EMPLOYES ayant besoin d'une note" style="width: 25px" tabindex="1">
+  <mat-tab label="Liste des employés ayant besoin d'une note" style="width: 25px" tabindex="1">
   <div style="text-align: center;padding-top: 15px;">
   </div>
 
@@ -8,7 +8,7 @@
         <div class="col-md-12">
           <p-table #dt [columns]="cols" [value]="notesNonTraites" dataKey="id" [paginator]="true" [rows]="4">
             <ng-template pTemplate="caption">
-              <i class="fas fa-calendar-check    "></i>  Liste of permanence Administratives
+              <i class="fas fa-calendar-check    "></i>  Liste des employés ayant besoin d'une note
               <div style="    text-align: left; margin-bottom: 10px;">
                 <button class="btn"style="background-color: white;color: black;float: left"
                         matTooltip="Ce button permet d imprimer ce table en format PDF"
@@ -16,7 +16,7 @@
               </div>
               <div style="text-align: right">
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="50" placeholder="Chercher par date:Format : yyyy-MM-dd"
+                <input type="text" pInputText size="50" placeholder="Chercher par nom , numéro"
                        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
               </div>
             </ng-template>
@@ -58,13 +58,13 @@
                     <div class="ui-g-12 ui-md-9" >
                       <div class="ui-g">
                         <div class="ui-g-4">
-                          <b> Moyen Generale :</b> {{rowData.dernierNote. moyenGeneral}}
+                          <b> Moyen Génerale :</b> {{rowData.dernierNote. moyenGeneral}}
                         </div>
                         <div class="ui-g-4">
                           <b>Mention :</b> {{rowData.dernierNote.mention}}
                         </div>
                         <div class="ui-g-4">
-                          <b>Date:</b> {{rowData.dernierNote.date}}
+                          <b>Date de cet évaluation :</b> {{rowData.dernierNote.date}}
                         </div>
                       </div>
                     </div>

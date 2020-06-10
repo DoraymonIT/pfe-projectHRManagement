@@ -173,7 +173,7 @@ export class PersonnelEmployesService {
       this.http.post<number>(this._url + 'save', this.employe).subscribe(
         data => {
           if (data === -1) {
-            this.toast.error(`format du nom est incorrect`, 'format error', {
+            this.toast.error(`Format du nom est incorrect`, 'format error', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -188,10 +188,10 @@ export class PersonnelEmployesService {
               progressAnimation: 'increasing',
               positionClass: 'toast-top-right'
             });
-            this._ajouteEmp = 'format du email est incorrect';
+            this._ajouteEmp = 'Format du email est incorrect';
             document.getElementById('span').style.color = 'red';
           } else {
-            this.toast.success(`${this.employe.firstName + this.employe.lastName} a été ajouté au base de données`, 'employé ajouté', {
+            this.toast.success(`${this.employe.firstName +' '+ this.employe.lastName} a été ajouté au base de données`, 'employé ajouté', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -240,7 +240,7 @@ export class PersonnelEmployesService {
             this._ajouteEmp = 'format du email est incorrect';
             document.getElementById('span').style.color = 'red';
           } else {
-            this.toast.info(`${this.EditEmploye.firstName + this.EditEmploye.lastName} a été bien modifié`, 'employé modifié', {
+            this.toast.info(`${this.EditEmploye.firstName +' '+ this.EditEmploye.lastName} a été bien modifié`, 'employé modifié', {
               timeOut: 2500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -364,7 +364,7 @@ export class PersonnelEmployesService {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployePdf').subscribe(
       data => {
         if (data > 0) {
-          this.toast.success(` la liste des employe est bien imprimer`, 'ListeFonction imprimer', {
+          this.toast.success(` la liste des employes est bien traites sous format PDF`, 'Voir votre fichier de telechargement', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

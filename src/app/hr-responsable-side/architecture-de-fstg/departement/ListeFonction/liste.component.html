@@ -1,9 +1,9 @@
 <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> liste des fonctions de cette departement</span>
+    <span class="span" id="span"> liste des fonctions de cette département </span>
   </mat-toolbar-row>
-</mat-toolbar><table class="table table-hover table-striped table-dark " style="color: wheat">
+</mat-toolbar><table class="table table-hover table-striped table-dark table-bordered" style="color: wheat">
   <thead>
     <th>Fonction</th>
     <th>Nom de département</th>
@@ -14,7 +14,7 @@
     <tr *ngFor="let c of depFonfonction">
       <td>{{c.fonction.libelle}}</td>
       <td>{{c.departemant.nom}}</td>
-      <td>{{c.departemant.chefdoti}}</td>
+      <td>{{c.departemant.fullname}}</td>
     </tr>
   </tbody>
 </table>

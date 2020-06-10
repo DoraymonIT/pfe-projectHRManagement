@@ -37,7 +37,7 @@ private _rapportEvaluationEdit: RapportDeEvaluation;
     this.http.get <number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/creeUnGradeNonTraite/doti/' + value).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(`le grade employe est bien crée`, 'grade crée', {
+          this.toast.success(`le grade employe est bien crée`, 'grade crée avec succes', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -68,7 +68,7 @@ private _rapportEvaluationEdit: RapportDeEvaluation;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/accepterUnGrade', gradeeemploye).subscribe(
       data => {
         if (data == 1) {
-          this.toast.success(` Avancement est bien effectué`, 'Avancement effectuer', {
+          this.toast.success(` Avancement est bien effectué`, 'Avancement effectuer  avec success', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -152,7 +152,7 @@ public editRapport(){
         data => {
           // console.log(data);
           if (data === 1)
-          this.toast.success(`${this.rapportEvaluation.employe.doti} a ajouté un rapport au BD.`, 'Rapport Ajouté', {
+          this.toast.success(`un rapport de ${this.rapportEvaluation.employe.doti} a ete ajouté  au BD.`, 'Rapport Ajouté', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -169,7 +169,7 @@ public editRapport(){
       data => {
         // console.log(data);
         if (data === 1)
-          this.toast.info(` le rqpport de ${this.rapportEvaluation.employe.firstName + this.rapportEvaluation.employe.lastName} a modifié .`, 'Rapport Modifié', {
+          this.toast.info(` le rapport de ${this.rapportEvaluation.employe.firstName+' ' + this.rapportEvaluation.employe.lastName} a modifié .`, 'Rapport Modifié', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

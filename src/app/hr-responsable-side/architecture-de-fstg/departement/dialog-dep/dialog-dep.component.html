@@ -1,20 +1,16 @@
 <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<h4 style="float:left">Liste des employés qui travaillent dans le éepartement de {{this.getFullName()}}  </h4>
-<table class="table table-hover table-striped table-dark " style="color: wheat">
+<h4 style="float:left">Liste des employés qui travaillent dans le département de {{this.getFullName()}}  </h4>
+<table class="table table-hover table-striped table-dark table-bordered" style="color: wheat">
   <thead>
     <th>Nom Complet</th>
     <th>Numéro</th>
-    <th>Cin</th>
-    <th>Email</th>
     <th>Fonction</th>
   </thead>
   <tbody>
     <p-progressSpinner *ngIf="listeVide1()"  >Loading...</p-progressSpinner>
     <tr *ngFor="let c of employesByDep">
-      <td>{{c.fullName}}</td>
+      <td>{{c.firstName +" " + c.lastName }}</td>
       <td>{{c.doti}}</td>
-      <td>{{c.cin}}</td>
-      <td>{{c.email}}</td>
       <td>{{c.fonction.libelle}} </td>
     </tr>
   </tbody>
