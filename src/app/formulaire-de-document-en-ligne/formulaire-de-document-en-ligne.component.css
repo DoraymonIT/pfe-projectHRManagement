@@ -25,9 +25,6 @@ mat-radio-group mat-radio-button{
   margin: auto;
 }
 #fst{
-  position: absolute;
-    left: 120px;
-    height: 200px;
-    bottom: 500px;
+ width:194px;
 
 }
