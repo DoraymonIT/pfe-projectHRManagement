@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Prix } from '../model/prix.model';
 import { Employe } from '../model/employe.model';
 import {Formation} from '../model/formation.model';
+import {NoteGeneraleDeAnnee} from '../model/note-generale-de-annee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,16 @@ public  ajoutePrixTitre(){
     public setprix(prixx: PrixEmploye){
       this._prixEmploye = prixx;
 }
+  public findDernierPrixeEmploye(doti: String) {
+    this.http.get<Array<PrixEmploye>>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/findPrixDeEmploye/doti/'+ doti).subscribe(
+      data => {
+        if (data != null){
+          this.prixs = data;
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
   public imprimerLesPrix(value: Array<PrixEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/listeDesPrixPdf', value).subscribe(
       data => {

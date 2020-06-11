@@ -16,6 +16,14 @@
               <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + "  " + gr.lastName}}</mat-option>
             </mat-select>
           </mat-form-field>
+          <br>
+          <mat-form-field  style="width: 500px">
+            <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez la periode des prix</mat-label>
+            <mat-select [(ngModel)]="this.employe.pays" [ngModelOptions]="{standalone: true}" (ngModelChange)="getDernieroutoutPrix()">
+              <mat-option value="dernierPeriode">trouvez les derniers prix</mat-option>
+              <mat-option value="all">trouvez toutes les prix</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tablePrix">

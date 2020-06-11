@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {NotificationEmployeService} from '../../controller/service/notification-employe.service';
+import {NotificationEmploye} from '../../controller/model/notification-employe.model';
+import {TypeNotification} from '../../controller/model/type-notification.model';
+import {Employe} from '../../controller/model/employe.model';
 
 @Component({
   selector: 'app-logs-et-video',
@@ -7,19 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogsEtVideoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private notificationService: NotificationEmployeService) { }
 affichage: boolean
   ngOnInit(): void {
     this.affichage = false;
+    this.notificationService.findAll();
   }
-  show() {
+  get notificationAujourdhui(): Array<NotificationEmploye> {
+    return this.notificationService.notificationAujourdhui;
+  }
+  public show() {
     if (this.affichage === false){
+      console.log(this.notificationAujourdhui.length);
       document.getElementById('menu1').style.display = 'inline';
       this.affichage = true;
     } else {
       document.getElementById('menu1').style.display = 'none';
       this.affichage = false;
-
     }
   }
 }

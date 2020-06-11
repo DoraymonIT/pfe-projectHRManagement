@@ -12,6 +12,14 @@
           <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <br>
+      <mat-form-field  style="width: 500px">
+        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Sélectionnez la periode</mat-label>
+        <mat-select [(ngModel)]="this.employe.pays" [ngModelOptions]="{standalone: true}" (ngModelChange)="touverDernierOuToutNote()">
+          <mat-option value="dernierPeriode"> dernier periode </mat-option>
+          <mat-option value="all"> trouver tous note de employé </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
   <div class="container-fluid" style="padding-top: 10px;">

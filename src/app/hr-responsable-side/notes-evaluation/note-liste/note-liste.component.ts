@@ -42,6 +42,13 @@ export class NOteListeComponent implements OnInit {
   public listeVide(): boolean {
     return this.employes.length < 1 ? true : false;
   }
+  public touverDernierOuToutNote(){
+    if(this.employe.pays == 'dernierPeriode'){
+      this.noteService.findDernierNoteDeEmploye(this.employe);
+    } else if(this.employe.pays == 'all'){
+      this.noteService.trouverNoteParSonDoti(this.employe.doti);
+    }
+  }
   public trouverNoteParSonDoti(value: Employe) {
     this.noteService.trouverNoteParSonDoti(value.doti);
   }

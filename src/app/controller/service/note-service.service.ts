@@ -28,6 +28,7 @@ export class NoteServiceService {
 public setNote(notee: NoteGeneraleDeAnnee){
     this._note = notee;
 }
+
 public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/RapportDesNoteePdf', this.note).subscribe(
     data => {
@@ -43,6 +44,16 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
       console.log('eroro', eror);
     });
 }
+  public findDernierNoteDeEmploye(doti: String) {
+    this.http.get<Array<NoteGeneraleDeAnnee>>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/findNoteDeEmploye/doti/'+ doti).subscribe(
+      data => {
+        if (data != null){
+this.notesParDoti = data;
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
 public noteNull(){
     this.note = null;
 }

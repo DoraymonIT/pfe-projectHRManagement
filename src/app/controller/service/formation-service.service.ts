@@ -47,11 +47,21 @@ public imprimerLesFormations(value: Array<Formation>) {
      public findallFourmationsByDoti(value: string) {
        this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/Formation/findByemployeDoti/doti/' + value).subscribe(
          data => {
-           this._formations = data;
+           this.formations = data;
          }, eror => {
            console.log('eroro', eror);
          });
      }
+  public findDernierFourmationsDeEmploye(doti: String) {
+    this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/Formation/findFormationDeEmploye/doti/' + doti).subscribe(
+      data => {
+        if(data != null){
+          this.formations = data;
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
     get formations(): Array<Formation> {
       if (this._formations == null) {
         this._formations = new Array<Formation>();
@@ -135,8 +145,7 @@ public imprimerLesFormations(value: Array<Formation>) {
           this.formationEmploye = null;
         }, eror => {
           console.log('eroro', eror);
-        }
-      );
+        });
     }
     }
     // public deleteByReference(conge: CongeEmploye) {

@@ -47,6 +47,16 @@ public setPunition(punitionn: PunitionEmploye) {
      public editerCettePuition(value: PunitionEmploye) {
       this._punitionEmploye = value;
      }
+  public findDernierPunitionEmploye(doti: String) {
+    this.http.get<Array<PunitionEmploye>>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/findPunitionDeEmploye/doti/'+ doti).subscribe(
+      data => {
+        if (data != null){
+          this.punitions = data;
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
     get punitions(): Array<PunitionEmploye> {
       if (this._punitions == null) {
         this._punitions = new Array<PunitionEmploye>();

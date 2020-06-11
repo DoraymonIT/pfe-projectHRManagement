@@ -29,6 +29,13 @@ chercher: boolean;
       this.prixService.findallPrixByDoti(this.employe.doti);
     }
   }
+  public getDernieroutoutPrix(){
+    if(this.employe.pays == 'dernierPeriode'){
+      this.prixService.findDernierPrixeEmploye(this.employe.doti);
+    } else if(this.employe.pays == 'all'){
+      this.prixService.findallPrixByDoti(this.employe.doti);
+    }
+  }
   public editerUnPrix(prix: PrixEmploye){
     this.demo1BtnClick(2);
     this.prixService.editerCePrixx(prix);

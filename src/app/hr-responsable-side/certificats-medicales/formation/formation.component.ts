@@ -26,6 +26,13 @@ chercher: boolean;
   get formations(): Array<Formation> {
     return this.formationService.formations;
   }
+  public getDernieroutoutFormation(){
+    if(this.employe.pays == 'dernierPeriode'){
+      this.formationService.findDernierFourmationsDeEmploye(this.employe.doti);
+    } else if(this.employe.pays == 'all'){
+      this.formationService.findallFourmationsByDoti(this.employe.doti);
+    }
+  }
   public tabindex;
   public demo1TabIndex = 0;
 
