@@ -6,7 +6,7 @@
       ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
     </div>
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de document concerené</mat-label>
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de document concerné</mat-label>
       <mat-select [(ngModel)]="this.typeDocument.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="findAllDemandeByTypeDocument()">
         <mat-option [value]="null">---None---</mat-option>
         <mat-option *ngFor="let gr of typeDocuments" [value]="gr.libelle">{{gr.libelle}}</mat-option>
@@ -16,7 +16,7 @@
 </div>
 
 <h4 style="float:left">Historique de demande de documents de {{fullname}} </h4>
-<table class="table table-hover table-dark table-striped" style="color: wheat">
+<table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
   <thead>
   <!-- <th>Nom Complet</th> -->
   <th>Type de document</th>

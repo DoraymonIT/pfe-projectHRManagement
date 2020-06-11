@@ -32,7 +32,7 @@ private _typeDocument: TypeDocument;
       // tslint:disable-next-line:max-line-length
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/listeDesDemandePdf', this.documentsByDoti).subscribe(
         data => {
-          this.toast.success(` document est bien preparé`, ' document prepared', {
+          this.toast.success(`Document est bien preparé`, ' Voir votre fichier de telechargement', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -55,7 +55,7 @@ private _typeDocument: TypeDocument;
     // tslint:disable-next-line:max-line-length
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/sendmail/email/' + email + '/subject/' + subject +'/content/' +content , file).subscribe(
       data => {
-        this.toast.success(` document est bien envoyé`, ' document envoyé', {
+        this.toast.success(` Document est bien envoyé avec succes`, ' Document envoyé', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -69,24 +69,24 @@ private _typeDocument: TypeDocument;
   public saveDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
     if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champ`, 'Il y a un champ vide', {
         timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
         positionClass: 'toast-top-right'
       });
-      this._ajouteDemandeDocument = 'champ est vide';
+      this._ajouteDemandeDocument = 'IL y a un champ est vide, Veuillez verifier';
       document.getElementById('span').style.color = 'red';
     } else {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/save', this.document).subscribe(
       data => {
-        this.toast.success(`${this.document.id} add demande document employe to the database.`, ' demande document employe Added', {
+        this.toast.success(`Le demande de ${this.document.employe.lastName} a ete bien enregistre`, ' La demande a ete enregistre avec succes', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._ajouteDemandeDocument = 'demande est bien sauvegrader';
+        this._ajouteDemandeDocument = 'La demande a ete enregistre avec succes';
         document.getElementById('span').style.color = 'green';
         this.documents.push(this.cloneDocumentEmploye(this.document));
         this.document = null;
@@ -99,7 +99,7 @@ private _typeDocument: TypeDocument;
   public updateDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
     if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
-      this.toast.error(`remplir toutes les champ`, 'champ vide', {
+      this.toast.error(`Remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -128,7 +128,7 @@ private _typeDocument: TypeDocument;
   } public imprimerAttestationDeSalaire(demande: DemaneDeDocument) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeSalaire', demande).subscribe(
       data => {
-        this.toast.success(`$ le document est bien imprimer`, '  document  imprimed', {
+        this.toast.success(`L attestation a ete traiter avec succes`, ' Voir votre fichier de telechargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -142,7 +142,7 @@ private _typeDocument: TypeDocument;
   public imprimerAttestationDeTravail(demande: DemaneDeDocument) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeTravail', demande).subscribe(
       data => {
-        this.toast.success(`$ le document est bien imprimer`, '  document  imprimed', {
+        this.toast.success(`L attestation a ete traiter avec succes`, ' Voir votre fichier de telechargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',

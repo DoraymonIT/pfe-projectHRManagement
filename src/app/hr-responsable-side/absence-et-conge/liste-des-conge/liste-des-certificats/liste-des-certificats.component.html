@@ -12,8 +12,8 @@
         <mat-label style="text-align: center">  Selectionnez le type de certificat</mat-label>
         <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeCertificat()">
           <mat-option value="certificat long duree">Long Durée</mat-option>
-          <mat-option value="certificat court duree 3 mois">Court Durée (3 mois)</mat-option>
-          <mat-option value="certificat court duree 6 mois">Court Durée (6 mois)</mat-option>
+          <mat-option value="certificat court duree 3 mois">Court Durée ( 3 mois )</mat-option>
+          <mat-option value="certificat court duree 6 mois">Court Durée ( 6 mois )</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -41,7 +41,7 @@
       <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
       <tr *ngFor="let c of congesCertificat">
-        <td>{{c.employe.firstName + c.employe.lastName}}</td>
+        <td>{{c.employe.firstName +' '+ c.employe.lastName}}</td>
         <td>{{c.congee.libelle}}</td>
         <td>{{c.dateDeDebut}}</td>
         <td>{{c.periode}}</td>

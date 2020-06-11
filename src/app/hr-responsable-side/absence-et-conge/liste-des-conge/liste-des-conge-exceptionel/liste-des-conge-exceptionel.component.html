@@ -43,7 +43,7 @@
       <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
       <tr *ngFor="let c of employesConge">
-        <td>{{c.firstName + c.lastName}}</td>
+        <td>{{c.firstName +' '+ c.lastName}}</td>
         <td>{{c.doti}}</td>
         <td>{{c.cin}}</td>
         <td>{{c.soldeRestantesCongeExceptionnel}}</td>

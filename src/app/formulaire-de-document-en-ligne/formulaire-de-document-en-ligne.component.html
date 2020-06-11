@@ -1,0 +1,47 @@
+
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span" id="span"> <i class="fas fa-plus-circle"> </i> Demande de documents en ligne </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<img id="fst" class="animate__animated animate__fadeInLeft animate__repeat-4" src="assets/images/fstgLogo.png" />
+<form class="normal-form" style="background-color: black;color:white">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="controles-container">
+          <mat-form-field>
+            <input matInput placeholder="Saisir votre Numero Administratif :* ">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label> Type de document :</mat-label>
+            <mat-select>
+              <mat-option value="Salaire">Attestation de Salaire</mat-option>
+              <mat-option value="Travail">Attestation de Travail</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Nombre de documents souhaites : ">
+          </mat-form-field>
+
+          <div class="add-bottom-padding" style="color: white;">
+            <mat-label>Voulez-vous une copie scanne , On peut le vous envoye via email ? </mat-label>
+            <mat-radio-group>
+              <mat-radio-button value="Oui">Oui</mat-radio-button>
+              <mat-radio-button value="Non">Non</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="button-row" style="text-align: center;">
+          <button mat-raised-button color="primary" type="submit" style="width: 500px;"> <i class="fas fa-save"></i>
+            Confirmer</button>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+
+
+  </div>
+</form>

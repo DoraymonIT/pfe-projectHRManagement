@@ -83,7 +83,7 @@ export class LogInService {
     this.http.get<User>('http://localhost:8080/gestionDesEmployee-Api/User/findByLogin/login/' +  this.userEmploye.login).subscribe(
       data => {
         this.userEmploye = data;
-        this._loginTitre = 'Vous avez' + this.userEmploye.nbrTentatifRestant + 'tentatives restantes';
+        this._loginTitre = 'Vous avez ' +' '+ this.userEmploye.nbrTentatifRestant +' ' +' tentatives restantes';
       }, eror => {
         console.log('eroro');
       });
@@ -93,7 +93,7 @@ export class LogInService {
       data => {
         if(data === 1){
           this.toast.info(`Un Code a été envoyer à votre Email`, 'Code est bien envoyé', {
-            timeOut: 3500,
+            timeOut: 4000,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -108,7 +108,7 @@ export class LogInService {
       data => {
         if(data === 1){
           this.toast.info(`Mot de passe est bien Modifé`, 'Mot de passe modifié', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
@@ -123,7 +123,7 @@ export class LogInService {
       data => {
         if(data === 1) {
           this.toast.info(`Mot de passe est bien Modifé`, 'Mot de passe modifié', {
-            timeOut: 1500,
+            timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'

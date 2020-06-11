@@ -26,7 +26,7 @@ export class GestionPersonnelComponent implements OnInit {
       { field: 'firstName', header: 'Prenom' },
       { field: 'lastName', header: 'Nom' },
       { field: 'email', header: 'email' },
-      { field: 'tel', header: 'Téléphone' },
+     //  { field: 'tel', header: 'Téléphone' },
       // { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
 
     ];

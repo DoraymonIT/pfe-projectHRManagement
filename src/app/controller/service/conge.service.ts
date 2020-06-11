@@ -65,7 +65,7 @@ private _employefullname: string;
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           });
-          this._ajouteCongeEmp = 'Congé est Modifié avec Succes';
+          this._ajouteCongeEmp = 'Congé est Modifié avec Succees';
           document.getElementById('span').style.color = 'green';
         }
         this.conges.push(this.cloneConge(this.congeEmploye));
