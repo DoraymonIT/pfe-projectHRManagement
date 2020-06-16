@@ -17,6 +17,12 @@ Titre: String;
     this.congeService.findallCertificatDansCetteAnnee();
     this.Titre = 'liste des  certificats depuis 1 septembre ' +((new Date().getMonth() > 9)? (this.getYear()) : (this.getYear() - 1));
   }
+  public imprimeristeDesCertificatsPDF(){
+    this.congeService.listeDesCertificatsPdf(this.congesCertificat);
+  }
+  public imprimeristeDesCertificatsEXCEL(){
+    this.congeService.listeDesCertificatsExcel(this.congesCertificat);
+  }
   getYear(): number{
     return new Date().getFullYear();
   }

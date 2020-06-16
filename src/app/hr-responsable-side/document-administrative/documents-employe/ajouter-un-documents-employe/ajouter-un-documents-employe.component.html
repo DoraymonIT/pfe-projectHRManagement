@@ -21,13 +21,13 @@
           <mat-form-field>
             <input matInput type="number" placeholder="Nombre de documents " [(ngModel)]="document.nbrDeDocument" [ngModelOptions]="{standalone: true}" >
           </mat-form-field>
-          <mat-form-field>
-            <mat-label>Manière de retrait</mat-label>
-            <mat-select [(ngModel)]="document.maniereDeRetrait" [ngModelOptions]="{standalone: true}" >
-              <mat-option value="papier">En papier</mat-option>
-              <mat-option value="gmail">Par Gmail</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <div class="add-bottom-padding" style="color: white;">
+            <mat-label >Voulez-vous une copie scanne , On peut le vous envoye via email ? </mat-label>
+            <mat-radio-group [(ngModel)]="document.copieEmail"  [ngModelOptions]="{standalone: true}"[(ngModel)]="document.copieEmail"  [ngModelOptions]="{standalone: true}">
+              <mat-radio-button value="oui">Oui</mat-radio-button>
+              <mat-radio-button value="non">Non</mat-radio-button>
+            </mat-radio-group>
+          </div>
         </div>
         <!---Hnaya raah ghandwzzu date de demande - new Date -->
           <!-- <mat-form-field>

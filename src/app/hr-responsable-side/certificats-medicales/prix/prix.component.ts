@@ -40,6 +40,9 @@ chercher: boolean;
     this.demo1BtnClick(2);
     this.prixService.editerCePrixx(prix);
   }
+  public ExporterLesPrixENEXCEL(value: Array<PrixEmploye>){
+    this.prixService.listeDesPrixExcel(value);
+  }
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }

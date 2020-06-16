@@ -70,4 +70,7 @@ public editerFormation(formation: Formation) {
 public imprimerLesFormations(value: Array<Formation>) {
     this.formationService.imprimerLesFormations(value);
 }
+public ExporterLesFormationsENEXCEL(value:Array<Formation>){
+    this.formationService.listeDesFormationsExcels(value);
+}
 }

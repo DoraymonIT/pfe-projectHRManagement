@@ -76,7 +76,7 @@ private _employefullname: string;
     }
   }
   public  resetSoldeCongeEmploye(){
-    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/conge/resetSoldeCongéEmploye').subscribe(
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/conge/AutoRestSoldeCongeEmplye').subscribe(
       data => {
       if(data == 1){
         this.toast.success(` le solde de conge employe est initialisé`, 'initialisation des soldes congé', {
@@ -97,6 +97,51 @@ private _employefullname: string;
       data => {
         if (data === 1) {
           this.toast.success(` le document à été est bien exporter`, 'Voir votre dossier de téléchargement', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public exporterListeDeCongeDeEmployeExcel() {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/listeDesCongesExcel' , this.conges).subscribe(
+      data => {
+        if (data === 1) {
+          this.toast.success(` le document à été est bien exporter`, 'Voir votre dossier de téléchargement', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesCertificatsPdf(conges: Array<CongeEmploye>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/listeDesCertificatsPdf' , conges).subscribe(
+      data => {
+        if (data === 1) {
+          this.toast.success(` le document à été est bien exporter en pdf`, 'Voir votre dossier de téléchargement', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesCertificatsExcel(conges: Array<CongeEmploye>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/listeDesCertificatsExcel' , conges).subscribe(
+      data => {
+        if (data === 1) {
+          this.toast.success(` le document à été est bien exporter en excel`, 'Voir votre dossier de téléchargement', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',

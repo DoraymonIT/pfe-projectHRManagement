@@ -33,6 +33,9 @@ export class ListeDesJoursFriesComponent implements OnInit {
   public listeVide(): boolean {
     return this.conges.length < 1 ? true : false;
   }
+  public exporterListeDeCongeEnExcel(){
+    this.congeservice.exporterListeDeCongeDeEmployeExcel();
+  }
   get employefullname(): string {
     return this.congeservice.employefullname;
   }

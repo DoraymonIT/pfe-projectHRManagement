@@ -6,7 +6,7 @@ export class DemaneDeDocument {
   employe: Employe;
   dateDemande: Date;
   typeDeDocument: TypeDocument;
-  maniereDeRetrait: string;
+  copieEmail: string;
   etat: string;
   nbrDeDocument: number;
 }

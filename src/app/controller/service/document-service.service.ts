@@ -67,8 +67,12 @@ private _typeDocument: TypeDocument;
   }
 
   public saveDocumentEmloye() {
+    console.log(this.document.copieEmail);
+    console.log(this.document.nbrDeDocument);
+    console.log(this.document.employe);
+    console.log(this.document.typeDeDocument);
     // tslint:disable-next-line:max-line-length
-    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
+    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.copieEmail == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.copieEmail == null )) {
       this.toast.error(`Remplir toutes les champ`, 'Il y a un champ vide', {
         timeOut: 2500,
         progressBar: true,
@@ -98,7 +102,7 @@ private _typeDocument: TypeDocument;
   }
   public updateDocumentEmloye() {
     // tslint:disable-next-line:max-line-length
-    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.maniereDeRetrait == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.maniereDeRetrait == null )) {
+    if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.copieEmail == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.copieEmail == null )) {
       this.toast.error(`Remplir toutes les champ`, 'champ vide', {
         timeOut: 2500,
         progressBar: true,
@@ -153,6 +157,19 @@ private _typeDocument: TypeDocument;
         console.log('eroro', eror);
       });
   }
+  public listeDesDemandesExcel(demandes: Array<DemaneDeDocument>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/listeDesDemandesExcel', demandes).subscribe(
+      data => {
+        this.toast.success(`Le document est bien exporter en excel`, ' Voir votre fichier de telechargement', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
 public ajoutedemandeDecumentTitre() {
     this.ajouteDemandeDocument = 'Formulaire pour ajouter une demande de document d une employe';
 }
@@ -200,7 +217,7 @@ public ajoutedemandeDecumentTitre() {
     myClone.employe = demande.employe;
     myClone.etat = demande.etat;
     myClone.dateDemande = demande.dateDemande;
-    myClone.maniereDeRetrait = demande.maniereDeRetrait;
+    myClone.copieEmail = demande.copieEmail;
     myClone.id = demande.id;
     return myClone;
   }

@@ -6,4 +6,5 @@ export class PrixEmploye {
   prix: Prix;
   employe: Employe;
   dateDeObtenation: Date;
+  remarque: string;
 }

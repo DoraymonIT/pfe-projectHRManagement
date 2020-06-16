@@ -98,6 +98,20 @@ public  cloneDepartement(departement: Departement): Departement {
         console.log('eroro', eror);
       });
   }
+  public listeDesGradesEmployesExcel() {
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Departement/listeDesGradesEmployesExcel').subscribe(
+      data => {
+        this.toast.success(`Document est bien exporter en EXCEL`, ' Voir votre dossier de téléchargement', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   set deps(value: Array<Departement>) {
     this._deps = value;
   }

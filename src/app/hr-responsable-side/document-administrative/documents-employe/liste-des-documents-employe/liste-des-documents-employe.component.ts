@@ -39,4 +39,7 @@ this.documentService.findAllTypeDocument();
   public imprimerListedemande(){
     this.documentService.imprimerLesListedemande();
   }
+  public imprimerListedemandeExcel(){
+    this.documentService.listeDesDemandesExcel(this.documentsByDoti);
+  }
 }

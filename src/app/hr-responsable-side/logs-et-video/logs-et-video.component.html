@@ -26,7 +26,7 @@
       </h6>
       <div class="scrolli" style="overflow: scroll;" id="menu1" >
         <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection" *ngFor="let nt of notificationAujourdhui">
-         <mat-chip *ngIf="nt.employe != null">{{nt.libelle + "  de :" +  nt.employe.firstName + ' ' + nt.employe.lastName + " at: " + nt.dateDeNotification}}</mat-chip>
+         <mat-chip *ngIf="nt.employe != null">{{nt.libelle + "  de :" +  nt.employe.firstName + ' ' + nt.employe.lastName + " at: " }} {{ nt.dateDeNotification | date:'medium' }}</mat-chip>
           </mat-chip-list>
     </div>
     </div>

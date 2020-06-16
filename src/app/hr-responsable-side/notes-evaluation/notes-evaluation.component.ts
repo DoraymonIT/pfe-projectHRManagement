@@ -51,7 +51,12 @@ export class NotesEvaluationComponent implements OnInit {
   public listeVide(): boolean {
     return this.notesNonTraites.length < 1 ? true : false;
   }
-
+  public imprimerListeDeEmployeAyantBesoinDUneNotePDF(){
+    this.noteService.listeDeEmployeAyantBesoinDUneNotePDF(this.notesNonTraites);
+  }
+public imprimerListeDeEmployeAyantBesoinDUneNoteExcel(){
+    this.noteService.listeDeEmployeAyantBesoinDUneNoteExcel(this.notesNonTraites);
+}
   get employe(): Employe {
     return this.noteService.employe;
   }

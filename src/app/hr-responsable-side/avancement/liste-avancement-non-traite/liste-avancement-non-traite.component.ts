@@ -29,6 +29,9 @@ chercher: boolean;
   public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
     this.gradesEmploye.imprimerLesGradesDeEmploye(value);
   }
+  public imprimerLesGradesDeEmployeEnEXCEL(value: Array<GradeEmploye>){
+    this.gradesEmploye.listeDesGradesEmployesExcel(value);
+  }
   public findAllGradeEmployeByDoti(doti: string) {
     document.getElementById('fourmule').style.display = 'inline-flex';
    // document.getElementById('checherGrade').style.display = 'none';

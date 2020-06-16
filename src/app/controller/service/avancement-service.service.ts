@@ -81,6 +81,12 @@ private _rapportEvaluationEdit: RapportDeEvaluation;
   }
 public editRapport(){
     this.rapportEvaluationEdit = this.rapportEvaluation;
+  this.toast.info(`cette rapprt est en etat de modification`, 'merci de se rediger vers interface ajouter Rapport pour modifier votre rapport  de mofication de rapport', {
+    timeOut: 9500,
+    progressBar: true,
+    progressAnimation: 'increasing',
+    positionClass: 'toast-top-full-width'
+  });
 }
   get rapportEvaluationEdit(): RapportDeEvaluation {
     if(this._rapportEvaluationEdit == null){

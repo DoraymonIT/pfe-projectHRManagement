@@ -44,6 +44,19 @@ public imprimerLesFormations(value: Array<Formation>) {
       console.log('eroro', eror);
     });
 }
+  public listeDesFormationsExcels(value: Array<Formation>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/listeDesFormationsExcels', value).subscribe(
+      data => {
+        this.toast.success(` document est bien preparer en excel`, ' document preparer', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
      public findallFourmationsByDoti(value: string) {
        this.http.get<Array<Formation>>('http://localhost:8080/gestionDesEmployee-Api/Formation/findByemployeDoti/doti/' + value).subscribe(
          data => {

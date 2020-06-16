@@ -94,6 +94,19 @@ public setPunition(punitionn: PunitionEmploye) {
         console.log('eroro', eror);
       });
   }
+  public listeDesPunitionsExcel(value: Array<PunitionEmploye>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/listeDesPunitionsExcel', value).subscribe(
+      data => {
+        this.toast.success(` document est bien preparer`, ' document preparer', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
 
   // tslint:disable-next-line:adjacent-overload-signatures
     set punitionEmploye(value: PunitionEmploye) {

@@ -27,7 +27,11 @@ export class DialogDepComponent implements OnInit {
   get employesByDep(): Array<Employe> {
     return this.es.employesByDep;
   }
-
-
+public imprimerLesEmployesDepartement(){
+    this.es.listeDesEmployeDeDepartementPdf(this.employesByDep);
+}
+  public imprimerLesEmployesDepartementENEXCEL(){
+    this.es.listeDesEmployeParDepartementExcel(this.employesByDep);
+  }
 
 }

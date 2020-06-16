@@ -8,4 +8,5 @@ export class CongeEmploye {
   employe: Employe;
    congee: TypeCongee;
    periode: number;
+   raison: string;
 }

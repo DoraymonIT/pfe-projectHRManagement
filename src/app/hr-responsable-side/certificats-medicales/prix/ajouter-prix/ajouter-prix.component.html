@@ -33,6 +33,10 @@
             <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>
             <mat-datepicker #pi5></mat-datepicker>
           </mat-form-field>
+          <mat-form-field>
+            <mat-label>Remarques , Commentaires ou Description</mat-label>
+            <textarea  [(ngModel)]="prixEmploye.remarque" matInput placeholder="Ex. Cet employé est ..."></textarea>
+          </mat-form-field>
           </div>
           <div class="button-row">
             <button mat-raised-button color="primary" type="submit" class="btn-block"  (click)="save()" > <i class="fas fa-check-circle "></i> Ajouter</button>

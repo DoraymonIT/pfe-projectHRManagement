@@ -29,12 +29,19 @@ export class NotificationEmployeService {
   public  findAll(){
     this.http.get<Array<NotificationEmploye>>('http://localhost:8080/gestionDesEmployee-Api/NotificationEmploye/findAll').subscribe(
       data => {
-        this.notificationAujourdhui = data ;
+        this.notificationEmployeListe = data ;
       }, eror => {
         console.log('eroro', eror);
       });
   }
-
+  public  findByDateNotification(value: Date){
+    this.http.get<Array<NotificationEmploye>>('http://localhost:8080/gestionDesEmployee-Api/NotificationEmploye/findNotificationPaDate/date/' + value).subscribe(
+      data => {
+        this.notificationEmployeListe = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
   get notificationAujourdhui(): Array<NotificationEmploye> {
     if(this._notificationAujourdhui == null){
       this._notificationAujourdhui = new Array<NotificationEmploye>();

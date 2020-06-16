@@ -23,5 +23,10 @@ export class GradeListeComponent implements OnInit {
 get employesByGrade(): Array<Employe> {
   return this.es.employesByGrade;
 }
-
+public imprimerLesEmployesGrade(){
+    this.es.listeDesEmployeDeGradePdf(this.employesByGrade);
+}
+public imprimerLesEmployesGradeENEXCEL(){
+    this.es.listeDesEmployeParGradeExcel(this.employesByGrade);
+}
 }

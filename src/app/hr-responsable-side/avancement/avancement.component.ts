@@ -26,11 +26,22 @@ cherche3: boolean;
               private dialog: MatDialog) { }
   panelOpenState = false;
   cols: any[];
+  get gradeEmploye(): GradeEmploye {
+    return this.gradeService.gradeEmploye;
+  }
+public  TrouverGradeNonTraiteByType(value: string){
+    if(value === "all"){
+      this.gradeService.findAllGradeNonTraite();
+    }else {
+      this.gradeService.trouverGradeByType(value);
+    }
+}
   ngOnInit(): void {
     this.cherche1 = false;
     this.cherche2 = false;
     this.cherche3 = false;
     this.employeService.findAllemployeAyantDateAvancementProche();
+    this.gradeService.findAllGradeNonTraite();
   }
   public getemployeByDate() {
     document.getElementById('tableEvaluation').style.display = 'inline';

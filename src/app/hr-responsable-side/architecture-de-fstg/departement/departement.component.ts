@@ -41,6 +41,9 @@ export class DepartementComponent implements OnInit {
   public imprimerLesdepartement() {
     this.departementservice.imprimerLesdepartements();
   }
+  public  imprimerLesdepartementENEXCEL(){
+    this.departementservice.listeDesGradesEmployesExcel();
+  }
   public trouverFonctionParNomDepDialog(value: Departement) {
     this.depFonction.findDepFonctionByDepartement(value);
     const dialogConfig = new MatDialogConfig();

@@ -1,0 +1,16 @@
+<button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+  class="fas fa-window-close "></i> </button>
+<mat-toolbar>
+<mat-toolbar-row>
+  <span class="span" style="text-align: center"> <i class="fas fa-graduation-cap    "></i> Chercher historique  de L'application par  <strong>date</strong>  </span>
+</mat-toolbar-row>
+</mat-toolbar>
+<div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
+  <div class="card-body">
+      <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 200px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.notificationEmploye.dateDeNotification" placeholder="yyyy-MM-dd" (ngModelChange)="gethistoriqueByDate()">
+  </div>
+</div>
+
+<mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection" *ngFor="let nt of notificationEmployeListe">
+  <mat-chip *ngIf="nt.employe != null">{{nt.libelle + "  de :" +  nt.employe.firstName + ' ' + nt.employe.lastName + " at: " }} {{ nt.dateDeNotification | date:'medium' }} </mat-chip>
+</mat-chip-list>

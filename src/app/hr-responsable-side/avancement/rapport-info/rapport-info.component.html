@@ -11,7 +11,7 @@
 </div>
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span" id="span"> Rapport de {{rapportEvaluation.employe.firstName + rapportEvaluation.employe.lastName}} pour avancement de
+    <span class="span" id="span"> Rapport de {{rapportEvaluation.employe.firstName +" "+ rapportEvaluation.employe.lastName}}  pour avancement de
       {{rapportEvaluation.nouveauGrade.grade.libelle}}</span>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -26,10 +26,10 @@
             <mat-label style="margin-right: 10px; ">Nom Complet :</mat-label>
             <mat-label>{{rapportEvaluation.employe.firstName + rapportEvaluation.employe.lastName}}</mat-label>
             <br>
-            <mat-label style="margin-right: 10px; ">DOTI :</mat-label>
+            <mat-label style="margin-right: 10px; ">Numero :</mat-label>
             <mat-label>{{rapportEvaluation.employe.doti}}</mat-label>
             <br>
-            <mat-label style="margin-right: 10px;">CNI :</mat-label>
+            <mat-label style="margin-right: 10px;">CIN :</mat-label>
             <mat-label>{{rapportEvaluation.employe.cin}}</mat-label>
           </div>
           <div class="col-md-6">

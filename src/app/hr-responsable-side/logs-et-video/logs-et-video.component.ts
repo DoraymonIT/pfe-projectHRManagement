@@ -15,7 +15,7 @@ export class LogsEtVideoComponent implements OnInit {
 affichage: boolean
   ngOnInit(): void {
     this.affichage = false;
-    this.notificationService.findAll();
+    this.notificationService.findNotificationAujourdhui();
   }
   get notificationAujourdhui(): Array<NotificationEmploye> {
     return this.notificationService.notificationAujourdhui;

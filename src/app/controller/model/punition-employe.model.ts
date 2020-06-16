@@ -6,4 +6,5 @@ export class PunitionEmploye {
   employe: Employe;
   punition: Punition;
   dateObtenation: Date;
+  remarque: string;
 }

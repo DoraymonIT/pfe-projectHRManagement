@@ -28,7 +28,6 @@ export class GestionPersonnelComponent implements OnInit {
       { field: 'email', header: 'email' },
      //  { field: 'tel', header: 'Téléphone' },
       // { field: 'dateProchainEvaluation', header: 'Date de Prochaine Evaluation' },
-
     ];
 
   }
@@ -88,6 +87,9 @@ export class GestionPersonnelComponent implements OnInit {
     this.dialog.open(AutresComponent,
       dialogConfig);
   }
+public imprimerListeEmployeExcel(){
+    this.employeService.exporterLaListeDesEmployeExcel();
+}
   }
 
 

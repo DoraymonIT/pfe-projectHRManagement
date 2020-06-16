@@ -9,6 +9,7 @@ import {CongeService} from '../controller/service/conge.service';
 import {PermanenceAdministrativeService} from '../controller/service/permanence-administrative.service';
 import {AvancementServiceService} from '../controller/service/avancement-service.service';
 import {GradeService} from '../controller/service/grade.service';
+import {DocumentServiceService} from '../controller/service/document-service.service';
 /**
  * @title Input with error messages
  */
@@ -27,7 +28,8 @@ export class LoginSideComponent implements OnInit {
     private toast: ToastrService,
     private permanenceService: PermanenceAdministrativeService,
     private congeService: CongeService,
-    private avancementService: GradeService
+    private avancementService: GradeService,
+    private documentService: DocumentServiceService
   ) {}
   get show(): boolean {
     return this.login.show;
@@ -36,8 +38,8 @@ export class LoginSideComponent implements OnInit {
     this.login.ajouteLoginTitre();
     this.congeService.resetSoldeCongeEmploye();
     this.permanenceService.findAll();
-    this.avancementService.getDateAvancement();
-    this.avancementService.getDateEvaluation();
+    this.congeService.findallCertificatDansCetteAnnee();
+    this.documentService.findAllDemandeNonTraite();
   }
   get userEmploye(): User {
     return this.login.userEmploye;

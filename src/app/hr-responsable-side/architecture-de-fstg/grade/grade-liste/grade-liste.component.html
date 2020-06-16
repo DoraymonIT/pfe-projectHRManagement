@@ -3,23 +3,27 @@
 <table class="table table-hover table-striped table-dark " style="color: wheat">
   <thead>
   <th>#GRADE</th>
-    <th>Nom Complet</th>
+    <th>Prenom</th>
+    <th>Nom</th>
     <th>Numéro</th>
     <th>Cin</th>
     <th>Email</th>
-    <th>Département</th>
-    <th>Fonction</th>
   </thead>
   <tbody>
     <p-progressSpinner *ngIf="listeVide2()"  ></p-progressSpinner>
     <tr *ngFor="let c of employesByGrade">
     <td > {{c.dernierGrade.grade.libelle}}</td>
-      <td >{{c.fullName}}</td>
+      <td >{{c.firstName}}</td>
+      <td >{{c.lastName}}</td>
       <td>{{c.doti}}</td>
       <td>{{c.cin}}</td>
       <td>{{c.email}}</td>
-      <td>{{c.dep.nom }}</td>
-      <td>{{c.fonction.libelle}}</td>
     </tr>
   </tbody>
 </table>
+<button class="btn"style="background-color: white;color: black;float: left"
+        matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesEmployesGrade()"
+><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
+<button class="btn"style="margin-left: 10px;background-color: white;color: black;float: left"
+        matTooltip="Ce button permet d imprimer ce table en format EXCEL" (click)="imprimerLesEmployesGradeENEXCEL()"
+><i class="fa fa-file-excel" ></i>  Exporter le <strong>EXCEL</strong> </button>

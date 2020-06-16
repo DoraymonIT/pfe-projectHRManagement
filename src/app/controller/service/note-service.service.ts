@@ -28,7 +28,36 @@ export class NoteServiceService {
 public setNote(notee: NoteGeneraleDeAnnee){
     this._note = notee;
 }
-
+  public listeDeEmployeAyantBesoinDUneNoteExcel(employes: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/listeDeEmployeAyantBesoinDUneNoteExcel', employes).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDeEmployeAyantBesoinDUneNotePDF(employes: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/listeDeEmployeAyantBesoinDUneNotePDF', employes).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format PDF.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
 public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/RapportDesNoteePdf', this.note).subscribe(
     data => {

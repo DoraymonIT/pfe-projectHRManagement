@@ -14,6 +14,7 @@ import { Revenu } from '../model/revenu.model';
 import { EmailValidator } from '@angular/forms';
 import { Email } from '../model/email.model';
 import {RapportDeEvaluation} from '../model/rapport-de-evaluation.model';
+import {Observable} from 'rxjs';
 
 
 
@@ -65,8 +66,6 @@ export class PersonnelEmployesService {
     private toast: ToastrService) { }
   public infoUnEmployer(employe: Employe) {
     this.employeInfo = employe;
-    console.log(this.employeInfo.dernierNote.date);
-    console.log(this.employeInfo.dernierNote.mention);
   }
 
   public ajouterEmpString() {
@@ -307,12 +306,148 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
-
-
-  public imprimerInfoLesEmploye() {
-    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/infoEmployePdf', this.employeInfo).subscribe(
+  public exporterLaListeDesEmployeExcel() : void{
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeExcel').subscribe(
       data => {
-        if (data === 1) {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesEmployeAvecSoldeDonneePdf(employes: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldeDonneePdf', employes).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format pdf.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesEmployeAvecSoldeCongéDonneeExcel(employes: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldeCongéDonneeExcel', employes).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+
+  public listeDesEmployeAvecSoldeCongéExcel() : void{
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldeCongéExcel').subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesEmployeParGradeExcel(value: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeParGradeExcel', value).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesEmployeDeDepartementPdf(value : Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeDeDepartementPdf',value).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format PDF.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesEmployeDeGradePdf(value: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeDeGradePdf', value).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format PDF.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public listeDesEmployeParDepartementExcel(value: Array<Employe>) : void{
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeParDepartementExcel', value).subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  public listeDesEmployeAvecSoldePdf() : void{
+    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldePdf').subscribe(
+      data => {
+        if(data == 1){
+          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public imprimerInfoLesEmploye() : void{
+     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/infoEmployePdf', this.employeInfo).subscribe(
+      data => {
+        if(data == 1){
           this.toast.success(` document info employe est bien preparé.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,

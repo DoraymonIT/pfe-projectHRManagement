@@ -3,6 +3,8 @@ import { Grade } from '../model/grade.model';
 import { HttpClient } from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
 import {GradeEmploye} from '../model/grade-employe.model';
+import {Employe} from '../model/employe.model';
+import {Departement} from '../model/departement.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,10 @@ import {GradeEmploye} from '../model/grade-employe.model';
 export class GradeService {
   // tslint:disable-next-line:variable-name
   private _gradeEmploye: GradeEmploye;
+  // tslint:disable-next-line:variable-name
+  private _employeEvaluation: Array<Employe>;
+  // tslint:disable-next-line:variable-name
+  private _employeAvancement: Array<Employe>;
   // tslint:disable-next-line:variable-name
   private _ajouteGradeEmploye: string;
   constructor(private http: HttpClient,
@@ -38,6 +44,20 @@ public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
         console.log('eroro', eror);
       });
   }
+  public listeDesGradesEmployesExcel(value: Array<GradeEmploye>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDesGradesEmployesExcel', value).subscribe(
+      data => {
+        this.toast.success(`Document a ete traites avec success`, ' Voir votre fichier de telechargement', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   set gradesEployess(value: Array<GradeEmploye>) {
     this._gradesEployess = value;
   }
@@ -73,9 +93,10 @@ public findAll() {
       });
   }
   public getDateEvaluation() {
-    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getDateEvaluation').subscribe(
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getDateEvaluation').subscribe(
       data => {
-        if(data == 1){
+        if(data != null){
+          this.employeEvaluation = data;
           this.toast.success(`get date avancement prevue  of some employes`, 'date evaluation', {
             timeOut: 2500,
             progressBar: true,
@@ -88,9 +109,10 @@ public findAll() {
       });
   }
   public getDateAvancement() {
-    this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getDateAvancement').subscribe(
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getDateAvancement').subscribe(
       data => {
-        if(data == 1){
+        if(data != null){
+          this.employeAvancement = data;
           this.toast.success(`creer un grade employe pour some employe`, 'date avancement', {
             timeOut: 2500,
             progressBar: true,
@@ -108,8 +130,15 @@ public findAll() {
         this.gradesEployess = data ;
       }, eror => {
         console.log('eroro', eror);
-      }
-    );
+      });
+  }
+  public trouverGradeByType(value: string) {
+    this.http.get<Array<GradeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/getGradeNonTraiteByType/type/' + value).subscribe(
+      data => {
+        this.gradeNonTraite = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
   }
   public save() {
     this.http.post<number>(this._url + 'save', this.grade).subscribe(
@@ -160,7 +189,6 @@ public findAll() {
   public  cloneGrade(grade: Grade): Grade {
     const myClone = new Grade() ;
     myClone.libelle = this.grade.libelle;
-    myClone.nombreDePosteNonOccupe = this.grade.nombreDePosteNonOccupe;
     return myClone;
   }
 
@@ -220,5 +248,40 @@ public ajouteGradeemployeTitre() {
 
   set ajouteGradeEmploye(value: string) {
     this._ajouteGradeEmploye = value;
+  }
+  get employeEvaluation(): Array<Employe> {
+    if (this._employeEvaluation == null) {
+      this._employeEvaluation = new Array<Employe>();
+      this._employeEvaluation.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+    return this._employeEvaluation;
+  }
+
+  set employeEvaluation(value: Array<Employe>) {
+    this._employeEvaluation = value;
+  }
+
+  get employeAvancement(): Array<Employe> {
+    if (this._employeAvancement == null) {
+      this._employeAvancement = new Array<Employe>();
+      this._employeAvancement.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+    return this._employeAvancement;
+  }
+
+  set employeAvancement(value: Array<Employe>) {
+    this._employeAvancement = value;
   }
 }

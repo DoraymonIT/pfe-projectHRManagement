@@ -1,5 +1,3 @@
-<mat-tab-group style="width: 100%;">
-  <mat-tab label="historique des certificat medicaux">
 <div class="example-large-box mat-elevation-z4" >
   <mat-toolbar  style="cursor: pointer;">
     <mat-toolbar-row>
@@ -17,7 +15,7 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 470px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.congeEmploye.dateDeDebut" placeholder="date de conge">
+      <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 790px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.congeEmploye.dateDeDebut" placeholder="date de conge">
       <br>
       <button class="btn btn-light fa fa-search" style="width: 500px" (click)="chercher()"> chercher</button>
     </div>
@@ -54,11 +52,7 @@
       </tr>
       </tbody>
     </table>
-    <button mat-raised-button class="btn"style="background-color: white;color: black;" ><i class="fa fa-file-pdf"  ></i> Export <b>PDF</b> </button>
+    <button mat-raised-button class="btn"style="background-color: white;color: black;"  (click)="imprimeristeDesCertificatsPDF()"><i class="fa fa-file-pdf"  ></i> Export <b>PDF</b> </button>
+    <button mat-raised-button class="btn"style="background-color: white;color: black;margin-left: 10px" (click)="imprimeristeDesCertificatsEXCEL()"><i class="fa fa-file-excel"  ></i> Export <b>EXCEL</b> </button>
   </div>
 </div>
-  </mat-tab>
-  <mat-tab label="calendrier des certificats de maladies pour année {{getYear()}}" style="width: 25%;" tabindex="4">
-    <app-calendrier-des-certificats></app-calendrier-des-certificats>
-  </mat-tab>
-</mat-tab-group>

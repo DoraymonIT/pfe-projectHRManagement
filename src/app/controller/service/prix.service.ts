@@ -55,7 +55,21 @@ public  ajoutePrixTitre(){
         console.log('eroro', eror);
       });
   }
-public editerCePrixx(prix: PrixEmploye){
+  public listeDesPrixExcel(value: Array<PrixEmploye>) {
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/listeDesPrixExcel', value).subscribe(
+      data => {
+        this.toast.success(` document est bien preparer`, ' document preparer', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  public editerCePrixx(prix: PrixEmploye){
       this._prixEmploye = prix;
 }
      public findallPrixByDoti(value: string) {

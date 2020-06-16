@@ -115,6 +115,9 @@ import { LogsEtVideoComponent } from './hr-responsable-side/logs-et-video/logs-e
 import { CalendrierDesCertificatsComponent } from './hr-responsable-side/absence-et-conge/liste-des-conge/calendrier-des-certificats/calendrier-des-certificats.component';
 import { FormulaireDeDocumentEnLigneComponent } from './formulaire-de-document-en-ligne/formulaire-de-document-en-ligne.component';
 import { PageNotFound404Component } from './page-not-found404/page-not-found404.component';
+import { HistoriqueComponent } from './hr-responsable-side/parametres-avances/historique/historique.component';
+import { ListeEvaluationComponent } from './hr-responsable-side/liste-evaluation/liste-evaluation.component';
+import { ListeAvancementComponent } from './hr-responsable-side/liste-avancement/liste-avancement.component';
 
 @NgModule({
   declarations: [
@@ -200,7 +203,10 @@ import { PageNotFound404Component } from './page-not-found404/page-not-found404.
     LogsEtVideoComponent,
     CalendrierDesCertificatsComponent,
     FormulaireDeDocumentEnLigneComponent,
-    PageNotFound404Component
+    PageNotFound404Component,
+    HistoriqueComponent,
+    ListeEvaluationComponent,
+    ListeAvancementComponent
   ],
     imports: [
         BrowserModule,

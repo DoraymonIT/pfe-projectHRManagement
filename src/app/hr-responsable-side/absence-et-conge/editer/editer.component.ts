@@ -23,6 +23,11 @@ export class EditerComponent implements OnInit {
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
+  public ajouterRaison(value: string){
+    if(value === 'conge exceptionnel'){
+      document.getElementById('raison').style.display = 'inline';
+    }
+  }
   get congeEmploye(): CongeEmploye {
     return this.congeservice.congeEmploye;
   }

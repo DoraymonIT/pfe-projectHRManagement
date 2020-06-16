@@ -15,10 +15,16 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Type de Congé:*</mat-label>
-        <mat-select [(ngModel)]="congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}"  [value]="congeEmploye.congee.libelle">
+        <mat-select [(ngModel)]="congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}"  [value]="congeEmploye.congee.libelle" (ngModelChange)="ajouterRaison(this.congeEmploye.congee.libelle)">
           <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle }}</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field id="raison">
+        <mat-label>raison :*</mat-label>
+        <input matInput [(ngModel)]="congeEmploye.raison" placeholder="description" [ngModelOptions]="{standalone: true}"
+               [value]="congeEmploye.raison" type="text">
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Date de début de Congé:*</mat-label>
         <input matInput [matDatepicker]="picker" [(ngModel)]="congeEmploye.dateDeDebut"

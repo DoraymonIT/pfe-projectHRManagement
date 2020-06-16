@@ -27,6 +27,12 @@ export class ListeDesCongeExceptionelComponent implements OnInit {
   get employe(): Employe {
     return this.employeService.employe;
   }
+  public ExporterListeEmployeAyantUnSoldeCongePDF(employes: Array<Employe>){
+    this.employeService.listeDesEmployeAvecSoldeDonneePdf(employes);
+  }
+public  imprimerListeEmployeAyantUnSoldeCongeEXCEL(employes: Array<Employe>){
+    this.employeService.listeDesEmployeAvecSoldeCongéDonneeExcel(employes);
+}
   public listeVide(): boolean {
     return this.employesConge.length < 1 ? true : false;
   }

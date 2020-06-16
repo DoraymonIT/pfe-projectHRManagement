@@ -1,0 +1,38 @@
+<button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+  class="fas fa-window-close "></i> </button>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="span"><i class="fas fa-graduation-cap    "></i> la liste des employés ayant passé une evaluation aujourd'hui  </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<table class="table table-hover table-dark table-striped" style="color: wheat">
+  <thead>
+  <th>Nom Complet</th>
+  <th>Numero</th>
+  <th>Email</th>
+  <th>Adresse</th>
+  <th>tel</th>
+  <th>Dernier Grade</th>
+  <th>Date de prochaine evaluation</th>
+  <!-- <th style="padding-left: 40px">Action</th> -->
+  </thead>
+  <tbody>
+  <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
+
+  <tr *ngFor="let c of employeAvancement">
+    <td>{{c.firstName + c.lastName}}</td>
+    <td>{{c.doti}}</td>
+    <td>{{c.email}}</td>
+    <td>{{c.adresse}}</td>
+    <td>{{c.tel}}</td>
+    <td>{{c.dernierGrade.grade.libelle}}</td>
+    <td>{{c.dateProchainEvaluation}}</td>
+
+    <!-- <td>
+      <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerFormation(c)"></button>
+      <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+      <button class="btn btn-info btn-sm fa fa-trash"></button>
+    </td> -->
+  </tr>
+  </tbody>
+</table>

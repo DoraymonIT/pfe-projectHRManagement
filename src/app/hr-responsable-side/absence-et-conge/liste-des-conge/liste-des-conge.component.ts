@@ -46,11 +46,17 @@ export class ListeDesCongeComponent implements OnInit {
       { field: 'doti', header: 'Numéro' },
       { field: 'lastName', header: 'Nom' },
       { field: 'firstName', header: 'Prenom' },
-      { field: 'email', header: 'G-mail' },
+      { field: 'email', header: 'Email' },
       { field: 'soldeRestantesCongeExceptionnel', header: 'solde Restantes' },
     ];
     this.loading = true;
     this.totalRecords = this.employes.length;
+  }
+  public imprimerListeEmployeAvecSoldePdf(){
+    this.employeService.listeDesEmployeAvecSoldePdf();
+  }
+  public imprimerListeEmployeAvecSoldeExcel(){
+    this.employeService.listeDesEmployeAvecSoldeCongéExcel();
   }
   loadCarsLazy(event: LazyLoadEvent) {
     this.loading = true;

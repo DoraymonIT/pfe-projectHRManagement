@@ -4,6 +4,8 @@
     <div style=" text-align: left; margin-bottom: 10px;">
       <button class="btn"style="background-color: white;color: black;float: left" matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerListedemande()"
       ><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
+      <button class="btn"style="margin-left: 10px;background-color: white;color: black;float: left" matTooltip="Ce button permet d imprimer ce table en format Excel" (click)="imprimerListedemandeExcel()"
+      ><i class="fa fa-file-excel" ></i>  Exporter le <strong>Excel</strong> </button>
     </div>
     <mat-form-field  style="width: 500px">
       <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de document concerné</mat-label>
@@ -29,7 +31,8 @@
     <!-- <td>{{c.employe.fullName}}</td> -->
     <td>{{c.typeDeDocument.libelle}}</td>
     <td>{{c.dateDemande}}</td>
-    <td >{{c.maniereDeRetrait}}</td>
+    <td *ngIf="c.copieEmail== true; else elseBlock">Oui</td>
+    <td #elseBlock> Non</td>
   </tr>
   </tbody>
 </table>

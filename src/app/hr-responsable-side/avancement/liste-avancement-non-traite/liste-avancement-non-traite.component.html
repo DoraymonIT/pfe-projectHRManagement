@@ -8,7 +8,7 @@
   <mat-form-field style="padding-bottom:10px;width:100%">
     <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employé  concerné </mat-label>
     <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
-      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName}}</mat-option>
+      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +"  "+ gr.lastName}}</mat-option>
     </mat-select>
   </mat-form-field>
   <div class="ui-g ui-fluid" style="padding:10px" id="fourmule">
@@ -35,7 +35,12 @@
       </tr>
       </tbody>
     </table>
-    <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button>
+    <button class="btn" mat-raised-button style="background-color: white;color: black;float: left"
+            matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesGradesDeEmploye(this.gradesEployess)"><i
+      class="fa fa-file-pdf"></i> Export <strong>PDF</strong> </button>
+    <button class="btn" mat-raised-button style="margin-left: 10px;background-color: white;color: black;float: left"
+            matTooltip="Ce button permet d imprimer ce table en format EXCEL" (click)="imprimerLesGradesDeEmployeEnEXCEL(this.gradesEployess)"><i
+      class="fa fa-file-excel"></i> Export <strong>EXCEL</strong> </button>
   </div>
 </div>
 <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->

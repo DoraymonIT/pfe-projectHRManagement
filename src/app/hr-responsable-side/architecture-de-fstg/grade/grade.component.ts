@@ -26,8 +26,8 @@ cols: any[];
   ngOnInit(): void {
     this.cols = [
 
+      { field: 'id', header: '#Identifiant' },
       { field: 'libelle', header: 'Grade' },
-      { field: 'nombreDePosteNonOccupe', header: 'Nombre De Poste Non Occupé' },
     ];
     this.gradeservice.findAll();
   }

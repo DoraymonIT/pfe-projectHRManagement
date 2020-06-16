@@ -30,6 +30,9 @@ export class PunitionComponent implements OnInit {
     this.punitionService.findallPunitionByDoti(this.employe.doti);
     }
   }
+  public imprimerLesPunitionsEnEXCEL(value: Array<PunitionEmploye>){
+    this.punitionService.listeDesPunitionsExcel(value);
+  }
   public getDernieroutoutPunitions(){
     if(this.employe.pays == 'dernierPeriode'){
       this.punitionService.findDernierPunitionEmploye(this.employe.doti);
