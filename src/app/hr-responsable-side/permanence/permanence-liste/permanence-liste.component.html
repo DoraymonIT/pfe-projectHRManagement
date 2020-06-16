@@ -1,12 +1,12 @@
 <mat-toolbar  style="cursor: pointer;">
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-graduation-cap    "></i> Chercher les permanences d'un employe a partir du <strong>Numéro</strong>  </span>
+    <span class="span"> <i class="fas fa-calendar-check    "></i> Chercher les permanences d'un employe a partir du <strong>Numéro</strong>  </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
   <div class="card-body">
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'employe concerené</mat-label>
+      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'employe concerné</mat-label>
       <mat-select [(ngModel)]="this.permanenceAdministrative1.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getpermanenceByDoti(this.permanenceAdministrative1.employe.doti)">
         <mat-option [value]="null">---None---</mat-option>
         <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + "  " + gr.lastName}}</mat-option>
@@ -14,7 +14,7 @@
     </mat-form-field>
     <br>
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l'anneé concerené</mat-label>
+      <mat-label style="text-align: center"> <i class="fas fa-calendar-check"></i> Selectionnez l'anneé concerné</mat-label>
       <mat-select [(ngModel)]="this.permanenceAdministrative1.periode" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPermanenceByAnnee(this.permanenceAdministrative1.periode)">
         <mat-option [value]=2010>---2010---</mat-option>
         <mat-option [value]=2011>---2011---</mat-option>
@@ -38,7 +38,7 @@
     <div class="col-md-12">
       <p-table #dt [columns]="cols" [value]="permanences" dataKey="id" [paginator]="true" [rows]="4">
         <ng-template pTemplate="caption">
-          <i class="fas fa-calendar-check    "></i>  Liste of permanence Administratives
+          <i class="fas fa-calendar-check    "></i>  Liste des permanence Administratives Trouves
           <div style="    text-align: left; margin-bottom: 10px;">
             <button class="btn"style="background-color: white;color: black;float: left"
           matTooltip="Ce button permet d imprimer ce table en format PDF"
@@ -88,13 +88,13 @@
                 <div class="ui-g-12 ui-md-9" >
                   <div class="ui-g">
                     <div class="ui-g-4">
-                      <b>Full name  :</b> {{rowData.employe.firstName + ' ' + rowData.employe.lastName}}
+                      <b>Nom Complet  :</b> {{rowData.employe.firstName + ' ' + rowData.employe.lastName}}
                     </div>
                     <div class="ui-g-4">
                       <b>cin :</b> {{rowData.employe.cin}}
                     </div>
                     <div class="ui-g-4">
-                      <b>Doti:</b> {{rowData.employe.doti}}
+                      <b>Numero :</b> {{rowData.employe.doti}}
                     </div>
                     <div class="ui-g-4">
                       <b>Gmail:</b> {{rowData.employe.email}}

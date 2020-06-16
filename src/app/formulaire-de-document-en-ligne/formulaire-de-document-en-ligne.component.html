@@ -4,7 +4,7 @@
     <span class="span" id="span"> <i class="fas fa-plus-circle"> </i> Demande de documents en ligne </span>
   </mat-toolbar-row>
 </mat-toolbar>
-<form class="normal-form" style="background-color: #7a7a7a;color:white">
+<form class="normal-form" style="background-color: #7a7a7a;color:white;height:100%">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
@@ -13,21 +13,21 @@
       </div>
       <div class="col-md-8">
         <div class="controles-container">
-          <mat-form-field>
             <input matInput placeholder="Saisir votre Numero Administratif :* "[ngModelOptions]="{standalone: true}" [(ngModel)]="document.employe.doti">
+          <mat-form-field style="margin-bottom:20px">
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field style="margin-bottom:20px">
             <mat-label> Type de document :</mat-label>
             <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">
               <mat-option value="Salaire">Attestation de Salaire</mat-option>
               <mat-option value="Travail">Attestation de Travail</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field style="margin-bottom:20px">
             <input matInput placeholder="Nombre de documents souhaites : "[ngModelOptions]="{standalone: true}" [(ngModel)]="document.nbrDeDocument">
           </mat-form-field>
 
-          <div class="add-bottom-padding" style="color: white;">
+          <div class="add-bottom-padding" style="color: white;margin-bottom:10px">
             <mat-label>Voulez-vous une copie scanne , On peut le vous envoye via email ? </mat-label>
             <mat-radio-group [(ngModel)]="document.copieEmail" [ngModelOptions]="{standalone: true}">
               <mat-radio-button value="true">Oui</mat-radio-button>
@@ -35,9 +35,9 @@
             </mat-radio-group>
           </div>
         </div>
-        <div class="button-row" style="text-align: center;">
-          <button mat-raised-button color="primary" type="submit" style="width: 500px;" (click)="save()"> <i class="fas fa-save"></i>
-            Confirmer</button>
+        <div class="button-row" style="text-align: center;margin-bottom:20px">
+          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:black;background-color:white"> 
+            <i class="fas fa-check-square    "></i>  Confirmer</button>
         </div>
       </div>
       <div class="col-md-2">

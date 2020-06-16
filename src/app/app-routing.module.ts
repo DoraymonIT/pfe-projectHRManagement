@@ -33,7 +33,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: OverreviewComponent,
+        component: LogsEtVideoComponent,
         outlet: 'un',
 
 
