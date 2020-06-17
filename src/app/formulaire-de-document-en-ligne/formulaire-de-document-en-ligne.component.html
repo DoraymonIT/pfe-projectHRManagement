@@ -12,11 +12,10 @@
 
       </div>
       <div class="col-md-8">
-        <div class="controles-container" style="  
-     border-radius: 2px; 
-    background-color: #636363;
-  
-    opacity: 0.8;">
+        <div class="controles-container" style="border-radius: 2px; background-color: #636363;opacity: 0.8;">
+          <mat-form-field style="margin-bottom:20px">
+            <input matInput placeholder="Saisir votre Numero Administratif :* " [(ngModel)]="document.employe.doti">
+          </mat-form-field>
           <mat-form-field style="margin-bottom:20px">
             <mat-label> Type de document :</mat-label>
             <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">
@@ -36,7 +35,7 @@
           </div>
         </div>
         <div class="button-row" style="text-align: center;margin-bottom:20px">
-          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:white;background-color:black"> 
+          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:white;background-color:black" (click)="save()">
             <i class="fas fa-check-square    "></i>  Confirmer</button>
         </div>
       </div>

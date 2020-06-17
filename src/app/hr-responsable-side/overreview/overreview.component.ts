@@ -18,7 +18,13 @@ export class OverreviewComponent implements OnInit {
   data: any;
   data2: any;
   data3: any;
-
+//  employeService.trouverListeEmployesParNomDepartement("Biologie"),
+  //employeService.trouverListeEmployesParNomDepartement("Informatique"),
+  //employeService.trouverListeEmployesParNomDepartement("Chimie"),
+  //employeService.trouverListeEmployesParNomDepartement("physique"),
+  //employeService.trouverListeEmployesParNomDepartement("TEC"),
+  //employeService.trouverListeEmployesParNomDepartement("Mathémathique"),
+  //employeService.trouverListeEmployesParNomDepartement("Géologie")],
   constructor(private departementService: DepartemntService,
               private employeService: PersonnelEmployesService) {
     this.data = {
@@ -33,13 +39,7 @@ export class OverreviewComponent implements OnInit {
       ],
       datasets: [
         {
-          data: [ employeService.trouverListeEmployesParNomDepartement("Biologie") ,
-                  employeService.trouverListeEmployesParNomDepartement("Informatique"),
-                  employeService.trouverListeEmployesParNomDepartement("Chimie"),
-                  employeService.trouverListeEmployesParNomDepartement("physique"),
-                  employeService.trouverListeEmployesParNomDepartement("TEC"),
-                  employeService.trouverListeEmployesParNomDepartement("Mathémathique"),
-                  employeService.trouverListeEmployesParNomDepartement("Géologie")],
+          data: [29, 31, 33, 32, 15, 34, 30],
           backgroundColor: [
             "yellow",
             "black",
