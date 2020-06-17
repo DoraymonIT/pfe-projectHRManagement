@@ -1,10 +1,11 @@
 <button  mat-raised-button color="warn" mat-dialog-close style="float: right;"> <i class="fas fa-window-close    "></i> </button>
-<h4 style="float:left">Liste des employes ayant dans le méme grade </h4>
+<h4 style="float:left">Liste des employés ayant dans le méme grade </h4>
 <table class="table table-hover table-striped table-dark " style="color: wheat">
   <thead>
   <th>#GRADE</th>
+   <th>Numéro</th>
     <th>Nom Complet</th>
-    <th>Numéro</th>
+   
     <th>Cin</th>
     <th>Email</th>
     <th>Département</th>
@@ -14,8 +15,9 @@
     <p-progressSpinner *ngIf="listeVide2()"  ></p-progressSpinner>
     <tr *ngFor="let c of employesByGrade">
     <td > {{c.dernierGrade.grade.libelle}}</td>
+	<td>{{c.doti}}</td>
       <td >{{c.fullName}}</td>
-      <td>{{c.doti}}</td>
+      
       <td>{{c.cin}}</td>
       <td>{{c.email}}</td>
       <td>{{c.dep.nom }}</td>

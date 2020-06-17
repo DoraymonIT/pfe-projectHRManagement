@@ -2,15 +2,17 @@
 <h4 style="float:left">Liste des employés qui travaillent dans le département de {{this.getFullName()}}  </h4>
 <table class="table table-hover table-striped table-dark table-bordered" style="color: wheat">
   <thead>
+  <th>Numéro</th>
     <th>Nom Complet</th>
-    <th>Numéro</th>
+    
     <th>Fonction</th>
   </thead>
   <tbody>
-    <p-progressSpinner *ngIf="listeVide1()"  >Loading...</p-progressSpinner>
+    <p-progressSpinner *ngIf="listeVide1()"  ></p-progressSpinner>
     <tr *ngFor="let c of employesByDep">
+	 <td>{{c.doti}}</td>
       <td>{{c.firstName +" " + c.lastName }}</td>
-      <td>{{c.doti}}</td>
+     
       <td>{{c.fonction.libelle}} </td>
     </tr>
   </tbody>

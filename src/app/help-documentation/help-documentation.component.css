@@ -2,7 +2,17 @@ h5,h3{
   text-align: center;
 }
 .images {
-  background-image: url("/assets/images/back1.jpg");
+  /* background-image: url("/assets/images/back1.jpg"); */
   /* Mumkiin tbddl back1 w tddir back2 wlla back3 w chuuf lli 3jbattk  */
   position: relative;
+}
+p{
+  color:black;
+  font-size:15px;
+}
+
+h5{
+	    border: 4px dotted black;
+    padding: 10px;
+	background-color: #d8d8d8;
 }
