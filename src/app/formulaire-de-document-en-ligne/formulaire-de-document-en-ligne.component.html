@@ -8,25 +8,23 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
-      <img id="fst" class="animate__animated animate__fadeInLeft animate__repeat-4" src="assets/images/fstgLogo.png" />
+      <img id="fst" class="animate__animated animate__fadeInLeft animate__repeat-4" src="assets/images/fstgLogo.png"  alt="some"/>
 
       </div>
       <div class="col-md-8">
         <div class="controles-container">
             <input matInput placeholder="Saisir votre Numero Administratif :* "[ngModelOptions]="{standalone: true}" [(ngModel)]="document.employe.doti">
-          <mat-form-field style="margin-bottom:20px">
-          </mat-form-field>
+
           <mat-form-field style="margin-bottom:20px">
             <mat-label> Type de document :</mat-label>
             <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">
-              <mat-option value="Salaire">Attestation de Salaire</mat-option>
-              <mat-option value="Travail">Attestation de Travail</mat-option>
+              <mat-option value="Attestation de Salaire">Attestation de Salaire</mat-option>
+              <mat-option value="Attestation de Travail">Attestation de Travail</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field style="margin-bottom:20px">
-            <input matInput placeholder="Nombre de documents souhaites : "[ngModelOptions]="{standalone: true}" [(ngModel)]="document.nbrDeDocument">
+            <input matInput placeholder="Nombre de documents souhaites : " [ngModelOptions]="{standalone: true}" [(ngModel)]="document.nbrDeDocument">
           </mat-form-field>
-
           <div class="add-bottom-padding" style="color: white;margin-bottom:10px">
             <mat-label>Voulez-vous une copie scanne , On peut le vous envoye via email ? </mat-label>
             <mat-radio-group [(ngModel)]="document.copieEmail" [ngModelOptions]="{standalone: true}">
@@ -36,16 +34,13 @@
           </div>
         </div>
         <div class="button-row" style="text-align: center;margin-bottom:20px">
-          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:black;background-color:white"> 
+          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:black;background-color:white" (click)="save()">
             <i class="fas fa-check-square    "></i>  Confirmer</button>
         </div>
       </div>
       <div class="col-md-2">
-      <img id="fst" class="animate__animated animate__fadeInLeft animate__repeat-4" src="assets/images/fstgLogo.png" />
+      <img id="fst" class="animate__animated animate__fadeInLeft animate__repeat-4" src="assets/images/fstgLogo.png"  alt="some"/>
       </div>
     </div>
-
-
-
   </div>
 </form>

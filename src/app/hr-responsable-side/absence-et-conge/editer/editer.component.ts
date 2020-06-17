@@ -26,6 +26,8 @@ export class EditerComponent implements OnInit {
   public ajouterRaison(value: string){
     if(value === 'conge exceptionnel'){
       document.getElementById('raison').style.display = 'inline';
+    }else{
+      document.getElementById('raison').style.display = 'none';
     }
   }
   get congeEmploye(): CongeEmploye {

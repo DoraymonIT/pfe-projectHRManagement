@@ -1,11 +1,12 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-calendar-check    "></i> Calendrier de Permanences </span>
+    <span class="span"> <i class="fas fa-calendar-check    "></i> Calendrier des permanences </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="container-fluid" style="padding-top: 20px;padding-bottom: 10px;">
-  <full-calendar
-    defaultView="dayGridMonth"
-    [plugins]="calendarPlugins"
-    [events]="calendarEvent"></full-calendar>
+  <div class="row">
+    <div class="col-md-12">
+      <full-calendar [header]="{left: 'prev,next',  center: 'title', right: 'dayGridMonth,dayGridWeek,dayGridDay,listMonth'}" [events]="calendarEvent" [plugins]="calendarPlugins " themeSystem="bootstrap 4"  eventColor="blue"></full-calendar>
+    </div>
   </div>
+</div>

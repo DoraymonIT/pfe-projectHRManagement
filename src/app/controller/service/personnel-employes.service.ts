@@ -459,6 +459,18 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
+  public trouverListeEmployesParNomDepartement(value: string): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
+      data => {
+        this.employesByDep = data;
+        console.log(value+" :  "+this.employesByDep.length);
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+
   public trouverEmployerParNomDepartement(value: string) {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
       data => {

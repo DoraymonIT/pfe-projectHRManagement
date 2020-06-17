@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ThemePalette } from "@angular/material/core";
+import {DepartemntService} from '../../controller/service/departemnt.service';
+import {Departement} from '../../controller/model/departement.model';
+import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
 
 
 export interface ages {
@@ -16,7 +19,8 @@ export class OverreviewComponent implements OnInit {
   data2: any;
   data3: any;
 
-  constructor() {
+  constructor(private departementService: DepartemntService,
+              private employeService: PersonnelEmployesService) {
     this.data = {
       labels: [
         "Biologie",
@@ -29,7 +33,13 @@ export class OverreviewComponent implements OnInit {
       ],
       datasets: [
         {
-          data: [29, 31, 33, 32, 15, 34, 30],
+          data: [ employeService.trouverListeEmployesParNomDepartement("Biologie") ,
+                  employeService.trouverListeEmployesParNomDepartement("Informatique"),
+                  employeService.trouverListeEmployesParNomDepartement("Chimie"),
+                  employeService.trouverListeEmployesParNomDepartement("physique"),
+                  employeService.trouverListeEmployesParNomDepartement("TEC"),
+                  employeService.trouverListeEmployesParNomDepartement("Mathémathique"),
+                  employeService.trouverListeEmployesParNomDepartement("Géologie")],
           backgroundColor: [
             "yellow",
             "black",
@@ -60,7 +70,7 @@ export class OverreviewComponent implements OnInit {
       datasets: [
         {
           backgroundColor: "#42A5F5",
-label:"Nombre d'employés par grade",
+          label:"Nombre d'employés par grade",
           data: [65, 59, 80, 81, 56, 55, 54, 80, 81, 56, 55],
         },
       ],
@@ -74,5 +84,8 @@ label:"Nombre d'employés par grade",
     { nom: "Département de de Biologie", color: "accent" },
     { nom: "Département de Géologie", color: "primary" },
   ];
-  ngOnInit() {}
+  ngOnInit() {this.departementService.findAll()}
+  get deps(): Array<Departement> {
+    return this.departementService.deps;
+  }
 }
