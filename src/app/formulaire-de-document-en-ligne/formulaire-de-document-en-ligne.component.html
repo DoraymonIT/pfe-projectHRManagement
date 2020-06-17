@@ -4,7 +4,7 @@
     <span class="span" id="span"> <i class="fas fa-plus-circle"> </i> Demande de documents en ligne </span>
   </mat-toolbar-row>
 </mat-toolbar>
-<form class="normal-form" style="background-color: #7a7a7a;color:white;height:100%">
+<form class="normal-form" style="color:black;height:100%">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
@@ -12,9 +12,11 @@
 
       </div>
       <div class="col-md-8">
-        <div class="controles-container">
-            <input matInput placeholder="Saisir votre Numero Administratif :* "[ngModelOptions]="{standalone: true}" [(ngModel)]="document.employe.doti">
-
+        <div class="controles-container" style="  
+     border-radius: 2px; 
+    background-color: #636363;
+  
+    opacity: 0.8;">
           <mat-form-field style="margin-bottom:20px">
             <mat-label> Type de document :</mat-label>
             <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">
@@ -34,7 +36,7 @@
           </div>
         </div>
         <div class="button-row" style="text-align: center;margin-bottom:20px">
-          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:black;background-color:white" (click)="save()">
+          <button mat-raised-button color="primary" type="submit" style="width: 500px;color:white;background-color:black"> 
             <i class="fas fa-check-square    "></i>  Confirmer</button>
         </div>
       </div>

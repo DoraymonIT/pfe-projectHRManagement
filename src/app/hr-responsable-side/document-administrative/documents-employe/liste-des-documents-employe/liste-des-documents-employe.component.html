@@ -8,7 +8,7 @@
       ><i class="fa fa-file-excel" ></i>  Exporter le <strong>Excel</strong> </button>
     </div>
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de document concerné</mat-label>
+      <mat-label style="text-align: center">  Selectionnez le type de document concerné</mat-label>
       <mat-select [(ngModel)]="this.typeDocument.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="findAllDemandeByTypeDocument()">
         <mat-option [value]="null">---None---</mat-option>
         <mat-option *ngFor="let gr of typeDocuments" [value]="gr.libelle">{{gr.libelle}}</mat-option>

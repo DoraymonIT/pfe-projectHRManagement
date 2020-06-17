@@ -10,7 +10,7 @@
       ><i class="fa fa-file-excel" ></i>  Exporter le <strong>EXCEL</strong> </button>
     </div>
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le type de congé concerné</mat-label>
+      <mat-label style="text-align: center">  Selectionnez le type de congé concerné</mat-label>
       <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeByDotiAndLibelle()">
         <mat-option [value]="null">---None---</mat-option>
         <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle}}</mat-option>
@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<h4 style="margin-top: 40px"> Liste de congé en détailes de {{employefullname}}  </h4>
+<h4 style="margin-top: 40px"> Liste de congé en détailles de : {{employefullname}}  </h4>
 
 <table class="table table-hover table-striped table-dark" style="color: wheat">
   <thead>
