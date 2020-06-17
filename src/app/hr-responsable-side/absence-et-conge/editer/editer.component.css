@@ -20,6 +20,12 @@ mat-radio-group mat-radio-button{
 
 .button-row button{
   margin: 5px;
+  padding:5px;width:400px;
+ 
+}
+.button-row {
+text-align:center;
+ 
 }
 .span {
   margin: auto;
