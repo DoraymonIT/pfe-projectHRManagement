@@ -116,7 +116,7 @@ public imprimerLesFormations(value: Array<Formation>) {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/save', this.formationEmploye).subscribe(
         data => {
           // console.log(data);
-          this.toast.success(`${this.formationEmploye.employe.firstName + this.formationEmploye.employe.lastName} add formation employe to the database.`, 'formation Added', {
+          this.toast.success(`${this.formationEmploye.employe.firstName + ' '+this.formationEmploye.employe.lastName} a étéa cet employé`, 'formation Ajouté', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -146,7 +146,7 @@ public imprimerLesFormations(value: Array<Formation>) {
       } else {
         this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/update', this.formationEmploye).subscribe(
         data => {
-          this.toast.info(`${this.formationEmploye.employe.firstName + this.formationEmploye.employe.lastName} add formation employe to the database.`, 'formation Added', {
+          this.toast.info(`${this.formationEmploye.employe.firstName +' '+ this.formationEmploye.employe.lastName} add formation employe to the database.`, 'formation Added', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

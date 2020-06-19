@@ -19,7 +19,7 @@
       <mat-divider></mat-divider>
 
       <mat-list-item [routerLink]="[{ outlets: { un: ['abscence'] } }]" class="list1" role="listitem">
-        <h6><i class="fas fa-bed"></i> Congés / certificat</h6>
+        <h6><i class="fas fa-bed"></i> Congés | Certificats Médicaux</h6>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item [routerLink]="[{ outlets: { un: ['documents'] } }]" class="list1" role="listitem">
@@ -73,11 +73,11 @@
         <mat-menu class="my-class" #menu="matMenu">
           <h6 style="text-align:center;color:white">{{this.time| date: 'MMMM dd, y, hh:mm:ss aa' }} </h6><hr>
           <a mat-menu-item [routerLink]="[{ outlets: { un: ['documents'] } }]">
-            <i class="fas fa-file"></i>  demandes de documents  :   {{documents.length}}</a>
+            <i class="fas fa-file"></i> Demandes de documents  :  {{documents.length}}</a>
           <a mat-menu-item (click)="trouverEmployesEvaluationDialog()">
-            <i class="fas fa-sticky-note"></i>employés des évaluations: {{employeEvaluation.length}}</a>
+            <i class="fas fa-sticky-note"></i> Employés des évaluations: {{employeEvaluation.length}}</a>
           <a mat-menu-item (click)="trouverEmployesAvancementDialog()">
-            <i class="fas fa-forward"></i>employés des avancements: {{employeAvancement.length}}</a>
+            <i class="fas fa-forward"></i> Employés des avancements: {{employeAvancement.length}}</a>
         </mat-menu>
 
         <!-- <button class="icons" mat-raised-button matTooltip="This is your profile"><i class="fas fa-user-circle"></i>

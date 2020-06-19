@@ -83,12 +83,12 @@ private _employefullname: string;
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/conge/AutoRestSoldeCongeEmplye').subscribe(
       data => {
       if(data == 1){
-        this.toast.success(` le solde de conge employe est initialisé`, 'initialisation des soldes congé', {
-          timeOut: 2500,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right'
-        });
+       //  this.toast.success(` le solde de congé employé est initialisé`, 'initialisation des soldes congé', {
+       //    timeOut: 2500,
+        //   progressBar: true,
+        //   progressAnimation: 'increasing',
+        //   positionClass: 'toast-top-right'
+       //  });
 
             }
       }, eror => {
@@ -221,7 +221,7 @@ private _employefullname: string;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/conge/save', this.congeEmploye).subscribe(
       data => {
         if (data == 1) {
-          this.toast.success(`Un congé a été effectuer au ${this.congeEmploye.employe.firstName + this.congeEmploye.employe.lastName} `, 'congé est Bien affecter', {
+          this.toast.success(`Un congé a été effectuer au ${this.congeEmploye.employe.firstName +" "+ this.congeEmploye.employe.lastName} `, 'congé est Bien affecter', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -232,7 +232,7 @@ private _employefullname: string;
           this._ajouteCongeEmp = 'Le congé est bien affecté';
           document.getElementById('span').style.color = 'green';
         } else if(data  == -4){
-          this.toast.error(`la periode de congé est superieur de solde congé de employe `, 'error congé', {
+          this.toast.error(`la période de congé est superieur de solde congé de employé `, 'error congé', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -241,7 +241,7 @@ private _employefullname: string;
           this._ajouteCongeEmp = 'Le congé est annulé';
           document.getElementById('span').style.color = 'red';
         } else if(data  == -5){
-          this.toast.error(`la durée de certificat court durée (3 mois) ne doit pas depassée 90 jours  `, 'error congé', {
+          this.toast.error(`la durée de certificat court durée (3 mois) ne doit pas dépasse 90 jours  `, 'error congé', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -250,7 +250,7 @@ private _employefullname: string;
           this._ajouteCongeEmp = 'Le congé est annulé';
           document.getElementById('span').style.color = 'red';
         } else if(data  == -6){
-          this.toast.error(`la durée de certificat court durée (6mois) ne doit pas depassée 180 jours  `, 'error congé', {
+          this.toast.error(`la durée de certificat court durée (6mois) ne doit pas dépasse 180 jours  `, 'error congé', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',

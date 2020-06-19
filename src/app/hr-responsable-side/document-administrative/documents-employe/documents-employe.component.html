@@ -1,9 +1,9 @@
 <mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="demande de document Non Traité" style="width: 25px" tabindex="1">
+  <mat-tab label="DEMANDE DE DOCUMENTS NON TRAITÉS" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
       <mat-toolbar>
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-file-pdf    "></i> demandes de documents non traité </span>
+          <span class="span"> <i class="fas fa-file-pdf    "></i> Demandes de documents non traité </span>
         </mat-toolbar-row>
       </mat-toolbar>
     <div class="scrolli">
@@ -13,7 +13,7 @@
         <th style=" border: 2px solid white;">Employé</th>
         <th style=" border: 2px solid white;">Type de document</th>
         <th style=" border: 2px solid white;">Date de demande</th>
-        <th style=" border: 2px solid white;">copie scanné?</th>
+        <th style=" border: 2px solid white;">copie scanné ?</th>
         <th style=" border: 2px solid white;" >Action</th>
         </thead>
         <tbody>
@@ -55,8 +55,8 @@
           <th style=" border: 2px solid white;">Employé</th>
           <th style=" border: 2px solid white;">Type de document</th>
           <th style=" border: 2px solid white;">Date de demande</th>
-          <th style=" border: 2px solid white;">chargé copie scanné</th>
-          <th style=" border: 2px solid white;" >Action</th>
+          <th style=" border: 2px solid white;">chargé la copie scanné</th>
+          <th style=" border: 2px solid white;">Action</th>
           </thead>
           <tbody>
           <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
@@ -90,12 +90,12 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">
+  <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYÉ" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">
       <app-liste-des-demandes-documents-employe></app-liste-des-demandes-documents-employe>
     </div>
   </mat-tab>
-  <mat-tab label="AFFECTER UNE DEMANDE A UN EMPLOYE" style="width: 25%;" tabindex="3">
+  <mat-tab label="AFFECTER UNE DEMANDE A UN EMPLOYÉ" style="width: 25%;" tabindex="3">
     <div class="example-large-box mat-elevation-z4">
       <app-ajouter-un-documents-employe></app-ajouter-un-documents-employe>
     </div>

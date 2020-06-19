@@ -34,7 +34,7 @@ export class GradeService {
 public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDeGradeDeEmployePdf', value).subscribe(
       data => {
-        this.toast.success(`Document a ete traites avec success`, ' Voir votre fichier de telechargement', {
+        this.toast.success(`Document a été traiter avec succés`, ' Voir votre fichier de téléchargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -47,7 +47,7 @@ public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
   public listeDesGradesEmployesExcel(value: Array<GradeEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/listeDesGradesEmployesExcel', value).subscribe(
       data => {
-        this.toast.success(`Document a ete traites avec success`, ' Voir votre fichier de telechargement', {
+        this.toast.success(`Document a été traiter avec succés`, ' Voir votre fichier de téléchargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -97,12 +97,12 @@ public findAll() {
       data => {
         if(data != null){
           this.employeEvaluation = data;
-          this.toast.success(`get date avancement prevue  of some employes`, 'date evaluation', {
-            timeOut: 2500,
-            progressBar: true,
-            progressAnimation: 'increasing',
-            positionClass: 'toast-top-right'
-          });
+          //  this.toast.success(`get date avancement prevue  of some employes`, 'date evaluation', {
+          //    timeOut: 2500,
+           //   progressBar: true,
+           //   progressAnimation: 'increasing',
+           //   positionClass: 'toast-top-right'
+          //  });
         }
       }, eror => {
         console.log('eroro', eror);
@@ -113,12 +113,12 @@ public findAll() {
       data => {
         if(data != null){
           this.employeAvancement = data;
-          this.toast.success(`creer un grade employe pour some employe`, 'date avancement', {
-            timeOut: 2500,
-            progressBar: true,
-            progressAnimation: 'increasing',
-            positionClass: 'toast-top-right'
-          });
+          //  this.toast.success(`creer un grade employe pour some employe`, 'date avancement', {
+          //    timeOut: 2500,
+          //    progressBar: true,
+            //  progressAnimation: 'increasing',
+          //    positionClass: 'toast-top-right'
+         //   });
         }
       }, eror => {
         console.log('eroro', eror);
@@ -240,7 +240,7 @@ public findAll() {
     this._gradeEmploye = value;
   }
 public ajouteGradeemployeTitre() {
-  this._ajouteGradeEmploye = 'Formulaire pour affecter un grade a un employe ';
+  this._ajouteGradeEmploye = 'Formulaire pour affecter un grade a un employé ';
 }
   get ajouteGradeEmploye(): string {
     return this._ajouteGradeEmploye;

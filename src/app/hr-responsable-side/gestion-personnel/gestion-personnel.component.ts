@@ -27,7 +27,7 @@ export class GestionPersonnelComponent implements OnInit {
     this.cols = [
       { field: 'cin', header: 'CIN' },
       { field: 'doti', header: 'Numéro' },
-      { field: 'firstName', header: 'Prenom' },
+      { field: 'firstName', header: 'Prénom' },
       { field: 'lastName', header: 'Nom' },
       { field: 'email', header: 'email' },
      //  { field: 'tel', header: 'Téléphone' },

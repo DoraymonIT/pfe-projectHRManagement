@@ -1,17 +1,17 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;">
-  <mat-tab label="demande avancement Non Traité" style="width: 25px" tabindex="1">
+  <mat-tab label="DEMANDE D'AVANCEMENT NON TRAITÉS" style="width: 25px" tabindex="1">
         <div class="example-large-box mat-elevation-z4">
           <div class="ui-g ui-fluid" style="font-size:16px;" (click)="listeDesDemandeNonTraite()">
             <mat-toolbar>
               <mat-toolbar-row>
-                <span class="span"> <i class="fas fa-book-open "></i> les demandes d'avancement non traité : </span>
+                <span class="span"> <i class="fas fa-book-open "></i> Les demandes d'avancement non traité : </span>
               </mat-toolbar-row>
             </mat-toolbar>
             </div>
           <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
             <div class="card-body">
               <mat-form-field  style="width: 500px">
-                <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le grade concerené</mat-label>
+                <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le grade concerné</mat-label>
                 <mat-select [(ngModel)]="this.gradeEmploye.grade.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="TrouverGradeNonTraiteByType(this.gradeEmploye.grade.libelle)">
                   <mat-option value="all">All</mat-option>
                   <mat-option value="grade2">grade1 -> grade2</mat-option>
@@ -52,10 +52,10 @@
             </div>
         </div>
       </mat-tab>
-      <mat-tab label="historique Avacement d'un employe" style="width: 25%;" tabindex="2">
+      <mat-tab label="HISTORIQUE D'AVANCEMENT D'UN EMPLOYÉ" style="width: 25%;" tabindex="2">
         <app-liste-avancement-non-traite></app-liste-avancement-non-traite>
       </mat-tab>
-  <mat-tab label="formation/ prix / punition /Note" style="width: 25%;" tabindex="2">
+  <mat-tab label="FORMATION / PRIX / PUNITION / NOTATION" style="width: 25%;" tabindex="2">
     <app-ajoute-rapport></app-ajoute-rapport>
   </mat-tab>
 <!--

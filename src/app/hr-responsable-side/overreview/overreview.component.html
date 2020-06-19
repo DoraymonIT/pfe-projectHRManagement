@@ -23,17 +23,9 @@
       </mat-chip-list>
     </div>
     <div class="col-md-7">
-      <h5 style="text-align: center;">Autres</h5>
-      <mat-card>
-        <div class="row">
-          <div class="col-md-6"> <h6><i class="fas fa-money-check    "></i> Moyen de Salaire: </h6><b>6700.00 DH</b>  </div>
-          <div class="col-md-6" style="text-align: center;"> <h6> Pourcentage de Sexe</h6> 
-            <i class="fas fa-male" ></i> 44%  <i class="fas fa-female" ></i> 56%
-           
-           
-          </div>
-        </div>
-      </mat-card>
+   
+    <h3>Nombre des employés par grade</h3>
+      <p-chart type="bar" [responsive]="true" [data]="data2"></p-chart>
     </div>
   </div>
   <div class="row">
@@ -42,8 +34,7 @@
       <p-chart type="doughnut" [responsive]="true" [data]="data"></p-chart>
     </div>
     <div class="col-md-6">
-      <h3>Nombre des employés par grade</h3>
-      <p-chart type="bar" [responsive]="true" [data]="data2"></p-chart>
+    
     </div>
   </div>
   

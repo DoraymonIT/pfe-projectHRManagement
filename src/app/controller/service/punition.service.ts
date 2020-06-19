@@ -84,7 +84,7 @@ public setPunition(punitionn: PunitionEmploye) {
   public imprimerLesPunitions(value: Array<PunitionEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/listeDespunitionsPdf', value).subscribe(
       data => {
-        this.toast.success(` document est bien preparer`, ' document preparer', {
+        this.toast.success(` document est bien préparer`, ' document préparer', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -97,7 +97,7 @@ public setPunition(punitionn: PunitionEmploye) {
   public listeDesPunitionsExcel(value: Array<PunitionEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/listeDesPunitionsExcel', value).subscribe(
       data => {
-        this.toast.success(` document est bien preparer`, ' document preparer', {
+        this.toast.success(` document est bien préparer`, ' document préparer', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -115,7 +115,7 @@ public setPunition(punitionn: PunitionEmploye) {
   public save() {
     // tslint:disable-next-line:max-line-length
     if ((this.punitionEmploye.employe == null || this.punitionEmploye.punition == null || this.punitionEmploye.dateObtenation == null ) || (this.punitionEmploye.employe == null && this.punitionEmploye.punition == null && this.punitionEmploye.dateObtenation == null )) {
-      this.toast.error(`Remplir toutes les champ`, 'Un champ est vide', {
+      this.toast.error(`Remplir toutes les champs`, 'Un champ est vide', {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -127,14 +127,14 @@ public setPunition(punitionn: PunitionEmploye) {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/save', this.punitionEmploye).subscribe(
         data => {
           // console.log(data);
-          this.toast.success(`${this.punitionEmploye.employe.firstName + this.punitionEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
+          this.toast.success(`${this.punitionEmploye.employe.firstName + this.punitionEmploye.employe.lastName} ; Un punition a été ajouté a cet employé`, 'punition Ajouté', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           });
           this.punitions.push(this.clonePunition(this.punitionEmploye));
-          this._ajoutepunition = 'punition ajouter';
+          this._ajoutepunition = 'Punition ajouter avec succés';
           document.getElementById('span').style.color = 'green';
           this.punitionEmploye = null;
         }, eror => {

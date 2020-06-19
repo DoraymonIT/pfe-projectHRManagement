@@ -1,9 +1,9 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
                [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="liste des employe ayant un congé actuellement" style="width: 25px" tabindex="1">
+  <mat-tab label="LISTE DES EMPLOYÉS AYANT CONGÉ ACTUELLEMENT" style="width: 25px" tabindex="1">
 <mat-toolbar  style="cursor: pointer;">
   <mat-toolbar-row>
-    <span class="span" style="text-align: center"> <i class="fas fa-graduation-cap    "></i> filtrer Par <strong>Période</strong>  </span>
+    <span class="span" style="text-align: center"> <i class="fas fa-search    "></i> Filtrer Par <strong>Période</strong>  </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
@@ -11,12 +11,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <label> date de debut :</label>
+          <label> Date de début :</label>
     <input style="margin-left: 10px" type="date" style="background-color: #343a40; width: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="congeEmployeCOnge.dateDeDebut" name="trip-start" placeholder="date de debut">
         </div>
         <br>
         <div class="col-md-6">
-          <label> date de fin :</label>
+          <label> Date de fin :</label>
           <input type="date" style="margin-left: 10px" style="background-color: #343a40; width: 500px; border-right: none;border-left: none;border-top: none;" name="trip-start"[(ngModel)]="congeEmployeCOnge.dateDeFin" placeholder="date de fin">
   </div>
         <div class="col-md-12">
@@ -37,7 +37,7 @@
                    (onLazyLoad)="loadCarsLazy($event)"  [totalRecords]="totalRecords" [loading]="loading"
           >
             <ng-template pTemplate="caption">
-              <i class="fas fa-bed    "></i>    liste des employe ayant un congé actuellement
+              <i class="fas fa-bed    "></i>    Liste des employe ayant un congé actuellement
               <div style="    text-align: left; margin-bottom: 10px;">
                 <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerListeEmployeAvecSoldePdf()"
                         matTooltip="Ce button permet d imprimer ce table en format PDF"
@@ -121,7 +121,7 @@
   </div>
 </table>
   </mat-tab>
-<mat-tab label="liste des employe ayant epuisé leur solde congé" style="width: 25px" tabindex="2">
+<mat-tab label="LISTE DES EMPLOYÉS AYANT ÉPUISÉ LEUR SOLDE CONGÉ" style="width: 25px" tabindex="2">
   <app-liste-des-conge-exceptionel></app-liste-des-conge-exceptionel>
 </mat-tab>>
 </mat-tab-group>
