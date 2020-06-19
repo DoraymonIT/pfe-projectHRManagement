@@ -103,4 +103,10 @@ public div5: boolean;
   public  save() {
     this.noteService.save();
   }
+  get fullnameNote(): string {
+    return this.employeService.fullnameNote;
+  }
+  public getEmployeNotedoti(doti: string){
+    this.employeService.GetEmployeNoteByDoti(doti);
+  }
 }

@@ -4,6 +4,11 @@ import {PrixEmploye} from '../../../controller/model/prix-employe.model';
 import {Prix} from '../../../controller/model/prix.model';
 import {Employe} from '../../../controller/model/employe.model';
 import {PersonnelEmployesService} from '../../../controller/service/personnel-employes.service';
+import {ToastrService} from 'ngx-toastr';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AjouterFormationComponent} from '../formation/ajouter-formation/ajouter-formation.component';
+import {Formation} from '../../../controller/model/formation.model';
+import {AjouterPrixComponent} from './ajouter-prix/ajouter-prix.component';
 
 @Component({
   selector: 'app-prix',
@@ -15,18 +20,37 @@ export class PrixComponent implements OnInit {
   public demo1TabIndex = 0;
 chercher: boolean;
   constructor(private prixService: PrixService,
-              private employeService: PersonnelEmployesService) { }
+              private employeService: PersonnelEmployesService,
+              private toast: ToastrService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.chercher = true;
   }
+  titrePrix: string;
+  fullnamePrix: string;
+  diponiblePrix: boolean;
   public getPrixxByDoti() {
-    if( this.employe.doti === null){
-      document.getElementById('tablePrix').style.display = 'none';
-    } else {
+    this.diponiblePrix = false;
+    this.employes.forEach(employe=>{
+      if(employe.doti === this.employe.doti){
+        this.diponiblePrix= true;
+        this.fullnamePrix = employe.firstName +" "+ employe.lastName;
+      }
+    });
+    if(this.diponiblePrix === false){
+      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+        timeOut: 9500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-full-width'
+      });
+      document.getElementById('NumeroAdministrativePrix').style.color='red';
+    }else{
       document.getElementById('tablePrix').style.display = 'inline';
-      document.getElementById('checherPrix').style.display = 'none';
       this.prixService.findallPrixByDoti(this.employe.doti);
+      this.titrePrix = "liste des prix de employe : "+ this.fullnamePrix;
+      document.getElementById('NumeroAdministrativePrix').style.color='green';
     }
   }
   public getDernieroutoutPrix(){
@@ -69,5 +93,24 @@ public imprimerLesPrix(value: Array<PrixEmploye>) {
     } else {
       document.getElementById('checherPrix').style.display = 'inline';
     }
+  }
+  ajouterPrix() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
+    this.dialog.open(AjouterPrixComponent,
+      dialogConfig);
+  }
+  public modifiePrix(prix: PrixEmploye){
+    const dialogConfig = new MatDialogConfig();
+    this.prixService.editerCePrixx(prix);
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
+    this.dialog.open(AjouterPrixComponent,
+      dialogConfig);
   }
 }

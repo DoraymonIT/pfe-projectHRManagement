@@ -15,9 +15,29 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <input class="search" type="date" class="form-control" style="background-color: #343a40; width: 500px; margin-left: 790px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="this.congeEmploye.dateDeDebut" placeholder="date de conge">
       <br>
-      <button class="btn btn-light fa fa-search" style="width: 500px" (click)="chercher()"> chercher</button>
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+          <label> date de debut :</label>
+          </div>
+            <input style="margin-left: 10px" type="date" style="background-color: #343a40; width: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="congeEmploye.dateDeDebut" name="trip-start" placeholder="date de debut">
+        </div>
+        <br>
+        <div class="col-md-6">
+          <div>
+          <label> date de fin :</label>
+          </div>
+          <input type="date" style="margin-left: 10px" style="background-color: #343a40; width: 500px; border-right: none;border-left: none;border-top: none;" name="trip-start"[(ngModel)]="congeEmploye.dateDeFin" placeholder="date de fin">
+        </div>
+        <br>
+        <br>
+        <div class="col-md-12">
+          <div class="button-row">
+            <button class="btn btn-light fa fa-search" style="width: 500px" (click)="chercher()"> chercher</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableConge">

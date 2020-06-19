@@ -2,7 +2,6 @@
   <mat-tab label="Liste des employés ayant besoin d'une note" style="width: 25px" tabindex="1">
   <div style="text-align: center;padding-top: 15px;">
   </div>
-
     <div class="container-fluid" style="padding-top: 10px;">
       <div class="row">
         <div class="col-md-12">
@@ -32,6 +31,7 @@
                               ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
                   </p-sortIcon>
                 </th>
+                <th>Noté</th>
                 <!-- <th>
                   Action
                 </th> -->
@@ -48,6 +48,9 @@
                 <td *ngFor="let col of columns">
                   {{rowData[col.field]}}
                 </td>
+                <td><button class="btn btn-outline-info btn-sm fa fa-check-double" (click)="ajouterNote(rowData)"
+                            matTooltip="Ce button permet de ajouter un note a un employe"
+                ></button></td>
                 <!-- <td><button class="btn btn-info btn-sm fa fa-trash"></button>
                   <button class="btn btn-danger btn-sm fa fa-edit" ></button>
                 </td> -->
@@ -83,7 +86,4 @@
   <mat-tab label="LISTE DES EMPLOYES AVEC LEURS NOTES" style="width: 25%;" tabindex="2">
     <app-note-liste></app-note-liste>
       </mat-tab>
-  <mat-tab label="AFFECTER UNE NOTE A UN EMPLOYE" style="width: 25px" tabindex="3">
-<app-ajouter-une-note></app-ajouter-une-note>
-  </mat-tab>
 </mat-tab-group>

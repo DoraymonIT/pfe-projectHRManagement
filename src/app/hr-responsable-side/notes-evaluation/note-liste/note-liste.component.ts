@@ -6,6 +6,8 @@ import {NoteServiceService} from '../../../controller/service/note-service.servi
 import {PersonnelEmployesService} from '../../../controller/service/personnel-employes.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {NoteDetailComponent} from '../note-detail/note-detail.component';
+import {ToastrService} from 'ngx-toastr';
+import {AjouterUneNoteComponent} from '../ajouter-une-note/ajouter-une-note.component';
 
 @Component({
   selector: 'app-note-liste',
@@ -15,7 +17,8 @@ import {NoteDetailComponent} from '../note-detail/note-detail.component';
 export class NOteListeComponent implements OnInit {
   constructor(private noteService: NoteServiceService,
               private employeService: PersonnelEmployesService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private toast: ToastrService) { }
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
@@ -42,11 +45,36 @@ export class NOteListeComponent implements OnInit {
   public listeVide(): boolean {
     return this.employes.length < 1 ? true : false;
   }
+  titreNote: string;
+  fullnameNote: string;
+  diponibleNote: boolean;
+
   public touverDernierOuToutNote(){
+    this.diponibleNote = false;
+    this.employes.forEach(employe=>{
+      if(employe.doti === this.employe.doti){
+        this.diponibleNote= true;
+        this.fullnameNote = employe.firstName +" "+ employe.lastName;
+      }
+    });
+    if(this.diponibleNote === false){
+      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+        timeOut: 9500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-full-width'
+      });
+      document.getElementById('NumeroAdministrativeNote').style.color='red';
+    }else{
+      document.getElementById('tableNote').style.display = 'inline';
+      document.getElementById('NumeroAdministrativeNote').style.color='green';
     if(this.employe.pays == 'dernierPeriode'){
+      this.titreNote = "liste des derniers notes de employe : "+ this.fullnameNote;
       this.noteService.findDernierNoteDeEmploye(this.employe.doti);
     } else if(this.employe.pays == 'all'){
+      this.titreNote = "liste de toutes les notes de employe : "+ this.fullnameNote;
       this.noteService.trouverNoteParSonDoti(this.employe.doti);
+    }
     }
   }
   public trouverNoteParSonDoti(value: Employe) {
@@ -69,4 +97,24 @@ export class NOteListeComponent implements OnInit {
   public infoUnEmployer(employe: Employe) {
     this.employeService.infoUnEmployer(employe);
   }
+  ajouterNote() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '80%';
+    this.dialog.open(AjouterUneNoteComponent,
+      dialogConfig);
+  }
+  public modifieNote(note: NoteGeneraleDeAnnee){
+    const dialogConfig = new MatDialogConfig();
+    this.noteService.affecteruneNote(note);
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '80%';
+    this.dialog.open(AjouterUneNoteComponent,
+      dialogConfig);
+  }
+
 }

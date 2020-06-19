@@ -6,6 +6,11 @@ import { PersonnelEmployesService } from 'src/app/controller/service/personnel-e
 import { Employe } from 'src/app/controller/model/employe.model';
 import { GradeService } from 'src/app/controller/service/grade.service';
 import {TypeCongee} from '../../../controller/model/type-congee.model';
+import {Departement} from '../../../controller/model/departement.model';
+import {NoteGeneraleDeAnnee} from '../../../controller/model/note-generale-de-annee.model';
+import {GradeEmploye} from '../../../controller/model/grade-employe.model';
+import {Grade} from '../../../controller/model/grade.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-liste-des-jours-fries',
@@ -13,19 +18,45 @@ import {TypeCongee} from '../../../controller/model/type-congee.model';
   styleUrls: ['./liste-des-jours-fries.component.css']
 })
 export class ListeDesJoursFriesComponent implements OnInit {
-
-  constructor(private congeservice: CongeService, private es: PersonnelEmployesService, private gradeservice: GradeService) { }
+  constructor(private congeservice: CongeService,
+              private es: PersonnelEmployesService,
+              private gradeservice: GradeService,
+              private toast: ToastrService) { }
   calendarEvents = [
     { title: 'event 1', date: '2020-04-01' }
   ];
   ngOnInit(): void {
-    this.congeservice.findAll()
+    this.congeservice.findAll();
+    this.es.findAll();
   }
+  get employes(): Array<Employe> {
+    return this.es.employes;
+  }
+  titre: string;
+  fullname: string;
+  diponible: boolean;
   public getcongeByDotiAndLibelle(){
-    this.conges.forEach( conge => {
-      this.congeEmploye.employe.doti = conge.employe.doti;
+    this.diponible = false;
+    this.employes.forEach(employe=>{
+      if(employe.doti === this.congeEmploye.employe.doti){
+        this.diponible= true;
+        this.fullname = employe.firstName +" "+ employe.lastName;
+      }
     });
-  this.congeservice.findcongeByDotiAndLibelle(this.congeEmploye.employe.doti, this.congeEmploye.congee.libelle);
+    if(this.diponible === false){
+      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+        timeOut: 9500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-full-width'
+      });
+      document.getElementById('NumeroAdministrativeConge').style.color='red';
+    }else{
+      this.congeservice.findcongeByDotiAndLibelle(this.congeEmploye.employe.doti, this.congeEmploye.congee.libelle);
+      this.titre= 'listes des ' + this.congeEmploye.congee.libelle + 'de employe '+ this.fullname;
+      document.getElementById('NumeroAdministrativeConge').style.color='green';
+
+    }
   }
   get conges(): Array<CongeEmploye> {
     return this.congeservice.conges;
@@ -36,9 +67,6 @@ export class ListeDesJoursFriesComponent implements OnInit {
   public exporterListeDeCongeEnExcel(){
     this.congeservice.exporterListeDeCongeDeEmployeExcel();
   }
-  get employefullname(): string {
-    return this.congeservice.employefullname;
-  }
   public imprimerLalisteDeConge() {
     this.congeservice.imprimerListeDeCongeDeEmploye();
   }
@@ -47,5 +75,8 @@ export class ListeDesJoursFriesComponent implements OnInit {
   }
   get typeConge(): Array<TypeCongee> {
     return this.congeservice.typeConge;
+  }
+  public  trouverEmployerParSonDoti(value:string){
+    this.es.trouverEmployerCongeParSonDoti(value);
   }
 }

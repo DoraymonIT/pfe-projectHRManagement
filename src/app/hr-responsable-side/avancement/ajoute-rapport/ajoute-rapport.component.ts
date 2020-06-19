@@ -18,6 +18,11 @@ import {PrixSmallService} from '../../../controller/service/prix-small.service';
 import {PunitionSmallService} from '../../../controller/service/punition-small.service';
 import {PunitionService} from '../../../controller/service/punition.service';
 import {NoteServiceService} from '../../../controller/service/note-service.service';
+import {ToastrService} from 'ngx-toastr';
+import {Departement} from '../../../controller/model/departement.model';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {DialogDepComponent} from '../../architecture-de-fstg/departement/dialog-dep/dialog-dep.component';
+import {AjouterFormationComponent} from '../../certificats-medicales/formation/ajouter-formation/ajouter-formation.component';
 
 @Component({
   selector: 'app-ajoute-rapport',
@@ -25,349 +30,101 @@ import {NoteServiceService} from '../../../controller/service/note-service.servi
   styleUrls: ['./ajoute-rapport.component.css']
 })
 export class AjouteRapportComponent implements OnInit {
-indice: number;
-  constructor(private avancementService: AvancementServiceService,
-              private employeService: PersonnelEmployesService,
-              private gradeService: GradeService,
+  chercher: boolean;
+  constructor(private employeService: PersonnelEmployesService,
               private formationService: FormationServiceService,
-              private prixService: PrixService,
-              private prixSmall: PrixSmallService,
-              private punitionSmall: PunitionSmallService,
-              private punitionService: PunitionService,
-              private noteService: NoteServiceService) { }
-  public div1: boolean;
-  public div2: boolean;
-  public div3: boolean;
-  public div4: boolean;
-  public div5: boolean;
-  public div6: boolean;
-  public div7: boolean;
-  public div8: boolean;
-  public div9: boolean;
-  public div10: boolean;
-  public div11: boolean;
-  ngOnInit(): void {
-    this.div1 = false;
-    this.div2 = false;
-    this.div3 = false;
-    this.div4 = false;
-    this.div5 = false;
-    this.div6 = false;
-    this.div7 = false;
-    this.div8 = false;
-    this.div9 = false;
-    this.div10 = false;
-    this.div11 = false;
-    this.prixSmall.findAll();
-    this.punitionSmall.findAll();
-    this.gradeService.findAll();
-  }
-  public findAllGradeEmployeByDoti(doti: string) {
-    this.gradeService.findAllGradeEmployeByDoti(doti);
-  }
-  get punitionEmploye(): PunitionEmploye {
-    return this.punitionService.punitionEmploye;
-  }
-  get punitions(): Array<Punition> {
-    return this.punitionSmall.ps;
-  }
-  get ps(): Array<Prix> {
-    return this.prixSmall.ps;
-  }
-  get gradesEployess(): Array<GradeEmploye> {
-    return this.gradeService.gradesEployess;
-  }
-  get rapportEvaluation(): RapportDeEvaluation {
-    return this.avancementService.rapportEvaluationEdit;
-  }
+              private dialog: MatDialog,
+              private toast: ToastrService) { }
   get employes(): Array<Employe> {
     return this.employeService.employes;
   }
-  get grades(): Array<Grade> {
-    return this.gradeService.grades;
+  get employe(): Employe {
+    return this.employeService.employeFormation;
   }
-  get formationEmploye(): Formation {
-    return this.formationService.formationEmploye;
+  get formations(): Array<Formation> {
+    return this.formationService.formations;
   }
-  get prixEmploye(): PrixEmploye {
-    return this.prixService.prixEmploye;
+  public getDernieroutoutFormation(){
+    if(this.employe.pays == 'dernierPeriode'){
+      this.formationService.findDernierFourmationsDeEmploye(this.employe.doti);
+    } else if(this.employe.pays == 'all'){
+      this.formationService.findallFourmationsByDoti(this.employe.doti);
+    }
   }
-  public afficher1() {
-    if (this.div1 === false) {
-      document.getElementById('div1').style.display = 'inline-flex';
-      this.div1 = true;
-    } else {
-      document.getElementById('div1').style.display = 'none';
-      this.div1 = false;
+  public tabindex;
+  public demo1TabIndex = 0;
 
-    }
-    document.getElementById('div2').style.display = 'none';
-    document.getElementById('div3').style.display = 'none';
-    document.getElementById('div4').style.display = 'none';
-    document.getElementById('div5').style.display = 'none';
-    document.getElementById('div6').style.display = 'none';
+  ngOnInit(): void {
+    this.chercher = true;
   }
-  public afficher2() {
-    if (this.div2 === false) {
-      document.getElementById('div2').style.display = 'inline-flex';
-      this.div2 = true;
+  public afficher(){
+    // tslint:disable-next-line:triple-equals
+    if(this.chercher == true){
+      document.getElementById('checherFormation').style.display = 'none';
+      this.chercher = false;
     } else {
-      document.getElementById('div2').style.display = 'none';
-      this.div2 = false;
+      document.getElementById('checherFormation').style.display = 'inline';
     }
-    document.getElementById('div1').style.display = 'none';
-    document.getElementById('div3').style.display = 'none';
-    document.getElementById('div4').style.display = 'none';
-    document.getElementById('div5').style.display = 'none';
-    document.getElementById('div6').style.display = 'none';
-
   }
-  public afficher3() {
-    if (this.div3 === false) {
-      document.getElementById('div3').style.display = 'inline-block';
-      this.div3 = true;
-    } else {
-      document.getElementById('div3').style.display = 'none';
-      this.div3 = false;
-    }
-    document.getElementById('div1').style.display = 'none';
-    document.getElementById('div2').style.display = 'none';
-    document.getElementById('div4').style.display = 'none';
-    document.getElementById('div5').style.display = 'none';
-    document.getElementById('div6').style.display = 'none';
-
+  public listeVide(): boolean {
+    return this.formations.length < 1 ? true : false;
   }
-  public afficher4() {
-    if (this.div4 === false) {
-      document.getElementById('div4').style.display = 'inline-block';
-      this.div4 = true;
-    } else {
-      document.getElementById('div4').style.display = 'none';
-      this.div4 = false;
-    }
-    document.getElementById('div2').style.display = 'none';
-    document.getElementById('div3').style.display = 'none';
-    document.getElementById('div1').style.display = 'none';
-    document.getElementById('div5').style.display = 'none';
-    document.getElementById('div6').style.display = 'none';
-
-  }
-  public afficher5() {
-    document.getElementById('div7').style.display = 'none';
-    document.getElementById('div8').style.display = 'none';
-    document.getElementById('div9').style.display = 'none';
-    document.getElementById('div10').style.display = 'none';
-    document.getElementById('div11').style.display = 'none';
-    if (this.div5 === false) {
-      document.getElementById('div5').style.display = 'inline-block';
-      this.div5 = true;
-    } else {
-      document.getElementById('div5').style.display = 'none';
-      this.div5 = false;
-    }
-    document.getElementById('div2').style.display = 'none';
-    document.getElementById('div3').style.display = 'none';
-    document.getElementById('div1').style.display = 'none';
-    document.getElementById('div4').style.display = 'none';
-    document.getElementById('div6').style.display = 'none';
-  }
-  public afficher6() {
-    if (this.div6 === false) {
-      document.getElementById('div6').style.display = 'inline-block';
-      this.div6 = true;
-    } else {
-      document.getElementById('div6').style.display = 'none';
-      this.div6 = false;
-    }
-    document.getElementById('div2').style.display = 'none';
-    document.getElementById('div3').style.display = 'none';
-    document.getElementById('div1').style.display = 'none';
-    document.getElementById('div4').style.display = 'none';
-    document.getElementById('div5').style.display = 'none';
-  }
-  public saveformation() {
-    this.formationEmploye.employe = this.rapportEvaluation.employe;
-    if (this.formationEmploye.id == null){
-      this.formationService.save();
-    } else {
-      this.formationService.update();
-    }
-this.formationService.formationEmployeNull();
-}
-  cloneFormation(formation: Formation): Formation {
-    const myClone = new Formation();
-    myClone.annee = formation.annee;
-    myClone.attestation = formation.attestation;
-    myClone.domaine = formation.domaine;
-    myClone.employe = formation.employe;
-    myClone.etablissement = formation.etablissement;
-    myClone.id = formation.id;
-    myClone.mention = formation.mention;
-    myClone.ville = formation.ville;
-    return myClone;
-  }
-  public saveprix() {
-    this.prixEmploye.employe = this.rapportEvaluation.employe;
-    if (this.prixEmploye.id == null) {
-this.prixService.save();
-    } else {
-this.prixService.update();
-    }
-    this.prixService.prixEmployeNull();
-}
-  clonePrix(p: PrixEmploye): PrixEmploye {
-    const myClone = new PrixEmploye();
-    myClone.prix = p.prix;
-    myClone.id = p.id;
-    myClone.employe = p.employe;
-    myClone.dateDeObtenation = p.dateDeObtenation;
-
-    return myClone;
-  }
-  public savepunition() {
-    this.punitionEmploye.employe = this.rapportEvaluation.employe;
-    if(this.punitionEmploye.id == null){
-this.punitionService.save();
-    } else {
-this.punitionService.update();
-    }
-    this.punitionService.punitionEmployeNull();
-}
-  clonePunition(p: PunitionEmploye): PunitionEmploye {
-    const myClone = new PunitionEmploye();
-    myClone.punition = p.punition;
-    myClone.dateObtenation = p.dateObtenation;
-    myClone.id = p.id;
-    myClone.employe = p.employe;
-    return myClone;
-  }
-  get note(): NoteGeneraleDeAnnee {
-    return this.noteService.note;
-  }
-
-  public saveNote() {
-    this.note.employeDoti = this.rapportEvaluation.employe.doti;
-    if (this.note.id == null){
-    this.noteService.save();
-    } else {
-this.noteService.update();
-    }
-    this.noteService.noteNull();
-}
-  public  cloneNote(noteGeneraleDeAnnee: NoteGeneraleDeAnnee): NoteGeneraleDeAnnee {
-    const myClone = new NoteGeneraleDeAnnee() ;
-    myClone.employeDoti = noteGeneraleDeAnnee.employeDoti;
-    myClone.fuulName = noteGeneraleDeAnnee.fuulName;
-    myClone.noteDeAffectationDesTachesLieeAuTravail = noteGeneraleDeAnnee.noteDeAffectationDesTachesLieeAuTravail;
-    myClone.noteDeCapaciteDeOrganisation = noteGeneraleDeAnnee.noteDeCapaciteDeOrganisation;
-    myClone.noteDeCompotement = noteGeneraleDeAnnee.noteDeCompotement;
-    myClone.noteDeRechercheEtDeInnovation = noteGeneraleDeAnnee.noteDeRechercheEtDeInnovation;
-    myClone.noteDeRentabilite = noteGeneraleDeAnnee.noteDeRentabilite;
-    return myClone;
-  }
-  public afficher7() {
-    if (this.div7 === false) {
-      document.getElementById('div7').style.display = 'inline-block';
-      this.div7 = true;
-    } else {
-      document.getElementById('div7').style.display = 'none';
-      this.div7 = false;
-
-    }
-    document.getElementById('div8').style.display = 'none';
-    document.getElementById('div9').style.display = 'none';
-    document.getElementById('div10').style.display = 'none';
-    document.getElementById('div11').style.display = 'none';
-  }
-  public afficher8() {
-    if (this.div8 === false) {
-      document.getElementById('div8').style.display = 'inline-block';
-      this.div8 = true;
-    } else {
-      document.getElementById('div8').style.display = 'none';
-      this.div8 = false;
-
-    }
-    document.getElementById('div7').style.display = 'none';
-    document.getElementById('div9').style.display = 'none';
-    document.getElementById('div10').style.display = 'none';
-    document.getElementById('div11').style.display = 'none';
-  }
-  public afficher9() {
-    if (this.div9 === false) {
-      document.getElementById('div9').style.display = 'inline-block';
-      this.div9 = true;
-    } else {
-      document.getElementById('div9').style.display = 'none';
-      this.div9 = false;
-    }
-    document.getElementById('div8').style.display = 'none';
-    document.getElementById('div7').style.display = 'none';
-    document.getElementById('div10').style.display = 'none';
-    document.getElementById('div11').style.display = 'none';
-  }
-  public afficher10() {
-    if (this.div10 === false) {
-      document.getElementById('div10').style.display = 'inline-block';
-      this.div10 = true;
-    } else {
-      document.getElementById('div10').style.display = 'none';
-      this.div10 = false;
-
-    }
-    document.getElementById('div8').style.display = 'none';
-    document.getElementById('div9').style.display = 'none';
-    document.getElementById('div7').style.display = 'none';
-    document.getElementById('div11').style.display = 'none';
-  }
-  public afficher11() {
-    if (this.div11 === false) {
-      document.getElementById('div11').style.display = 'inline-block';
-      this.div11 = true;
-    } else {
-      document.getElementById('div11').style.display = 'none';
-      this.div11 = false;
-
-    }
-    document.getElementById('div8').style.display = 'none';
-    document.getElementById('div9').style.display = 'none';
-    document.getElementById('div10').style.display = 'none';
-    document.getElementById('div7').style.display = 'none';
-  }
-  public getformation() {
-    this.rapportEvaluation.formation.forEach(formation => {
-      if (formation.attestation === this.formationEmploye.attestation) {
-        this.formationService.setformation(formation);
+  titreFormation: string;
+  fullnameFormation: string;
+  diponibleFformation: boolean;
+  public getFormationsByDoti() {
+    this.diponibleFformation = false;
+    this.employes.forEach(employe=>{
+      if(employe.doti === this.employe.doti){
+        this.diponibleFformation= true;
+        this.fullnameFormation = employe.firstName +" "+ employe.lastName;
       }
     });
-  }
-  public getprix() {
-    this.rapportEvaluation.prix.forEach(prixx => {
-      if (prixx.prix.libelle === this.prixEmploye.prix.libelle) {
-        this.prixService.setprix(prixx);
-      }
-    });
-
-  }
-  public getpunition() {
-    this.rapportEvaluation.punition.forEach(punitionn => {
-      if (punitionn.punition.libelle === this.punitionEmploye.punition.libelle) {
-        this.punitionService.setPunition(punitionn);
-      }
-    });
-  }
-  public getnote() {
-    this.rapportEvaluation.noteGenerale.forEach(notee => {
-      if (notee.id === this.note.id) {
-        this.noteService.setNote(notee);
-      }
-    });
-  }
-  public save(){
-    if(this.rapportEvaluation == null){
-      this.avancementService.save();
-    } else {
-      this.avancementService.update();
+    if(this.diponibleFformation === false){
+      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+        timeOut: 9500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-full-width'
+      });
+      document.getElementById('NumeroAdministrativeFormation').style.color='red';
+    }else{
+      document.getElementById('tableFormation').style.display = 'inline';
+      this.formationService.findallFourmationsByDoti(this.employe.doti);
+      this.titreFormation = "liste des formations de employe : "+ this.fullnameFormation;
+      document.getElementById('NumeroAdministrativeFormation').style.color='green';
     }
+  }
+  public editerFormation(formation: Formation) {
+    this.demo1BtnClick(2);
+    this.formationService.editercetteFormation(formation);
+  }
+  public demo1BtnClick(value: number) {
+    this.demo1TabIndex = value ;
+  }
+  public imprimerLesFormations(value: Array<Formation>) {
+    this.formationService.imprimerLesFormations(value);
+  }
+  public ExporterLesFormationsENEXCEL(value:Array<Formation>){
+    this.formationService.listeDesFormationsExcels(value);
+  }
+  ajouterFormation() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
+    this.dialog.open(AjouterFormationComponent,
+      dialogConfig);
+  }
+  public modifieFormation(formation: Formation){
+    const dialogConfig = new MatDialogConfig();
+    this.formationService.editercetteFormation(formation);
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
+    this.dialog.open(AjouterFormationComponent,
+      dialogConfig);
   }
 }

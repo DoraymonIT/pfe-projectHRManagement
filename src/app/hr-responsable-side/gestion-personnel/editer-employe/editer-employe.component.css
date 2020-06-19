@@ -24,3 +24,6 @@ mat-radio-group mat-radio-button{
 .span {
   margin: auto;
 }
+#fullname{
+  color: red;
+}

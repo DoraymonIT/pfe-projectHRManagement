@@ -12,6 +12,8 @@ import {Observable} from 'rxjs';
 export class DocumentServiceService {
   // tslint:disable-next-line:variable-name
   private _documents: Array<DemaneDeDocument>;
+  // tslint:disable-next-line:variable-name
+  private _documentNonSigne: Array<DemaneDeDocument>;
 // tslint:disable-next-line:variable-name
 private _documentsByDoti: Array<DemaneDeDocument>;
 // tslint:disable-next-line:variable-name
@@ -51,7 +53,8 @@ private _typeDocument: TypeDocument;
       //.map(() => { return true; })
       //.catch((e) => this.handleError(e));
  // }
-  public sendDocument(email: string, subject: string, content: string, file: File) {
+  public sendDocument(email: string, subject: string, content: string, file: FormData) {
+
     // tslint:disable-next-line:max-line-length
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/sendmail/email/' + email + '/subject/' + subject +'/content/' +content , file).subscribe(
       data => {
@@ -67,10 +70,6 @@ private _typeDocument: TypeDocument;
   }
 
   public saveDocumentEmloye() {
-    console.log(this.document.copieEmail);
-    console.log(this.document.nbrDeDocument);
-    console.log(this.document.employe);
-    console.log(this.document.typeDeDocument);
     // tslint:disable-next-line:max-line-length
     if ((this.document.employe == null || this.document.typeDeDocument == null || this.document.copieEmail == null ) || (this.document.employe == null && this.document.typeDeDocument == null && this.document.copieEmail == null )) {
       this.toast.error(`Remplir toutes les champ`, 'Il y a un champ vide', {
@@ -129,7 +128,8 @@ private _typeDocument: TypeDocument;
           console.log('eroro', eror);
         });
     }
-  } public imprimerAttestationDeSalaire(demande: DemaneDeDocument) {
+  }
+  public imprimerAttestationDeSalaire(demande: DemaneDeDocument) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeSalaire', demande).subscribe(
       data => {
         this.toast.success(`L attestation a ete traiter avec succes`, ' Voir votre fichier de telechargement', {
@@ -254,6 +254,15 @@ public ajoutedemandeDecumentTitre() {
         console.log('eroro', eror);
       });
   }
+  public findAllDemandeNonSigne() {
+    this.http.get<Array<DemaneDeDocument>>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/findDemandeNonSigne').subscribe(
+      data => {
+        this.documentNonSigne = data ;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   get documents(): Array<DemaneDeDocument> {
   if (this._documents == null) {
     this._documents = new Array<DemaneDeDocument>();
@@ -369,5 +378,20 @@ public editeUneDemande(demande: DemaneDeDocument) {
 
   set ajoutedocument(value: string) {
     this._ajoutedocument = value;
+  }
+
+  get documentNonSigne(): Array<DemaneDeDocument> {
+    if (this._documentNonSigne == null) {
+      this._documentNonSigne = new Array<DemaneDeDocument>();
+      this._documentNonSigne.forEach(document => {
+        document.employe = new Employe();
+        document.typeDeDocument = new TypeDocument();
+      });
+    }
+    return this._documentNonSigne;
+  }
+
+  set documentNonSigne(value: Array<DemaneDeDocument>) {
+    this._documentNonSigne = value;
   }
 }

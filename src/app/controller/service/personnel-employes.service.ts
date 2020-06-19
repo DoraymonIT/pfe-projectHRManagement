@@ -27,6 +27,8 @@ export class PersonnelEmployesService {
   // tslint:disable-next-line:variable-name
   private _employeNote: Array<Employe>
   // tslint:disable-next-line:variable-name
+  private _employeConge: Array<Employe>
+  // tslint:disable-next-line:variable-name
   private _employeFormation: Employe;
   // tslint:disable-next-line:variable-name
   private _employePrix: Employe;
@@ -60,6 +62,8 @@ export class PersonnelEmployesService {
   private _ajouteEmp: string;
   // tslint:disable-next-line:variable-name
   private _modifyEmp: string;
+  // tslint:disable-next-line:variable-name
+  private _Employesearch: Employe;
   // tslint:disable-next-line:variable-name
   private _url = 'http://localhost:8080/gestionDesEmployee-Api/Employee/';
   constructor(private http: HttpClient,
@@ -289,11 +293,217 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
+  private _fullname: string;
+
+  get fullname(): string {
+    return this._fullname;
+  }
+
+  set fullname(value: string) {
+    this._fullname = value;
+  }
+
   public trouverEmployerParSonDoti(value: string) {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
-        this.EditEmploye = data;
-        this.email.emaill = data.email;
+        if (data != null){
+          this.EditEmploye = data;
+          this.email.emaill = data.email;
+          this.fullname = this.EditEmploye.firstName + " "+ this.EditEmploye.lastName;
+          document.getElementById('fullname').style.color= 'green';
+        }else {
+          this.fullname = "Employe introuvable";
+          document.getElementById('fullname').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnameDemande: string;
+
+  get fullnameDemande(): string {
+    return this._fullnameDemande;
+  }
+
+  set fullnameDemande(value: string) {
+    this._fullnameDemande = value;
+  }
+
+  public trouverEmployerDemandeParSonDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnameDemande = data.firstName + " " + data.lastName;
+          document.getElementById('fullnamedemande').style.color= 'green';
+        }else{
+          this.fullnameDemande = "pas de employes";
+          document.getElementById('fullnamedemande').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnameConge: string;
+
+  get fullnameConge(): string {
+    return this._fullnameConge;
+  }
+
+  set fullnameConge(value: string) {
+    this._fullnameConge = value;
+  }
+
+  public trouverEmployerCongeParSonDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnameConge = data.firstName + " " + data.lastName;
+          document.getElementById('fullnameconge').style.color= 'green';
+        }else{
+          this.fullnameConge = "pas de employes";
+          document.getElementById('fullnameconge').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnameFormation: string;
+
+  get fullnameFormation(): string {
+    return this._fullnameFormation;
+  }
+
+  set fullnameFormation(value: string) {
+    this._fullnameFormation = value;
+  }
+  public GetEmployerFormationByDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnameFormation = data.firstName + " " + data.lastName;
+          document.getElementById('fullnameformation').style.color= 'green';
+        }else{
+          this.fullnameFormation = "pas de employes";
+          document.getElementById('fullnameformation').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnamePrix: string;
+
+  get fullnamePrix(): string {
+    return this._fullnamePrix;
+  }
+
+  set fullnamePrix(value: string) {
+    this._fullnamePrix = value;
+  }
+  public GetEmployerPrixByDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnamePrix = data.firstName + " " + data.lastName;
+          document.getElementById('fullnamePrix').style.color= 'green';
+        }else{
+          this.fullnamePrix = "pas de employes";
+          document.getElementById('fullnamePrix').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnamePunition: string;
+
+  get fullnamePunition(): string {
+    return this._fullnamePunition;
+  }
+
+  set fullnamePunition(value: string) {
+    this._fullnamePunition = value;
+  }
+  public GetEmployePunitionByDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnamePunition = data.firstName + " " + data.lastName;
+          document.getElementById('fullnamePunition').style.color= 'green';
+        }else{
+          this.fullnamePunition = "pas de employes";
+          document.getElementById('fullnamePunition').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnameNote: string;
+
+  get fullnameNote(): string {
+    return this._fullnameNote;
+  }
+
+  set fullnameNote(value: string) {
+    this._fullnameNote = value;
+  }
+
+  public GetEmployeNoteByDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnameNote = data.firstName + " " + data.lastName;
+          document.getElementById('fullnameNote').style.color= 'green';
+        }else{
+          this.fullnameNote = "pas de employes";
+          document.getElementById('fullnameNote').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnameDepartement: string;
+
+  get fullnameDepartement(): string {
+    return this._fullnameDepartement;
+  }
+
+  set fullnameDepartement(value: string) {
+    this._fullnameDepartement = value;
+  }
+
+  public GetEmployeDepartementByDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this.fullnameDepartement = data.firstName + " " + data.lastName;
+          document.getElementById('fullnameDepartement').style.color= 'green';
+        }else{
+          this.fullnameDepartement = "pas de employes";
+          document.getElementById('fullnameDepartement').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _fullnamePermanence: string;
+
+  get fullnamePermanence(): string {
+    return this._fullnamePermanence;
+  }
+
+  set fullnamePermanence(value: string) {
+    this._fullnamePermanence = value;
+  }
+
+  public GetEmployePermanenceParSonDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if(data != null){
+          this._fullnamePermanence = data.firstName + " " + data.lastName;
+          document.getElementById('fullnamePermanence').style.color= 'green';
+        }else{
+          this._fullnamePermanence = "pas de employes";
+          document.getElementById('fullnamePermanence').style.color= 'red';
+        }
       }, eror => {
         console.log('eroro', eror);
       });
@@ -469,7 +679,24 @@ export class PersonnelEmployesService {
       });
     return this.employesByDep.length
   }
-
+  public getCongeActuelle() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/getCongeActuelle').subscribe(
+      data => {
+        this.employeConge = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  public getCongeBetween(date1: Date, date2: Date) {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/getCongeBetween/date1/'+date1 + '/date2/'+ date2 ).subscribe(
+      data => {
+        this.employeConge = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
 
   public trouverEmployerParNomDepartement(value: string) {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/' + value).subscribe(
@@ -522,10 +749,20 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
+  private _employeess: any[];
+
+  get employeess(): any[] {
+    return this._employeess;
+  }
+
+  set employeess(value: any[]) {
+    this._employeess = value;
+  }
+
   public findAll() {
     this.http.get<Array<Employe>>(this._url + 'findAll').subscribe(
       data => {
-        this._employes = data;
+        this.employes = data;
       }, eror => {
         console.log('eroro', eror);
       }
@@ -849,5 +1086,34 @@ export class PersonnelEmployesService {
 
   set employeNote(value: Array<Employe>) {
     this._employeNote = value;
+  }
+
+  get employeConge(): Array<Employe> {
+    if (this._employeConge == null) {
+      this._employeConge = new Array<Employe>();
+      this._employeConge.forEach(data => {
+        data = new Employe();
+        data.dep = new Departement();
+        data.dernierGrade = new GradeEmploye();
+        data.dernierGrade.grade = new Grade();
+        data.sup = new Employe();
+      });
+    }
+    return this._employeConge;
+  }
+
+  set employeConge(value: Array<Employe>) {
+    this._employeConge = value;
+  }
+
+  get Employesearch(): Employe {
+    if(this._Employesearch== null){
+      this.Employesearch = new Employe();
+    }
+    return this._Employesearch;
+  }
+
+  set Employesearch(value: Employe) {
+    this._Employesearch = value;
   }
 }

@@ -6,13 +6,24 @@
 <form class="normal-form">
   <div class="container-fluid">
     <div class="controles-container">
-      <mat-form-field>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field style="width: 600px">
+            <input matInput  [(ngModel)]="congeEmploye.employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.employe.doti" (pointermove)="trouverEmployerParSonDoti(congeEmploye.employe.doti)" (pointercancel)="trouverEmployerParSonDoti(congeEmploye.employe.doti)" (pointerleave)="trouverEmployerParSonDoti(congeEmploye.employe.doti)">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6" style="margin-top: 10px" id="fullnameconge">
+          <div *ngIf="congeEmploye.employe.doti != null; else elseBlock" >{{fullnameConge}}</div>
+          <ng-template #elseBlock></ng-template>
+        </div>
+      </div>
+<!--      <mat-form-field>
         <mat-label> <i class="fas fa-user-tie    "></i> Trouver l'employé concerné </mat-label>
         <mat-select [(ngModel)]="congeEmploye.employe.doti" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.employe.doti">
           <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +' '+ gr.lastName}}</mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field>-->
       <mat-form-field>
         <mat-label>Type de Congé:*</mat-label>
         <mat-select [(ngModel)]="congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}"  [value]="congeEmploye.congee.libelle" (ngModelChange)="ajouterRaison(this.congeEmploye.congee.libelle)">

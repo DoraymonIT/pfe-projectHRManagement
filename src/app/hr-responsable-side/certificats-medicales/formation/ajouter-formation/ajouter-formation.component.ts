@@ -34,4 +34,11 @@ export class AjouterFormationComponent implements OnInit {
   get ajouteFormation(): String {
     return this.formationService.ajouteFormation;
   }
+  public getEmployeFormationdoti(doti: string){
+    this.employeService.GetEmployerFormationByDoti(doti);
+  }
+  get fullnameFormation(): string {
+    return this.employeService.fullnameFormation;
+  }
+
 }

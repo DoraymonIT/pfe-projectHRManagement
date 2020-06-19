@@ -50,7 +50,7 @@ Titre: String;
     return this.congesCertificat.length < 1 ? true : false;
   }
   public chercher() {
-    this.Titre = 'la liste des' +this.congeEmploye.congee.libelle +'  ayant effectuer dans '+ this.congeEmploye.dateDeDebut;
-    this.congeService.findCongeBydateAndType(this.congeEmploye.dateDeDebut, this.congeEmploye.congee.libelle);
+    this.Titre = 'la liste des' +this.congeEmploye.congee.libelle +'  ayant effectuer dans la periode entre : '+ this.congeEmploye.dateDeDebut + ' et '+ this.congeEmploye.dateDeFin ;
+    this.congeService.findCongeBydateAndType(this.congeEmploye.dateDeDebut,this.congeEmploye.dateDeFin, this.congeEmploye.congee.libelle);
   }
 }

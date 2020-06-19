@@ -32,4 +32,10 @@ export class PermanenceAjouterComponent implements OnInit {
   public save(){
     this.pemanenceAdministrativeservice.save();
   }
+  public trouverEmployePermanenceParSonDoti(doti: string){
+    this.employeService.GetEmployePermanenceParSonDoti(doti)
+  }
+  get fullnamePermanence(): string {
+    return this.employeService.fullnamePermanence;
+  }
 }

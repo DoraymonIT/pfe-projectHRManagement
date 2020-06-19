@@ -52,9 +52,7 @@ export class EditerEmployeComponent implements OnInit {
   get depFonctions(): Array<DepFonction> {
     return this.employeService.depFonctions;
   }
-
   public selectDepFonction(value: string) {
-    console.log('ha howa 3yiiit 3lia');
     this.employeService.findFonctionByDepartement(value);
   }
   public  trouverEmployerParSonDoti(value:string){
@@ -62,5 +60,8 @@ export class EditerEmployeComponent implements OnInit {
   }
   get EditEmploye(): Employe {
     return this.employeService.EditEmploye;
+  }
+  get fullname(): string {
+    return this.employeService.fullname;
   }
 }

@@ -41,4 +41,10 @@ if (this.punitionEmploye.id == null){
   get punitions(): Array<Punition> {
     return this.punitionSmall.ps;
   }
+  get fullnamePunition(): string {
+    return this.employeService.fullnamePunition;
+  }
+  public getEmployePunitiondoti(doti: string){
+    this.employeService.GetEmployePunitionByDoti(doti)
+  }
 }

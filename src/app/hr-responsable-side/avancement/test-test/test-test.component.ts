@@ -77,7 +77,7 @@ export class TestTestComponent implements OnInit {
     return this.gradeService.gradesEployess;
   }
   get rapportEvaluation(): RapportDeEvaluation {
-    return this.avancementService.rapportEvaluation;
+    return this.avancementService.rapportEvaluationEdit;
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -357,6 +357,28 @@ export class TestTestComponent implements OnInit {
       this.avancementService.update();
     }
   }
-
-
+public getEmployeFormationdoti(doti: string){
+    this.employeService.GetEmployerFormationByDoti(doti);
+}
+  get fullnameFormation(): string {
+    return this.employeService.fullnameFormation;
+  }
+  get fullnamePrix(): string {
+    return this.employeService.fullnamePrix;
+  }
+  public getEmployePrixdoti(doti: string){
+    this.employeService.GetEmployerPrixByDoti(doti);
+  }
+  get fullnamePunition(): string {
+    return this.employeService.fullnamePunition;
+  }
+  public getEmployePunitiondoti(doti: string){
+    this.employeService.GetEmployePunitionByDoti(doti)
+  }
+  get fullnameNote(): string {
+    return this.employeService.fullnameNote;
+  }
+  public getEmployeNotedoti(doti: string){
+    this.employeService.GetEmployeNoteByDoti(doti);
+  }
 }

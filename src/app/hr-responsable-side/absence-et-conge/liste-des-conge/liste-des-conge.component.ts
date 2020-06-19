@@ -19,7 +19,7 @@ export class ListeDesCongeComponent implements OnInit {
                private congeservice: CongeService,
                private dialog: MatDialog) { }
   get employes(): Array<Employe> {
-    return this.employeService.employes;
+    return this.employeService.employeConge;
   }
 
   get conges(): Array<CongeEmploye> {
@@ -31,7 +31,14 @@ export class ListeDesCongeComponent implements OnInit {
   get filterrsult(): TypeCongee {
     return this.congeservice.filterrsult;
   }
-
+  get congeEmployeCOnge(): CongeEmploye {
+    return this.congeservice.congeEmployeCOnge;
+  }
+  public checher(){
+    console.log(this.congeEmployeCOnge.dateDeDebut);
+    console.log(this.congeEmployeCOnge.dateDeFin);
+    this.employeService.getCongeBetween(this.congeEmployeCOnge.dateDeDebut, this.congeEmployeCOnge.dateDeFin);
+  }
   cols: any[];
   public tabindex;
   public demo1TabIndex = 0;
@@ -39,7 +46,7 @@ export class ListeDesCongeComponent implements OnInit {
   totalRecords: number;
   dataSource: Array<Employe> = [];
   ngOnInit(): void {
-    this.employeService.findAll();
+    this.employeService.getCongeActuelle();
     this.dataSource = this.employes;
     this.cols = [
       { field: 'cin', header: 'CIN' },

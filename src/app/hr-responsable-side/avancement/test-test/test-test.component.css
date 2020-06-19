@@ -9,7 +9,18 @@
   width: 100%;
   padding: 5%;
 }
-
+#listeDesFormation{
+  display: none;
+}
+#listeDesPrix{
+  display: none;
+}
+#listeDesPunition{
+  display: none;
+}
+#listeDesNotes{
+  display: none;
+}
 .controles-container > * {
   width: 100%;
 }

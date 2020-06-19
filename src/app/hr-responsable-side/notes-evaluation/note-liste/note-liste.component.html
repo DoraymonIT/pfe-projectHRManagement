@@ -6,23 +6,24 @@
   </mat-toolbar>
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
     <div class="card-body">
+      <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterNote()"> ajouter Note</button>
+      <div class="container" style="padding-top:20px">
+            <mat-form-field style="width: 500px" id="NumeroAdministrativeNote">
+              <input matInput  [(ngModel)]="employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
+            </mat-form-field>
+            <br>
       <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Sélectionnez l employé concerné</mat-label>
-        <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="trouverNoteParSonDoti(this.employe)">
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +" "+ gr.lastName}}</mat-option>
+        <mat-label style="text-align: center"> <i class="fas fa-calendar"></i> Sélectionnez la periode</mat-label>
+        <mat-select [(ngModel)]="this.employe.pays" [ngModelOptions]="{standalone: true}">
+          <mat-option value="dernierPeriode"> dernier note </mat-option>
+          <mat-option value="all"> toutes les notes </mat-option>
         </mat-select>
       </mat-form-field>
-      <br>
-      <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Sélectionnez la periode</mat-label>
-        <mat-select [(ngModel)]="this.employe.pays" [ngModelOptions]="{standalone: true}" (ngModelChange)="touverDernierOuToutNote()">
-          <mat-option value="dernierPeriode"> dernier periode </mat-option>
-          <mat-option value="all"> trouver tous note de employé </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+            <br>
+            <button class="btn btn-light fa fa-search" style="width: 500px" (click)="touverDernierOuToutNote()"> chercher</button>
+          </div>
   </div>
-  <div class="container-fluid" style="padding-top: 10px;">
+  <div class="container-fluid" style="padding-top: 10px;" id="tableNote">
     <div class="row">
       <div class="col-md-12">
         <p-table #dt [columns]="cols" [value]="notesParDoti" dataKey="id" [paginator]="true" [rows]="5">
@@ -48,7 +49,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" >
             <tr>
-              <td *ngFor="let col of columns">
+              <td *ngFor="let col of columns" (click)="modifieNote(rowData)">
                 {{rowData[col.field]}}
               </td>
               <td style="text-align: center;" >

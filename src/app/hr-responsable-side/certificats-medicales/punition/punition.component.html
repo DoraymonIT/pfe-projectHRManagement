@@ -1,35 +1,30 @@
-<mat-tab-group  style="width: 100%;"  (selectedIndexChange)="demo1BtnClick(tabindex)"
-                [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="LISTES DES EMPLOYES AVEC LEURS punition " style="width: 25px" tabindex="1">
-    <div class="example-large-box mat-elevation-z4">
+ <div class="example-large-box mat-elevation-z4">
       <mat-toolbar (click)="afficher()"  style="cursor: pointer;">
         <mat-toolbar-row>
           <span class="span"> <i class="fas fa-arrow-down    "></i> Chercher les punitions d'un employé a partir du <strong>Numéro</strong> </span>
         </mat-toolbar-row>
       </mat-toolbar>
-      <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherPunition">
-        <div class="card-body">
-          <mat-form-field  style="width: 500px">
-            <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez l employé concerené</mat-label>
-            <mat-select [(ngModel)]="this.employe.doti" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPunitionnByDoti()">
-              <mat-option [value]="null">---NuLL---</mat-option>
-              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + "  " + gr.lastName}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          <mat-form-field  style="width: 500px">
-            <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez la periode des punitions</mat-label>
-            <mat-select [(ngModel)]="this.employe.pays" [ngModelOptions]="{standalone: true}" (ngModelChange)="getDernieroutoutPunitions()">
-              <mat-option value="dernierPeriode">trouvez les derniers punitions</mat-option>
-              <mat-option value="all">trouvez toutes les punitions</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
+   <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+     <div class="card-body">
+       <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterPunition()"> ajouter Punition</button>
+       <div class="container" style="padding-top:20px">
+         <mat-form-field style="width: 500px" id="NumeroAdministrativePunition">
+           <input matInput  [(ngModel)]="employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
+         </mat-form-field>
+         <br>
+         <button class="btn btn-light fa fa-search" style="width: 500px" (click)="getPunitionnByDoti()"> chercher</button>
+       </div>
+     </div>
+   </div>
+ </div>
       <div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tablePunition">
         <mat-toolbar>
           <mat-toolbar-row>
-            <span class="span"> <i class="fas fa-arrow-down    "></i> la liste des punitions </span>
+            <div style="float:left;text-align: left;">
+              <button mat-raised-button class="btn"style="background-color: white;color: black;"(click)="imprimerLesPunitions(this.punitions)"  ><i class="fa fa-file-pdf"  ></i> Exporter le <b>PDF</b> </button>
+              <button mat-raised-button class="btn"style="margin-left: 10px;background-color: white;color: black;"(click)="imprimerLesPunitionsEnEXCEL(this.punitions)"  ><i class="fa fa-file-excel"  ></i> Exporter le <b>EXCEL</b> </button>
+            </div>
+            <span class="span"> <i class="fas fa-arrow-down    "></i> {{titrePunition}}</span>
           </mat-toolbar-row>
         </mat-toolbar>
         <table class="table table-hover table-dark table-striped" style="color: wheat">
@@ -42,7 +37,7 @@
           <tbody>
           <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
-          <tr *ngFor="let c of punitions">
+          <tr *ngFor="let c of punitions" (click)="modifiePunition(c)">
             <td>{{c.employe.firstName + c.employe.lastName}}</td>
             <td>{{c.punition.libelle}}</td>
             <td>{{c.dateObtenation}}</td>
@@ -54,17 +49,7 @@
           </tr>
           </tbody>
         </table>
-        <button mat-raised-button class="btn"style="background-color: white;color: black;"(click)="imprimerLesPunitions(this.punitions)"  ><i class="fa fa-file-pdf"  ></i> Exporter le <b>PDF</b> </button>
-        <button mat-raised-button class="btn"style="margin-left: 10px;background-color: white;color: black;"(click)="imprimerLesPunitionsEnEXCEL(this.punitions)"  ><i class="fa fa-file-excel"  ></i> Exporter le <b>EXCEL</b> </button>
         <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesPunitions(this.punitions)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
       </div>
-    </div>
     <!-- <button *ngIf="punitions"  mat-raised-button class="btn btn-primary"style=" margin-top: 20px"(click)="imprimerLesPunitions(this.punitions)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
-  </mat-tab>
-  <mat-tab label="AFFECTER UN PUNITION A UN EMPLOYE" tabindex="2">
-    <div class="example-large-box mat-elevation-z4">
-  <app-ajouter-punition></app-ajouter-punition>
-    </div>
-  </mat-tab>
 
-</mat-tab-group>

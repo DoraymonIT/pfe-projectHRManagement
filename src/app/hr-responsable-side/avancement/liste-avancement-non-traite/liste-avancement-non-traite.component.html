@@ -3,16 +3,31 @@
     <span class="span" > <i class="fas fa-search    "></i> Chercher pour voir historique de grade d'un employe </span>
   </mat-toolbar-row>
 </mat-toolbar>
-
+<div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+  <div class="card-body">
 <div class="container" style="padding-top:20px">
-  <mat-form-field style="padding-bottom:10px;width:100%">
-    <mat-label> <i class="fas fa-user-tie    "></i> Choisir un employé  concerné </mat-label>
-    <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="findAllGradeEmployeByDoti(employeInfo.doti)">
-      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +"  "+ gr.lastName}}</mat-option>
-    </mat-select>
+  <mat-form-field style="width: 500px" id="NumeroAdministrative">
+    <input matInput  [(ngModel)]="employeInfo.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employeInfo.doti">
   </mat-form-field>
-  <div class="ui-g ui-fluid" style="padding:10px" id="fourmule">
-    <div class="card-header" style="text-align: center;width: 100%;"><h4 style="text-align: center"> Liste des grades d'employé ayant le numéro : {{employeInfo.doti}} </h4></div>
+  <br>
+  <button class="btn btn-light fa fa-search" style="width: 500px" (click)="findAllGradeEmployeByDoti(this.employeInfo.doti)"> chercher</button>
+</div>
+  </div>
+</div>
+  <div class="ui-g ui-fluid" style="padding:20px" id="fourmule">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <div style="float:left;text-align: left;">
+          <button class="btn" mat-raised-button style="background-color: white;color: black;"
+                  matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesGradesDeEmploye(this.gradesEployess)"><i
+            class="fa fa-file-pdf"></i> Export <strong>PDF</strong> </button>
+          <button class="btn" mat-raised-button style="margin-left: 10px;background-color: white;color: black;"
+                  matTooltip="Ce button permet d imprimer ce table en format EXCEL" (click)="imprimerLesGradesDeEmployeEnEXCEL(this.gradesEployess)"><i
+            class="fa fa-file-excel"></i> Export <strong>EXCEL</strong> </button>
+        </div>
+        <div class="card-header" style="text-align: center;width: 100%;"><h4 style="text-align: center"> {{titre}}</h4></div>
+      </mat-toolbar-row>
+    </mat-toolbar>
     <table class="table table-hover table-dark table-striped table-bordered" style="color: wheat">
       <thead>
       <th>doti employe</th>
@@ -35,13 +50,6 @@
       </tr>
       </tbody>
     </table>
-    <button class="btn" mat-raised-button style="background-color: white;color: black;float: left"
-            matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesGradesDeEmploye(this.gradesEployess)"><i
-      class="fa fa-file-pdf"></i> Export <strong>PDF</strong> </button>
-    <button class="btn" mat-raised-button style="margin-left: 10px;background-color: white;color: black;float: left"
-            matTooltip="Ce button permet d imprimer ce table en format EXCEL" (click)="imprimerLesGradesDeEmployeEnEXCEL(this.gradesEployess)"><i
-      class="fa fa-file-excel"></i> Export <strong>EXCEL</strong> </button>
   </div>
-</div>
 <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesGradesDeEmploye(this.gradesEployess)" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
 

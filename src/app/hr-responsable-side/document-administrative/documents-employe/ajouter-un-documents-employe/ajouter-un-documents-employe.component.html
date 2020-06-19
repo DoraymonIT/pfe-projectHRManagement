@@ -6,12 +6,17 @@
 <form class="normal-form">
   <div class="container-fluid">
         <div class="controles-container">
-          <mat-form-field>
-            <mat-label> <i class="fas fa-user-tie    "></i> Selectioonez l'employé concerné</mat-label>
-            <mat-select [(ngModel)]="document.employe.doti" [ngModelOptions]="{standalone: true}">
-              <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +" " + gr.lastName }}</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field style="width: 700px">
+                <input matInput  [(ngModel)]="document.employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="document.employe.doti" (pointermove)="trouverEmployerParSonDoti(document.employe.doti)" (pointercancel)="trouverEmployerParSonDoti(document.employe.doti)" (pointerleave)="trouverEmployerParSonDoti(document.employe.doti)">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6" style="margin-top: 10px" id="fullnamedemande">
+              <div *ngIf="document.employe.doti != null; else elseBlock" >{{fullnameDemande}}</div>
+              <ng-template #elseBlock></ng-template>
+            </div>
+          </div>
           <mat-form-field>
             <mat-label>  Type de document</mat-label>
             <mat-select [(ngModel)]="document.typeDeDocument.libelle" [ngModelOptions]="{standalone: true}">

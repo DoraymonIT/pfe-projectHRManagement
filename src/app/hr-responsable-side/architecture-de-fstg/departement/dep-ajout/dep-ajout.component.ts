@@ -32,4 +32,11 @@ export class DepAjoutComponent implements OnInit {
       this.departementservice.update();
     }
   }
+  trouverEmployedepartementParSonDoti(doti: string){
+    this.employeservice.GetEmployeDepartementByDoti(doti);
+  }
+  get fullnameDepartement(): string {
+    return this.employeservice.fullnameDepartement;
+  }
+
 }

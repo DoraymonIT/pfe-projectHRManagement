@@ -41,4 +41,11 @@ export class AjouterPrixComponent implements OnInit {
   get ps(): Array<Prix> {
     return this.prixSmall.ps;
   }
+  get fullnamePrix(): string {
+    return this.employeService.fullnamePrix;
+  }
+  public getEmployePrixdoti(doti: string){
+    this.employeService.GetEmployerPrixByDoti(doti);
+  }
+
 }

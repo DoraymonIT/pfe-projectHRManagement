@@ -1,22 +1,19 @@
 <mat-tab-group  style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)" [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="LISTE DE DEMANDES DE DOCUMENTS" style="width: 25px" tabindex="1">
+  <mat-tab label="demande de document Non Traité" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
       <mat-toolbar>
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-file-pdf    "></i> la liste des demandes de documents non traité </span>
-
+          <span class="span"> <i class="fas fa-file-pdf    "></i> demandes de documents non traité </span>
         </mat-toolbar-row>
       </mat-toolbar>
     <div class="scrolli">
       <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
-      border: 2px solid white;"
-
-      >
+      border: 2px solid white;">
         <thead>
         <th style=" border: 2px solid white;">Employé</th>
         <th style=" border: 2px solid white;">Type de document</th>
         <th style=" border: 2px solid white;">Date de demande</th>
-        <th style=" border: 2px solid white;">Manière de retrait</th>
+        <th style=" border: 2px solid white;">copie scanné?</th>
         <th style=" border: 2px solid white;" >Action</th>
         </thead>
         <tbody>
@@ -42,9 +39,52 @@
       </table>
       <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
     </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="demande de document Non Signé" style="width: 25px" tabindex="1">
+    <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span class="span"> <i class="fas fa-file-pdf"></i> Demandes de Documents Non Signé </span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="scrolli">
+        <table class="table table-hover table-dark table-striped table-bordered " style="color: wheat;
+      border: 2px solid white;">
+          <thead>
+          <th style=" border: 2px solid white;">Employé</th>
+          <th style=" border: 2px solid white;">Type de document</th>
+          <th style=" border: 2px solid white;">Date de demande</th>
+          <th style=" border: 2px solid white;">chargé copie scanné</th>
+          <th style=" border: 2px solid white;" >Action</th>
+          </thead>
+          <tbody>
+          <p-progressSpinner *ngIf="listeVide1()"></p-progressSpinner>
+          <tr *ngFor="let c of documentsNonSigne ">
+            <td>{{c.employe.firstName + " " + c.employe.lastName}}</td>
+            <td>{{c.typeDeDocument.libelle }}</td>
+            <td>{{c.dateDemande}}</td>
+            <td><input type="file"  (change)="onFileChanged($event)"></td>
+            <td>
+              <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"
+                      matTooltip="Ce button permet de modifier cet element"
+                      style="margin-right: 5px;"   ></button>
+              <button class="btn btn-primary btn-sm fa  fa-send" (click)="onUpload(c)"
+                      matTooltip="Ce button permet de envoyer document "
+                      style="margin-right: 5px;"    ></button>
+              <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
+                      matTooltip="Ce button permet de supprimer cet element"
+              ></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+      </div>
 
     </div>
   </mat-tab>
+
   <mat-tab label="HISTORIQUE DE DEMANDES DE CHAQUE EMPLOYE" style="width: 25%;" tabindex="2">
     <div class="example-large-box mat-elevation-z4">
       <app-liste-des-demandes-documents-employe></app-liste-des-demandes-documents-employe>

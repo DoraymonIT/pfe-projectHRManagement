@@ -43,6 +43,12 @@ export class EditerComponent implements OnInit {
     this.congeservice.update();
   }
   }
+  public  trouverEmployerParSonDoti(value:string){
+ this.employeService.trouverEmployerCongeParSonDoti(value);
+  }
+  get fullnameConge(): string {
+    return this.employeService.fullnameConge;
+  }
   get ajouteCongeEmp(): string {
     return this.congeservice.ajouteCongeEmp;
   }

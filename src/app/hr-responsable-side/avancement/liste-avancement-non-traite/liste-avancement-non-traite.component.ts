@@ -8,6 +8,7 @@ import {RapportDeEvaluation} from '../../../controller/model/rapport-de-evaluati
 import {GradeService} from '../../../controller/service/grade.service';
 import {AvancementServiceService} from '../../../controller/service/avancement-service.service';
 import {RapportInfoComponent} from '../rapport-info/rapport-info.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-liste-avancement-non-traite',
@@ -19,10 +20,10 @@ chercher: boolean;
   constructor(private employeService: PersonnelEmployesService,
               private gradesEmploye: GradeService,
               private avancementService: AvancementServiceService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private toast: ToastrService) { }
 
   ngOnInit(): void {
-    this.employeService.findAll();
     this.listeVide();
     this.chercher = true;
   }
@@ -32,10 +33,31 @@ chercher: boolean;
   public imprimerLesGradesDeEmployeEnEXCEL(value: Array<GradeEmploye>){
     this.gradesEmploye.listeDesGradesEmployesExcel(value);
   }
+  titre: string;
+  fullname: string;
+  diponible: boolean;
   public findAllGradeEmployeByDoti(doti: string) {
-    document.getElementById('fourmule').style.display = 'inline-flex';
-   // document.getElementById('checherGrade').style.display = 'none';
-    this.gradesEmploye.findAllGradeEmployeByDoti(doti);
+    this.diponible = false;
+    this.employes.forEach(employe=>{
+      if(employe.doti === doti){
+        this.diponible= true;
+        this.fullname = employe.firstName +" "+ employe.lastName;
+      }
+    });
+    if(this.diponible === false){
+      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+        timeOut: 9500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-full-width'
+      });
+      document.getElementById('NumeroAdministrative').style.color='red';
+    }else{
+      this.gradesEmploye.findAllGradeEmployeByDoti(doti);
+      this.titre= 'listes des grades de :' + this.fullname;
+      document.getElementById('fourmule').style.display = 'inline';
+      document.getElementById('NumeroAdministrative').style.color='green';
+    }
   }
   get gradesEployess(): Array<GradeEmploye> {
     return this.gradesEmploye.gradesEployess;

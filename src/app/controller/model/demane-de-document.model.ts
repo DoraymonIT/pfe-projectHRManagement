@@ -9,4 +9,5 @@ export class DemaneDeDocument {
   copieEmail: string;
   etat: string;
   nbrDeDocument: number;
+  document: File;
 }

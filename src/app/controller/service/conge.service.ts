@@ -4,6 +4,7 @@ import { CongeEmploye } from '../model/conge-employe.model';
 import { TypeCongee } from '../model/type-congee.model';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import {PersonnelEmployesService} from './personnel-employes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,8 @@ private _congesCertificat: Array<CongeEmploye>;
 // tslint:disable-next-line:variable-name
 private _congeEmploye: CongeEmploye;
 // tslint:disable-next-line:variable-name
+  private _congeEmployeCOnge: CongeEmploye;
+// tslint:disable-next-line:variable-name
   private _congeEmploye2: CongeEmploye;
 // tslint:disable-next-line:variable-name
 private _typeConge: Array<TypeCongee>;
@@ -29,7 +32,8 @@ private _employefullname: string;
   private _ajouteCongeEmp: string;
 
   constructor(private http: HttpClient,
-              private toast: ToastrService) { }
+              private toast: ToastrService,
+              private employeService: PersonnelEmployesService) { }
   public trouverCongéParSonDoti(value: string) {
     this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByEmployeDoti/doti/' + value).subscribe(
       data => {
@@ -274,6 +278,9 @@ public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
   this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByEmployeDotiAndCongeeLibelle/matricule/' + doti + '/libelle/' + libelle).subscribe(
     data => {
       this.conges = data;
+      if(this.conges != null){
+        document.getElementById('table').style.display = 'inline';
+      }
     }, eror => {
       console.log('eroro', eror);
     });
@@ -295,14 +302,14 @@ public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
     this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findListeCertificatByAnnee').subscribe(
       data => {
         this.congesCertificat = data;
-        console.log('ana hna tani');
       }, eror => {
         console.log('eroro', eror);
       });
   }
-  public findCongeBydateAndType(annee: Date, type: string) {
+
+  public findCongeBydateAndType(date1: Date,date2: Date, type: string) {
     // tslint:disable-next-line:max-line-length
-    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByCongeeLibelleAndDateDeDebut/libelle/' + type + '/date/' + annee).subscribe(
+    this.http.get<Array<CongeEmploye>>('http://localhost:8080/gestionDesEmployee-Api/conge/findByCongeeLibelleAndDateDeDebut/libelle/' + type + '/date1/' + date1 + '/date2/'+ date2).subscribe(
       data => {
         this.congesCertificat = data;
       }, eror => {
@@ -406,5 +413,18 @@ public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
 
   set congesCertificat(value: Array<CongeEmploye>) {
     this._congesCertificat = value;
+  }
+
+  get congeEmployeCOnge(): CongeEmploye {
+    if (this._congeEmployeCOnge == null) {
+      this._congeEmployeCOnge = new CongeEmploye()
+      this._congeEmployeCOnge.congee = new TypeCongee();
+      this._congeEmployeCOnge.employe = new Employe();
+      }
+    return this._congeEmployeCOnge;
+  }
+
+  set congeEmployeCOnge(value: CongeEmploye) {
+    this._congeEmployeCOnge = value;
   }
 }

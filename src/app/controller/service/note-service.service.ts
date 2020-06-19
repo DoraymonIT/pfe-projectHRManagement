@@ -205,7 +205,7 @@ public noteNull(){
 
 
 public affecteruneNote(note:NoteGeneraleDeAnnee){
-    this._note = note;
+    this.noteSave = note;
 }
   get notesAll(): Array<NoteGeneraleDeAnnee> {
     if(this._notesAll == null){
@@ -283,5 +283,8 @@ public affecteruneNote(note:NoteGeneraleDeAnnee){
 
   set employe(value: Employe) {
     this._employe = value;
+  }
+  setDoti(doti: string){
+    this.noteSave.employeDoti = doti;
   }
 }

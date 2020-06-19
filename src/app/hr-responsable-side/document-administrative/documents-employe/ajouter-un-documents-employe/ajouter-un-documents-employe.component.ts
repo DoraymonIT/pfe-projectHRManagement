@@ -38,4 +38,10 @@ export class AjouterUnDocumentsEmployeComponent implements OnInit {
    get ajouteDemandeDocument(): string {
     return this.tds.ajouteDemandeDocument;
   }
+  public  trouverEmployerParSonDoti(value:string){
+        this.employeService.trouverEmployerDemandeParSonDoti(value);
+  }
+  get fullnameDemande(): string {
+    return this.employeService.fullnameDemande;
+  }
 }
