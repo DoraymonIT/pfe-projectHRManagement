@@ -1,15 +1,15 @@
  <div class="example-large-box mat-elevation-z4" >
       <mat-toolbar (click)="afficher()"  style="cursor: pointer;">
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-medal    "></i> Chercher les prix d'un employe a partir du <strong>Numéro</strong> </span>
+          <span class="span"> <i class="fas fa-medal    "></i> Chercher les prix d'un employé a partir du <strong>Numéro</strong> </span>
         </mat-toolbar-row>
       </mat-toolbar>
    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
      <div class="card-body">
-       <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterPrix()"> ajouter Prix</button>
+       <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterPrix()"> Ajouter Prix</button>
        <div class="container" style="padding-top:20px">
          <mat-form-field style="width: 500px" id="NumeroAdministrativePrix">
-           <input matInput  [(ngModel)]="employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
+           <input matInput  [(ngModel)]="employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
          </mat-form-field>
          <br>
          <button class="btn btn-light fa fa-search" style="width: 500px" (click)="getPrixxByDoti()"> chercher</button>
@@ -31,7 +31,7 @@
           <thead>
           <th>Employé</th>
           <th>Nom du Prix</th>
-          <th>Date Obtenation</th>
+          <th>Date d'Obtenation</th>
           <!-- <th style="padding-left: 40px">Action</th> -->
           </thead>
           <tbody>

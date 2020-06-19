@@ -30,7 +30,7 @@ export class PermanenceListeComponent implements OnInit {
     ];
     this.employeService.findAll();
     this.pemanenceAdministrative.findAllPermanenceByannee(new Date().getFullYear());
-    this.titre = "liste des permanences de année"+ new Date().getFullYear();
+    this.titre = "liste des permanences de année"+ ' '+new Date().getFullYear();
   }
   get employes(): Array<Employe> {
     return this.employeService.employes;
@@ -51,7 +51,7 @@ export class PermanenceListeComponent implements OnInit {
       }
     });
     if(this.diponible === false){
-      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+      this.toast.error(`le Numéro administrative de employé est incorrect`, 'Merci de saisir Un Numéro administrative valide', {
         timeOut: 9500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -59,7 +59,7 @@ export class PermanenceListeComponent implements OnInit {
       });
       document.getElementById('NumeroAdministrativePermanence').style.color='red';
     }else{
-      this.titre= 'listes des Permanences de employe :' + this.fullname;
+      this.titre= 'liste des Permanences de employé : ' +' '+ this.fullname;
       document.getElementById('NumeroAdministrativePermanence').style.color='green';
       this.pemanenceAdministrative.findAllPermanenceByanneeAndDoti(this.permanenceAdministrative1.periode, this.permanenceAdministrative1.employe.doti);
     }

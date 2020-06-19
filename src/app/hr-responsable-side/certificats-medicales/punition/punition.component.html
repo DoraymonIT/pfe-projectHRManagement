@@ -6,10 +6,10 @@
       </mat-toolbar>
    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
      <div class="card-body">
-       <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterPunition()"> ajouter Punition</button>
+       <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterPunition()"> Ajouter Punition</button>
        <div class="container" style="padding-top:20px">
          <mat-form-field style="width: 500px" id="NumeroAdministrativePunition">
-           <input matInput  [(ngModel)]="employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
+           <input matInput  [(ngModel)]="employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
          </mat-form-field>
          <br>
          <button class="btn btn-light fa fa-search" style="width: 500px" (click)="getPunitionnByDoti()"> chercher</button>

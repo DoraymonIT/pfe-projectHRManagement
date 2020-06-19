@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-md-6">
               <mat-form-field style="width: 700px">
-                <input matInput  [(ngModel)]="document.employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="document.employe.doti" (pointermove)="trouverEmployerParSonDoti(document.employe.doti)" (pointercancel)="trouverEmployerParSonDoti(document.employe.doti)" (pointerleave)="trouverEmployerParSonDoti(document.employe.doti)">
+                <input matInput  [(ngModel)]="document.employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="document.employe.doti" (pointermove)="trouverEmployerParSonDoti(document.employe.doti)" (pointercancel)="trouverEmployerParSonDoti(document.employe.doti)" (pointerleave)="trouverEmployerParSonDoti(document.employe.doti)">
               </mat-form-field>
             </div>
             <div class="col-md-6" style="margin-top: 10px" id="fullnamedemande">
@@ -27,7 +27,7 @@
             <input matInput type="number" placeholder="Nombre de documents " [(ngModel)]="document.nbrDeDocument" [ngModelOptions]="{standalone: true}" >
           </mat-form-field>
           <div class="add-bottom-padding" style="color: white;">
-            <mat-label >Voulez-vous une copie scanne , On peut le vous envoye via email ? </mat-label>
+            <mat-label >Voulez-vous une copie scanné , On peut le vous envoyé via email ? </mat-label>
             <mat-radio-group [(ngModel)]="document.copieEmail"  [ngModelOptions]="{standalone: true}"[(ngModel)]="document.copieEmail"  [ngModelOptions]="{standalone: true}">
               <mat-radio-button value="oui">Oui</mat-radio-button>
               <mat-radio-button value="non">Non</mat-radio-button>

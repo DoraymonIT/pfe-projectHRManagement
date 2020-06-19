@@ -37,7 +37,7 @@ private _rapportEvaluationEdit: RapportDeEvaluation;
     this.http.get <number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/creeUnGradeNonTraite/doti/' + value).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(`le grade employe est bien crée`, 'grade crée avec succes', {
+          this.toast.success(`le grade employé est bien crér`, 'grade crée avec succés', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -68,7 +68,7 @@ private _rapportEvaluationEdit: RapportDeEvaluation;
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/accepterUnGrade', gradeeemploye).subscribe(
       data => {
         if (data == 1) {
-          this.toast.success(` Avancement est bien effectué`, 'Avancement effectuer  avec success', {
+          this.toast.success(` Avancement est bien effectué`, 'Avancement effectuer  avec succés', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -81,7 +81,7 @@ private _rapportEvaluationEdit: RapportDeEvaluation;
   }
 public editRapport(){
     this.rapportEvaluationEdit = this.rapportEvaluation;
-  this.toast.info(`cette rapprt est en etat de modification`, 'merci de se rediger vers interface ajouter Rapport pour modifier votre rapport  de mofication de rapport', {
+  this.toast.info(`cette rapport est en  état de modification`, 'cette rapport est en  état de modification ', {
     timeOut: 9500,
     progressBar: true,
     progressAnimation: 'increasing',
@@ -158,7 +158,7 @@ public editRapport(){
         data => {
           // console.log(data);
           if (data === 1)
-          this.toast.success(`un rapport de ${this.rapportEvaluation.employe.doti} a ete ajouté  au BD.`, 'Rapport Ajouté', {
+          this.toast.success(`un rapport de ${this.rapportEvaluation.employe.doti} a  été ajouté  au BD.`, 'Rapport Ajouté', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

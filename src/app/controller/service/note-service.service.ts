@@ -32,7 +32,7 @@ public setNote(notee: NoteGeneraleDeAnnee){
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/listeDeEmployeAyantBesoinDUneNoteExcel', employes).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format Excel.`, 'Document preparer', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -47,7 +47,7 @@ public setNote(notee: NoteGeneraleDeAnnee){
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/listeDeEmployeAyantBesoinDUneNotePDF', employes).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format PDF.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format PDF.`, 'Document preparer', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -62,7 +62,7 @@ public imprimerUnRappotDeNoteDeEmploye(note: NoteGeneraleDeAnnee) {
   this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/RapportDesNoteePdf', this.note).subscribe(
     data => {
       if (data === 1){
-      this.toast.success(`$rapport est bien preparer`, 'rapport preparer', {
+      this.toast.success(`$Rapport est bien preparer`, 'Rapport preparer', {
         timeOut: 2500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -129,7 +129,7 @@ public noteNull(){
     this.http.post<number>(this._url + 'save', this.noteSave).subscribe(
       data => {
         if(data === 1) {
-        this.toast.success(`${'note'} add note to the database.`, 'note Added', {
+        this.toast.success(`${'note'} a été ajouté.`, 'Note ajouté avec succés', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -146,7 +146,7 @@ public noteNull(){
     this.http.post<number>(this._url + 'update', this.noteSave).subscribe(
       data => {
         if(data === 1) {
-          this.toast.success(`${'note'} add note to the database.`, 'note Added', {
+          this.toast.success(`${'note'} a été modifiée`, 'Note modifiée avec succés', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',

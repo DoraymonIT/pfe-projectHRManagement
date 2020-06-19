@@ -9,12 +9,12 @@
         <div class="controles-container">
 
           <mat-form-field>
-            <input matInput placeholder="Nom de Département*" [(ngModel)]="departement.nom" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Nom de Département: *" [(ngModel)]="departement.nom" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <div class="row">
             <div class="col-md-6" >
               <mat-form-field style="width: 600px">
-                <input matInput  [(ngModel)]="departement.chefdoti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="departement.chefdoti" (pointermove)="trouverEmployedepartementParSonDoti(departement.chefdoti)" (pointercancel)="trouverEmployedepartementParSonDoti(departement.chefdoti)" (pointerleave)="trouverEmployedepartementParSonDoti(departement.chefdoti)">
+                <input matInput  [(ngModel)]="departement.chefdoti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="departement.chefdoti" (pointermove)="trouverEmployedepartementParSonDoti(departement.chefdoti)" (pointercancel)="trouverEmployedepartementParSonDoti(departement.chefdoti)" (pointerleave)="trouverEmployedepartementParSonDoti(departement.chefdoti)">
               </mat-form-field>
             </div>
             <div class="col-md-6" style="margin-top: 10px">

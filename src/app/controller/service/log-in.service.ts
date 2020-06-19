@@ -29,7 +29,7 @@ export class LogInService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/User/seConnecter', this.userEmploye).subscribe(
       data => {
         if (data === 1) {
-          this.toast.success(`Rebonjour sur l'Application`, 'Login est bien réussi', {
+          this.toast.success(`Re-bonjour sur l'Application`, 'Login est bien réussi', {
             timeOut: 500,
             progressBar: true,
             progressAnimation: 'increasing',

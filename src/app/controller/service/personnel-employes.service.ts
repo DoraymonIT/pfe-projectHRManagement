@@ -185,7 +185,7 @@ export class PersonnelEmployesService {
             this._ajouteEmp = 'format du nom est incorrect';
             document.getElementById('span').style.color = 'red';
           } else if (data === -2) {
-            this.toast.error(`format du email est incorrect`, 'format error', {
+            this.toast.error(`Format du email est incorrect`, 'format error', {
               timeOut: 1500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -312,7 +312,7 @@ export class PersonnelEmployesService {
           this.fullname = this.EditEmploye.firstName + " "+ this.EditEmploye.lastName;
           document.getElementById('fullname').style.color= 'green';
         }else {
-          this.fullname = "Employe introuvable";
+          this.fullname = "Employé introuvable";
           document.getElementById('fullname').style.color= 'red';
         }
       }, eror => {
@@ -336,7 +336,7 @@ export class PersonnelEmployesService {
           this.fullnameDemande = data.firstName + " " + data.lastName;
           document.getElementById('fullnamedemande').style.color= 'green';
         }else{
-          this.fullnameDemande = "pas de employes";
+          this.fullnameDemande = "pas de employé";
           document.getElementById('fullnamedemande').style.color= 'red';
         }
       }, eror => {
@@ -360,7 +360,7 @@ export class PersonnelEmployesService {
           this.fullnameConge = data.firstName + " " + data.lastName;
           document.getElementById('fullnameconge').style.color= 'green';
         }else{
-          this.fullnameConge = "pas de employes";
+          this.fullnameConge = "pas de employé";
           document.getElementById('fullnameconge').style.color= 'red';
         }
       }, eror => {
@@ -383,7 +383,7 @@ export class PersonnelEmployesService {
           this.fullnameFormation = data.firstName + " " + data.lastName;
           document.getElementById('fullnameformation').style.color= 'green';
         }else{
-          this.fullnameFormation = "pas de employes";
+          this.fullnameFormation = "pas de employé";
           document.getElementById('fullnameformation').style.color= 'red';
         }
       }, eror => {
@@ -406,7 +406,7 @@ export class PersonnelEmployesService {
           this.fullnamePrix = data.firstName + " " + data.lastName;
           document.getElementById('fullnamePrix').style.color= 'green';
         }else{
-          this.fullnamePrix = "pas de employes";
+          this.fullnamePrix = "pas de employé";
           document.getElementById('fullnamePrix').style.color= 'red';
         }
       }, eror => {
@@ -429,7 +429,7 @@ export class PersonnelEmployesService {
           this.fullnamePunition = data.firstName + " " + data.lastName;
           document.getElementById('fullnamePunition').style.color= 'green';
         }else{
-          this.fullnamePunition = "pas de employes";
+          this.fullnamePunition = "pas de employé";
           document.getElementById('fullnamePunition').style.color= 'red';
         }
       }, eror => {
@@ -453,7 +453,7 @@ export class PersonnelEmployesService {
           this.fullnameNote = data.firstName + " " + data.lastName;
           document.getElementById('fullnameNote').style.color= 'green';
         }else{
-          this.fullnameNote = "pas de employes";
+          this.fullnameNote = "pas de employé";
           document.getElementById('fullnameNote').style.color= 'red';
         }
       }, eror => {
@@ -477,7 +477,7 @@ export class PersonnelEmployesService {
           this.fullnameDepartement = data.firstName + " " + data.lastName;
           document.getElementById('fullnameDepartement').style.color= 'green';
         }else{
-          this.fullnameDepartement = "pas de employes";
+          this.fullnameDepartement = "pas de employé";
           document.getElementById('fullnameDepartement').style.color= 'red';
         }
       }, eror => {
@@ -501,7 +501,7 @@ export class PersonnelEmployesService {
           this._fullnamePermanence = data.firstName + " " + data.lastName;
           document.getElementById('fullnamePermanence').style.color= 'green';
         }else{
-          this._fullnamePermanence = "pas de employes";
+          this._fullnamePermanence = "pas de employé";
           document.getElementById('fullnamePermanence').style.color= 'red';
         }
       }, eror => {
@@ -520,7 +520,7 @@ export class PersonnelEmployesService {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeExcel').subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format excel.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -550,7 +550,7 @@ export class PersonnelEmployesService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldeCongéDonneeExcel', employes).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format Excel.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -567,7 +567,7 @@ export class PersonnelEmployesService {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldeCongéExcel').subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format Excel.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -582,7 +582,7 @@ export class PersonnelEmployesService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeParGradeExcel', value).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format Excel.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -597,7 +597,7 @@ export class PersonnelEmployesService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeDeDepartementPdf',value).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format PDF.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format PDF.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -612,7 +612,7 @@ export class PersonnelEmployesService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeDeGradePdf', value).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format PDF.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format PDF.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -627,7 +627,7 @@ export class PersonnelEmployesService {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeParDepartementExcel', value).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format Excel.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -643,7 +643,7 @@ export class PersonnelEmployesService {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployeAvecSoldePdf').subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` liste des employes est bien exporter en format Excel.`, 'document prepared', {
+          this.toast.success(` liste des employés est bien exporter en format Excel.`, 'document prepared', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -658,7 +658,7 @@ export class PersonnelEmployesService {
      this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/infoEmployePdf', this.employeInfo).subscribe(
       data => {
         if(data == 1){
-          this.toast.success(` document info employe est bien preparé.`, 'document prepared', {
+          this.toast.success(` Document info employé est bien preparé.`, 'Document preparer', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -738,7 +738,7 @@ export class PersonnelEmployesService {
     this.http.get<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/listeDesEmployePdf').subscribe(
       data => {
         if (data > 0) {
-          this.toast.success(` la liste des employes est bien traites sous format PDF`, 'Voir votre fichier de telechargement', {
+          this.toast.success(` la liste des employes est bien traité sous format PDF`, 'Voir votre fichier de téléchargement', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

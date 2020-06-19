@@ -36,7 +36,7 @@ export class NOteListeComponent implements OnInit {
   ngOnInit(): void {
     this.cols = [
       { field: 'id', header: 'ID' },
-      { field: 'moyenGeneral', header: 'Moyen géneral' },
+      { field: 'moyenGeneral', header: 'Moyen général' },
       { field: 'mention', header: 'Mention' },
       { field: 'date', header: 'Date' },
     ];
@@ -58,7 +58,7 @@ export class NOteListeComponent implements OnInit {
       }
     });
     if(this.diponibleNote === false){
-      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+      this.toast.error(`le Numéro administrative de employé est incorrect`, 'merci de saisir Un Numéro administrative valide', {
         timeOut: 9500,
         progressBar: true,
         progressAnimation: 'increasing',

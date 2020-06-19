@@ -1,17 +1,17 @@
 <mat-toolbar  style="cursor: pointer;">
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-calendar-check    "></i> Chercher les permanences d'un employe a partir du <strong>Numéro</strong>  </span>
+    <span class="span"> <i class="fas fa-calendar-check    "></i> Chercher les permanences d'un employé a partir du <strong>Numéro</strong>  </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
   <div class="card-body">
     <mat-form-field  style="width: 500px">
       <mat-form-field style="width: 500px" id="NumeroAdministrativePermanence">
-        <input matInput  [(ngModel)]="permanenceAdministrative1.employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative1.employe.doti">
+        <input matInput  [(ngModel)]="permanenceAdministrative1.employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative1.employe.doti">
       </mat-form-field>
       <br>
     <mat-form-field  style="width: 500px">
-      <mat-label style="text-align: center"> <i class="fas fa-calendar-check"></i> Selectionnez l'anneé concerné</mat-label>
+      <mat-label style="text-align: center"> <i class="fas fa-calendar-check"></i> Sélectionnez l'année concerné</mat-label>
       <mat-select [(ngModel)]="this.permanenceAdministrative1.periode" [ngModelOptions]="{standalone: true}" (ngModelChange)="getPermanenceByAnnee(this.permanenceAdministrative1.periode)">
         <mat-option [value]=2010>---2010---</mat-option>
         <mat-option [value]=2011>---2011---</mat-option>
@@ -89,16 +89,16 @@
                       <b>Nom Complet  :</b> {{rowData.employe.firstName + ' ' + rowData.employe.lastName}}
                     </div>
                     <div class="ui-g-4">
-                      <b>cin :</b> {{rowData.employe.cin}}
+                      <b>CIN :</b> {{rowData.employe.cin}}
                     </div>
                     <div class="ui-g-4">
-                      <b>Numero :</b> {{rowData.employe.doti}}
+                      <b>Numéro :</b> {{rowData.employe.doti}}
                     </div>
                     <div class="ui-g-4">
                       <b>Gmail:</b> {{rowData.employe.email}}
                     </div>
                     <div class="ui-g-4">
-                      <b>Telephone:</b> {{rowData.employe.tel}}
+                      <b>Téléphone:</b> {{rowData.employe.tel}}
                     </div>
                   </div>
                 </div>

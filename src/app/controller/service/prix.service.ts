@@ -45,7 +45,7 @@ public  ajoutePrixTitre(){
   public imprimerLesPrix(value: Array<PrixEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/listeDesPrixPdf', value).subscribe(
       data => {
-        this.toast.success(` document est bien preparer`, ' document preparer', {
+        this.toast.success(` Document est bien préparer`, ' Document preparer', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -58,7 +58,7 @@ public  ajoutePrixTitre(){
   public listeDesPrixExcel(value: Array<PrixEmploye>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/listeDesPrixExcel', value).subscribe(
       data => {
-        this.toast.success(` document est bien preparer`, ' document preparer', {
+        this.toast.success(` Document est bien préparer`, ' Document preparer', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -124,7 +124,7 @@ public  ajoutePrixTitre(){
         this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/save', this.prixEmploye).subscribe(
         data => {
           // console.log(data);
-          this.toast.success(`${this.prixEmploye.employe.firstName + this.prixEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
+          this.toast.success(`${this.prixEmploye.employe.firstName +" "+ this.prixEmploye.employe.lastName} affecte un prix a cet employé`, 'prix Ajouté', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -153,7 +153,7 @@ public  ajoutePrixTitre(){
     } else {
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/update', this.prixEmploye).subscribe(
         data => {
-          this.toast.info(`${this.prixEmploye.employe.firstName + this.prixEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
+          this.toast.info(`${this.prixEmploye.employe.firstName + " "+this.prixEmploye.employe.lastName} add prix employe to the database.`, 'prix Added', {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

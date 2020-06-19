@@ -1,13 +1,13 @@
 <div class="example-large-box mat-elevation-z4" >
   <mat-toolbar  style="cursor: pointer;">
     <mat-toolbar-row>
-      <span class="span"> <i class="fas fa-search    "></i> Chercher les congé des employé à partir de <strong> type de certificat medical</strong>  </span>
+      <span class="span"> <i class="fas fa-search    "></i> Chercher les congé des employé à partir de <strong> type de certificat médical</strong>  </span>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
     <div class="card-body">
       <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center">  Selectionnez le type de certificat</mat-label>
+        <mat-label style="text-align: center">  Sélectionnez le type de certificat</mat-label>
         <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="getcongeCertificat()">
           <mat-option value="certificat long duree">Long Durée</mat-option>
           <mat-option value="certificat court duree 3 mois">Court Durée ( 3 mois )</mat-option>
@@ -19,14 +19,14 @@
       <div class="row">
         <div class="col-md-6">
           <div>
-          <label> date de debut :</label>
+          <label> Date de début :</label>
           </div>
             <input style="margin-left: 10px" type="date" style="background-color: #343a40; width: 500px; border-right: none;border-left: none;border-top: none;" [(ngModel)]="congeEmploye.dateDeDebut" name="trip-start" placeholder="date de debut">
         </div>
         <br>
         <div class="col-md-6">
           <div>
-          <label> date de fin :</label>
+          <label> Date de fin :</label>
           </div>
           <input type="date" style="margin-left: 10px" style="background-color: #343a40; width: 500px; border-right: none;border-left: none;border-top: none;" name="trip-start"[(ngModel)]="congeEmploye.dateDeFin" placeholder="date de fin">
         </div>

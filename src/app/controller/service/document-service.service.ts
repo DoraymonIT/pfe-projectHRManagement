@@ -34,7 +34,7 @@ private _typeDocument: TypeDocument;
       // tslint:disable-next-line:max-line-length
       this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/listeDesDemandePdf', this.documentsByDoti).subscribe(
         data => {
-          this.toast.success(`Document est bien preparé`, ' Voir votre fichier de telechargement', {
+          this.toast.success(`Document est bien preparé`, ' Voir votre fichier de téléchargement', {
             timeOut: 2500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -58,7 +58,7 @@ private _typeDocument: TypeDocument;
     // tslint:disable-next-line:max-line-length
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/sendmail/email/' + email + '/subject/' + subject +'/content/' +content , file).subscribe(
       data => {
-        this.toast.success(` Document est bien envoyé avec succes`, ' Document envoyé', {
+        this.toast.success(` Document est bien envoyé avec succés`, ' Document envoyé', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -83,13 +83,13 @@ private _typeDocument: TypeDocument;
     } else {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/save', this.document).subscribe(
       data => {
-        this.toast.success(`Le demande de ${this.document.employe.lastName} a ete bien enregistre`, ' La demande a ete enregistre avec succes', {
+        this.toast.success(`Le demande de ${this.document.employe.lastName} a été bien enregistrer`, ' La demande a été enregistre avec succés', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-        this._ajouteDemandeDocument = 'La demande a ete enregistre avec succes';
+        this._ajouteDemandeDocument = 'La demande a été enregistre avec succés';
         document.getElementById('span').style.color = 'green';
         this.documents.push(this.cloneDocumentEmploye(this.document));
         this.document = null;
@@ -132,7 +132,7 @@ private _typeDocument: TypeDocument;
   public imprimerAttestationDeSalaire(demande: DemaneDeDocument) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeSalaire', demande).subscribe(
       data => {
-        this.toast.success(`L attestation a ete traiter avec succes`, ' Voir votre fichier de telechargement', {
+        this.toast.success(`L attestation a été traiter avec succés`, ' Voir votre fichier de téléchargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -146,7 +146,7 @@ private _typeDocument: TypeDocument;
   public imprimerAttestationDeTravail(demande: DemaneDeDocument) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/attestationDeTravail', demande).subscribe(
       data => {
-        this.toast.success(`L attestation a ete traiter avec succes`, ' Voir votre fichier de telechargement', {
+        this.toast.success(`L attestation a été traiter avec succés`, ' Voir votre fichier de téléchargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -160,7 +160,7 @@ private _typeDocument: TypeDocument;
   public listeDesDemandesExcel(demandes: Array<DemaneDeDocument>) {
     this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/listeDesDemandesExcel', demandes).subscribe(
       data => {
-        this.toast.success(`Le document est bien exporter en excel`, ' Voir votre fichier de telechargement', {
+        this.toast.success(`Le document est bien exporter en excel`, ' Voir votre fichier de téléchargement', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -171,15 +171,15 @@ private _typeDocument: TypeDocument;
       });
   }
 public ajoutedemandeDecumentTitre() {
-    this.ajouteDemandeDocument = 'Formulaire pour ajouter une demande de document d une employe';
+    this.ajouteDemandeDocument = 'Formulaire pour ajouter une demande de document d une employé';
 }
   public ajoutedocumentTitre() {
-    this.ajoutedocument = ' Formulaire pour cree un document ';
+    this.ajoutedocument = ' Formulaire pour crér un document ';
   }
   public saveTypeDocument() {
     if ((this.typeDocument.titre == null || this.typeDocument.body == null) || (this.typeDocument.titre == null && this.typeDocument.body == null)) {
       // tslint:disable-next-line:max-line-length
-        this.toast.error(`remplir toutes les champ`, 'champ vide', {
+        this.toast.error(`remplir toutes les champs`, 'champ vide', {
           timeOut: 2500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -309,7 +309,7 @@ public ajoutedemandeDecumentTitre() {
     this.http.get<Array<DemaneDeDocument>>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/findByEmployeDoti/doti/' + employe.doti).subscribe(
       data => {
         this.documentsByDoti = data ;
-        this.fullname = employe.firstName + employe.lastName;
+        this.fullname = employe.firstName + " "+ employe.lastName;
        }, eror => {
         console.log('eroro', eror);
       });

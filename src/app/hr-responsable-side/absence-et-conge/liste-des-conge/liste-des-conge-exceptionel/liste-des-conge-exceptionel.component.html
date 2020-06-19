@@ -7,7 +7,7 @@
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
     <div class="card-body">
       <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> Selectionnez le nombre de congé restantes</mat-label>
+        <mat-label style="text-align: center"> Sélectionnez le nombre de congé restantes</mat-label>
         <mat-select [(ngModel)]="this.employe.soldeRestantesCongeExceptionnel" [ngModelOptions]="{standalone: true}" (ngModelChange)="trouveremployeBySoldeRestante(this.employe.soldeRestantesCongeExceptionnel)">
           <mat-option value="0"> 0 </mat-option>
           <mat-option value="1"> 1 </mat-option>

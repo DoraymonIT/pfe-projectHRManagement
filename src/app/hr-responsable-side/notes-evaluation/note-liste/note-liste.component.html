@@ -1,22 +1,22 @@
 <div class="example-large-box mat-elevation-z4">
   <mat-toolbar>
     <mat-toolbar-row>
-      <span class="span"> <i class="fas fa-search    "></i> Chercher les notes d un employé a partir de son Numéro </span>
+      <span class="span"> <i class="fas fa-search    "></i> Chercher les notes d'un employé a partir de son Numéro </span>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
     <div class="card-body">
-      <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterNote()"> ajouter Note</button>
+      <button mat-raised-button class="btn"style="background-color: white;color: black;float: left" (click)="ajouterNote()"> Ajouter Note</button>
       <div class="container" style="padding-top:20px">
             <mat-form-field style="width: 500px" id="NumeroAdministrativeNote">
-              <input matInput  [(ngModel)]="employe.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
+              <input matInput  [(ngModel)]="employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employe.doti">
             </mat-form-field>
             <br>
       <mat-form-field  style="width: 500px">
-        <mat-label style="text-align: center"> <i class="fas fa-calendar"></i> Sélectionnez la periode</mat-label>
+        <mat-label style="text-align: center"> <i class="fas fa-calendar"></i> Sélectionnez la période</mat-label>
         <mat-select [(ngModel)]="this.employe.pays" [ngModelOptions]="{standalone: true}">
-          <mat-option value="dernierPeriode"> dernier note </mat-option>
-          <mat-option value="all"> toutes les notes </mat-option>
+          <mat-option value="dernierPeriode"> Dernier note </mat-option>
+          <mat-option value="all"> Toutes les notes </mat-option>
         </mat-select>
       </mat-form-field>
             <br>
