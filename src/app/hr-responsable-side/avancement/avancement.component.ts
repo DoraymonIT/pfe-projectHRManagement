@@ -10,6 +10,7 @@ import {Grade} from '../../controller/model/grade.model';
 import {PersonnelEmployesService} from '../../controller/service/personnel-employes.service';
 import {NoteGeneraleDeAnnee} from '../../controller/model/note-generale-de-annee.model';
 import {Fonction} from '../../controller/model/fonction.model';
+import {AjouteAvancementComponent} from './ajoute-avancement/ajoute-avancement.component';
 
 @Component({
   selector: 'app-avancement',
@@ -94,6 +95,16 @@ public  TrouverGradeNonTraiteByType(value: string){
     this.dialog.open(RapportInfoComponent,
       dialogConfig);
     this.avancementService.findRapportByGradeIdAndEmployeDoti(gradeEmloye.id, gradeEmloye.doti);
+  }
+  public modifierGrade(gradeEmloye: GradeEmploye){
+    const dialogConfig = new MatDialogConfig();
+    this.gradeService.EditerGrade(gradeEmloye);
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '95%';
+    dialogConfig.height = '70%';
+    this.dialog.open(AjouteAvancementComponent,
+      dialogConfig);
   }
  public afficher1(){
    // tslint:disable-next-line:triple-equals

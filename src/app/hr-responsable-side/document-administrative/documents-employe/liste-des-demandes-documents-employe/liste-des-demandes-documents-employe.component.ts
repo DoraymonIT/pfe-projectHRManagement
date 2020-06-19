@@ -54,7 +54,7 @@ cols: any[];
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "90%";
-    dialogConfig.height = "100%";
+    dialogConfig.height = "75%";
     this.dialog.open(ListeDesDocumentsEmployeComponent,
       dialogConfig);
   }

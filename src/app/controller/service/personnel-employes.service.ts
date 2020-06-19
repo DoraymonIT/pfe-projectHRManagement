@@ -293,6 +293,31 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
+  private _fullnameGrade: string;
+
+  get fullnameGrade(): string {
+    return this._fullnameGrade;
+  }
+
+  set fullnameGrade(value: string) {
+    this._fullnameGrade = value;
+  }
+
+  public trouverEmployerGradeParDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if (data != null){
+          this.fullnameGrade =  "==> Numero correspond employe : "+this.EditEmploye.firstName + " "+ this.EditEmploye.lastName;
+          document.getElementById('fullnameGrade').style.color= 'white';
+        }else {
+          this.fullnameGrade = " Numero Incorrect";
+          document.getElementById('fullnameGrade').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   private _fullname: string;
 
   get fullname(): string {
@@ -309,10 +334,10 @@ export class PersonnelEmployesService {
         if (data != null){
           this.EditEmploye = data;
           this.email.emaill = data.email;
-          this.fullname = this.EditEmploye.firstName + " "+ this.EditEmploye.lastName;
-          document.getElementById('fullname').style.color= 'green';
+          this.fullname =  "==> Numero correspond employe : "+this.EditEmploye.firstName + " "+ this.EditEmploye.lastName;
+          document.getElementById('fullname').style.color= 'white';
         }else {
-          this.fullname = "Employé introuvable";
+          this.fullname = " Numero Incorrect";
           document.getElementById('fullname').style.color= 'red';
         }
       }, eror => {
@@ -334,10 +359,10 @@ export class PersonnelEmployesService {
       data => {
         if (data != null){
           this.email.emaill = data.email;
-          this.fullnameContacter = data.firstName + " "+ data.lastName;
-          document.getElementById('fullnameContacter').style.color= 'green';
+          this.fullnameContacter = "==> Numero correspond employe : "+ data.firstName + " "+ data.lastName;
+          document.getElementById('fullnameContacter').style.color= 'white';
         }else {
-          this.fullnameContacter = "Employe introuvable";
+          this.fullnameContacter = "Numero incorrect";
           document.getElementById('fullnameContacter').style.color= 'red';
         }
       }, eror => {
@@ -358,10 +383,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnameDemande = data.firstName + " " + data.lastName;
-          document.getElementById('fullnamedemande').style.color= 'green';
+          this.fullnameDemande = "==> Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnamedemande').style.color= 'white';
         }else{
-          this.fullnameDemande = "pas de employé";
+          this.fullnameDemande = "Numero Incorrect";
           document.getElementById('fullnamedemande').style.color= 'red';
         }
       }, eror => {
@@ -382,10 +407,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnameConge = data.firstName + " " + data.lastName;
-          document.getElementById('fullnameconge').style.color= 'green';
+          this.fullnameConge = "==> Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnameconge').style.color= 'white';
         }else{
-          this.fullnameConge = "pas de employé";
+          this.fullnameConge = "Numero Incorrect";
           document.getElementById('fullnameconge').style.color= 'red';
         }
       }, eror => {
@@ -405,10 +430,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnameFormation = data.firstName + " " + data.lastName;
-          document.getElementById('fullnameformation').style.color= 'green';
+          this.fullnameFormation ="==> Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnameformation').style.color= 'white';
         }else{
-          this.fullnameFormation = "pas de employé";
+          this.fullnameFormation = "Numero Incorrect";
           document.getElementById('fullnameformation').style.color= 'red';
         }
       }, eror => {
@@ -428,10 +453,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnamePrix = data.firstName + " " + data.lastName;
-          document.getElementById('fullnamePrix').style.color= 'green';
+          this.fullnamePrix ="==> Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnamePrix').style.color= 'white';
         }else{
-          this.fullnamePrix = "pas de employé";
+          this.fullnamePrix = "Numero Incorrect";
           document.getElementById('fullnamePrix').style.color= 'red';
         }
       }, eror => {
@@ -451,10 +476,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnamePunition = data.firstName + " " + data.lastName;
-          document.getElementById('fullnamePunition').style.color= 'green';
+          this.fullnamePunition ="==> Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnamePunition').style.color= 'white';
         }else{
-          this.fullnamePunition = "pas de employé";
+          this.fullnamePunition = "Numero Incorrect";
           document.getElementById('fullnamePunition').style.color= 'red';
         }
       }, eror => {
@@ -475,10 +500,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnameNote = data.firstName + " " + data.lastName;
-          document.getElementById('fullnameNote').style.color= 'green';
+          this.fullnameNote ="==> Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnameNote').style.color= 'white';
         }else{
-          this.fullnameNote = "pas de employé";
+          this.fullnameNote = "Numero Incorrect";
           document.getElementById('fullnameNote').style.color= 'red';
         }
       }, eror => {
@@ -499,10 +524,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this.fullnameDepartement = data.firstName + " " + data.lastName;
-          document.getElementById('fullnameDepartement').style.color= 'green';
+          this.fullnameDepartement ="==>  Numero correspond employe : " + data.firstName + " " + data.lastName;
+          document.getElementById('fullnameDepartement').style.color= 'white';
         }else{
-          this.fullnameDepartement = "pas de employé";
+          this.fullnameDepartement = "Numero Incorrect";
           document.getElementById('fullnameDepartement').style.color= 'red';
         }
       }, eror => {
@@ -523,10 +548,10 @@ export class PersonnelEmployesService {
     this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
       data => {
         if(data != null){
-          this._fullnamePermanence = data.firstName + " " + data.lastName;
+          this._fullnamePermanence ="==> Numero correspond employe : " + data.firstName + " " + data.lastName;
           document.getElementById('fullnamePermanence').style.color= 'green';
         }else{
-          this._fullnamePermanence = "pas de employé";
+          this._fullnamePermanence = "Numero Incorrect";
           document.getElementById('fullnamePermanence').style.color= 'red';
         }
       }, eror => {

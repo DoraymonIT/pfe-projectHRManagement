@@ -24,13 +24,13 @@
           <td>{{c.dateDemande}}</td>
           <td>{{c.copieEmail}}</td>
           <td>
-            <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"
+            <button class="btn btn-danger btn-md fa fa-edit" (click)="editerUneDemande(c)"
             matTooltip="Ce button permet de modifier cet element"
             style="margin-right: 5px;"   ></button>
-            <button class="btn btn-primary btn-sm fa  fa-check-square" (click)="imprimer(c)"
+            <button class="btn btn-primary btn-md fa  fa-file-export" (click)="imprimer(c)"
             matTooltip="Ce button permet de traiter cet element"
             style="margin-right: 5px;"    ></button>
-            <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
+            <button class="btn btn-info btn-md fa fa-trash" (click)="deleteByReference(c)"
             matTooltip="Ce button permet de supprimer cet element"
             ></button>
           </td>
@@ -41,11 +41,11 @@
     </div>
     </div>
   </mat-tab>
-  <mat-tab label="demande de document Non Signé" style="width: 25px" tabindex="1">
+  <mat-tab label="DEMANDE DE DOCUMENTS SIGNE" style="width: 25px" tabindex="1">
     <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
       <mat-toolbar>
         <mat-toolbar-row>
-          <span class="span"> <i class="fas fa-file-pdf"></i> Demandes de Documents Non Signé </span>
+          <span class="span"> <i class="fas fa-file-pdf"></i> Demandes de Documents Signé </span>
         </mat-toolbar-row>
       </mat-toolbar>
       <div class="scrolli">
@@ -71,13 +71,13 @@
             </label>
             </td>
             <td>
-              <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"
+              <button class="btn btn-danger btn-md fa fa-edit" (click)="editerUneDemande(c)"
                       matTooltip="Ce button permet de modifier cet element"
                       style="margin-right: 5px;"   ></button>
-              <button class="btn btn-primary btn-sm fa  fa-send" (click)="onUpload(c)"
+              <button class="btn btn-outline-primary fa fa-share-alt-square" (click)="onUpload(c)"
                       matTooltip="Ce button permet de envoyer document "
                       style="margin-right: 5px;"    ></button>
-              <button class="btn btn-info btn-sm fa fa-trash" (click)="deleteByReference(c)"
+              <button class="btn btn-info btn-md fa fa-trash" (click)="deleteByReference(c)"
                       matTooltip="Ce button permet de supprimer cet element"
               ></button>
             </td>

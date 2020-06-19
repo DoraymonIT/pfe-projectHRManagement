@@ -1,18 +1,24 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <span class="span" id="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> {{ajouteGradeEmploye}} </span>
+    <button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+      class="fas fa-window-close "></i> </button>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
     <div class="container-fluid">
           <div class="controles-container">
-     <mat-form-field>
-        <mat-label> <i class="fas fa-user-tie    "></i> Selectionnez l'employé concerné : </mat-label>
-        <mat-select [(ngModel)]="this.gradeEmploye.doti" [ngModelOptions]="{standalone: true}" >
-          <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName +' '+ gr.lastName}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field style="width: 300px">
+                  <input matInput  [(ngModel)]="gradeEmploye.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="gradeEmploye.doti" (pointermove)="getEmployeGradedoti(gradeEmploye.doti)" (pointercancel)="getEmployeGradedoti(gradeEmploye.doti)" (pointerleave)="getEmployeGradedoti(gradeEmploye.doti)">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6" style="margin-top: 10px" id="fullnameGrade">
+                <div *ngIf="gradeEmploye.doti != null; else elseBlock" >{{fullnameGrade}}</div>
+                <ng-template #elseBlock></ng-template>
+              </div>
+            </div>      <mat-form-field>
         <input matInput [matDatepicker]="pi5" placeholder="Date Affectation "
                [(ngModel)]="this.gradeEmploye.dateDeAffectation" [ngModelOptions]="{standalone: true}">
         <mat-datepicker-toggle matSuffix [for]="pi5"></mat-datepicker-toggle>

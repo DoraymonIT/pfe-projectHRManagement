@@ -322,6 +322,7 @@ export class TestTestComponent implements OnInit {
     document.getElementById('div7').style.display = 'none';
   }
   public getformation() {
+    document.getElementById('listeDesFormation').style.display= ' inline';
     this.rapportEvaluation.formation.forEach(formation => {
       if (formation.attestation === this.formationEmploye.attestation) {
         this.formationService.setformation(formation);
@@ -329,6 +330,7 @@ export class TestTestComponent implements OnInit {
     });
   }
   public getprix() {
+    document.getElementById('listeDesPrix').style.display= ' inline';
     this.rapportEvaluation.prix.forEach(prixx => {
       if (prixx.prix.libelle === this.prixEmploye.prix.libelle) {
         this.prixService.setprix(prixx);
@@ -337,6 +339,7 @@ export class TestTestComponent implements OnInit {
 
   }
   public getpunition() {
+    document.getElementById('listeDesPunition').style.display= ' inline';
     this.rapportEvaluation.punition.forEach(punitionn => {
       if (punitionn.punition.libelle === this.punitionEmploye.punition.libelle) {
         this.punitionService.setPunition(punitionn);
@@ -344,6 +347,7 @@ export class TestTestComponent implements OnInit {
     });
   }
   public getnote() {
+    document.getElementById('listeDesNotes').style.display= ' inline';
     this.rapportEvaluation.noteGenerale.forEach(notee => {
       if (notee.id === this.note.id) {
         this.noteService.setNote(notee);

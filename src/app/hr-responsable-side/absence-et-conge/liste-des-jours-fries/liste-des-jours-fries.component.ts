@@ -53,7 +53,7 @@ export class ListeDesJoursFriesComponent implements OnInit {
       document.getElementById('NumeroAdministrativeConge').style.color='red';
     }else{
       this.congeservice.findcongeByDotiAndLibelle(this.congeEmploye.employe.doti, this.congeEmploye.congee.libelle);
-      this.titre= 'listes des ' + this.congeEmploye.congee.libelle + 'de employe '+ this.fullname;
+      this.titre= 'listes des ' + this.congeEmploye.congee.libelle + ' de employe '+ this.fullname;
       document.getElementById('NumeroAdministrativeConge').style.color='green';
 
     }

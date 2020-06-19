@@ -86,7 +86,7 @@ export class NOteListeComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '85%';
-    dialogConfig.height = '100%';
+    dialogConfig.height = '90%';
     this.dialog.open(NoteDetailComponent,
       dialogConfig);
   }

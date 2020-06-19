@@ -36,4 +36,10 @@ export class AjouteAvancementComponent implements OnInit {
   get ajouteGradeEmploye(): string {
     return this.gradeService.ajouteGradeEmploye;
   }
+  get fullnameGrade(): string {
+    return this.employeService.fullnameGrade;
+  }
+public getEmployeGradedoti(doti: string){
+    this.employeService.trouverEmployerGradeParDoti(doti);
+  }
 }

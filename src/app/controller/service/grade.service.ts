@@ -61,7 +61,9 @@ public imprimerLesGradesDeEmploye(value: Array<GradeEmploye>) {
   set gradesEployess(value: Array<GradeEmploye>) {
     this._gradesEployess = value;
   }
-
+public EditerGrade(grade: GradeEmploye){
+    this.gradeEmploye = grade;
+}
   // tslint:disable-next-line:variable-name
   private _grade: Grade;
   // tslint:disable-next-line:variable-name
