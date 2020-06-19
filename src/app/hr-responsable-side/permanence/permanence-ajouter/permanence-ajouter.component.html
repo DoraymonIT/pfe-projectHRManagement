@@ -1,6 +1,8 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <span class="span"> <i class="fas fa-plus-circle" ></i> Ajouter | Affecter Permanence à un Employé </span>
+    <button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+      class="fas fa-window-close "></i> </button>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -42,7 +44,7 @@
             </mat-form-field>
           </div>
           <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">  <i class="fas fa-check-circle    "></i> Ajouter</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">  <i class="fas fa-check-circle    "></i> Ajouter  </button>
             <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
             <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
           </div>

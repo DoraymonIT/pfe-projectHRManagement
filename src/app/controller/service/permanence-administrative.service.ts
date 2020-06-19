@@ -67,6 +67,9 @@ export class PermanenceAdministrativeService {
         this.findAll();
       });
   }
+  editerPermanence(permanenceAdministrative: PermanenceAdministrative){
+    this.permanenceAdministrative= permanenceAdministrative;
+  }
   public editerUnEmployer(permanence: PermanenceAdministrative){
     this._permanenceAdministrative = permanence;
   }

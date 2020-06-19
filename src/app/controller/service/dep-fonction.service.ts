@@ -9,6 +9,9 @@ import {Fonction} from '../model/fonction.model';
   providedIn: 'root'
 })
 export class DepFonctionService {
+  public setDepartementDepFonction(departement: Departement){
+    this.depfonction.departemant = departement;
+  }
   get depfonction(): DepFonction {
     if(this._depfonction == null){
       this._depfonction = new DepFonction();

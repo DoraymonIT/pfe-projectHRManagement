@@ -7,6 +7,10 @@ import {Departement} from '../../../controller/model/departement.model';
 import {GradeEmploye} from '../../../controller/model/grade-employe.model';
 import {Grade} from '../../../controller/model/grade.model';
 import {ToastrService} from 'ngx-toastr';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AjouterPrixComponent} from '../../certificats-medicales/prix/ajouter-prix/ajouter-prix.component';
+import {PrixEmploye} from '../../../controller/model/prix-employe.model';
+import {PermanenceAjouterComponent} from '../permanence-ajouter/permanence-ajouter.component';
 
 @Component({
   selector: 'app-permanence-liste',
@@ -17,7 +21,9 @@ export class PermanenceListeComponent implements OnInit {
 
   constructor(private pemanenceAdministrative : PermanenceAdministrativeService,
               private employeService: PersonnelEmployesService,
-              private toast: ToastrService) { }
+              private toast: ToastrService,
+              private dialog: MatDialog) { }
+
   cols: any[];
 
   ngOnInit(): void {
@@ -79,5 +85,24 @@ export class PermanenceListeComponent implements OnInit {
   }
   get permanenceAdministrative1(): PermanenceAdministrative {
     return this.pemanenceAdministrative.permanenceAdministrative1;
+  }
+  ajouterPermanence() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
+    this.dialog.open(PermanenceAjouterComponent,
+      dialogConfig);
+  }
+  public modifiePermanence(permanence: PermanenceAdministrative){
+    const dialogConfig = new MatDialogConfig();
+    this.pemanenceAdministrative.editerPermanence(permanence);
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '70%';
+    this.dialog.open(PermanenceAjouterComponent,
+      dialogConfig);
   }
 }

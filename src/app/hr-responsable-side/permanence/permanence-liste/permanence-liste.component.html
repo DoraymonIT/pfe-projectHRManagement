@@ -70,7 +70,7 @@
                 <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
               </a>
             </td>
-            <td *ngFor="let col of columns">
+            <td *ngFor="let col of columns" (click)="modifiePermanence(rowData)">
               {{rowData[col.field]}}
             </td>
             <!-- <td><button class="btn btn-info btn-sm fa fa-trash"></button>
@@ -110,3 +110,4 @@
     </div>
   </div>
 </div>
+<button mat-raised-button class="btn"style="background-color: white;color: black;float: left ;margin-top: 15px;margin-left: 30px" (click)="ajouterPermanence()"> Ajouter Permanence</button>

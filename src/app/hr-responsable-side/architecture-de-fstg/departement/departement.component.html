@@ -1,7 +1,4 @@
-<mat-tab-group style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
-               [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="LISTE DES DÉPARTEMENTS" style="width: 25%;">
-    <div class="example-small-box mat-elevation-z4">
+ <div class="example-small-box mat-elevation-z4">
       <div class="example-large-box mat-elevation-z4">
         <div class="container-fluid" style="padding-top: 10px;">
           <div class="row">
@@ -42,7 +39,7 @@
                   <tr>
                     <td>
                       <i class="fa fa-building" ></i>  </td>
-                    <td *ngFor="let col of columns">
+                    <td *ngFor="let col of columns" (click)="ajouterModifierDepartement(rowData)">
                       {{rowData[col.field] }}
                     </td>
                     <!-- <td>
@@ -51,11 +48,11 @@
                       <ng-template #elseBlock> {{rowData.chef.fullName}} </ng-template>
           </td> -->
                     <td style="text-align:center">
-                      <button class="btn btn-info  btn-sm fa fa-edit" style="margin-right: 10px;" (click)="modifierDepartement(rowData)"></button>
-                      <button class="btn btn-outline-info btn-sm fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)"
+                      <button class="btn btn-info  btn-sm fa fa-edit" style="margin-right: 10px;" (click)="ajouterFonction(rowData)"></button>
+                      <button class="btn btn-outline-info btn-md fa fa-info" (click)="trouverEmployesParNomDepDialog(rowData)"
                       matTooltip="Ce button permet de donner d afficher les employes de cet departement"
                       style="margin-right: 10px;"></button>
-                      <button class="btn btn-primary btn-sm fa fa-info" (click)="trouverFonctionParNomDepDialog(rowData)"
+                      <button class="btn btn-primary btn-md fa fa-info" (click)="trouverFonctionParNomDepDialog(rowData)"
                       matTooltip="Ce button permet de donner d afficher les fonctions de cet departement"
                       style="margin-right: 10px;"></button>
                       <!-- <button class="btn btn-danger btn-sm fa fa-trash"  ></button> -->
@@ -68,12 +65,6 @@
         </div>
       </div>
     </div>
-      <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesdepartement()" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->
-  </mat-tab>
-  <mat-tab label="AJOUTER UN DÉPARTEMENT" style="width: 25px">
-    <app-dep-ajout></app-dep-ajout>
-  </mat-tab>
-  <mat-tab label="AFFECTER UNE FONCTION A UN DÉPARTEMENT" style="width: 25px">
-    <app-ajoute-une-fonction-undeartement></app-ajoute-une-fonction-undeartement>
-  </mat-tab>
-</mat-tab-group>
+    <button mat-raised-button class="btn"style="background-color: white;color: black;float: left ;margin-top: 15px;margin-left: 30px" (click)="ajouterDepartement()"> Ajouter Departement</button>
+
+    <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;margin-left: 240px; margin-top: 20px"(click)="imprimerLesdepartement()" ><i class="fa fa-file-pdf"  ></i> PDF</button> -->

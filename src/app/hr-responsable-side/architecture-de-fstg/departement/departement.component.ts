@@ -8,6 +8,9 @@ import {ListeFonctionComponent} from './ListeFonction/liste.component';
 import { DialogDepComponent } from './dialog-dep/dialog-dep.component';
 import {DepFonction} from '../../../controller/model/dep-fonction.model';
 import {DepFonctionService} from '../../../controller/service/dep-fonction.service';
+import {PermanenceAjouterComponent} from '../../permanence/permanence-ajouter/permanence-ajouter.component';
+import {DepAjoutComponent} from './dep-ajout/dep-ajout.component';
+import {AjouteUneFonctionUndeartementComponent} from './ajoute-une-fonction-undeartement/ajoute-une-fonction-undeartement.component';
 
 
 @Component({
@@ -71,6 +74,35 @@ export class DepartementComponent implements OnInit {
     dialogConfig.width = '95%';
     dialogConfig.height = '100%';
     this.dialog.open(DialogDepComponent,
+      dialogConfig);
+  }
+  ajouterDepartement() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    dialogConfig.height = '60%';
+    this.dialog.open(DepAjoutComponent,
+      dialogConfig);
+  }
+  ajouterModifierDepartement(departement: Departement) {
+    this.departementservice.EditerDepartement(departement);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    dialogConfig.height = '60%';
+    this.dialog.open(DepAjoutComponent,
+      dialogConfig);
+  }
+  ajouterFonction(departement: Departement) {
+    this.depFonction.setDepartementDepFonction(departement);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    dialogConfig.height = '60%';
+    this.dialog.open(AjouteUneFonctionUndeartementComponent,
       dialogConfig);
   }
 }
