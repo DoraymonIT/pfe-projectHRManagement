@@ -5,6 +5,10 @@ import {AjouterEmployeComponent} from './ajouter-employe/ajouter-employe.compone
 import {Employe} from '../../controller/model/employe.model';
 import {ListeDesJoursFriesComponent} from '../absence-et-conge/liste-des-jours-fries/liste-des-jours-fries.component';
 import {AutresComponent} from './autres/autres.component';
+import {AjouterPrixComponent} from '../certificats-medicales/prix/ajouter-prix/ajouter-prix.component';
+import {PrixEmploye} from '../../controller/model/prix-employe.model';
+import {EditerEmployeComponent} from './editer-employe/editer-employe.component';
+import {ContacterUnEmployeComponent} from './contacter-un-employe/contacter-un-employe.component';
 
 
 @Component({
@@ -63,8 +67,14 @@ export class GestionPersonnelComponent implements OnInit {
     this.employeService.deleteByReference(employe);
   }
   public editerUnEmployer(employe: Employe){
-    this.demo1BtnClick(1);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
     this.employeService.editerUnEmployer(employe);
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '90%';
+    this.dialog.open(EditerEmployeComponent,
+      dialogConfig);
   }
   public tabindex;
   public demo1TabIndex = 0;
@@ -90,6 +100,25 @@ export class GestionPersonnelComponent implements OnInit {
 public imprimerListeEmployeExcel(){
     this.employeService.exporterLaListeDesEmployeExcel();
 }
+  ajouterEmploye() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '95%';
+    this.dialog.open(AjouterEmployeComponent,
+      dialogConfig);
+  }
+  contacterEmploye(employe: Employe) {
+    this.employeService.editerUnEmployer(employe);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    dialogConfig.height = '90%';
+    this.dialog.open(ContacterUnEmployeComponent,
+      dialogConfig);
+  }
   }
 
 

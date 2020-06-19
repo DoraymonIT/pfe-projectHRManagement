@@ -64,7 +64,12 @@
             <td>{{c.employe.firstName + " " + c.employe.lastName}}</td>
             <td>{{c.typeDeDocument.libelle }}</td>
             <td>{{c.dateDemande}}</td>
-            <td><input type="file"  (change)="onFileChanged($event)"></td>
+            <td>
+              <label class="file">
+              <input type="file" id="file" aria-label="File browser example" (change)="onFileChanged($event)">
+              <span class="file-custom"></span>
+            </label>
+            </td>
             <td>
               <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUneDemande(c)"
                       matTooltip="Ce button permet de modifier cet element"

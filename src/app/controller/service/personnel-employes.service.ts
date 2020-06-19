@@ -319,6 +319,31 @@ export class PersonnelEmployesService {
         console.log('eroro', eror);
       });
   }
+  private _fullnameContacter: string;
+
+  get fullnameContacter(): string {
+    return this._fullnameContacter;
+  }
+
+  set fullnameContacter(value: string) {
+    this._fullnameContacter = value;
+  }
+
+  public trouverEmployerContacteerParSonDoti(value: string) {
+    this.http.get<Employe>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDoti/doti/' + value).subscribe(
+      data => {
+        if (data != null){
+          this.email.emaill = data.email;
+          this.fullnameContacter = data.firstName + " "+ data.lastName;
+          document.getElementById('fullnameContacter').style.color= 'green';
+        }else {
+          this.fullnameContacter = "Employe introuvable";
+          document.getElementById('fullnameContacter').style.color= 'red';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
   private _fullnameDemande: string;
 
   get fullnameDemande(): string {

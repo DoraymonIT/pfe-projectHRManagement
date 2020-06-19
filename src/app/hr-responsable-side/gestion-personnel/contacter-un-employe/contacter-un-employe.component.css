@@ -10,6 +10,15 @@ p-editor{
 #emailText{
   display: none;
 }
-#file{
+#emailFile{
   display: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.file {
+  margin: 0;
+  padding: 2rem 1.5rem;
+  font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+  color: wheat;
 }

@@ -1,26 +1,32 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <span class="span" > <i class="fas fa-mail-bulk    "></i> Contacter Un Employe via son | sa Mail</span>
+    <button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+      class="fas fa-window-close "></i> </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="container" style="padding-top:20px">
-  <mat-form-field style="padding-bottom:10px;width:100%">
-    <mat-label> <i class="fas fa-user-tie    "></i> Seléctionnez l employé concerné : </mat-label>
-    <mat-select [(ngModel)]="this.employeInfo.doti" [ngModelOptions]="{standalone: true}" (selectionChange)="trouverEmployerParSonDoti(this.employeInfo.doti)">
-      <mat-option *ngFor="let gr of employes" [value]="gr.doti">{{gr.firstName + gr.lastName }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field style="width: 300px">
+        <input matInput  [(ngModel)]="employeInfo.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="employeInfo.doti" (pointermove)="getEmployeContacterdoti(employeInfo.doti)" (pointercancel)="getEmployeContacterdoti(employeInfo.doti)" (pointerleave)="getEmployeContacterdoti(employeInfo.doti)">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6" style="margin-top: 10px" id="fullnameContacter">
+      <div *ngIf="employeInfo.doti != null; else elseBlock" >{{fullnameContacter}}</div>
+      <ng-template #elseBlock></ng-template>
+    </div>
+  </div>
   <mat-form-field style="padding-bottom:10px;width:100%">
     <label> Email : </label>
     <input matInput  [(ngModel)]="this.email.emaill" [ngModelOptions]="{standalone: true}" [value]="employeInfo.email" type="email" >
   </mat-form-field>
-  <mat-form-field style="padding-bottom:10px;width:100%">
     <mat-form-field style="padding-bottom:10px;width:100%">
       <mat-label> <i class="fas fa-user-tie    "></i> Seléctionnez le type email : </mat-label>
-      <mat-select [(ngModel)]="this.email.typeemail" [ngModelOptions]="{standalone: true}" (selectionChange)="getEmailubject(this.email.typeemail)">
-        <mat-option value="doucumentpret" > document prèt</mat-option>
-        <mat-option value="autre"> autre</mat-option>
+      <mat-select [(ngModel)]="this.email.typeemail" [ngModelOptions]="{standalone: true}" (selectionChange)="getEmailubject(this.email.typeemail)" [value]="employeInfo.email">
+        <mat-option value="msg" > msg</mat-option>
+        <mat-option value="msgAndDocument"> msg + document</mat-option>
       </mat-select>
     </mat-form-field>
       <mat-form-field id="emailSujet">
@@ -29,8 +35,13 @@
            [ngModelOptions]="{standalone: true}" type="email" >
   </mat-form-field>
   <p-editor id="emailText" [(ngModel)]="this.email.text" [style]="{'height':'320px'}"></p-editor>
+    <div id="emailFile">
+      <label class="file">
+        <input type="file" id="file" aria-label="File browser example" (change)="onFileChanged($event)">
+        <span class="file-custom"></span>
+      </label>
+    </div>
     <div class="button-row" style="padding-top: 10px;">
     <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="envoyer()"> <i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer</button>
   </div>
-  </mat-form-field>
 </div>
