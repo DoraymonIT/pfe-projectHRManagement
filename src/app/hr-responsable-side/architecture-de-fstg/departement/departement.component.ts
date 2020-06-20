@@ -52,8 +52,8 @@ export class DepartementComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '95%';
-    dialogConfig.height = '100%';
+    dialogConfig.width = '60%';
+    dialogConfig.height = '60%';
     this.dialog.open(ListeFonctionComponent, dialogConfig);
   }
   public modifierDepartement(value: Departement){
@@ -71,8 +71,8 @@ export class DepartementComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '95%';
-    dialogConfig.height = '100%';
+    dialogConfig.width = '60%';
+    dialogConfig.height = '60%';
     this.dialog.open(DialogDepComponent,
       dialogConfig);
   }

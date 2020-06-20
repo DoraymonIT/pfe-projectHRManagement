@@ -37,14 +37,14 @@
                    (onLazyLoad)="loadCarsLazy($event)"  [totalRecords]="totalRecords" [loading]="loading"
           >
             <ng-template pTemplate="caption">
-              <i class="fas fa-bed    "></i>    Liste des employe ayant un congé actuellement
+              <i class="fas fa-bed    "></i>    Liste des employe ayant actuellement un congé
               <div style="    text-align: left; margin-bottom: 10px;">
                 <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerListeEmployeAvecSoldePdf()"
                         matTooltip="Ce button permet d imprimer ce table en format PDF"
-                ><i class="fa fa-file-pdf" ></i>  Export le <strong>PDF</strong> </button>
+                ><i class="fa fa-file-pdf" ></i>  Exporter en <strong>PDF</strong> </button>
                 <button class="btn"style="margin-left: 10px;background-color: white;color: black;float: left" (click)="imprimerListeEmployeAvecSoldeExcel()"
                         matTooltip="Ce button permet d imprimer ce table en format Excel"
-                ><i class="fa fa-file-excel" ></i>  Export le <strong>Excel</strong> </button>
+                ><i class="fa fa-file-excel" ></i>  Exporter en <strong>Excel</strong> </button>
               </div>
               <div style="text-align: right">
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>

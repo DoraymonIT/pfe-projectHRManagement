@@ -11,7 +11,7 @@
           <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
             <div class="card-body">
               <mat-form-field  style="width: 500px">
-                <mat-label style="text-align: center"> <i class="fas fa-user-tie"></i> Selectionnez le grade concerné</mat-label>
+                <mat-label style="text-align: center">  Selectionnez le grade concerné</mat-label>
                 <mat-select [(ngModel)]="this.gradeEmploye.grade.libelle" [ngModelOptions]="{standalone: true}" (ngModelChange)="TrouverGradeNonTraiteByType(this.gradeEmploye.grade.libelle)">
                   <mat-option value="all">All</mat-option>
                   <mat-option value="grade2">grade1 -> grade2</mat-option>
@@ -23,8 +23,8 @@
                   <mat-option value="grade8">grade7 -> grade8</mat-option>
                   <mat-option value="grade9">grade8 -> grade9</mat-option>
                   <mat-option value="grade10">grade9 -> grade10</mat-option>
-                  <mat-option value="gradeExceptionnel">grade10 -> gradeExceptionnel</mat-option>
-                  <mat-option value="horsEchelle">gradeExceptionnel -> horsEchelle</mat-option>
+                  <mat-option value="gradeExceptionnel">grade10 -> grade Exceptionnel</mat-option>
+                  <mat-option value="horsEchelle">grade Exceptionnel -> hors Echelle</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>

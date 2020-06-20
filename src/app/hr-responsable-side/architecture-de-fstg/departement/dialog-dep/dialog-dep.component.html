@@ -4,7 +4,6 @@
   <thead>
   <th>Numéro</th>
     <th>Nom Complet</th>
-    
     <th>Fonction</th>
   </thead>
   <tbody>
@@ -12,14 +11,13 @@
     <tr *ngFor="let c of employesByDep">
 	 <td>{{c.doti}}</td>
       <td>{{c.firstName +" " + c.lastName }}</td>
-     
       <td>{{c.fonction.libelle}} </td>
     </tr>
   </tbody>
 </table>
 <button class="btn"style="background-color: white;color: black;float: left"
         matTooltip="Ce button permet d imprimer ce table en format PDF" (click)="imprimerLesEmployesDepartement()"
-><i class="fa fa-file-pdf" ></i>  Exporter le <strong>PDF</strong> </button>
+><i class="fa fa-file-pdf" ></i>  Exporter en <strong>PDF</strong> </button>
 <button class="btn"style="margin-left: 10px;background-color: white;color: black;float: left"
         matTooltip="Ce button permet d imprimer ce table en format EXCEL" (click)="imprimerLesEmployesDepartementENEXCEL()"
-><i class="fa fa-file-excel" ></i>  Exporter le <strong>EXCEL</strong> </button>
+><i class="fa fa-file-excel" ></i>  Exporter en <strong>EXCEL</strong> </button>

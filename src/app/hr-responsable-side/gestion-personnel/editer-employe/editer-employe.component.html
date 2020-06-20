@@ -12,12 +12,12 @@
         <div class="controles-container">
         <div class="controles-container">
             <div class="row">
-              <div class="col-md-6">
-                <mat-form-field style="width: 300px">
+              <div class="col-md-3">
+                <mat-form-field style="width: 100px">
                 <input matInput  [(ngModel)]="EditEmploye.doti" placeholder="Numero Administrative :*" [ngModelOptions]="{standalone: true}" [value]="EditEmploye.doti" (pointermove)="trouverEmployerParSonDoti(EditEmploye.doti)" (pointercancel)="trouverEmployerParSonDoti(EditEmploye.doti)" (pointerleave)="trouverEmployerParSonDoti(EditEmploye.doti)">
                 </mat-form-field>
               </div>
-              <div class="col-md-6" style="margin-top: 10px">
+              <div class="col-md-9" style="margin-top: 10px">
                 <div *ngIf="EditEmploye.doti != null; else elseBlock" id="fullname">{{fullname}}</div>
                 <ng-template #elseBlock></ng-template>
             </div>

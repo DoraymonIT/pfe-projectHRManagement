@@ -549,7 +549,7 @@ export class PersonnelEmployesService {
       data => {
         if(data != null){
           this._fullnamePermanence ="==> Numero correspond employe : " + data.firstName + " " + data.lastName;
-          document.getElementById('fullnamePermanence').style.color= 'green';
+          document.getElementById('fullnamePermanence').style.color= 'white';
         }else{
           this._fullnamePermanence = "Numero Incorrect";
           document.getElementById('fullnamePermanence').style.color= 'red';
