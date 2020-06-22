@@ -7,12 +7,12 @@
   <div class="container-fluid">
     <div class="controles-container">
       <div class="row">
-        <div class="col-md-6">
-          <mat-form-field style="width: 600px">
+        <div class="col-md-3">
+          <mat-form-field style="width: 300px">
             <input matInput  [(ngModel)]="congeEmploye.employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.employe.doti" (pointermove)="trouverEmployerParSonDoti(congeEmploye.employe.doti)" (pointercancel)="trouverEmployerParSonDoti(congeEmploye.employe.doti)" (pointerleave)="trouverEmployerParSonDoti(congeEmploye.employe.doti)">
           </mat-form-field>
         </div>
-        <div class="col-md-6" style="margin-top: 10px" id="fullnameconge">
+        <div class="col-md-9" style="margin-top: 10px" id="fullnameconge">
           <div *ngIf="congeEmploye.employe.doti != null; else elseBlock" >{{fullnameConge}}</div>
           <ng-template #elseBlock></ng-template>
         </div>
@@ -48,12 +48,15 @@
         <input matInput [(ngModel)]="congeEmploye.periode" placeholder="Ex: 90 jours" [ngModelOptions]="{standalone: true}"
           [value]="congeEmploye.periode" type="number">
       </mat-form-field>
-    </div>
-    <div class="button-row">
-      <button  mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()"> <i class="fas fa-check-circle    "></i> Ajouter</button>
-      <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
-      <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
+      <div class="row" style="float: right">
+        <div class="col-md-3">
+          <button mat-raised-button color="primary" style="background-color: #3f8032" class="btn-block" (click)="save()"> <i
+            class="fas fa-check-circle"></i> Ajouter</button>
+        </div>
+        <div class="col-md-3">
+          <button mat-raised-button color="warn" class="btn-block" *ngIf="congeEmploye.id != null" (click)="deleteCongeEmploye()">Supprimer</button>
+        </div>
+      </div>
     </div>
   </div>
-
 </form>

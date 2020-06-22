@@ -25,6 +25,8 @@ export class ListeDesJoursFriesComponent implements OnInit {
   calendarEvents = [
     { title: 'event 1', date: '2020-04-01' }
   ];
+  public tabindex;
+  public demo1TabIndex = 0;
   ngOnInit(): void {
     this.congeservice.findAll();
     this.es.findAll();
@@ -78,5 +80,12 @@ export class ListeDesJoursFriesComponent implements OnInit {
   }
   public  trouverEmployerParSonDoti(value:string){
     this.es.trouverEmployerCongeParSonDoti(value);
+  }
+  public demo1BtnClick(value: number) {
+    this.demo1TabIndex = value ;
+  }
+  public editerUnConge(conge: CongeEmploye) {
+    this.demo1BtnClick(4);
+    this.congeservice.editerUnEmployer(conge);
   }
 }

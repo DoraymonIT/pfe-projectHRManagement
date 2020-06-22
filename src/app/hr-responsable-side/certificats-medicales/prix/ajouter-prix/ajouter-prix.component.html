@@ -11,12 +11,12 @@
       <div class="col-md-6">
         <div class="controles-container">
           <div class="row">
-            <div class="col-md-6">
-              <mat-form-field style="width: 300px">
+            <div class="col-md-3">
+              <mat-form-field style="width: 100px">
                 <input matInput  [(ngModel)]="prixEmploye.employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="prixEmploye.employe.doti" (pointermove)="getEmployePrixdoti(prixEmploye.employe.doti)" (pointercancel)="getEmployePrixdoti(prixEmploye.employe.doti)" (pointerleave)="getEmployePrixdoti(prixEmploye.employe.doti)">
               </mat-form-field>
             </div>
-            <div class="col-md-6" style="margin-top: 10px" id="fullnamePrix">
+            <div class="col-md-9" style="margin-top: 10px" id="fullnamePrix">
               <div *ngIf="prixEmploye.employe.doti != null; else elseBlock" >{{fullnamePrix}}</div>
               <ng-template #elseBlock></ng-template>
             </div>
@@ -42,13 +42,19 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Remarques , Commentaires ou Description</mat-label>
-            <textarea  [(ngModel)]="prixEmploye.remarque" matInput placeholder="Ex. Cet employé est ..."></textarea>
+            <textarea  [(ngModel)]="prixEmploye.remarque" [value]="prixEmploye.remarque" matInput placeholder="Ex. Cet employé est ..."></textarea>
           </mat-form-field>
-          </div>
-          <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block"  (click)="save()" > <i class="fas fa-check-circle "></i> Ajouter</button>
           </div>
         </div>
       </div>
     </div>
 </form>
+<div class="row">
+  <div class="col-md-3">
+    <button mat-raised-button color="primary" style="background-color: #3f8032" class="btn-block" (click)="save()"> <i
+      class="fas fa-check-circle"></i> Ajouter</button>
+  </div>
+  <div class="col-md-3">
+    <button mat-raised-button color="warn" class="btn-block" *ngIf="prixEmploye.id != null" (click)="deletePrix()">Supprimer</button>
+  </div>
+</div>

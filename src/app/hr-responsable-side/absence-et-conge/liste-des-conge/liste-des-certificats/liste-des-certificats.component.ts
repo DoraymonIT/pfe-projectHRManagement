@@ -3,6 +3,10 @@ import {CongeEmploye} from '../../../../controller/model/conge-employe.model';
 import {TypeCongee} from '../../../../controller/model/type-congee.model';
 import {Employe} from '../../../../controller/model/employe.model';
 import {CongeService} from '../../../../controller/service/conge.service';
+import {ToastrService} from 'ngx-toastr';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {ListeDesJoursFriesComponent} from '../../liste-des-jours-fries/liste-des-jours-fries.component';
+import {CalendrierDesCertificatsComponent} from '../calendrier-des-certificats/calendrier-des-certificats.component';
 
 @Component({
   selector: 'app-liste-des-certificats',
@@ -11,8 +15,11 @@ import {CongeService} from '../../../../controller/service/conge.service';
 })
 export class ListeDesCertificatsComponent implements OnInit {
 
-  constructor(private congeService: CongeService) { }
-Titre: String;
+  constructor(private congeService: CongeService,
+              private toast: ToastrService,
+              private dialog: MatDialog) { }
+
+  Titre: String;
   ngOnInit(): void {
     this.congeService.findallCertificatDansCetteAnnee();
     this.Titre = 'liste des  certificats depuis 1 septembre ' +((new Date().getMonth() > 9)? (this.getYear()) : (this.getYear() - 1));
@@ -53,4 +60,14 @@ Titre: String;
     this.Titre = 'la liste des' +this.congeEmploye.congee.libelle +'  ayant effectuer dans la periode entre : '+ this.congeEmploye.dateDeDebut + ' et '+ this.congeEmploye.dateDeFin ;
     this.congeService.findCongeBydateAndType(this.congeEmploye.dateDeDebut,this.congeEmploye.dateDeFin, this.congeEmploye.congee.libelle);
   }
+  public getPeriodeMois(conge: CongeEmploye){
+      this.congeService.trouverCongéEmployeSalaireParSonId(conge.id);
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = '55%';
+      dialogConfig.height = '60%';
+      this.dialog.open(CalendrierDesCertificatsComponent,
+        dialogConfig);
+    }
 }

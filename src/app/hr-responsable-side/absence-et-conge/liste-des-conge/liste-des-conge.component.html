@@ -1,6 +1,6 @@
 <mat-tab-group mat-stretch-tabs style="width: 100%;" (selectedIndexChange)="demo1BtnClick(tabindex)"
                [(selectedIndex)]="demo1TabIndex">
-  <mat-tab label="LISTE DES EMPLOYÉS AYANT CONGÉ ACTUELLEMENT" style="width: 25px" tabindex="1">
+  <mat-tab label="LISTE DES EMPLOYÉS AYANT ACTUELLEMENT UN CONGÉ " style="width: 25px" tabindex="1">
 <mat-toolbar  style="cursor: pointer;">
   <mat-toolbar-row>
     <span class="span" style="text-align: center"> <i class="fas fa-search    "></i> Filtrer Par <strong>Période</strong>  </span>
@@ -37,7 +37,7 @@
                    (onLazyLoad)="loadCarsLazy($event)"  [totalRecords]="totalRecords" [loading]="loading"
           >
             <ng-template pTemplate="caption">
-              <i class="fas fa-bed    "></i>    Liste des employe ayant actuellement un congé
+              <i class="fas fa-bed    "></i>    Liste des employes ayant actuellement un congé
               <div style="    text-align: left; margin-bottom: 10px;">
                 <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerListeEmployeAvecSoldePdf()"
                         matTooltip="Ce button permet d imprimer ce table en format PDF"
@@ -123,5 +123,5 @@
   </mat-tab>
 <mat-tab label="LISTE DES EMPLOYÉS AYANT ÉPUISÉ LEUR SOLDE CONGÉ" style="width: 25px" tabindex="2">
   <app-liste-des-conge-exceptionel></app-liste-des-conge-exceptionel>
-</mat-tab>>
+</mat-tab>
 </mat-tab-group>

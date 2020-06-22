@@ -188,6 +188,36 @@ public findAll() {
       }
     );
   }
+  public updateGradeEmploye() {
+    // tslint:disable-next-line:max-line-length
+    if ((this.gradeEmploye.grade == null || this.gradeEmploye.dateDeAffectation == null || this.gradeEmploye.doti == null) || (this.gradeEmploye.grade == null && this.gradeEmploye.dateDeAffectation == null && this.gradeEmploye.doti == null)) {
+      this.toast.error(`$ Remplir les champs`, 'champ vide', {
+        timeOut: 2500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+      this._ajouteGradeEmploye = 'Remplir toutes les champs';
+      document.getElementById('span').style.color = 'red';
+    }
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/GradeEmploye/update', this.gradeEmploye).subscribe(
+      data => {
+        if ( data === 1) {
+          this.toast.success(`Un grade Employe a ete effectue avec succes`, 'grade Effectue', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this._ajouteGradeEmploye = 'Grade employe est bien modifie avec succees';
+          document.getElementById('span').style.color = 'green';
+        }
+      }, eror => {
+        console.log('eroro', eror);
+      }
+    );
+  }
+
   public  cloneGrade(grade: Grade): Grade {
     const myClone = new Grade() ;
     myClone.libelle = this.grade.libelle;

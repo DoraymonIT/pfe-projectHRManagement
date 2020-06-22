@@ -1,13 +1,31 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-calendar-check    "></i> Calendrier des certificats </span>
-  </mat-toolbar-row>
-</mat-toolbar>
-<div class="container-fluid" style="padding-top: 20px;padding-bottom: 10px;">
-  <div class="row">
-    <div class="col-md-12">
-      <full-calendar [header]="{ left:'title',
-              center :'dayGridMonth,dayGridWeek',right:'today prev,next'}" [events]="calendarEvents" [plugins]="calendarPlugins " eventColor="blue"></full-calendar>
-    </div>
-  </div>
-</div>
+<div class="ui-g ui-fluid" style="font-size:16px;padding:20px" id="tableConge">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span class="span"><i class="fas fa-bed    "></i> information sur la modification de salaire durant cette periode de congé</span>
+      <button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+        class="fas fa-window-close "></i> </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <table class="table table-hover table-dark table-striped" style="color: wheat">
+    <thead>
+    <th>congé</th>
+    <th>mois</th>
+    <th>type de salaire</th>
+
+    <!-- <th style="padding-left: 40px">Action</th> -->
+    </thead>
+    <tbody>
+    <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
+
+    <tr *ngFor="let c of congeEmployeSalaire" >
+      <td>{{c.conge.id}}</td>
+      <td>{{c.mois}}</td>
+      <td>{{c.typeDeSalaire}}</td>
+      <!-- <td>
+        <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerFormation(c)"></button>
+        <button class="btn btn-primary btn-sm fa  fa-check-square" ></button>
+        <button class="btn btn-info btn-sm fa fa-trash"></button>
+      </td> -->
+    </tr>
+    </tbody>
+  </table>

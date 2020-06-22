@@ -7,6 +7,7 @@ import {CongeEmploye} from '../../../controller/model/conge-employe.model';
 import {TypeCongee} from '../../../controller/model/type-congee.model';
 import {LazyLoadEvent} from 'primeng/api/lazyloadevent';
 import {ListeDesJoursFriesComponent} from '../liste-des-jours-fries/liste-des-jours-fries.component';
+import {EditerComponent} from '../editer/editer.component';
 
 @Component({
   selector: 'app-liste-des-conge',
@@ -35,8 +36,6 @@ export class ListeDesCongeComponent implements OnInit {
     return this.congeservice.congeEmployeCOnge;
   }
   public checher(){
-    console.log(this.congeEmployeCOnge.dateDeDebut);
-    console.log(this.congeEmployeCOnge.dateDeFin);
     this.employeService.getCongeBetween(this.congeEmployeCOnge.dateDeDebut, this.congeEmployeCOnge.dateDeFin);
   }
   cols: any[];
@@ -79,8 +78,8 @@ export class ListeDesCongeComponent implements OnInit {
   public deleteByReference(conge: CongeEmploye) {
     this.congeservice.deleteByReference(conge);
   }
-  public editerUnEmployer(conge: CongeEmploye) {
-    this.demo1BtnClick(1);
+  public editerUnConge(conge: CongeEmploye) {
+  this.demo1BtnClick(3);
     this.congeservice.editerUnEmployer(conge);
   }
   public demo1BtnClick(value: number) {

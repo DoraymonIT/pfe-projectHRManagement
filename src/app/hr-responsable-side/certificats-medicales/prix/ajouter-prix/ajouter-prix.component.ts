@@ -47,5 +47,7 @@ export class AjouterPrixComponent implements OnInit {
   public getEmployePrixdoti(doti: string){
     this.employeService.GetEmployerPrixByDoti(doti);
   }
-
+public deletePrix(){
+    this.prixService.deleteByReference(this.prixEmploye);
+}
 }

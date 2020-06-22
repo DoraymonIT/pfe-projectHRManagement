@@ -31,3 +31,21 @@ th{
     stroke: #ffa700;
   }
 }
+h4{
+  text-align: center;
+}
+.button-row button{
+  margin: 5px;
+  padding:5px;width:400px;
+
+}
+.button-row {
+  text-align:center;
+
+}
+.span {
+  margin: auto;
+}
+#table{
+  display: none;
+}

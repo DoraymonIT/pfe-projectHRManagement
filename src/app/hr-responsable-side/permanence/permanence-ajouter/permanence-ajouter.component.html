@@ -43,11 +43,15 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
-          <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="save()">  <i class="fas fa-check-circle    "></i> Ajouter  </button>
-            <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
-            <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
-          </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button mat-raised-button color="primary" style="background-color: #3f8032" class="btn-block" (click)="save()"> <i
+          class="fas fa-check-circle"></i> Ajouter</button>
+      </div>
+      <div class="col-md-3">
+        <button mat-raised-button color="warn" class="btn-block" *ngIf="permanenceAdministrative.id != null" (click)="deletePermannce()">Supprimer</button>
+      </div>
+    </div>
         </div>
 
 </form>

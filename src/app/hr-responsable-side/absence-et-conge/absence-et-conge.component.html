@@ -6,8 +6,62 @@
   <mat-tab label="CERTIFICATS MÉDICAUX" style="width: 25px" tabindex="2">
     <app-liste-des-certificats></app-liste-des-certificats>
   </mat-tab>
-  <mat-tab label="HISTORIQUE DES CONGÉS/certificats D'UN EMPLOYÉ" style="width: 25px" tabindex="3">
-    <app-liste-des-jours-fries></app-liste-des-jours-fries>
+  <mat-tab label="HISTORIQUE DES CONGÉS/CERTIFICATS D'UN EMPLOYÉ" style="width: 25px" tabindex="3">
+    <div class="card" style="background-color: #343a40; color: wheat; text-align: center">
+      <div class="card-body">
+        <div style=" text-align: left; margin-bottom: 10px;">
+        </div>
+        <mat-form-field style="width: 500px" id="NumeroAdministrativeConge">
+          <input matInput  [(ngModel)]="congeEmploye.employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="congeEmploye.employe.doti">
+        </mat-form-field>
+        <br>
+        <mat-form-field  style="width: 500px">
+          <mat-label style="text-align: center">  Selectionnez le type de congé concerné</mat-label>
+          <mat-select [(ngModel)]="this.congeEmploye.congee.libelle" [ngModelOptions]="{standalone: true}">
+            <mat-option [value]="null">---None---</mat-option>
+            <mat-option *ngFor="let gr of typeConge" [value]="gr.libelle">{{gr.libelle}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button class="btn btn-light fa fa-search" style="width: 500px" (click)="getcongeByDotiAndLibelle()"> chercher</button>
+      </div>
+    </div>
+    <div id="table">
+      <h4 style="margin-top: 40px"> {{titre}}  </h4>
+      <table class="table table-hover table-striped table-dark" style="color: wheat">
+        <thead>
+        <th>Nom de l'employé</th>
+        <th>Type de congé</th>
+        <th>Date de début</th>
+        <th>Période</th>
+        <!-- <th>Raison</th> -->
+        <!-- <th>Action</th> -->
+        </thead>
+        <tbody>
+        <p-progressSpinner *ngIf="listeVide()" ></p-progressSpinner>
+        <tr *ngFor="let c of conges" (click)="editerUnConge(c)">
+          <td>{{c.employe.firstName +' '+ c.employe.lastName}}</td>
+          <td>{{c.congee.libelle}}</td>
+          <td>{{c.dateDeDebut.toString()}}</td>
+          <td>{{c.periode}}</td>
+          <!-- <td>{{c.raison}}</td> -->
+          <!-- <td><button class="btn btn-info btn-sm fa fa-trash"
+              (click)="deleteByReference(c)"></button>
+            <button class="btn btn-danger btn-sm fa fa-edit" (click)="editerUnEmployer(c)"></button>
+          </td> -->
+        </tr>
+        </tbody>
+      </table>
+      <!-- <button class="btn"style="background-color: yellow;color: beige;width: 80px;"
+      matTooltip="Ce button permet d imprimer ce table sous format PDF"
+      ><i class="fa fa-file-pdf" ></i> PDF</button> -->
+      <button class="btn"style="background-color: white;color: black;float: left" (click)="imprimerLalisteDeConge()"
+              matTooltip="Ce button permet d imprimer ce table en format PDF"
+      ><i class="fa fa-file-pdf" ></i>  Exporter en <strong>PDF</strong> </button>
+      <button class="btn"style="margin-left: 10px;background-color: white;color: black;float: left" (click)="exporterListeDeCongeEnExcel()"
+              matTooltip="Ce button permet d imprimer ce table en format EXCEL"
+      ><i class="fa fa-file-excel" ></i>  Exporter en <strong>EXCEL</strong> </button>
+    </div>
   </mat-tab>
   <mat-tab label="AFFECTER UN CONGÉ A UN EMPLOYÉ" style="width: 25%;" tabindex="4">
     <app-editer></app-editer>

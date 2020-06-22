@@ -172,13 +172,20 @@ public setPunition(punitionn: PunitionEmploye) {
         });
     }
     }
-    // public deleteByReference(conge: CongeEmploye) {
-    //   this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
-    //     data => {
-    //       console.log('delete sucess' + data);
-    //       this.findAll();
-    //     });
-    // }
+  public deleteByReference(punition: PunitionEmploye) {
+    this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/PunitionEmploye/deleteById/id/' + punition.id).subscribe(
+      data => {
+        if(data === 1){
+        this.toast.success(`  punition est bien Supprimé.`, 'Supprimer punition', {
+          timeOut: 2500,
+          progressBar: true,
+          progressAnimation: 'increasing',
+          positionClass: 'toast-top-right'
+        });
+        console.log('delete sucess' + data);
+        }
+      });
+  }
 
 
     clonePunition(p: PunitionEmploye): PunitionEmploye {

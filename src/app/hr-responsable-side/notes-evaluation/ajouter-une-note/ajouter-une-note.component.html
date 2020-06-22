@@ -1,8 +1,8 @@
-<button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
-  class="fas fa-window-close "></i> </button>
 <mat-toolbar>
   <mat-toolbar-row>
     <span class="span"> <i class="fas fa-plus-circle" aria-hidden="true"></i> Formulaire pour ajouter une note à un employé </span>
+    <button mat-raised-button color="warn" mat-dialog-close style="float: right;" matTooltip="Fermer le dialog"> <i
+      class="fas fa-window-close "></i> </button>
   </mat-toolbar-row>
 </mat-toolbar>
 <form class="normal-form">
@@ -71,10 +71,15 @@
         </mat-form-field>
       </div>
       <br>
-        <div class="button-row">
-        <button mat-raised-button color="primary" type="submit" class="btn-block"
-         (click)="save()"> <i class="fas fa-check-square    "></i> Ajouter</button>
-    </div>
   </div>
   </div>
 </form>
+<div class="row">
+  <div class="col-md-3">
+    <button mat-raised-button color="primary" style="background-color: #3f8032" class="btn-block" (click)="save()"> <i
+      class="fas fa-check-circle"></i> Ajouter</button>
+  </div>
+  <div class="col-md-3">
+    <button mat-raised-button color="warn" class="btn-block" *ngIf="note.id != null" (click)="deleteNote()">Supprimer</button>
+  </div>
+</div>

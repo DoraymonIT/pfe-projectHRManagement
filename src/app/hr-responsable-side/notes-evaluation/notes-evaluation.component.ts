@@ -38,7 +38,6 @@ export class NotesEvaluationComponent implements OnInit {
   ngOnInit(): void {
     this.employeSrvice.trouverEmployerAyantBesoinDeNote();
     this.cols = [
-      { field: 'id', header: 'ID-Employe' },
       { field: 'doti', header: 'Numero' },
       { field: 'firstName', header: 'Prenom' },
       { field: 'lastName', header: 'Nom' },

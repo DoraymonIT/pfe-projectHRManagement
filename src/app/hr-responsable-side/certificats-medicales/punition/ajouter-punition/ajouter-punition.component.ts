@@ -47,4 +47,7 @@ if (this.punitionEmploye.id == null){
   public getEmployePunitiondoti(doti: string){
     this.employeService.GetEmployePunitionByDoti(doti)
   }
+  deletePunition(){
+    this.punitionService.deleteByReference(this.punitionEmploye);
+  }
 }

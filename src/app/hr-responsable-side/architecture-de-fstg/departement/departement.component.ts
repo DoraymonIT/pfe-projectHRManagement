@@ -100,8 +100,8 @@ export class DepartementComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
-    dialogConfig.height = '60%';
+    dialogConfig.width = '50%';
+    dialogConfig.height = '45%';
     this.dialog.open(AjouteUneFonctionUndeartementComponent,
       dialogConfig);
   }

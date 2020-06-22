@@ -52,4 +52,7 @@ export class EditerComponent implements OnInit {
   get ajouteCongeEmp(): string {
     return this.congeservice.ajouteCongeEmp;
   }
+  public deleteCongeEmploye(){
+    this.congeservice.deleteByReference(this.congeEmploye);
+  }
 }

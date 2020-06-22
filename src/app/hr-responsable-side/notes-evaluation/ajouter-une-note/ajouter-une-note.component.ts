@@ -109,4 +109,7 @@ public div5: boolean;
   public getEmployeNotedoti(doti: string){
     this.employeService.GetEmployeNoteByDoti(doti);
   }
+  public deleteNote(){
+    this.noteService.deleteByReference(this.note);
+  }
 }

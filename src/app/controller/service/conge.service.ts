@@ -5,6 +5,7 @@ import { TypeCongee } from '../model/type-congee.model';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {PersonnelEmployesService} from './personnel-employes.service';
+import {CongéEmployeSalaire} from '../model/congéemploye-salaire.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,8 @@ private _filterrsult: TypeCongee;
 private _employefullname: string;
 // tslint:disable-next-line:variable-name
   private _ajouteCongeEmp: string;
-
+// tslint:disable-next-line:variable-name
+  private _congeEmployeSalaire: Array<CongéEmployeSalaire>;
   constructor(private http: HttpClient,
               private toast: ToastrService,
               private employeService: PersonnelEmployesService) { }
@@ -45,6 +47,15 @@ private _employefullname: string;
         console.log('eroro', eror);
       });
   }
+  public trouverCongéEmployeSalaireParSonId(value: number) {
+    this.http.get<Array<CongéEmployeSalaire>>('http://localhost:8080/gestionDesEmployee-Api/CongeeEmployeSalaireService/findByCongeId/id/' + value).subscribe(
+      data => {
+        this.congeEmployeSalaire = data;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
   public ajouteCongeEmploye() {
     this._ajouteCongeEmp = 'Editer / Ajouter un congée';
   }
@@ -327,11 +338,20 @@ public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
   public deleteByReference(conge: CongeEmploye) {
     this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
       data => {
-        this.findAll();
+        if (data === 1){
+          this.toast.success(`  congé est bien Supprimé.`, 'Supprimer congé', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this.findAll();
+          console.log('delete sucess' + data);
+        }
       });
   }
   public editerUnEmployer(conge: CongeEmploye) {
-    this._congeEmploye = conge;
+    this.congeEmploye = conge;
   }
 
   cloneConge(conge: CongeEmploye): CongeEmploye {
@@ -426,5 +446,20 @@ public  findcongeByDotiAndLibelle(doti: String, libelle: string ){
 
   set congeEmployeCOnge(value: CongeEmploye) {
     this._congeEmployeCOnge = value;
+  }
+
+  get congeEmployeSalaire(): Array<CongéEmployeSalaire> {
+    if(this._congeEmployeSalaire == null){
+      this._congeEmployeSalaire = new Array<CongéEmployeSalaire>();
+      this._congeEmployeSalaire.forEach(conge =>{
+        conge = new CongéEmployeSalaire();
+        conge.conge = new CongeEmploye();
+      })
+    }
+    return this._congeEmployeSalaire;
+  }
+
+  set congeEmployeSalaire(value: Array<CongéEmployeSalaire>) {
+    this._congeEmployeSalaire = value;
   }
 }

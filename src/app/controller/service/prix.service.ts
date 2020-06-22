@@ -168,13 +168,20 @@ public  ajoutePrixTitre(){
         });
     }
   }
-    // public deleteByReference(conge: CongeEmploye) {
-    //   this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
-    //     data => {
-    //       console.log('delete sucess' + data);
-    //       this.findAll();
-    //     });
-    // }
+     public deleteByReference(prix: PrixEmploye) {
+       this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/PrixEmploye/deleteById/id/' + prix.id).subscribe(
+         data => {
+           if(data === 1){
+           this.toast.success(`  prix est bien Supprimé.`, 'Supprimer prix', {
+             timeOut: 2500,
+             progressBar: true,
+             progressAnimation: 'increasing',
+             positionClass: 'toast-top-right'
+           });
+           console.log('delete sucess' + data);
+           }
+           });
+     }
 
 
     clonePrix(p: PrixEmploye): PrixEmploye {

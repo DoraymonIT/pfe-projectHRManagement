@@ -40,5 +40,7 @@ export class AjouterFormationComponent implements OnInit {
   get fullnameFormation(): string {
     return this.employeService.fullnameFormation;
   }
-
+public deleteFormation(){
+    this.formationService.deleteByReference(this.formationEmploye);
+}
 }

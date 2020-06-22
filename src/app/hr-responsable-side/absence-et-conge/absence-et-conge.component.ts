@@ -7,6 +7,8 @@ import {TypeCongee} from '../../controller/model/type-congee.model';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ListeDesJoursFriesComponent } from './liste-des-jours-fries/liste-des-jours-fries.component';
 import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
+import {GradeService} from '../../controller/service/grade.service';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -17,75 +19,75 @@ import { LazyLoadEvent } from 'primeng/api/lazyloadevent';
 
 })
 export class AbsenceEtCongeComponent implements OnInit {
-  constructor( private employeService: PersonnelEmployesService,
-               private congeservice: CongeService,
-               private dialog: MatDialog) { }
-  get employes(): Array<Employe> {
-    return this.employeService.employes;
+  constructor(private congeservice: CongeService,
+              private es: PersonnelEmployesService,
+              private gradeservice: GradeService,
+              private toast: ToastrService) { }
+  calendarEvents = [
+    { title: 'event 1', date: '2020-04-01' }
+  ];
+  public tabindex;
+  public demo1TabIndex = 0;
+  ngOnInit(): void {
+    this.congeservice.findAll();
+    this.es.findAll();
   }
+  get employes(): Array<Employe> {
+    return this.es.employes;
+  }
+  titre: string;
+  fullname: string;
+  diponible: boolean;
+  public getcongeByDotiAndLibelle(){
+    this.diponible = false;
+    this.employes.forEach(employe=>{
+      if(employe.doti === this.congeEmploye.employe.doti){
+        this.diponible= true;
+        this.fullname = employe.firstName +" "+ employe.lastName;
+      }
+    });
+    if(this.diponible === false){
+      this.toast.error(`le Numéro administrative de employe est incorrect`, 'merci de saisir Un Numéro administrative correct', {
+        timeOut: 9500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-full-width'
+      });
+      document.getElementById('NumeroAdministrativeConge').style.color='red';
+    }else{
+      this.congeservice.findcongeByDotiAndLibelle(this.congeEmploye.employe.doti, this.congeEmploye.congee.libelle);
+      this.titre= 'listes des ' + this.congeEmploye.congee.libelle + ' de employe '+ this.fullname;
+      document.getElementById('NumeroAdministrativeConge').style.color='green';
 
+    }
+  }
   get conges(): Array<CongeEmploye> {
     return this.congeservice.conges;
+  }
+  public listeVide(): boolean {
+    return this.conges.length < 1 ? true : false;
+  }
+  public exporterListeDeCongeEnExcel(){
+    this.congeservice.exporterListeDeCongeDeEmployeExcel();
+  }
+  public imprimerLalisteDeConge() {
+    this.congeservice.imprimerListeDeCongeDeEmploye();
+  }
+  get congeEmploye(): CongeEmploye {
+    return this.congeservice.congeEmploye;
   }
   get typeConge(): Array<TypeCongee> {
     return this.congeservice.typeConge;
   }
-  get filterrsult(): TypeCongee {
-    return this.congeservice.filterrsult;
-  }
-
-  cols: any[];
-  public tabindex;
-  public demo1TabIndex = 0;
- loading: boolean;
- totalRecords: number;
- dataSource : Array<Employe>=[];
-  ngOnInit(): void {
-    this.employeService.findAll();
-    this.dataSource=this.employes;
-    this.cols = [
-      { field: 'cin', header: 'C I N' },
-      { field: 'fullName', header: 'Nom Complet' },
-      { field: 'email', header: 'G-mail' },
-      { field: 'doti', header: 'DOTI' },
-      { field: 'soldeRestantesCongéExceptionnel', header: 'solde Restantes Congé Exceptionnel' },
-    ];
-    this.loading = true;
-    this.totalRecords = this.employes.length;
-  }
-  loadCarsLazy(event: LazyLoadEvent) {
-    this.loading = true;
-
-
-    setTimeout(() => {
-        if (this.employes) {
-            this.dataSource = this.employes.slice(event.first, (event.first + event.rows));
-            this.loading = false;
-        }
-    }, 4000);
-}
-  public deleteByReference(conge: CongeEmploye) {
-    this.congeservice.deleteByReference(conge);
-  }
-  public editerUnEmployer(conge: CongeEmploye) {
-    this.demo1BtnClick(1);
-    this.congeservice.editerUnEmployer(conge);
+  public  trouverEmployerParSonDoti(value:string){
+    this.es.trouverEmployerCongeParSonDoti(value);
   }
   public demo1BtnClick(value: number) {
     this.demo1TabIndex = value ;
   }
+  public editerUnConge(conge: CongeEmploye) {
+    this.demo1BtnClick(4);
+    this.congeservice.editerUnEmployer(conge);
+  }
 
-  public listeVide(): boolean {
-    return this.employes.length < 1 ? true : false;
-  }
-  trouverCongeParSonDotiDialog(emp: Employe) {
-    this.congeservice.trouverCongéParSonDoti(emp.doti);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '95%';
-    dialogConfig.height = '100%';
-    this.dialog.open(ListeDesJoursFriesComponent,
-      dialogConfig);
-  }
 }

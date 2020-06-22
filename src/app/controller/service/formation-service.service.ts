@@ -161,13 +161,20 @@ public imprimerLesFormations(value: Array<Formation>) {
         });
     }
     }
-    // public deleteByReference(conge: CongeEmploye) {
-    //   this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/conge/deleteById/id/' + conge.id).subscribe(
-    //     data => {
-    //       console.log('delete sucess' + data);
-    //       this.findAll();
-    //     });
-    // }
+     public deleteByReference(formation: Formation) {
+       this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/Formation/deleteById/id/' + formation.id).subscribe(
+         data => {
+           if (data === 1){
+             this.toast.success(`  formation est bien Supprimé.`, 'Supprimer formation', {
+               timeOut: 2500,
+               progressBar: true,
+               progressAnimation: 'increasing',
+               positionClass: 'toast-top-right'
+             });
+             console.log('delete sucess' + data);
+           }
+         });
+     }
 
 
     cloneFormation(formation: Formation): Formation {

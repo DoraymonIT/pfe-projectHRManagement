@@ -64,4 +64,7 @@ export class EditerEmployeComponent implements OnInit {
   get fullname(): string {
     return this.employeService.fullname;
   }
+  public deleteEmploye(){
+    this.employeService.deleteByReference(this.EditEmploye);
+  }
 }

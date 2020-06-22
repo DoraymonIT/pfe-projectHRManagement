@@ -759,7 +759,6 @@ export class PersonnelEmployesService {
   public trouverEmployerNoteGeneraleToday() {
     this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findLesEmployeAyantLaNoteGeneraleAujourdHui').subscribe(
       data => {
-        console.log(data);
         this.employesByNoteGeneraleToday = data;
       }, eror => {
         console.log('eroro', eror);
@@ -778,7 +777,15 @@ export class PersonnelEmployesService {
   public deleteByReference(employe: Employe) {
     this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/Employee/deleteById/id/' + employe.id).subscribe(
       data => {
-        this.findAll();
+        if(data == 1){
+          this.toast.success(`  employé est bien Supprimé.`, 'Supprimer employé', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          this.findAll();
+        }
       });
   }
   public editerUnEmployer(employe: Employe) {

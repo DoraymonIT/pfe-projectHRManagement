@@ -5,6 +5,7 @@ import {CongeEmploye} from '../../../../controller/model/conge-employe.model';
 import {TypeCongee} from '../../../../controller/model/type-congee.model';
 import {Employe} from '../../../../controller/model/employe.model';
 import {CongeService} from '../../../../controller/service/conge.service';
+import {CongéEmployeSalaire} from '../../../../controller/model/congéemploye-salaire.model';
 
 @Component({
   selector: 'app-calendrier-des-certificats',
@@ -14,10 +15,14 @@ import {CongeService} from '../../../../controller/service/conge.service';
 export class CalendrierDesCertificatsComponent implements OnInit {
 
   constructor(private congeService: CongeService) { }
-
+  get congeEmployeSalaire(): Array<CongéEmployeSalaire> {
+    return this.congeService.congeEmployeSalaire;
+  }
+  public listeVide(){
+    return this.congeEmployeSalaire.length < 1 ? true : false;
+  }
   ngOnInit(): void {
-    this.congeService.findallCertificatDansCetteAnnee();
-    this.loadEvent();
+
   }
   calendarPlugins = [dayGridPlugin]; // important!
   calendarEvents = [

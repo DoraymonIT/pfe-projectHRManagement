@@ -31,7 +31,11 @@ export class AjouteAvancementComponent implements OnInit {
     return this.gradeService.grades;
   }
   public save() {
-  this.gradeService.saveGradeEmploye();
+    if(this.gradeEmploye.id === null){
+      this.gradeService.saveGradeEmploye();
+  } else{
+      this.gradeService.updateGradeEmploye();
+    }
   }
   get ajouteGradeEmploye(): string {
     return this.gradeService.ajouteGradeEmploye;

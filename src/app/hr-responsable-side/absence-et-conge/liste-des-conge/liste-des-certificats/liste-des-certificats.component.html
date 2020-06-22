@@ -57,7 +57,7 @@
       <tbody>
       <p-progressSpinner *ngIf="listeVide()"></p-progressSpinner>
 
-      <tr *ngFor="let c of congesCertificat">
+      <tr *ngFor="let c of congesCertificat" (click)="getPeriodeMois(c)">
         <td>{{c.employe.firstName +' '+ c.employe.lastName}}</td>
         <td>{{c.congee.libelle}}</td>
         <td>{{c.dateDeDebut}}</td>

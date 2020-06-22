@@ -1,11 +1,10 @@
 <mat-toolbar  style="cursor: pointer;">
   <mat-toolbar-row>
-    <span class="span"> <i class="fas fa-calendar-check    "></i> Chercher les permanences d'un employé a partir du <strong>Numéro</strong>  </span>
+    <span class="span"> <i class="fas fa-search"></i> Chercher les permanences d'un employé a partir du <strong>Numéro</strong>  </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="card" style="background-color: #343a40; color: wheat; text-align: center" id="checherFormation">
   <div class="card-body">
-    <mat-form-field  style="width: 500px">
       <mat-form-field style="width: 500px" id="NumeroAdministrativePermanence">
         <input matInput  [(ngModel)]="permanenceAdministrative1.employe.doti" placeholder="Numéro Administrative :*" [ngModelOptions]="{standalone: true}" [value]="permanenceAdministrative1.employe.doti">
       </mat-form-field>
@@ -28,7 +27,6 @@
     </mat-form-field>
     <br>
     <button class="btn btn-light fa fa-search" style="width: 500px" (click)="chercher()"> chercher</button>
-    </mat-form-field>
   </div>
 </div>
 <div class="container-fluid" style="padding-top: 10px;">

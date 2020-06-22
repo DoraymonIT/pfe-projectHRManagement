@@ -9,6 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 import {NoteGeneraleDeAnnee} from '../model/note-generale-de-annee.model';
 import {Note} from '../model/note.model';
 import {SalaireEmploye} from '../model/salaire-employe.model';
+import {Formation} from '../model/formation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -287,4 +288,19 @@ public affecteruneNote(note:NoteGeneraleDeAnnee){
   setDoti(doti: string){
     this.noteSave.employeDoti = doti;
   }
+  public deleteByReference(note: NoteGeneraleDeAnnee) {
+    this.http.delete<number>('http://localhost:8080/gestionDesEmployee-Api/NoteGeneralDeAnnee/deleteById/id/' + note.id).subscribe(
+      data => {
+        if (data === 1){
+          this.toast.success(`  note est bien Supprimé.`, 'Supprimer note', {
+            timeOut: 2500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+          console.log('delete sucess' + data);
+        }
+      });
+  }
+
 }

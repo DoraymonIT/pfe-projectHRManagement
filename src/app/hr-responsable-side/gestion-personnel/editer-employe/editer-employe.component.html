@@ -135,13 +135,17 @@
 
             </mat-radio-group>
           </div> -->
-          <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" class="btn-block" (click)="update()"> <i class="fa fa-check-square"></i> Confirmer</button>
-            <!-- <button mat-raised-button color="warn" (click)="onNoClick()">close1</button> -->
-            <!-- <button mat-raised-button mat-dialog-close>Close2</button> -->
-          </div>
         </div>
       </div>
       </div>
     </div>
 </form>
+<div class="row">
+  <div class="col-md-3">
+    <button mat-raised-button color="primary" style="background-color: #313f80" class="btn-block" (click)="update()"> <i
+      class="fas fa-check-circle"></i> Modifier</button>
+  </div>
+  <div class="col-md-3">
+    <button mat-raised-button color="warn" class="btn-block" *ngIf="EditEmploye.id != null" (click)="deleteEmploye()">Supprimer</button>
+  </div>
+</div>

@@ -1,5 +1,15 @@
 <div class="container-fluid" style="padding-top: 10px;">
   <div class="row">
+    <div class="col-md-6">
+      <h3>Nombre des employés par département</h3>
+      <p-chart type="doughnut" [responsive]="true" [data]="data"></p-chart>
+    </div>
+    <div class="col-md-6">
+      <h3>Nombre des employés par grade</h3>
+      <p-chart type="bar" [responsive]="true" [data]="data2"></p-chart>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-2">
       <h5 style="text-align: center;">Total des Employés</h5>
       <mat-card>
@@ -15,7 +25,7 @@
       </mat-card>
     </div>
     <div class="col-md-3">
-      <h5 style="text-align: center;">Liste des départements</h5>
+      <h5 style="text-align: center;"> <i class="fa fa-building" ></i> Liste des départements</h5>
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
         <mat-chip *ngFor="let chip of agesCa" [color]="chip.color">
           {{ chip.nom }}
@@ -23,19 +33,15 @@
       </mat-chip-list>
     </div>
     <div class="col-md-7">
-   
-    <h3>Nombre des employés par grade</h3>
-      <p-chart type="bar" [responsive]="true" [data]="data2"></p-chart>
+      <h5 style="text-align: center;">Autres</h5>
+      <mat-card>
+        <div class="row">
+          <div class="col-md-6"> <h6><i class="fas fa-money-check    "></i> Moyen de Salaire: </h6><b>6700.00 DH</b>  </div>
+          <div class="col-md-6" style="text-align: center;"> <h6> Pourcentage de Sexe</h6>
+            <i class="fas fa-male" ></i> 44%  <i class="fas fa-female" ></i> 56%
+          </div>
+        </div>
+      </mat-card>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Nombre des employés par département</h3>
-      <p-chart type="doughnut" [responsive]="true" [data]="data"></p-chart>
-    </div>
-    <div class="col-md-6">
-    
-    </div>
-  </div>
-  
 </div>

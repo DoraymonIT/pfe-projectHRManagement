@@ -35,7 +35,7 @@ export class DocumentsEmployeComponent implements OnInit {
     this.documentService.deleteByReference(demande);
   }
   public editerUneDemande(demande: DemaneDeDocument) {
-    this.demo1BtnClick(2);
+    this.demo1BtnClick(3);
     this.documentService.editeUneDemande(demande);
   }
   public demo1BtnClick(value: number) {

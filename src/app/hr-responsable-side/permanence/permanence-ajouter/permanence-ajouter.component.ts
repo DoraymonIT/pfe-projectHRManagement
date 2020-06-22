@@ -38,4 +38,7 @@ export class PermanenceAjouterComponent implements OnInit {
   get fullnamePermanence(): string {
     return this.employeService.fullnamePermanence;
   }
+  public deletePermannce(){
+    this.pemanenceAdministrativeservice.deleteByReference(this.permanenceAdministrative);
+  }
 }
