@@ -355,7 +355,7 @@ export class TestTestComponent implements OnInit {
     });
   }
   public save(){
-    if(this.rapportEvaluation == null){
+    if(this.rapportEvaluation.id == null){
       this.avancementService.save();
     } else {
       this.avancementService.update();

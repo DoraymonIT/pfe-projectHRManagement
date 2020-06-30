@@ -53,10 +53,10 @@ private _typeDocument: TypeDocument;
       //.map(() => { return true; })
       //.catch((e) => this.handleError(e));
  // }
-  public sendDocument(email: string, subject: string, content: string, file: FormData) {
+  public sendDocument(id: number,email: string, subject: string, content: string, file: FormData) {
 
     // tslint:disable-next-line:max-line-length
-    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/sendmail/email/' + email + '/subject/' + subject +'/content/' +content , file).subscribe(
+    this.http.post<number>('http://localhost:8080/gestionDesEmployee-Api/demandeDeDocument/sendmail/id/'+ id + '/email/' + email + '/subject/' + subject +'/content/' +content , file).subscribe(
       data => {
         this.toast.success(` Document est bien envoyé avec succés`, ' Document envoyé', {
           timeOut: 2500,
@@ -64,6 +64,7 @@ private _typeDocument: TypeDocument;
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
+        this.findAllDemandeNonSigne();
       }, eror => {
         console.log('eroro', eror);
       });

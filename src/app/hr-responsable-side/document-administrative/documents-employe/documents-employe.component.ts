@@ -67,7 +67,6 @@ export class DocumentsEmployeComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('profile').value);
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
-
-    this.documentService.sendDocument(demande.employe.email, "copie scanne" + demande.typeDeDocument.libelle,"bonjour monsieur "+ demande.employe.firstName+ " "+ demande.employe.lastName + " voila une copie scanne de votre document"+ demande.typeDeDocument.libelle, formData);
+    this.documentService.sendDocument(demande.id,demande.employe.email, "copie scanne de " + demande.typeDeDocument.libelle,"bonjour monsieur "+ demande.employe.firstName+ " "+ demande.employe.lastName + " voila une copie scanne de votre document "+ demande.typeDeDocument.libelle, formData);
   }
   }

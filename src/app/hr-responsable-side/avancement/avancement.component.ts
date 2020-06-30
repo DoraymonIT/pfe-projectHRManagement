@@ -81,6 +81,7 @@ public  TrouverGradeNonTraiteByType(value: string){
     return this.gradeNonTraite.length < 1 ? true:false;
   }
   public accepterUnRapport(gradeEmploye: GradeEmploye){
+    this.gradeService.findAllGradeNonTraite();
     this.avancementService.accepterRapportAvancement(gradeEmploye);
   }
   get employeDateEvaluation(): Employe {

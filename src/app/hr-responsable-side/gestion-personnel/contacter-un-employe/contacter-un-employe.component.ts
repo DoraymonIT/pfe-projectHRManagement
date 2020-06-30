@@ -85,6 +85,6 @@ public getEmployeContacterdoti(doti: string){
     formData.append('file', this.uploadForm.get('profile').value);
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
 
-    this.documentService.sendDocument(email.emaill, email.subject ,email.text, formData);
+  //  this.documentService.sendDocument(email.emaill, email.subject ,email.text, formData);
   }
 }
