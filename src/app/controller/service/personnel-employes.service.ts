@@ -89,6 +89,203 @@ export class PersonnelEmployesService {
       });
   }
 
+  private _grade1: number;
+
+  get grade1(): number {
+    return this._grade1;
+  }
+
+  set grade1(value: number) {
+    this._grade1 = value;
+  }
+
+  public trouverEmployerParNomGrade1() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade1').subscribe(
+      data => {
+       this.grade1 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _grade2: number;
+
+  get grade2(): number {
+    return this._grade2;
+  }
+
+  set grade2(value: number) {
+    this._grade2 = value;
+  }
+
+  public trouverEmployerParNomGrade2() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade2').subscribe(
+      data => {
+        this.grade2 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _grade3: number;
+
+  get grade3(): number {
+    return this._grade3;
+  }
+
+  set grade3(value: number) {
+    this._grade3 = value;
+  }
+
+  public trouverEmployerParNomGrade3() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade3').subscribe(
+      data => {
+        this.grade3 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+  private _grade4: number;
+
+  get grade4(): number {
+    return this._grade4;
+  }
+
+  set grade4(value: number) {
+    this._grade4 = value;
+  }
+
+  public trouverEmployerParNomGrade4() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade4').subscribe(
+      data => {
+        this.grade4 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  private _grade5: number;
+
+  get grade5(): number {
+    return this._grade5;
+  }
+
+  set grade5(value: number) {
+    this._grade5 = value;
+  }
+
+  public trouverEmployerParNomGrade5() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade5').subscribe(
+      data => {
+        this.grade5 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  private _grade6: number;
+
+  get grade6(): number {
+    return this._grade6;
+  }
+
+  set grade6(value: number) {
+    this._grade6 = value;
+  }
+
+  public trouverEmployerParNomGrade6() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade6').subscribe(
+      data => {
+        this.grade6 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  private _grade7: number;
+
+  get grade7(): number {
+    return this._grade7;
+  }
+
+  set grade7(value: number) {
+    this._grade7 = value;
+  }
+
+  public trouverEmployerParNomGrade7() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade7').subscribe(
+      data => {
+        this.grade7 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  private _grade8: number;
+
+  get grade8(): number {
+    return this._grade8;
+  }
+
+  set grade8(value: number) {
+    this._grade8 = value;
+  }
+
+  public trouverEmployerParNomGrade8() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade8').subscribe(
+      data => {
+        this.grade8 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  private _grade9: number;
+
+  get grade9(): number {
+    return this._grade9;
+  }
+
+  set grade9(value: number) {
+    this._grade9 = value;
+  }
+
+  public trouverEmployerParNomGrade9() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade9').subscribe(
+      data => {
+        this.grade9 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
+  private _grade10: number;
+
+  get grade10(): number {
+    return this._grade10;
+  }
+
+  set grade10(value: number) {
+    this._grade10 = value;
+  }
+
+  public trouverEmployerParNomGrade10() {
+    // tslint:disable-next-line:max-line-length
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDernierGradeGradeLibelle/libelle/grade10').subscribe(
+      data => {
+        this.grade10 = data.length;
+      }, eror => {
+        console.log('eroro', eror);
+      });
+  }
+
 
   // save
   public contacterUnEmploye() {
@@ -724,6 +921,149 @@ export class PersonnelEmployesService {
       data => {
         this.employesByDep = data;
         console.log(value+" :  "+this.employesByDep.length);
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+private _biologie: number;
+
+  get biologie(): number {
+    return this._biologie;
+  }
+
+  set biologie(value: number) {
+    this._biologie = value;
+  }
+
+  public trouverListeEmployesParNomDepartementBiologie(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/Biologie').subscribe(
+      data => {
+        this.biologie=data.length
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+  private _informatique: number;
+
+
+  get informatique(): number {
+    return this._informatique;
+  }
+
+  set informatique(value: number) {
+    this._informatique = value;
+  }
+
+  public trouverListeEmployesParNomDepartementInformatique(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/Informatique').subscribe(
+      data => {
+        this.informatique=data.length
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+  private _chimie: number;
+
+  get chimie(): number {
+    return this._chimie;
+  }
+
+  set chimie(value: number) {
+    this._chimie = value;
+  }
+
+  public trouverListeEmployesParNomDepartementChimie(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/Chimie').subscribe(
+      data => {
+        this.chimie=data.length
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+  private _physique: number;
+
+
+  get physique(): number {
+    return this._physique;
+  }
+
+  set physique(value: number) {
+    this._physique = value;
+  }
+
+  public trouverListeEmployesParNomDepartementphysique(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/physique').subscribe(
+      data => {
+        this.physique=data.length
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+  private _TEC: number;
+
+  get TEC(): number {
+    return this._TEC;
+  }
+
+  set TEC(value: number) {
+    this._TEC = value;
+  }
+
+  public trouverListeEmployesParNomDepartementTec(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/TEC').subscribe(
+      data => {
+        this.TEC=data.length
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+  private _Mathémathique: number;
+
+
+  get Mathémathique(): number {
+    return this._Mathémathique;
+  }
+
+  set Mathémathique(value: number) {
+    this._Mathémathique = value;
+  }
+
+  public trouverListeEmployesParNomDepartementMathémathique(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/Mathémathique').subscribe(
+      data => {
+        this.Mathémathique=data.length
+      }, eror => {
+        console.log('eroro', eror);
+      });
+    return this.employesByDep.length
+  }
+
+  private _Géologie: number;
+
+
+  get Géologie(): number {
+    return this._Géologie;
+  }
+
+  set Géologie(value: number) {
+    this._Géologie = value;
+  }
+
+  public trouverListeEmployesParNomDepartementGéologie(): number {
+    this.http.get<Array<Employe>>('http://localhost:8080/gestionDesEmployee-Api/Employee/findByDepNom/nomDepartement/Géologie').subscribe(
+      data => {
+        this.Géologie=data.length
       }, eror => {
         console.log('eroro', eror);
       });
